@@ -1,0 +1,35 @@
+footer {
+    background-color:#122965;
+    ;
+    padding: 25px 25px;
+    color: white;
+    position: relative;
+}
+  
+.container {
+    width: 100%;
+}
+  
+#logo  {
+    display: flex;
+}
+
+
+#footer-links {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 50%
+}
+  
+#footer-links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+a {
+    color: white;
+    font-family: 'kanit', sans-serif;
+}
