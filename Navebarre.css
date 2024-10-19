@@ -1,0 +1,41 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    background-color: #f1f1f1;
+    overflow: hidden; 
+    width: 100%;
+    position: fixed;
+    }
+
+li {
+    float: left;
+}
+
+.right_elements {
+    float: right;
+    position: relative;
+}
+
+#pseudo {
+    margin-right: 60px; 
+    margin-top: 15px;
+    font-size: 20px; 
+    font-family: 'Kanit', sans-serif;
+    color: #122965;
+    position: relative;
+}
+
+#dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 140px;
+    padding: 12px;
+    margin-top: 50px;
+    margin-left: 1350px;
+}
+.drop-content{
+     font: 'Kanit', sans-serif;
+    color: #122965;
+}
+
