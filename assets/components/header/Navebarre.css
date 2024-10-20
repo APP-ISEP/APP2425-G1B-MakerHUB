@@ -1,4 +1,4 @@
-ul {
+.navBar {
     list-style-type: none;
     margin: 0;
     background-color: #f1f1f1;
@@ -17,8 +17,8 @@ li {
 }
 
 #pseudo {
-    margin-right: 60px; 
-    margin-top: 15px;
+    margin-right: 40px; 
+    margin-top: -50px;
     font-size: 20px; 
     font-family: 'Kanit', sans-serif;
     color: #122965;
@@ -32,10 +32,10 @@ li {
     width: 140px;
     padding: 12px;
     margin-top: 50px;
-    margin-left: 1350px;
+    margin-left: 1370px;
 }
 .drop-content{
-     font: 'Kanit', sans-serif;
+    font-family: 'Kanit', sans-serif;
     color: #122965;
 }
 
