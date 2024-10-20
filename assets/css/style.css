@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --base-color: #122965;
+    --base-color-2: #F1F1F1;
+    --base-color-3: #FFFFFF;
+    --important-element-color: #732440;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Kanit', serif;
+    background-color: var(--base-color-2);
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.footer {
+    background-color: var(--base-color);
+    color: var(--base-color-2);
+    width: 100%;
+    height: 11vh;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer a {
+    color: var(--base-color-2);
+    text-decoration: none;
+}
+
+.footer-logo {
+    padding: 0.5% 1% 0 3%;
+}
+
+.footer-copyrights {
+    padding-right: 8%;
+}
+
+.footer-links {
+    width: 40%;
+}
+
+.footer-links-list {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5%;
+    list-style: none;
+}
+
+/* Format mobile */
+@media screen and (max-width: 817px) {
+    body {
+        background-color: #732440;
+    }
+
+    .footer {
+        height: 20vh;
+    }
+
+    .footer-logo, .footer-copyrights {
+        display: none;
+    }
+
+    .footer-links {
+        width: 100%;
+    }
+
+    .footer-links-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:10%;
+    }
+}
+
+/* Format tablette */
+@media screen and (min-width: 818px) and (max-width: 1561px) {
+    body {
+        font-size: 0.8em;
+    }
+
+    .footer-links {
+        width: 60%;
+    }
+}
