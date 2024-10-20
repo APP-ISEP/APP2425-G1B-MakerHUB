@@ -4,7 +4,10 @@
     --base-color: #122965;
     --base-color-2: #F1F1F1;
     --base-color-3: #FFFFFF;
+    --secondary-text-color: rgb(0 0  0 / .65);
     --important-element-color: #732440;
+    --accentuation_color: #D1D1D1;
+    --navbar-width: 80px;
 }
 
 *, *::before, *::after {
@@ -16,11 +19,91 @@
 body {
     font-family: 'Kanit', serif;
     background-color: var(--base-color-2);
+    color: var(--base-color);
+    margin-top: var(--navbar-width);
 }
 
 .underline {
     text-decoration: underline;
 }
+
+.navbar {
+    width: 100%;
+    height: var(--navbar-width);
+    position: fixed;
+    top: 0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    padding-left: 1%;
+}
+
+.img-logo {
+    width: 70%;
+}
+
+.profil {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-right: 1.5%;
+    cursor: pointer;
+    user-select: none;
+}
+
+.img-profil {
+    width: 64px;
+    height: 64px;
+}
+
+#pseudo {
+    font-size: 1.3em;
+}
+
+#dropdown {
+    position: absolute;
+    top: calc(var(--navbar-width) - 8px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: none;
+    padding: 8px 8px 0 8px;
+    width: 115%;
+
+    background-color: var(--base-color-2);
+    color: var(--secondary-text-color);
+
+    border-radius: 10px;
+
+    text-align: center;
+    border: 1px solid var(--accentuation_color);
+    transition: width .2s;
+}
+
+.drop-content {
+    padding-bottom: 2%;
+}
+
+#separation-bar {
+    border: 0.01rem solid var(--base-color);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.logout {
+    color: var(--important-element-color);
+    font-weight: bold;
+}
+
+/* main container */
 
 .footer {
     background-color: var(--base-color);
@@ -60,6 +143,13 @@ body {
 
 /* Format mobile */
 @media screen and (max-width: 817px) {
+    #dropdown {
+        right: 0;
+        width: 98vw;
+        transform: none;
+        left: auto;
+    }
+
     .footer {
         height: 20vh;
     }
