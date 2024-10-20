@@ -60,10 +60,6 @@ body {
 
 /* Format mobile */
 @media screen and (max-width: 817px) {
-    body {
-        background-color: #732440;
-    }
-
     .footer {
         height: 20vh;
     }
