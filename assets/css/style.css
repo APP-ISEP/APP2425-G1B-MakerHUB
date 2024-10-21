@@ -23,6 +23,38 @@ body {
     margin-top: var(--navbar-width);
 }
 
+button{
+    background-color: var(--important-element-color);
+    border: 3px solid var(--important-element-color);
+    font-family: 'Kanit', serif;
+    font-weight: bold;
+    color: var(--base-color-2);
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+    border-radius: 10px;
+}
+
+button:hover{
+    background-color: var(--base-color-2);
+    border: 3px solid var(--important-element-color);
+    font-family: 'Kanit', serif;
+    font-weight: bold;
+    color: var(--important-element-color);
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+    border-radius: 10px;
+}
+
 .underline {
     text-decoration: underline;
 }
