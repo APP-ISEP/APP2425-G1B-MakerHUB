@@ -218,6 +218,26 @@ button{
     border-radius: 10px;
 }
 
+.section {
+    padding: 25px;
+    border: 1px solid var(--accentuation_color);
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.form-container {
+    display: inline-grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .edit-profile h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -225,55 +245,33 @@ button{
 
 .subtitle {
     color: var(--secondary-text-color);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.personal-information {
-    padding: 20px;
-    border: 1px solid var(--accentuation_color);
+label {
+    color: var(--secondary-text-color);
+    margin-bottom: 3px;
+}
+
+input, textarea {
+    padding: 10px;
     border-radius: 10px;
-    margin-bottom: 25px;
-
-}
-
-.contact-details {
-    display: flex;
-    flex-direction: column;
-
-    padding: 20px;
     border: 1px solid var(--accentuation_color);
-    border-radius: 10px;
-    margin-bottom: 25px;
+    outline: none;
 
 }
 
-.form-contact-details {
-    display: flex;
+input:focus, textarea:focus {
+    border: 1px solid var(--secondary-text-color);
 }
-
-.form-control {
-    width: 50%;
-    gap: 15px;
-}
-
-input {
-    max-width: 225px;
-}
-
-.save-button {
-    display: flex;
-    justify-content: flex-end;
-}
-
-
-
-
-
 
 .toggle {
     display: inline-flex;
     align-items: center;
     gap: 15px;
+    margin-top: 35px;
+    margin-bottom: 30px;
+    cursor: pointer;
 }
 
 .toggle-input {
@@ -287,7 +285,6 @@ input {
     background-color: var(--accentuation_color);
     border-radius: 25px;
     transition: background-color 0.2s;
-    cursor: pointer;
 }
 
 .toggle-label::before {
@@ -308,4 +305,9 @@ input {
 
 .toggle-input:checked + .toggle-label::before {
     transform: translateX(25px);
+}
+
+.save-button {
+    display: flex;
+    justify-content: flex-end;
 }
