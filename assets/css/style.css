@@ -27,6 +27,21 @@ body {
     text-decoration: underline;
 }
 
+button {
+    background-color: var(--important-element-color);
+    border: 3px solid var(--important-element-color);
+    font-family: 'Kanit', serif;
+    font-weight: bold;
+    color: var(--base-color-2);
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+
+    border-radius: 10px;
+}
+
 .navbar {
     width: 100%;
     height: var(--navbar-width);
@@ -141,75 +156,7 @@ body {
     list-style: none;
 }
 
-/* Format mobile */
-@media screen and (max-width: 817px) {
-    #dropdown {
-        right: 0;
-        width: 98vw;
-        transform: none;
-        left: auto;
-    }
-
-    .footer {
-        height: 20vh;
-    }
-
-    .footer-logo, .footer-copyrights {
-        display: none;
-    }
-
-    .footer-links {
-        width: 100%;
-    }
-
-    .footer-links-list {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap:10%;
-    }
-}
-
-/* Format tablette */
-@media screen and (min-width: 818px) and (max-width: 1561px) {
-    body {
-        font-size: 0.8em;
-    }
-
-    .footer-links {
-        width: 60%;
-    }
-}
-
-
-
-
-
-
-
-button{
-    background-color: var(--important-element-color);
-    border: 3px solid var(--important-element-color);
-    font-family: 'Kanit', serif;
-    font-weight: bold;
-    color: var(--base-color-2);
-    padding: 5px 5px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-
-    border-radius: 10px;
-}
-
-
-
-
-
-
-/* EDIT PROFILE */
-
+/* EDIT PROFILE CSS */
 .edit-profile {
     width: 50%;
     margin-left: 25%;
@@ -236,6 +183,7 @@ button{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 80%;
 }
 
 .edit-profile h1 {
@@ -268,10 +216,10 @@ input:focus, textarea:focus {
 .toggle {
     display: inline-flex;
     align-items: center;
+    cursor: pointer;
     gap: 15px;
     margin-top: 35px;
     margin-bottom: 30px;
-    cursor: pointer;
 }
 
 .toggle-input {
@@ -310,4 +258,52 @@ input:focus, textarea:focus {
 .save-button {
     display: flex;
     justify-content: flex-end;
+}
+
+/* Format mobile */
+@media screen and (max-width: 817px) {
+    #dropdown {
+        right: 0;
+        width: 98vw;
+        transform: none;
+        left: auto;
+    }
+
+    .footer {
+        height: 20vh;
+    }
+
+    .footer-logo, .footer-copyrights {
+        display: none;
+    }
+
+    .footer-links {
+        width: 100%;
+    }
+
+    .footer-links-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:10%;
+    }
+
+
+    /* EDIT PROFILE CSS */
+    .edit-profile {
+        width: 95%;
+        margin-left: 2.5%;
+    }
+}
+
+/* Format tablette */
+@media screen and (min-width: 818px) and (max-width: 1561px) {
+    body {
+        font-size: 0.8em;
+    }
+
+    .footer-links {
+        width: 60%;
+    }
 }
