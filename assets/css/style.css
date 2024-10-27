@@ -141,6 +141,35 @@ body {
     list-style: none;
 }
 
+
+
+/* LEGAL NOTICES PAGE */
+.legal-notices {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-left: 20%;
+    gap: 60px;
+}
+
+.legal-notices h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.legal-notices h2 {
+    margin-bottom: 10px;
+}
+
+.notice-section, .website-link {
+    color: var(--secondary-text-color);
+}
+
+.notice-section ul {
+    padding-left: 40px;
+    margin-top: 10px;
+}
+
 /* Format mobile */
 @media screen and (max-width: 817px) {
     #dropdown {
@@ -169,6 +198,12 @@ body {
         align-items: center;
         gap:10%;
     }
+
+    /* LEGAL NOTICES PAGE */
+    .legal-notices {
+        width: 80%;
+        margin-left: 10%;
+    }
 }
 
 /* Format tablette */
@@ -179,5 +214,11 @@ body {
 
     .footer-links {
         width: 60%;
+    }
+    
+    /* LEGAL NOTICES PAGE */
+    .legal-notices {
+        width: 80%;
+        margin-left: 10%;
     }
 }
