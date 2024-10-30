@@ -43,6 +43,7 @@ button {
 }
 
 .navbar {
+    background-color: var(--base-color-2);
     width: 100%;
     height: var(--navbar-width);
     position: fixed;
@@ -125,7 +126,6 @@ button {
     color: var(--base-color-2);
     width: 100%;
     height: 11vh;
-    position: fixed;
     bottom: 0;
     display: flex;
     justify-content: flex-start;
@@ -160,9 +160,12 @@ button {
 .edit-profile {
     width: 50%;
     margin-left: 25%;
-    padding: 40px;
+    margin-top:6%;
+    margin-bottom: 2%;
+    padding: 20px 40px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    background-color: var(--base-color-3);
 }
 
 .section {
@@ -253,6 +256,10 @@ input:focus, textarea:focus {
 
 .toggle-input:checked + .toggle-label::before {
     transform: translateX(25px);
+}
+
+#description {
+    resize: vertical;
 }
 
 .save-button {
