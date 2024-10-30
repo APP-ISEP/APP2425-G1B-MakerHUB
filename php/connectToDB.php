@@ -1,10 +1,10 @@
 <?php
 function connectToDB()
 {
-    $host = 'host';
-    $db = 'db';
-    $user = 'user';
-    $pass = 'password';
+    $host = 'makerhoadmin.mysql.db';
+    $db = 'makerhoadmin';
+    $user = 'makerhoadmin';
+    $pass = 'P3Lv3ceaNFhJ';
     $port = "3306";
     $charset = 'utf8mb4';
 
