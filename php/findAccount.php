@@ -3,7 +3,7 @@ require_once "connectToDB.php";
 function searchAccount($email,$password) {
     try {
         $pdo = connectToDB();
-        $sql="SELECT * FROM `utilisateur` WHERE mail=:valEmail AND mot_de_passe=:valPassword)";
+        $sql="SELECT * FROM `utilisateur` WHERE mail=:valEmail AND mot_de_passe=:valPassword";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valEmail", $email);

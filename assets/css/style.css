@@ -103,6 +103,14 @@ body {
     font-weight: bold;
 }
 
+.wrong-login{
+    display:block;
+    color:red;
+    margin-top:6%;
+    text-align:center;
+    font-size:1.4em;
+}
+
 /* main container */
 
 .footer {

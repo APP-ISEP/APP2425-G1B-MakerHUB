@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $title = "Accueil";
 
 ob_start();

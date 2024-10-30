@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $title = "Se connecter";
 $errors = array();
 
@@ -26,6 +27,7 @@ if (isset($_POST) && count($_POST) > 0) {
 
     if (empty($errors)) {
         $_SESSION['account'] = $account;
+        $_SESSION['username'] = $account['pseudonyme']; //TODO set pseudo
         header("Location: index.php");
     }
 }
