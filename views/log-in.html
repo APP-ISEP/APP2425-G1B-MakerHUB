@@ -1,0 +1,41 @@
+<div class="log-in">
+    <h1>Connexion</h1>
+
+    <form action="" class="form login-form" method="post">
+    <!-- email -->
+        <div class="form-control">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Votre email..." maxlength="255" required>
+        </div>
+
+        <!-- password -->
+        <div class="form-control">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" placeholder="Votre mot de passe..." maxlength="255" required>
+
+            <!-- show/hide password  -->
+            <span>
+                <i class="fa-solid fa-eye" aria-hidden="true"  type="button" id="eye"></i>
+            </span>
+        </div>
+
+        <!-- submit button -->
+        <div class="button login-button">
+            <input type="submit" class="btn submit" value="Se connecter"/>
+        </div>
+    </form>
+
+    <?php if (!empty($errors)) : ?>
+
+    <?php foreach ($errors as $error): ?>
+
+    <div class="wrong-login">
+        <?= $error ?> <br/>
+    </div>
+
+    <?php endforeach; ?>
+
+    <?php endif; ?>
+
+    <button class="button go-to-signup-button" onclick="window.location.href = 'sign-up.php';">S'inscrire</button>
+</div>
