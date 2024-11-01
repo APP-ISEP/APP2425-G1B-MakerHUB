@@ -249,20 +249,7 @@ input[type="password"] {
     align-items: center;
     margin-right: 10px;
 }
-.btn {
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    width: 257px;
-    height: 50px;
-    cursor: pointer;
-    margin-bottom: 16px;
-}
 
-.btn-primary { /*button foncé*/
-    background-color: #aa4141;
-    color: white;
-}
 .button-group {
     display: flex;
     flex-direction: column;
