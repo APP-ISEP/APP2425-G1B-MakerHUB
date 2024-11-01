@@ -3,7 +3,7 @@ $title = "Accueil";
 
 ob_start();
 
-include_once 'main.html';
+include_once 'views/faq/Faq.html';
 
 $body = ob_get_clean();
 
