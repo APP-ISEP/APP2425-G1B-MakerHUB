@@ -181,3 +181,146 @@ body {
         width: 60%;
     }
 }
+
+/*Inscription*/
+/*FORM */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-container {
+    border: 2px solid #A9A9A9;
+    background-color: #ffffff;
+    padding: 20px;
+    width: 742px;
+    height: 740px;
+    border-radius: 8px;
+}
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex: 1;
+    margin: 10px;
+    height: 80px;
+}
+
+/* END FORM*/
+/*LABEL AND WRITE PART*/
+h2 {
+    text-align: center;
+    font-size: 65px;
+    margin-bottom: 20px;
+    color: #122965;
+}
+.required{
+    color: red;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #122965;
+    font-family: 'Kanit' sans-serif;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #B3B3B3;
+    color: #B3B3B3;
+    border-radius: 10px;
+}
+/*END LABEL AND WRITE PART*/
+/*CHECK BOX AND BUTTON*/
+.checkbox-group {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn-secondary { /*button vide*/
+    background-color: white;
+    color: #aa4141;
+    border: #aa4141; /*Pourquoi cela ne marche pas?*/
+}
+
+.btn-secondary:hover {
+    background-color: #aa4141;
+    color: white;
+}
+/*END CHECKBOX AND BUTTON*/
+/*SWITCH*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: black;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(14px);
+  -ms-transform: translateX(14px);
+  transform: translateX(14px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.slider-text {
+    margin-left: 10px;
+    font-size: 18px;
+    color: #122965;
+}
+/*END SWITCH*/
