@@ -27,7 +27,23 @@ body {
     text-decoration: underline;
 }
 
+button {
+    background-color: var(--important-element-color);
+    border: 3px solid var(--important-element-color);
+    font-family: 'Kanit', serif;
+    font-weight: bold;
+    color: var(--base-color-2);
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+
+    border-radius: 10px;
+}
+
 .navbar {
+    background-color: var(--base-color-2);
     width: 100%;
     height: var(--navbar-width);
     position: fixed;
@@ -110,7 +126,6 @@ body {
     color: var(--base-color-2);
     width: 100%;
     height: 11vh;
-    position: fixed;
     bottom: 0;
     display: flex;
     justify-content: flex-start;
@@ -141,6 +156,117 @@ body {
     list-style: none;
 }
 
+/* EDIT PROFILE CSS */
+.edit-profile {
+    width: 50%;
+    margin-left: 25%;
+    margin-top:6%;
+    margin-bottom: 2%;
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: var(--base-color-3);
+}
+
+.section {
+    padding: 25px;
+    border: 1px solid var(--accentuation_color);
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.form-container {
+    display: inline-grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+}
+
+.edit-profile h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    color: var(--secondary-text-color);
+    margin-bottom: 15px;
+}
+
+label {
+    color: var(--secondary-text-color);
+    margin-bottom: 3px;
+}
+
+input, textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--accentuation_color);
+    outline: none;
+
+}
+
+input:focus, textarea:focus {
+    border: 1px solid var(--secondary-text-color);
+}
+
+.toggle {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 15px;
+    margin-top: 35px;
+    margin-bottom: 30px;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-label {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: var(--accentuation_color);
+    border-radius: 25px;
+    transition: background-color 0.2s;
+}
+
+.toggle-label::before {
+    content: "";
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.toggle-input:checked + .toggle-label {
+    background-color: var(--secondary-text-color);
+}
+
+.toggle-input:checked + .toggle-label::before {
+    transform: translateX(25px);
+}
+
+#description {
+    resize: vertical;
+}
+
+.save-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
 /* Format mobile */
 @media screen and (max-width: 817px) {
     #dropdown {
@@ -168,6 +294,13 @@ body {
         justify-content: center;
         align-items: center;
         gap:10%;
+    }
+
+
+    /* EDIT PROFILE CSS */
+    .edit-profile {
+        width: 95%;
+        margin-left: 2.5%;
     }
 }
 
