@@ -4,6 +4,7 @@ $(document).ready(function() {
     });
 });
 
+//--------- BEGINNING EYE BUTTON TO SEE PASSWORD---------//
 function show() {
     var p = document.getElementById('password');
     p.setAttribute('type', 'text');
@@ -25,3 +26,9 @@ document.getElementById("eye").addEventListener("click", function () {
         hide();
     }
 }, false);
+//--------- END EYE BUTTON TO SEE PASSWORD---------//
+
+document.getElementById('toggleDescription').addEventListener('change', function () {
+    const descriptionSection = document.getElementById('descriptionSection');
+    descriptionSection.style.display = this.checked ? 'flex' : 'none';
+});
