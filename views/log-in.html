@@ -14,7 +14,7 @@
             <input type="password" id="password" name="password" placeholder="Votre mot de passe..." maxlength="255" required>
 
             <!-- show/hide password  -->
-            <span>
+            <span class="eye-span">
                 <i class="fa-solid fa-eye" aria-hidden="true"  type="button" id="eye"></i>
             </span>
         </div>
@@ -37,5 +37,7 @@
 
     <?php endif; ?>
 
-    <button class="button go-to-signup-button" onclick="window.location.href = 'sign-up.php';">S'inscrire</button>
+    <div class="button signup-button">
+        <button class="button go-to-signup-button" onclick="window.location.href = 'sign-up.php';">S'inscrire</button>
+    </div>
 </div>
