@@ -98,9 +98,14 @@ body {
     margin-bottom: 10px;
 }
 
+#dropdown a {
+    text-decoration: none !important;
+}
+
 .logout {
     color: var(--important-element-color);
     font-weight: bold;
+    text-underline: none!important;
 }
 
 .wrong-login{

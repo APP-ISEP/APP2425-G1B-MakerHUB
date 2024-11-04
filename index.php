@@ -2,6 +2,7 @@
 session_start();
 
 $title = "Accueil";
+$isAuthPage = false;
 
 ob_start();
 

@@ -1,13 +1,12 @@
 <?php
-require_once "connectToDB.php";
-function searchAccount($email,$password) {
+require_once "./php/connectToDB.php";
+function getUser($email) {
     try {
         $pdo = connectToDB();
-        $sql="SELECT * FROM `utilisateur` WHERE mail=:valEmail AND mot_de_passe=:valPassword";
+        $sql="SELECT * FROM `utilisateur` WHERE mail=:valEmail";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valEmail", $email);
-        $stmt->bindParam(":valPassword", $password);
         $bool = $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

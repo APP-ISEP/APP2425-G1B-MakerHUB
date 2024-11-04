@@ -3,6 +3,7 @@ session_start();
 
 $title = "Se connecter";
 $errors = array();
+$isAuthPage = true;
 
 ob_start();
 
@@ -18,16 +19,17 @@ if (isset($_POST) && count($_POST) > 0) {
     $email = htmlentities($_POST['email']);
     $password = htmlentities($_POST['password']);
 
-    include_once("./php/findAccount.php");
+    include_once("./php/user/checkLogin.php");
 
-    $account = searchAccount($email, $password);
-    if ($account === null) {
+    $account = areCrendentialsCorrect($email, $password);
+
+    if (!$account) {
         $errors['login'] = "Erreur lors de l'identification. Login ($email) et/ou mot de passe incorrects.";
     }
 
     if (empty($errors)) {
         $_SESSION['account'] = $account;
-        $_SESSION['username'] = $account['pseudonyme']; //TODO set pseudo
+        $_SESSION['username'] = $account['pseudonyme'];
         header("Location: index.php");
     }
 }
@@ -36,4 +38,4 @@ include_once 'views/log-in.html';
 
 $body = ob_get_clean();
 
-include_once "views/components/template-login-signup.php";
+include_once "views/components/template.php";

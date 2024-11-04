@@ -1,10 +1,17 @@
 <?php
 function connectToDB()
 {
-    $host = 'makerhoadmin.mysql.db';
+    /*$host = 'sql3.minestrator.com';
+    $db = 'minesr_moBQkITL';
+    $user = 'minesr_moBQkITL';
+    $pass = 'gObeWJtKcGGA8AvS'; // #sécurité
+    $port = "3306";
+    $charset = 'utf8mb4';*/
+
+    $host = 'localhost';
     $db = 'makerhoadmin';
-    $user = 'makerhoadmin';
-    $pass = 'P3Lv3ceaNFhJ'; // #sécurité
+    $user = 'root';
+    $pass = '';
     $port = "3306";
     $charset = 'utf8mb4';
 

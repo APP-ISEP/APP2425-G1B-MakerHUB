@@ -17,6 +17,8 @@
         <img alt="Logo MakerHUB" class="img-logo" src="./assets/images/logo.svg">
     </div>
 
+    <?php if (isset($username)) : ?>
+
     <div class="profil" id="profil">
         <img alt="Photo de profil" class="img-profil" src="./assets/images/profil.svg">
         <p id="pseudo"><?= $username ?></p>
@@ -28,4 +30,18 @@
             <a href="log-out.php"><div class="drop-content logout">Se déconnecter</div></a>
         </div>
     </div>
+
+    <?php elseif (!isset($username) && !$isAuthPage) : ?>
+
+    <div class="auth">
+        <button class="button button-login" onclick="location.href = 'log-in.php'">
+            Se connecter
+        </button>
+        <button class="button button-signup" onclick="location.href = 'sign-up.php'">
+            S'inscrire
+        </button>
+
+    </div>
+
+    <?php endif; ?>
 </div>
