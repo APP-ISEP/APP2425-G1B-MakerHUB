@@ -193,12 +193,13 @@ body {
 }
 
 .form-container {
-    border: 2px solid #A9A9A9;
-    background-color: #ffffff;
+    border: 1px solid var(--accentuation_color);
     padding: 20px;
     width: 742px;
-    height: 740px;
+    height: 850px;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--base-color-3);
 }
 .form-row {
     display: flex;
@@ -217,7 +218,7 @@ h2 {
     text-align: center;
     font-size: 65px;
     margin-bottom: 20px;
-    color: #122965;
+    color: var( --base-color);
 }
 .required{
     color: red;
@@ -227,7 +228,7 @@ label {
     display: block;
     margin-bottom: 5px;
     font-size: 20px;
-    color: #122965;
+    color: var( --base-color);
     font-family: 'Kanit' sans-serif;
 }
 
@@ -237,90 +238,100 @@ input[type="tel"],
 input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #B3B3B3;
-    color: #B3B3B3;
+    border: 1px solid var(--accentuation_color);
     border-radius: 10px;
 }
 /*END LABEL AND WRITE PART*/
 /*CHECK BOX AND BUTTON*/
 .checkbox-group {
-    margin: 10px 0;
+    margin: 10px 10;
     display: flex;
     align-items: center;
     margin-right: 10px;
 }
-
+.checkbox{
+    width: 16px;
+    height: 18px;
+}
 .button-group {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
 }
+.button {
+    background-color: var(--important-element-color);
+    border: 3px solid var(--important-element-color);
+    font-family: 'Kanit', serif;
+    font-weight: bold;
+    color: var(--base-color-2);
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 257px;
+    height: 50px;
+}
 
 .btn-secondary { /*button vide*/
-    background-color: white;
-    color: #aa4141;
-    border: #aa4141; /*Pourquoi cela ne marche pas?*/
+    background-color: var(--base-color-3);
+    color:  var(--important-element-color);
+    border: 3px solid var(--important-element-color);
+    font-family: 'Kanit', serif;
+    font-weight: bold;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 257px;
+    height: 50px;
 }
 
-.btn-secondary:hover {
-    background-color: #aa4141;
-    color: white;
-}
 /*END CHECKBOX AND BUTTON*/
 /*SWITCH*/
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 24px;
+.toggle {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 15px;
+    margin-top: 35px;
+    margin-bottom: 30px;
 }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+.toggle-input {
+    display: none;
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 4px;
-  bottom: 3px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+.toggle-label {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-color: var(--accentuation_color);
+    border-radius: 25px;
+    transition: background-color 0.2s;
 }
 
-input:checked + .slider {
-  background-color: black;
+.toggle-label::before {
+    content: "";
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
 }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(14px);
-  -ms-transform: translateX(14px);
-  transform: translateX(14px);
+.toggle-input:checked + .toggle-label {
+    background-color: var(--secondary-text-color);
 }
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-.slider-text {
-    margin-left: 10px;
-    font-size: 18px;
-    color: #122965;
+.toggle-input:checked + .toggle-label::before {
+    transform: translateX(25px);
 }
 /*END SWITCH*/
