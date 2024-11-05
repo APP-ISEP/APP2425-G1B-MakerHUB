@@ -1,9 +1,9 @@
 <?php
-$title = "Accueil";
+$title = "FAQ";
 
 ob_start();
 
-include_once 'main.html';
+include_once 'views/faq.html';
 
 $body = ob_get_clean();
 
