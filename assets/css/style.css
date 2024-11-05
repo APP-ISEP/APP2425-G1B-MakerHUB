@@ -273,8 +273,8 @@ button {
     transform: rotate(180deg);
 }
  
-/* LEGAL NOTICES PAGE */
-.legal-notices {
+/* LEGAL PAGES */
+.legal-page-container {
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -283,12 +283,12 @@ button {
     padding-top: 2%;
 }
 
-.legal-notices h1 {
+.legal-page-container h1 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.legal-notices h2 {
+.legal-page-container h2 {
     margin-bottom: 10px;
 }
 
@@ -521,8 +521,8 @@ input:focus, textarea:focus {
         margin-left: 2.5%;
     }
 
-    /* LEGAL NOTICES PAGE */
-    .legal-notices {
+    /* LEGAL PAGES */
+    .legal-page-container {
         width: 80%;
         margin-left: 10%;
     }
@@ -538,8 +538,8 @@ input:focus, textarea:focus {
         width: 60%;
     }
     
-    /* LEGAL NOTICES PAGE */
-    .legal-notices {
+    /* LEGAL PAGES */
+    .legal-page-container {
         width: 80%;
         margin-left: 10%;
     }
