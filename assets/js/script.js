@@ -4,6 +4,28 @@ $(document).ready(function() {
     });
 });
 
+//--------- BEGINNING OF THE CHEVRON IN FAQ PAGE ---------//
+$(document).ready(function() {
+    $(".question").click(function() {
+        $(".answer").not($(this)
+            .find(".answer"))
+            .toggle();
+
+        $(".chevron").not($(this)
+            .find(".chevron"))
+            .removeClass("up")
+            .addClass("down");
+
+        $(this).find(".answer")
+            .toggle();
+
+
+        $(this).find('.chevron')
+            .toggleClass('down up');
+    });
+});
+//--------- END OF THE CHEVRON IN FAQ PAGE ---------//
+
 //--------- BEGINNING EYE BUTTON TO SEE PASSWORD---------//
 function show() {
     var p = document.getElementById('password');
@@ -32,3 +54,4 @@ document.getElementById('toggleDescription').addEventListener('change', function
     const descriptionSection = document.getElementById('descriptionSection');
     descriptionSection.style.display = this.checked ? 'flex' : 'none';
 });
+

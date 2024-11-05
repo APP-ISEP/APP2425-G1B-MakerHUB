@@ -211,12 +211,68 @@ button {
 
 .footer-links-list {
     display: flex;
+    flex-direction: row;
     justify-content: flex-start;
     gap: 5%;
     list-style: none;
 }
 
+/* FAQ PAGE */
+#faq-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--base-color-2);
+    min-height: calc(89vh - 80px);
+}
 
+.title {
+    text-align: center;
+    font-size: 65px;
+    margin-bottom: 25px;
+    color: var(--base-color);
+    margin-top: 40px;
+}
+
+.question {
+    border: #A9A9A9 1px solid;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: var(--base-color-3);
+    width: 60%;
+}
+
+.question h2 {
+    overflow: clip;
+    font-size: 24px;
+    width: calc(100% - 48px);
+}
+
+.answer {
+    display: none;
+    font-size: 15px;
+    color: rgba(0,0,0,0.65);
+    padding-top: 20px;    
+}
+
+.chevron {
+    position: relative;
+    float: right;
+    height: 36px;
+    width: 36px;
+    transition: all 1s;
+    right: 2px;
+}
+
+.down {
+    transform: rotate(0deg);
+}
+
+.up {
+    transform: rotate(180deg);
+}
+ 
 /* LEGAL NOTICES PAGE */
 .legal-notices {
     display: flex;
@@ -243,9 +299,6 @@ button {
 .notice-section ul {
     padding-left: 40px;
     margin-top: 10px;
-
-button {
-    cursor: pointer;
 }
 
 .log-in {
@@ -276,7 +329,7 @@ button {
     margin-top: -8%;
 }
 
-/* EDIT PROFILE CSS */
+/* EDIT PROFILE PAGE */
 .edit-profile {
     width: 50%;
     margin-left: 25%;
@@ -462,7 +515,7 @@ input:focus, textarea:focus {
     }
 
 
-    /* EDIT PROFILE CSS */
+    /* EDIT PROFILE PAGE */
     .edit-profile {
         width: 95%;
         margin-left: 2.5%;
