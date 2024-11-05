@@ -217,6 +217,7 @@ button {
     list-style: none;
 }
 
+/* FAQ PAGE */
 #faq-container {
     display: flex;
     flex-direction: column;
@@ -271,9 +272,33 @@ button {
 .up {
     transform: rotate(180deg);
 }
-  
- button {
-    cursor: pointer;
+ 
+/* LEGAL NOTICES PAGE */
+.legal-notices {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-left: 20%;
+    gap: 60px;
+    padding-top: 2%;
+}
+
+.legal-notices h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.legal-notices h2 {
+    margin-bottom: 10px;
+}
+
+.notice-section, .website-link {
+    color: var(--secondary-text-color);
+}
+
+.notice-section ul {
+    padding-left: 40px;
+    margin-top: 10px;
 }
 
 .log-in {
@@ -304,7 +329,7 @@ button {
     margin-top: -8%;
 }
 
-/* EDIT PROFILE CSS */
+/* EDIT PROFILE PAGE */
 .edit-profile {
     width: 50%;
     margin-left: 25%;
@@ -490,10 +515,16 @@ input:focus, textarea:focus {
     }
 
 
-    /* EDIT PROFILE CSS */
+    /* EDIT PROFILE PAGE */
     .edit-profile {
         width: 95%;
         margin-left: 2.5%;
+    }
+
+    /* LEGAL NOTICES PAGE */
+    .legal-notices {
+        width: 80%;
+        margin-left: 10%;
     }
 }
 
@@ -505,5 +536,11 @@ input:focus, textarea:focus {
 
     .footer-links {
         width: 60%;
+    }
+    
+    /* LEGAL NOTICES PAGE */
+    .legal-notices {
+        width: 80%;
+        margin-left: 10%;
     }
 }
