@@ -1,22 +1,23 @@
 <?php
 require_once "./php/connectToDB.php";
-function updateUser($firstname, $lastname, $username, $description, $email, $phone) {
+require_once "getUser.php";
+function updateUser($firstname, $name, $username, $description, $email, $phone) {
     try {
         $pdo = connectToDB();
 
         $sql = "UPDATE `utilisateur`
-            SET nom = :valLastname,
-                prenom = :valFirstname,
+            SET prenom = :valFirstname,
+                nom = :valName,
                 pseudonyme = :valUsername,
                 mail = :valEmail,
                 description = :valDescription,
                 telephone = :valPhone
-            WHERE id = :valId";
+            WHERE mail=:valEmail";
 
         $stmt = $pdo->prepare($sql);
 
-        $stmt->bindParam(":valLastname", $lastname);
         $stmt->bindParam(":valFirstname", $firstname);
+        $stmt->bindParam(":valName", $name);
         $stmt->bindParam(":valUsername", $username);
         $stmt->bindParam(":valEmail", $email);
         $stmt->bindParam(":valDescription", $description);
@@ -26,7 +27,7 @@ function updateUser($firstname, $lastname, $username, $description, $email, $pho
         $stmt->closeCursor();
 
         $user = getUser($email);
-        return $user
+        return $user;
     }
     catch (PDOException $e) {
         // Erreur à l'exécution de la requête

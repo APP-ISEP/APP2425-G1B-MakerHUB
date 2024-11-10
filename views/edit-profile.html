@@ -9,19 +9,19 @@
                 <!-- firstname -->
                 <div class="form-control">
                     <label for="firstname">Prénom</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="Votre prénom..." value="<?= $user['firstname']?>" maxlength="50" required>
+                    <input type="text" id="firstname" name="firstname" placeholder="Votre prénom..." value="<?= $user['prenom']?>" maxlength="50" required>
                 </div>
 
                 <!-- lastname -->
                 <div class="form-control">
                     <label for="name">Nom</label>
-                    <input type="text" id="name" name="name" placeholder="Votre nom..." maxlength="50" required>
+                    <input type="text" id="name" name="name" placeholder="Votre nom..." value="<?= $user['nom']?>" maxlength="50" required>
                 </div>
 
                 <!-- username -->
                 <div class="form-control">
                     <label for="username">Pseudonyme</label>
-                    <input type="text" id="username" name="username" placeholder="Votre pseudonyme..." maxlength="30" required>
+                    <input type="text" id="username" name="username" placeholder="Votre pseudonyme..." value="<?= $user['pseudonyme']?>" maxlength="30" required>
                 </div>
             </div>
 
@@ -34,7 +34,7 @@
             <!-- about me -->
             <div class="form-control" id="descriptionSection">
                 <label for="description">À propos de vous</label>
-                <textarea id="description" name="description" rows="4" maxlength="255"></textarea>
+                <textarea id="description" name="description" rows="4" maxlength="255" value="<?= $user['description']?>"></textarea>
             </div>
         </div>
 
@@ -45,13 +45,13 @@
                 <!-- email -->
                 <div class="form-control">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Votre adresse mail..."  maxlength="255" required>
+                    <input type="email" id="email" name="email" placeholder="Votre adresse mail..." value="<?= $user['mail']?>"  maxlength="255" required>
                 </div>
 
                 <!-- phone -->
                 <div class="form-control">
                     <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Votre numéro de téléphone..." maxlength="13">
+                    <input type="tel" id="phone" name="phone" placeholder="Votre numéro de téléphone..." value="<?= $user['telephone']?>" maxlength="13">
                 </div>
             </div>
         </div>
