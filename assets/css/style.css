@@ -281,11 +281,12 @@ button {
     margin-left: 20%;
     gap: 60px;
     padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .legal-page-container h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .legal-page-container h2 {

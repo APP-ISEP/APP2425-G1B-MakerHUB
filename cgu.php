@@ -1,5 +1,6 @@
 <?php
 $title = "CGU";
+$isAuthPage = false;
 
 ob_start();
 
