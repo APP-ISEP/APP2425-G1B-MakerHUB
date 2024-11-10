@@ -9,7 +9,7 @@
                 <!-- firstname -->
                 <div class="form-control">
                     <label for="firstname">Prénom</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="Votre prénom..." maxlength="50" required>
+                    <input type="text" id="firstname" name="firstname" placeholder="Votre prénom..." value="<?= $user['firstname']?>" maxlength="50" required>
                 </div>
 
                 <!-- lastname -->
@@ -63,4 +63,16 @@
             </button>
         </div>
     </form>
+
+    <?php if (!empty($errors)) : ?>
+
+    <?php foreach ($errors as $error): ?>
+
+    <div class="wrong-login">
+        <?= $error ?> <br/>
+    </div>
+
+    <?php endforeach; ?>
+
+    <?php endif; ?>
 </div>
