@@ -1,5 +1,6 @@
 <?php
 $title = "Mentions légales";
+$isAuthPage = false;
 
 ob_start();
 
