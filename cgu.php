@@ -1,10 +1,10 @@
 <?php
-$title = "FAQ";
+$title = "CGU";
 $isAuthPage = false;
 
 ob_start();
 
-include_once 'views/faq.html';
+include_once 'views/cgu.html';
 
 $body = ob_get_clean();
 
