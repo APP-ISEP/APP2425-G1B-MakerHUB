@@ -1,6 +1,7 @@
 <?php
 require_once "./php/connectToDB.php";
 require_once "getUser.php";
+
 function updateUser($firstname, $name, $username, $description, $email, $phone) {
     try {
         $pdo = connectToDB();

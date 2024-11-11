@@ -136,7 +136,6 @@ button {
 .logout {
     color: var(--important-element-color);
     font-weight: bold;
-    text-underline: none !important;
     margin-bottom: 5%;
 }
 
@@ -414,7 +413,6 @@ input, textarea {
     border-radius: 10px;
     border: 1px solid var(--accentuation_color);
     outline: none;
-
 }
 
 input:focus, textarea:focus {
@@ -475,10 +473,6 @@ input:focus, textarea:focus {
 
 .toggle-input:checked + .toggle-label::before {
     transform: translateX(25px);
-}
-
-#description {
-    resize: vertical;
 }
 
 .save-button {
