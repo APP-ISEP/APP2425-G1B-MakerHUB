@@ -1,6 +1,5 @@
 <?php
 $title = "FAQ";
-$isAuthPage = false;
 
 ob_start();
 
