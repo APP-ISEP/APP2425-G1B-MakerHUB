@@ -485,6 +485,35 @@ input:focus, textarea:focus {
     justify-content: flex-end;
 }
 
+/*HOME PAGE*/
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - var(--navbar-height));
+    border-bottom: #B1BFB2 0.5px solid;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    overflow: hidden;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 5%;
+    align-items: center;
+}
+
+.hero-text p {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero-container img {
+    width: 48vw;
+}
+
 /* Format mobile */
 @media screen and (max-width: 817px) {
     #dropdown {
@@ -514,6 +543,10 @@ input:focus, textarea:focus {
         gap: 10%;
     }
 
+    /*HOME PAGE*/
+    .hero-container {
+        flex-direction: column-reverse;
+    }
 
     /* EDIT PROFILE PAGE */
     .edit-profile {
