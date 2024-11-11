@@ -10,13 +10,13 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur  accumsan risus vel est tincidunt volutpat. Praesent lectus turpis,  suscipit quis mattis eleifend, auctor eget nulla. Maecenas rhoncus  iaculis eros, sed rutrum lorem aliquet in. Morbi viverra semper nisl eu  accumsan. Nam a ultrices nibh. Fusce eu sollicitudin sapien. Duis id mi  eget eros iaculis pretium. Pellentesque massa purus, consequat non  condimentum quis, ultrices sit amet ipsum.
             </p>
 
-            <?php if (isset($username)) : ?>
+            <?php if (isset($_SESSION['username'])) : ?>
 
-            <button>Consulter le catalogue</button>
+            <button class="button button-catalog" onclick="location.href = '#catalog-container'">Consulter le catalogue</button>
 
-            <?php elseif (!isset($username) && !$isAuthPage) : ?>
+            <?php else : ?>
 
-            <button>S'inscrire</button>
+            <button class="button button-log-in" onclick="location.href = 'sign-up.php'">S'inscrire</button>
 
             <?php endif; ?>
         </div>
@@ -25,7 +25,7 @@
 
     </div>
 
-    <div class="catalogue-container">
+    <div class="catalog-container" id="catalog-container">
 
     </div>
 
