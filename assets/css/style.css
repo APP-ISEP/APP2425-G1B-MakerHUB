@@ -555,14 +555,17 @@ input:focus, textarea:focus {
     height: 70%;
     background-color: white;
     padding: 0;
+    margin-top: 1em;
 }
 
 .card {
     display : flex-end;
 }
+
+
 .img_order{
     padding-top: 4%;
-    margin-left: 3%;
+    margin-left: 2.5%;
     width: 10%;
     height: 55%;
 }
