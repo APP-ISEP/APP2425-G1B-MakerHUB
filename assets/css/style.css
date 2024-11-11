@@ -825,3 +825,17 @@ input:focus, textarea:focus {
         margin-left: 10%;
     }
 }
+
+/*cookies*/
+
+.cookies {
+    margin-top: 7em;
+    margin-bottom: 7em;
+    margin-left: 30%;
+    margin-right: 30%;
+    text-align: left;
+}
+.cookies h2 {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
