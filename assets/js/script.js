@@ -7,7 +7,7 @@ $(document).ready(function() {
 //--------- BEGINNING OF THE CHEVRON IN FAQ PAGE ---------//
 $(document).ready(function() {
     $(".question").click(function() {
-        $(".answer").not($(this)
+        $(".answer:visible").not($(this)
             .find(".answer"))
             .toggle();
 
@@ -18,7 +18,6 @@ $(document).ready(function() {
 
         $(this).find(".answer")
             .toggle();
-
 
         $(this).find('.chevron')
             .toggleClass('down up');

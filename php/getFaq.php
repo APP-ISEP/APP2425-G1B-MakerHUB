@@ -1,20 +1,19 @@
 <?php
 require_once "./php/connectToDB.php";
-function getUser($email) {
+function getFaq() {
     try {
         $pdo = connectToDB();
-        $sql="SELECT * FROM `utilisateur` WHERE mail=:valEmail";
+        $sql="SELECT * FROM `faq`";
 
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(":valEmail", $email);
         $bool = $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $account = null;
+        $faq = null;
         if (count ($results) > 0)
-            $account = $results[0];
+            $faq = $results;
         $stmt->closeCursor();
-        return $account;
+        return $faq;
     }
     catch (PDOException $e) {
         // Error executing the query

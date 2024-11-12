@@ -226,6 +226,22 @@ button {
     min-height: calc(89vh - 80px);
 }
 
+#faq-question-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding-top: 50px;
+}
+
+#faq-hr {
+    width: 75%;
+    border: 1.5px solid var(--base-color);
+    border-radius: 25px;
+}
+
 .title {
     text-align: center;
     font-size: 65px;
@@ -247,6 +263,7 @@ button {
     overflow: clip;
     font-size: 24px;
     width: calc(100% - 48px);
+    cursor: pointer;
 }
 
 .answer {
@@ -261,8 +278,9 @@ button {
     float: right;
     height: 36px;
     width: 36px;
-    transition: all 1s;
+    transition: all 0.5s;
     right: 2px;
+    cursor: pointer;
 }
 
 .down {
