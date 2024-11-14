@@ -159,13 +159,13 @@ button {
     cursor: pointer;
 }
 
-.button-login {
+.button-login, .signup-button {
     background-color: var(--important-element-color);
     color: var(--base-color-3);
     width: 40%
 }
 
-.button-signup {
+.button-signup, .login-button {
     background-color: var(--base-color-2);
     color: var(--important-element-color);
 }
@@ -289,7 +289,7 @@ button {
     margin-bottom: 10px;
 }
 
-.legal-page-container h2 {
+.legal-page-container h2, .container-sign-up {
     margin-bottom: 10px;
 }
 
@@ -486,6 +486,68 @@ input:focus, textarea:focus {
     justify-content: flex-end;
 }
 
+/*Inscription*/
+/*FORM */
+
+.container-sign-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sign-up-form {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 6%;
+    margin-bottom: 2%;  
+  
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: var(--base-color-3);
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex: 1;
+    margin: 10px;
+    height: 80px;
+}
+
+/* END FORM*/
+
+/*LABEL AND WRITE PART*/
+.required{
+    color: red;
+} 
+/*END LABEL AND WRITE PART*/
+
+/*CHECK BOX AND BUTTON*/
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin: 10px 10px 10px 0;
+}
+
+.checkbox{
+    width: 16px;
+    height: 18px;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /*TODO mettre en % */
+}
+/*END CHECKBOX AND BUTTON*/
+
+
 /* Format mobile */
 @media screen and (max-width: 817px) {
     #dropdown {
@@ -538,10 +600,10 @@ input:focus, textarea:focus {
     .footer-links {
         width: 60%;
     }
-    
-    /* LEGAL PAGES */
+  
+      /* LEGAL PAGES */
     .legal-page-container {
         width: 80%;
         margin-left: 10%;
     }
-}
+ } 
