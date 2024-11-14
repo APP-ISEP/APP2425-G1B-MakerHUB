@@ -169,12 +169,18 @@ button {
     color: var(--important-element-color);
 }
 
-.wrong-login {
+.wrong-login, .wrong-edit {
     display: block;
     color: red;
     margin-top: 6%;
     text-align: center;
     font-size: 1.4em;
+}
+
+.wrong-edit {
+    margin-top: -2% !important;
+    margin-bottom: 2%;
+    font-style: italic;
 }
 
 /* main container */
@@ -340,6 +346,10 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     background-color: var(--base-color-3);
+}
+
+.edit-profile h1 {
+    margin-bottom: 0;
 }
 
 .section {

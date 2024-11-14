@@ -2,7 +2,8 @@
 require_once "./php/connectToDB.php";
 require_once "getUser.php";
 
-function updateUser($firstname, $name, $username, $description, $email, $phone) {
+function updateUser(string $firstname, string $name, string $username, ?string $description, string $email, ?string $phone): ?array
+{
     try {
         $pdo = connectToDB();
 
@@ -29,8 +30,7 @@ function updateUser($firstname, $name, $username, $description, $email, $phone) 
 
         $user = getUser($email);
         return $user;
-    }
-    catch (PDOException $e) {
+    } catch (PDOException $e) {
         // Erreur à l'exécution de la requête
         $erreur = $e->getMessage();
         echo mb_convert_encoding("Erreur d'accès à la base de données : $erreur \n", 'UTF-8', 'UTF-8');
