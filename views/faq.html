@@ -4,6 +4,7 @@
 
     <hr id="faq-hr">
 
+    <?php if (isset($faq)) : ?>
     <div id="faq-question-container">
         <?php foreach ($faq as $item) : ?>
             <div class="question">
@@ -12,5 +13,6 @@
                 <p class="answer"><?= $item['reponse'] ?></p>
             </div>
         <?php endforeach; ?>
-</div>
+    </div>
+    <?php endif; ?>
 </div>

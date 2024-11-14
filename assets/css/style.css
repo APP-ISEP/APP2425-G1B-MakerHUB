@@ -237,7 +237,7 @@ button {
 }
 
 #faq-hr {
-    width: 75%;
+    width: 60%;
     border: 1.5px solid var(--base-color);
     border-radius: 25px;
 }
