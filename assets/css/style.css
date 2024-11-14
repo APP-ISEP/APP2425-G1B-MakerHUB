@@ -28,8 +28,12 @@ body {
     min-height: calc(100vh - (var(--navbar-height) + var(--footer-height))) !important;
 }
 
-.container-log-in{
+.container-log-in {
     padding-top: 6.5%;
+}
+
+.container-sign-up {
+    padding-top: 2.5%;
 }
 
 .underline {
@@ -159,15 +163,19 @@ button {
     cursor: pointer;
 }
 
-.button-login, .signup-button {
+.button-login {
     background-color: var(--important-element-color);
     color: var(--base-color-3);
     width: 40%
 }
 
-.button-signup, .login-button {
+.button-signup {
     background-color: var(--base-color-2);
     color: var(--important-element-color);
+}
+
+.go-login-button, .go-signup-button {
+    background-color: var(--base-color-3);
 }
 
 .wrong-login {
@@ -252,8 +260,8 @@ button {
 .answer {
     display: none;
     font-size: 15px;
-    color: rgba(0,0,0,0.65);
-    padding-top: 20px;    
+    color: rgba(0, 0, 0, 0.65);
+    padding-top: 20px;
 }
 
 .chevron {
@@ -272,7 +280,7 @@ button {
 .up {
     transform: rotate(180deg);
 }
- 
+
 /* LEGAL PAGES */
 .legal-page-container {
     display: flex;
@@ -289,7 +297,7 @@ button {
     margin-bottom: 10px;
 }
 
-.legal-page-container h2, .container-sign-up {
+.legal-page-container h2 {
     margin-bottom: 10px;
 }
 
@@ -302,7 +310,7 @@ button {
     margin-top: 10px;
 }
 
-.log-in {
+.log-in, .sign-up {
     width: 30%;
     margin: auto auto auto auto;
     padding: 20px 40px;
@@ -311,13 +319,13 @@ button {
     background-color: var(--base-color-3);
 }
 
-.log-in h1 {
+.log-in h1, .sign-up h1 {
     text-align: center;
     margin-top: 2%;
     margin-bottom: 20px;
 }
 
-.log-in a {
+.log-in a, .sign-up a {
     text-decoration: none;
 }
 
@@ -370,16 +378,16 @@ input, button {
     font: inherit;
 }
 
-.login-button, .signup-button {
+.login-button, .go-signup-button, .go-login-button, .signup-button {
     text-align: center;
     margin-top: 5%;
 }
 
-.signup-button {
+.go-signup-button, .go-login-button {
     margin-bottom: 3%;
 }
 
-.go-to-signup-button {
+.go-to-signup-button, .go-to-login-button {
     background-color: var(--base-color-3);
     color: var(--important-element-color);
     border-radius: 8px;
@@ -387,7 +395,7 @@ input, button {
     text-align: center;
 }
 
-.submit, .go-to-signup-button {
+.submit, .go-to-signup-button, .go-to-login-button {
     border: 3px solid var(--important-element-color);
     border-radius: 10px;
     padding: 12px;
@@ -488,55 +496,64 @@ input:focus, textarea:focus {
 
 /*Inscription*/
 /*FORM */
-
-.container-sign-up {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.sign-up {
+    width: 45%;
+    margin: 2% auto 3% auto !important;
 }
 
-.sign-up-form {
-    width: 50%;
-    margin-left: 25%;
-    margin-top: 6%;
-    margin-bottom: 2%;  
-  
-    padding: 20px 40px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background-color: var(--base-color-3);
+.sign-up h1 {
+    margin-bottom: 0;
 }
 
 .form-row {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 }
 
-.form-group {
-    flex: 1;
-    margin: 10px;
-    height: 80px;
+.sign-up-form .form-control {
+    width: 100%;
 }
 
+.sign-up .toggle{
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding-bottom: 0;
+}
 /* END FORM*/
 
 /*LABEL AND WRITE PART*/
-.required{
+.required {
     color: red;
-} 
+    padding-bottom: 4%;
+    text-align: center;
+}
+
+.signup-eye {
+    left: 95%;
+    margin-top: -4.5%;
+}
+
 /*END LABEL AND WRITE PART*/
 
 /*CHECK BOX AND BUTTON*/
 .checkbox-group {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    align-items: start;
     margin: 10px 10px 10px 0;
+    gap: 10px;
 }
 
-.checkbox{
+.checkbox-group a {
+    color: var(--base-color);
+    text-decoration: underline;
+}
+
+.checkbox {
     width: 16px;
     height: 18px;
+    margin-top: 0.45%;
 }
 
 .button-group {
@@ -545,6 +562,7 @@ input:focus, textarea:focus {
     align-items: center;
     margin-top: 20px; /*TODO mettre en % */
 }
+
 /*END CHECKBOX AND BUTTON*/
 
 
@@ -600,10 +618,10 @@ input:focus, textarea:focus {
     .footer-links {
         width: 60%;
     }
-  
-      /* LEGAL PAGES */
+
+    /* LEGAL PAGES */
     .legal-page-container {
         width: 80%;
         margin-left: 10%;
     }
- } 
+}
