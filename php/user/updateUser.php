@@ -1,8 +1,9 @@
 <?php
 require_once "./php/connectToDB.php";
+require_once "./php/roles/addUserRole.php";
 require_once "getUser.php";
 
-function updateUser(string $firstname, string $name, string $username, ?string $description, string $email, ?string $phone): ?array
+function updateUser(int $id, string $firstname, string $name, string $username, bool $isMaker, ?string $description, string $email, ?string $phone): ?array
 {
     try {
         $pdo = connectToDB();
@@ -27,6 +28,10 @@ function updateUser(string $firstname, string $name, string $username, ?string $
 
         $bool = $stmt->execute();
         $stmt->closeCursor();
+
+        // bool ???
+        // vérifier ici si ajouter ou supprimer le role MAKER (id = 2)
+        // $bool = addUserRole($id, 2);
 
         $user = getUser($email);
         return $user;

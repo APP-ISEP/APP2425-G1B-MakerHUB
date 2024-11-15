@@ -490,6 +490,10 @@ input:focus, textarea:focus {
     justify-content: flex-end;
 }
 
+#aboutMe {
+    width: 100%;
+}
+
 /* Format mobile */
 @media screen and (max-width: 817px) {
     #dropdown {

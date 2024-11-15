@@ -1,26 +1,24 @@
 <?php
 require_once "./php/connectToDB.php";
-function getUser(string $email): ?array
+
+function deleteUserRole(int $userId, int $roleId): bool
 {
     try {
         $pdo = connectToDB();
-        $sql = "SELECT * FROM `utilisateur` WHERE mail=:valEmail";
+        $sql = "DELETE FROM `role_utilisateur` WHERE utilisateur_id = :valUserId AND role_id = :valRoleId";
 
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(":valEmail", $email);
-        $bool = $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->bindParam(":valUserId", $userId);
+        $stmt->bindParam(":valRoleId", $roleId);
 
-        $account = null;
-        if (count($results) > 0)
-            $account = $results[0];
-        
+        $bool = $stmt->execute();
         $stmt->closeCursor();
-        return $account;
+
+        return $bool;
     } catch (PDOException $e) {
         // Erreur à l'exécution de la requête
         $erreur = $e->getMessage();
         echo mb_convert_encoding("Erreur d'accès à la base de données : $erreur \n", 'UTF-8', 'UTF-8');
-        return null;
+        return false;
     }
 }

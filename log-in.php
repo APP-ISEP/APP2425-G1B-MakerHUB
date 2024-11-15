@@ -20,7 +20,6 @@ if (isset($_POST) && count($_POST) > 0) {
     $password = htmlentities($_POST['password']);
 
     include_once("./php/user/checkLogin.php");
-
     $account = areCrendentialsCorrect($email, $password);
 
     if (!$account) {
@@ -28,8 +27,12 @@ if (isset($_POST) && count($_POST) > 0) {
     }
 
     if (empty($errors)) {
+        include_once("./php/roles/getUserRoles.php");
+        $userRoles = getUserRoles($account['id_utilisateur']);
+
         $_SESSION['account'] = $account;
         $_SESSION['username'] = $account['pseudonyme'];
+        $_SESSION['roles'] = $userRoles;
         header("Location: index.php");
     }
 }

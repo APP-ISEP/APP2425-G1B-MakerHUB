@@ -51,9 +51,9 @@ document.getElementById("eye").addEventListener("click", function () {
 //--------- END EYE BUTTON TO SEE PASSWORD---------//
 
 //--------- BEGINNING TOOGLE BUTTON ---------//
-document.getElementById('toggleDescription').addEventListener('change', function () {
-    const descriptionSection = document.getElementById('descriptionSection');
-    descriptionSection.style.display = this.checked ? 'flex' : 'none';
-});
-//--------- BEGINNING TOOGLE BUTTON ---------//
 
+
+
+
+
+//--------- BEGINNING TOOGLE BUTTON ---------//

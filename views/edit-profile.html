@@ -5,11 +5,9 @@
         <?php if (!empty($errors)) : ?>
 
         <?php foreach ($errors as $error): ?>
-
         <div class="wrong-edit">
             <?= $error ?> <br/>
         </div>
-
         <?php endforeach; ?>
 
         <?php endif; ?>
@@ -37,14 +35,15 @@
                 </div>
             </div>
 
+            <!-- toogle about me -->
             <label class="toggle">
-                <input type="checkbox" class="toggle-input" id="toggleDescription">
+                <input type="checkbox" class="toggle-input" name="toogleAboutMe">
                 <span class="toggle-label"></span>
                 Vous possédez une imprimante 3D et souhaitez proposer vos services.
             </label>
 
             <!-- about me -->
-            <div class="form-control" id="descriptionSection">
+            <div class="form-control" id="aboutMe">
                 <label for="description">À propos de vous</label>
                 <textarea id="description" name="description" rows="4" maxlength="255" value="<?= $user['description']?>"></textarea>
             </div>
