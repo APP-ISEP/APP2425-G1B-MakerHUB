@@ -1,7 +1,7 @@
 <?php
 require_once "./php/connectToDB.php";
-require_once "./php/roles/addUserRole.php";
-require_once "./php/roles/deleteUserRole.php";
+require_once "./php/user/roles/addUserRole.php";
+require_once "./php/user/roles/deleteUserRole.php";
 require_once "getUser.php";
 
 function updateUser(int $id, string $firstname, string $name, string $username, bool $isMaker, ?string $description, string $email, ?string $phone): ?array
@@ -32,17 +32,16 @@ function updateUser(int $id, string $firstname, string $name, string $username, 
 
         // add or delete the user role `maker`
         if ($isMaker) {
-            $bool = addUserRole($id, 2);
+            addUserRole($id, 2);
         } else {
-            $bool = deleteUserRole($id, 2);
+            deleteUserRole($id, 2);
         }
 
-        $user = getUser($email);
-        return $user;
+        return getUser($email);
     } catch (PDOException $e) {
-        // Erreur à l'exécution de la requête
-        $erreur = $e->getMessage();
-        echo mb_convert_encoding("Erreur d'accès à la base de données : $erreur \n", 'UTF-8', 'UTF-8');
+        // Error executing the query
+        $error = $e->getMessage();
+        echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
         return null;
     }
 }

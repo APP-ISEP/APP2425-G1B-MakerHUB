@@ -1,7 +1,7 @@
 <?php
 require_once "./php/connectToDB.php";
 
-function addUserRole(int $userId, int $roleId): bool
+function addUserRole(int $userId, int $roleId): ?bool
 {
     try {
         $pdo = connectToDB();
@@ -16,9 +16,9 @@ function addUserRole(int $userId, int $roleId): bool
 
         return $bool;
     } catch (PDOException $e) {
-        // Erreur à l'exécution de la requête
-        $erreur = $e->getMessage();
-        echo mb_convert_encoding("Erreur d'accès à la base de données : $erreur \n", 'UTF-8', 'UTF-8');
+        // Error executing the query
+        $error = $e->getMessage();
+        echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
         return null;
     }
 }

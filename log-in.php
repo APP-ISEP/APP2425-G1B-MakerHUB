@@ -27,13 +27,12 @@ if (isset($_POST) && count($_POST) > 0) {
     }
 
     if (empty($errors)) {
-        include_once("./php/roles/getUserRoles.php");
-        $userRoles = getUserRoles($account['id_utilisateur']);
+        include_once("./php/user/roles/getUserRoles.php");
 
         $_SESSION['account'] = $account;
         $_SESSION['username'] = $account['pseudonyme'];
-        $_SESSION['roles'] = $userRoles;
-        
+        $_SESSION['roles'] = getUserRoles($account['id_utilisateur']);
+
         header("Location: index.php");
     }
 }

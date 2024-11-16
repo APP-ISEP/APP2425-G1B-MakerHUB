@@ -14,14 +14,14 @@ function getUserRoles(int $userId): ?array
 
         $userRoles = null;
         if (count($results) > 0)
-            $userRoles = $results[0];
-        
+            $userRoles = $results;
         $stmt->closeCursor();
+
         return $userRoles;
     } catch (PDOException $e) {
-        // Erreur à l'exécution de la requête
-        $erreur = $e->getMessage();
-        echo mb_convert_encoding("Erreur d'accès à la base de données : $erreur \n", 'UTF-8', 'UTF-8');
+        // Error executing the query
+        $error = $e->getMessage();
+        echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
         return null;
     }
 }

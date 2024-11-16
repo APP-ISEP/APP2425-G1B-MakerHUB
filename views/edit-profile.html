@@ -18,29 +18,33 @@
             <div class="form-container">
                 <!-- firstname -->
                 <div class="form-control">
-                    <label for="firstname">Prénom</label>
+                    <label for="firstname">Prénom<span class="required">*</span></label>
                     <input type="text" id="firstname" name="firstname" placeholder="Votre prénom..." value="<?= $user['prenom']?>" maxlength="50" required>
                 </div>
 
                 <!-- lastname -->
                 <div class="form-control">
-                    <label for="name">Nom</label>
+                    <label for="name">Nom<span class="required">*</span></label>
                     <input type="text" id="name" name="name" placeholder="Votre nom..." value="<?= $user['nom']?>" maxlength="50" required>
                 </div>
 
                 <!-- username -->
                 <div class="form-control">
-                    <label for="username">Pseudonyme</label>
+                    <label for="username">Pseudonyme<span class="required">*</span></label>
                     <input type="text" id="username" name="username" placeholder="Votre pseudonyme..." value="<?= $user['pseudonyme']?>" maxlength="30" required>
                 </div>
             </div>
 
-            <!-- toogle about me -->
-            <label class="toggle">
-                <input type="checkbox" class="toggle-input" name="toogleAboutMe" <?php echo $isMaker ? 'checked' : ''; ?>>
-                <span class="toggle-label"></span>
-                Vous possédez une imprimante 3D et souhaitez proposer vos services.
-            </label>
+
+            <div class="form-control" id="toggle-control">
+                <!-- toogle about me -->
+                <label class="toggle">
+                    <input type="checkbox" class="toggle-input" id="maker-checkbox" name="toggleAboutMe" <?php if ($isMaker) echo "checked";?>>
+                    <span class="toggle-label"></span>
+                    Vous possédez une imprimante 3D et souhaitez proposer vos services.
+                </label>
+            </div>
+
 
             <!-- about me -->
             <div class="form-control" id="aboutMe">
@@ -55,7 +59,7 @@
             <div class="form-container">
                 <!-- email -->
                 <div class="form-control">
-                    <label for="email">Email</label>
+                    <label for="email">Email<span class="required">*</span></label>
                     <input type="email" id="email" name="email" placeholder="Votre adresse mail..." value="<?= $user['mail']?>"  maxlength="255" required>
                 </div>
 
