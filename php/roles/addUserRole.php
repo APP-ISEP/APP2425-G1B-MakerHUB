@@ -5,7 +5,7 @@ function addUserRole(int $userId, int $roleId): bool
 {
     try {
         $pdo = connectToDB();
-        $sql = "INSERT INTO `role_utilisateur` (utilisateur_id, role_id) VALUES (:valUserId, :valRoleId)";
+        $sql = "INSERT IGNORE INTO `role_utilisateur` (utilisateur_id, role_id) VALUES (:valUserId, :valRoleId)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valUserId", $userId);
@@ -14,7 +14,7 @@ function addUserRole(int $userId, int $roleId): bool
         $bool = $stmt->execute();
         $stmt->closeCursor();
 
-        return bool;
+        return $bool;
     } catch (PDOException $e) {
         // Erreur à l'exécution de la requête
         $erreur = $e->getMessage();

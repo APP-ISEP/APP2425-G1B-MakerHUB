@@ -12,12 +12,12 @@ function getUserRoles(int $userId): ?array
         $bool = $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $user_roles = null;
+        $userRoles = null;
         if (count($results) > 0)
-            $user_roles = $results[0];
+            $userRoles = $results[0];
         
         $stmt->closeCursor();
-        return $user_roles;
+        return $userRoles;
     } catch (PDOException $e) {
         // Erreur à l'exécution de la requête
         $erreur = $e->getMessage();

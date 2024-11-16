@@ -33,6 +33,7 @@ if (isset($_POST) && count($_POST) > 0) {
         $_SESSION['account'] = $account;
         $_SESSION['username'] = $account['pseudonyme'];
         $_SESSION['roles'] = $userRoles;
+        
         header("Location: index.php");
     }
 }

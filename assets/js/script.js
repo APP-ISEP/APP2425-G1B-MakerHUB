@@ -54,6 +54,4 @@ document.getElementById("eye").addEventListener("click", function () {
 
 
 
-
-
 //--------- BEGINNING TOOGLE BUTTON ---------//

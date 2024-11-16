@@ -15,6 +15,8 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
 $user = $_SESSION['account'];
 $roles = $_SESSION['roles'];
 
+$isMaker = !empty($roles) && isset($roles['role_id']) && $roles['role_id'] === 2;
+
 if (isset($_POST) && count($_POST) > 0) {
     if (empty($_POST['firstname']) || empty($_POST['name']) || empty($_POST['username']) || empty($_POST['email'])) {
         $errors['fields'] = "Veuillez remplir tous les champs.";
@@ -48,14 +50,19 @@ if (isset($_POST) && count($_POST) > 0) {
     }
 
     include_once("./php/user/updateUser.php");
+    include_once("./php/roles/getUserRoles.php");
 
     if (empty($errors)) {
-        $account = updateUser($user['id'], $firstname, $name, $username, $isMaker, $description, $email, $phone);
+        $account = updateUser($user['id_utilisateur'], $firstname, $name, $username, $isMaker, $description, $email, $phone);
 
         if (empty($account)) {
             $errors['save'] = "Erreur lors de la modification de votre profil.";
         } else {
+            $userRoles = getUserRoles($account['id_utilisateur']);
+
+            $_SESSION['roles'] = $userRoles;
             $_SESSION['account'] = $account;
+
             header("Location: index.php");
         }
     }

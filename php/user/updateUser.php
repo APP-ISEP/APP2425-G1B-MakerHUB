@@ -1,6 +1,7 @@
 <?php
 require_once "./php/connectToDB.php";
 require_once "./php/roles/addUserRole.php";
+require_once "./php/roles/deleteUserRole.php";
 require_once "getUser.php";
 
 function updateUser(int $id, string $firstname, string $name, string $username, bool $isMaker, ?string $description, string $email, ?string $phone): ?array
@@ -29,9 +30,12 @@ function updateUser(int $id, string $firstname, string $name, string $username, 
         $bool = $stmt->execute();
         $stmt->closeCursor();
 
-        // bool ???
-        // vérifier ici si ajouter ou supprimer le role MAKER (id = 2)
-        // $bool = addUserRole($id, 2);
+        // add or delete the user role `maker`
+        if ($isMaker) {
+            $bool = addUserRole($id, 2);
+        } else {
+            $bool = deleteUserRole($id, 2);
+        }
 
         $user = getUser($email);
         return $user;
