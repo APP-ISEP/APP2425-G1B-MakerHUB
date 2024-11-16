@@ -1,9 +1,9 @@
 <?php
-$title = "CGU";
+$title = "Inscription";
 
 ob_start();
 
-include_once 'views/cgu.html';
+include_once 'views/sign-up.html';
 
 $body = ob_get_clean();
 
