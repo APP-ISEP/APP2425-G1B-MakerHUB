@@ -136,7 +136,6 @@ button {
 .logout {
     color: var(--important-element-color);
     font-weight: bold;
-    text-underline: none !important;
     margin-bottom: 5%;
 }
 
@@ -159,23 +158,29 @@ button {
     cursor: pointer;
 }
 
-.button-login {
+.button-login, .signup-button {
     background-color: var(--important-element-color);
     color: var(--base-color-3);
     width: 40%
 }
 
-.button-signup {
+.button-signup, .login-button {
     background-color: var(--base-color-2);
     color: var(--important-element-color);
 }
 
-.wrong-login {
+.wrong-login, .wrong-edit {
     display: block;
     color: red;
     margin-top: 6%;
     text-align: center;
     font-size: 1.4em;
+}
+
+.wrong-edit {
+    margin-top: -2% !important;
+    margin-bottom: 2%;
+    font-style: italic;
 }
 
 /* main container */
@@ -307,7 +312,7 @@ button {
     margin-bottom: 10px;
 }
 
-.legal-page-container h2 {
+.legal-page-container h2, .container-sign-up {
     margin-bottom: 10px;
 }
 
@@ -359,6 +364,10 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     background-color: var(--base-color-3);
+}
+
+.edit-profile h1 {
+    margin-bottom: 0;
 }
 
 .section {
@@ -432,7 +441,6 @@ input, textarea {
     border-radius: 10px;
     border: 1px solid var(--accentuation_color);
     outline: none;
-
 }
 
 input:focus, textarea:focus {
@@ -460,6 +468,7 @@ input:focus, textarea:focus {
     gap: 15px;
     margin-top: 35px;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .toggle-input {
@@ -480,7 +489,7 @@ input:focus, textarea:focus {
     position: absolute;
     width: 21px;
     height: 21px;
-    background-color: #ffffff;
+    background-color: var(--base-color-3);
     border-radius: 50%;
     top: 2px;
     left: 2px;
@@ -495,14 +504,75 @@ input:focus, textarea:focus {
     transform: translateX(25px);
 }
 
-#description {
-    resize: vertical;
-}
-
 .save-button {
     display: flex;
     justify-content: flex-end;
 }
+
+#aboutMe, #toggle-control {
+    width: 90%;
+}
+
+/*Inscription*/
+/*FORM */
+
+.container-sign-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sign-up-form {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 6%;
+    margin-bottom: 2%;  
+  
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: var(--base-color-3);
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex: 1;
+    margin: 10px;
+    height: 80px;
+}
+
+/* END FORM*/
+
+/*LABEL AND WRITE PART*/
+.required{
+    color: red;
+} 
+/*END LABEL AND WRITE PART*/
+
+/*CHECK BOX AND BUTTON*/
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin: 10px 10px 10px 0;
+}
+
+.checkbox{
+    width: 16px;
+    height: 18px;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /*TODO mettre en % */
+}
+/*END CHECKBOX AND BUTTON*/
 
 /* Format mobile */
 @media screen and (max-width: 817px) {
@@ -556,10 +626,10 @@ input:focus, textarea:focus {
     .footer-links {
         width: 60%;
     }
-    
-    /* LEGAL PAGES */
+  
+      /* LEGAL PAGES */
     .legal-page-container {
         width: 80%;
         margin-left: 10%;
     }
-}
+ } 
