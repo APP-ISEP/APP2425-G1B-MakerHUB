@@ -140,7 +140,6 @@ button {
 .logout {
     color: var(--important-element-color);
     font-weight: bold;
-    text-underline: none !important;
     margin-bottom: 5%;
 }
 
@@ -178,12 +177,18 @@ button {
     background-color: var(--base-color-3);
 }
 
-.wrong-login {
+.wrong-login, .wrong-edit {
     display: block;
     color: red;
     margin-top: 6%;
     text-align: center;
     font-size: 1.4em;
+}
+
+.wrong-edit {
+    margin-top: -2% !important;
+    margin-bottom: 2%;
+    font-style: italic;
 }
 
 /* main container */
@@ -234,6 +239,22 @@ button {
     min-height: calc(89vh - 80px);
 }
 
+#faq-question-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding-top: 50px;
+}
+
+#faq-hr {
+    width: 60%;
+    border: 1.5px solid var(--base-color);
+    border-radius: 25px;
+}
+
 .title {
     text-align: center;
     font-size: 65px;
@@ -255,6 +276,7 @@ button {
     overflow: clip;
     font-size: 24px;
     width: calc(100% - 48px);
+    cursor: pointer;
 }
 
 .answer {
@@ -269,8 +291,9 @@ button {
     float: right;
     height: 36px;
     width: 36px;
-    transition: all 1s;
+    transition: all 0.5s;
     right: 2px;
+    cursor: pointer;
 }
 
 .down {
@@ -351,6 +374,10 @@ button {
     background-color: var(--base-color-3);
 }
 
+.edit-profile h1 {
+    margin-bottom: 0;
+}
+
 .section {
     padding: 25px;
     border: 1px solid var(--accentuation_color);
@@ -422,7 +449,6 @@ input, textarea {
     border-radius: 10px;
     border: 1px solid var(--accentuation_color);
     outline: none;
-
 }
 
 input:focus, textarea:focus {
@@ -450,6 +476,7 @@ input:focus, textarea:focus {
     gap: 15px;
     margin-top: 35px;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .toggle-input {
@@ -470,7 +497,7 @@ input:focus, textarea:focus {
     position: absolute;
     width: 21px;
     height: 21px;
-    background-color: #ffffff;
+    background-color: var(--base-color-3);
     border-radius: 50%;
     top: 2px;
     left: 2px;
@@ -485,13 +512,13 @@ input:focus, textarea:focus {
     transform: translateX(25px);
 }
 
-#description {
-    resize: vertical;
-}
-
 .save-button {
     display: flex;
     justify-content: flex-end;
+}
+
+#aboutMe, #toggle-control {
+    width: 90%;
 }
 
 /*Inscription*/
@@ -564,7 +591,6 @@ input:focus, textarea:focus {
 }
 
 /*END CHECKBOX AND BUTTON*/
-
 
 /* Format mobile */
 @media screen and (max-width: 817px) {
