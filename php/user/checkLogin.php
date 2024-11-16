@@ -1,6 +1,6 @@
 <?php
 require_once "getUser.php";
-function areCrendentialsCorrect($email, $password)
+function areCrendentialsCorrect(string $email, string $password): array|bool
 {
     $user = getUser($email);
 
