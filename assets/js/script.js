@@ -1,12 +1,12 @@
-$(document).ready(function() {
-    $("#profil").click(function() {
+$(document).ready(function () {
+    $("#profil").click(function () {
         $("#dropdown").toggle()
     });
 });
 
 //--------- BEGINNING OF THE CHEVRON IN FAQ PAGE ---------//
-$(document).ready(function() {
-    $(".question").click(function() {
+$(document).ready(function () {
+    $(".question").click(function () {
         $(".answer").not($(this)
             .find(".answer"))
             .toggle();
@@ -50,8 +50,36 @@ document.getElementById("eye").addEventListener("click", function () {
 }, false);
 //--------- END EYE BUTTON TO SEE PASSWORD---------//
 
+//--------- BEGINNING OF THE TOGGLE DESCRIPTION IN EDIT PROFIL PAGE ---------//
 document.getElementById('toggleDescription').addEventListener('change', function () {
     const descriptionSection = document.getElementById('descriptionSection');
     descriptionSection.style.display = this.checked ? 'flex' : 'none';
 });
 
+//--------- END OF THE TOGGLE DESCRIPTION IN EDIT PROFIL PAGE ---------//
+
+//--------- BEGINNING OF CATEGORIES INSIDE HOME PAGE---------//
+$(document).ready(() => {
+    const categoryOffer = $('.category-offer');
+    const categoryRequest = $('.category-request');
+    const offersContainer = $('.offers-container');
+    const requestsContainer = $('.requests-container');
+    requestsContainer.hide();
+
+    function toggleCategories(activeCategory, inactiveCategory, showContainer, hideContainer) {
+        activeCategory.addClass("active-category").removeClass("inactive-category");
+        inactiveCategory.addClass("inactive-category").removeClass("active-category");
+        showContainer.show();
+        hideContainer.hide();
+    }
+
+    categoryOffer.click(() => {
+        toggleCategories(categoryOffer, categoryRequest, offersContainer, requestsContainer);
+    });
+
+    categoryRequest.click(() => {
+        toggleCategories(categoryRequest, categoryOffer, requestsContainer, offersContainer);
+    });
+});
+
+//--------- END OF CATEGORIES INSIDE HOME PAGE---------//
