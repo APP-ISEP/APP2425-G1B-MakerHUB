@@ -5,9 +5,9 @@ $(document).ready(function () {
 });
 
 //--------- BEGINNING OF THE CHEVRON IN FAQ PAGE ---------//
-$(document).ready(function () {
-    $(".question").click(function () {
-        $(".answer").not($(this)
+$(document).ready(function() {
+    $(".question").click(function() {
+        $(".answer:visible").not($(this)
             .find(".answer"))
             .toggle();
 
@@ -19,44 +19,41 @@ $(document).ready(function () {
         $(this).find(".answer")
             .toggle();
 
-
         $(this).find('.chevron')
             .toggleClass('down up');
     });
 });
 //--------- END OF THE CHEVRON IN FAQ PAGE ---------//
 
+
 //--------- BEGINNING EYE BUTTON TO SEE PASSWORD---------//
-function show() {
-    var p = document.getElementById('password');
-    p.setAttribute('type', 'text');
+let pwShown = 0;
+const passwordContainer = document.getElementById('password');
+const eye = document.getElementById('eye');
+
+const editAttributePassword = (valueName) => {
+    passwordContainer.setAttribute('type', valueName);
 }
 
-function hide() {
-    var p = document.getElementById('password');
-    p.setAttribute('type', 'password');
-}
-
-var pwShown = 0;
-
-document.getElementById("eye").addEventListener("click", function () {
-    if (pwShown == 0) {
-        pwShown = 1;
-        show();
-    } else {
-        pwShown = 0;
-        hide();
+if(eye) {
+    eye.onclick = () => {
+        editAttributePassword(pwShown === 0 ? 'text' : 'password');
+        pwShown = pwShown === 0 ? 1 : 0;
     }
-}, false);
+}
 //--------- END EYE BUTTON TO SEE PASSWORD---------//
 
-//--------- BEGINNING OF THE TOGGLE DESCRIPTION IN EDIT PROFIL PAGE ---------//
-document.getElementById('toggleDescription').addEventListener('change', function () {
-    const descriptionSection = document.getElementById('descriptionSection');
-    descriptionSection.style.display = this.checked ? 'flex' : 'none';
-});
 
-//--------- END OF THE TOGGLE DESCRIPTION IN EDIT PROFIL PAGE ---------//
+//--------- BEGINNING TOGGLE BUTTON ---------//
+$(document).ready(() => {
+    const aboutMe = $('#aboutMe');
+    aboutMe.hide();
+    $('#maker-checkbox').change(() => {
+        aboutMe.toggle();
+    })
+});
+//--------- END TOGGLE BUTTON ---------//
+
 
 //--------- BEGINNING OF CATEGORIES INSIDE HOME PAGE---------//
 $(document).ready(() => {

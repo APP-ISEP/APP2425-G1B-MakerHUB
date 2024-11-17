@@ -1,24 +1,24 @@
 <?php
 require_once "./php/connectToDB.php";
-function getUser(string $email): ?array
+
+function getUserRoles(int $userId): ?array
 {
     try {
         $pdo = connectToDB();
-        $sql = "SELECT * FROM `utilisateur` WHERE mail=:valEmail";
+        $sql = "SELECT * FROM `role_utilisateur` WHERE utilisateur_id=:valUserId";
 
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(":valEmail", $email);
+        $stmt->bindParam(":valUserId", $userId);
         $bool = $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $account = null;
+        $userRoles = null;
         if (count($results) > 0)
-            $account = $results[0];
-        
+            $userRoles = $results;
         $stmt->closeCursor();
-        return $account;
-    }
-    catch (PDOException $e) {
+
+        return $userRoles;
+    } catch (PDOException $e) {
         // Error executing the query
         $error = $e->getMessage();
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');

@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <?php elseif (!isset($username) && !$isAuthPage) : ?>
+    <?php elseif (!isset($username) && !isset($isAuthPage)) : ?>
 
     <div class="auth">
         <button class="button button-login" onclick="location.href = 'log-in.php'">
