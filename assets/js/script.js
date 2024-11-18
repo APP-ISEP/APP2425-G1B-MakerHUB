@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $("#profil").click(function() {
+$(document).ready(function () {
+    $("#profil").click(function () {
         $("#dropdown").toggle()
     });
 });
@@ -44,7 +44,7 @@ if(eye) {
 //--------- END EYE BUTTON TO SEE PASSWORD---------//
 
 
-//--------- BEGINNING TOOGLE BUTTON ---------//
+//--------- BEGINNING TOGGLE BUTTON ---------//
 $(document).ready(() => {
     const aboutMe = $('#aboutMe');
     aboutMe.hide();
@@ -52,4 +52,31 @@ $(document).ready(() => {
         aboutMe.toggle();
     })
 });
-//--------- BEGINNING TOOGLE BUTTON ---------//
+//--------- END TOGGLE BUTTON ---------//
+
+
+//--------- BEGINNING OF CATEGORIES INSIDE HOME PAGE---------//
+$(document).ready(() => {
+    const categoryOffer = $('.category-offer');
+    const categoryRequest = $('.category-request');
+    const offersContainer = $('.offers-container');
+    const requestsContainer = $('.requests-container');
+    requestsContainer.hide();
+
+    function toggleCategories(activeCategory, inactiveCategory, showContainer, hideContainer) {
+        activeCategory.addClass("active-category").removeClass("inactive-category");
+        inactiveCategory.addClass("inactive-category").removeClass("active-category");
+        showContainer.show();
+        hideContainer.hide();
+    }
+
+    categoryOffer.click(() => {
+        toggleCategories(categoryOffer, categoryRequest, offersContainer, requestsContainer);
+    });
+
+    categoryRequest.click(() => {
+        toggleCategories(categoryRequest, categoryOffer, requestsContainer, offersContainer);
+    });
+});
+
+//--------- END OF CATEGORIES INSIDE HOME PAGE---------//

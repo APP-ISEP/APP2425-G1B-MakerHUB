@@ -1,14 +1,13 @@
 <div id="faq-container">
 
     <h1 class="title">FAQ</h1>
-
     <hr id="faq-hr">
 
     <?php if (isset($faq)) : ?>
     <div id="faq-question-container">
         <?php foreach ($faq as $item) : ?>
             <div class="question">
-                <img alt="Chevron" class="chevron down" src="./assets/images/Chevron.svg">
+                <img alt="chevron" class="chevron down" src="./assets/images/chevron.svg">
                 <h2><?= $item['question'] ?></h2>
                 <p class="answer"><?= $item['reponse'] ?></p>
             </div>
