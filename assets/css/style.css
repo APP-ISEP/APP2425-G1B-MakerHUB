@@ -142,6 +142,7 @@ button {
 .logout {
     color: var(--important-element-color);
     font-weight: bold;
+    text-decoration: none !important;
     margin-bottom: 5%;
 }
 
@@ -758,6 +759,35 @@ input:focus, textarea:focus {
 
 /*END CHECKBOX AND BUTTON*/
 
+/* COOKIES */
+.cookies {
+    /*margin-top: 7em;
+    margin-bottom: 7em;
+    margin-left: 30%;
+    margin-right: 30%;
+    text-align: left;*/
+
+    color: var(--secondary-text-color);
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-left: 20%;
+    padding-top: 2%;
+    gap: 60px;
+}
+
+.cookies h2 {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.cookies h1 {
+    font-size: 2em;
+    color : var(--base-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 /* Format mobile */
 @media screen and (max-width: 817px) {
     #dropdown {
@@ -825,29 +855,3 @@ input:focus, textarea:focus {
         margin-left: 10%;
     }
 }
-
-/*cookies*/
-
-.cookies {
-    color: var(--secondary-text-color);
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    margin-left: 20%;
-    padding-top: 2%;
-    gap: 60px;
-}
-
-.cookies h1 {
-    font-size: 2em;
-    color : var(--base-color);
-    text-align: center;
-    margin-bottom: 20px;
-}
-.cookies h2 {
-    
-    margin-bottom: 20px;
-}
-
-
-
