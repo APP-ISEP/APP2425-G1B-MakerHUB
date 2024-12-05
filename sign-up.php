@@ -12,14 +12,16 @@ require_once "modele/connexionDB.php";
 require_once "modele/SignUpFunction.php";
 
 $telephone ="0612345678";
-$nom = $email =$telephone = $prenom = $motDePasse =$pseudonyme =  "";
+$nom = $email = $telephone = $prenom = $motDePasse =$pseudonyme =  "";
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $nom = test_input($_POST["nom"]);
+conncectToDB(); // à  ce niveau là il faut placer la connexion VERIFIER
+
+if (isset($_POST['submit'])) {
+  $nom = test_input($_POST["nom"]); //redondance ???
   $prenom = test_input($_POST["prenom"]);
-  $motDePasse = test_input($_POST["mot_de_passe"]);
-  $pseudonyme = test_input($_POST["pseudonymr"]);
+  $motDePasse = test_input($_POST["motDePasse"]);
+  $pseudonyme = test_input($_POST["pseudonyme"]);
   $email = test_input($_POST["email"]);
   $telephone = test_input($_POST["telephone"]);
 
@@ -42,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
   }
-
+}
 $body = ob_get_clean();
 
 include_once "views/components/template.php";
