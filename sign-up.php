@@ -26,7 +26,7 @@ if (isset($_POST) && count($_POST) > 0) {
     $telephone = test_input($_POST["telephone"]);
     $description = test_input($_POST["description"]);
 
-    
+
     $validateEmail = validateEmail($email);
     $validateEmailUnique = uniqueMail($email);
     $validatePhone = validateTelephone($telephone);
@@ -73,8 +73,8 @@ if (isset($_POST) && count($_POST) > 0) {
 
     if (empty($_POST['AcceptCGU'])) {
         $errors['checkbox2'] = "Veullez accepter les CGU.";
-        }    
-    
+        }
+
     if (empty($_POST['AcceptCGPS'])) {
         $errors['checkbox3'] = "Veullez accepter les CGPS";
         }
@@ -90,7 +90,7 @@ if (isset($_POST) && count($_POST) > 0) {
     if(!isset($_POST['email'])){
         $errors['email'] = "Le champ est obligatoire";
     }
-   
+
     if (empty($errors)) {
         if ($validateEmail && $validatePhone && $validatePassword) {
             $hashedPassword = hashPassword($motDePasse);
@@ -98,7 +98,7 @@ if (isset($_POST) && count($_POST) > 0) {
             $account = getUser($email);
             $_SESSION['account'] = $account;
             $_SESSION['username'] = $account['pseudonyme'];
-            
+
             header("Location: index.php");
         }
     }
