@@ -20,7 +20,7 @@ function InsertUser( string $nom , string $prenom, string $pseudonyme, string $e
         $stmt->closeCursor();
 
         return $bool;
-    } catch (PDOException $e) {
+    } catch (PDOException $e) {   
         // Error executing the query
         $error = $e->getMessage();
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
