@@ -2,9 +2,9 @@
 include 'config/constants.php';
 include 'autoload.php';
 
-use Config\Log;
-use Config\LogFileSingleton;
-use Config\LogLevel;
+use Config\Log\Log;
+use Config\Log\LogFileSingleton;
+use Config\Log\LogLevel;
 
 session_start();
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Config;
+namespace Config\Log;
 
 class LogFileSingleton
 {
