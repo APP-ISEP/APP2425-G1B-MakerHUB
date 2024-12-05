@@ -8,8 +8,8 @@ function test_input($data) {
   return $data;
 }
 function validateEmail($email): bool
-{
-if (isset($_POST['email'])){
+{ global $errors;
+
 	if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
         
         return true;
@@ -19,17 +19,16 @@ if (isset($_POST['email'])){
         return false;
     }
 }
-}
 
 function validateTelephone($telephone) : bool{
-if (isset($_POST['telephone']) && $_POST['telephone']!=""){
+
 	if(!preg_match('#^[0]{1}[0-9]{9}$#', $telephone)){ 
     return true;
   }else {
     $errors['Telephone'] ="Veuillez saisir un téléphone valide";
     return false;
 	}
-}
+
 }
 
 function HashPassword($motDePasse){
