@@ -1,9 +1,17 @@
 <?php
+include 'config/constants.php';
+include 'autoload.php';
+
+use Config\Log;
+use Config\LogFileSingleton;
+use Config\LogLevel;
+
 session_start();
 
 $title = "Éditer le profil";
 $errors = array();
 $isAuthPage = true;
+$logFile = LogFileSingleton::getInstance();
 
 ob_start();
 
@@ -61,6 +69,8 @@ if (isset($_POST) && count($_POST) > 0) {
             $userRoles = getUserRoles($account['id_utilisateur']);
             $_SESSION['roles'] = $userRoles;
             $_SESSION['account'] = $account;
+
+            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " a modifié son profil depuis" . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: index.php");
         }
     }
