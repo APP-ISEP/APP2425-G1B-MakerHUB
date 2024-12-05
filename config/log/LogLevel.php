@@ -1,5 +1,5 @@
 <?php
-namespace Config;
+namespace Config\Log;
 
 /**
  * LogLevel enum
