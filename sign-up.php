@@ -105,6 +105,8 @@ if (isset($_POST) && count($_POST) > 0) {
 }
 
 include_once 'views/sign-up.html';
+require_once 'controleur/SignUpControleur.php'
+require_once 'modele/SignUpModele.php';
 
 $body = ob_get_clean();
 
