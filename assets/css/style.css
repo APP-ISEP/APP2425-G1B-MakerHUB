@@ -205,7 +205,7 @@ button {
     background-color: var(--base-color-3);
 }
 
-.wrong-login, .wrong-edit {
+.wrong-login, .wrong-edit, .wrong-signup {
     display: block;
     color: red;
     margin-top: 6%;
@@ -219,7 +219,13 @@ button {
     font-style: italic;
 }
 
-/* MAIN CONTAINER */
+.wrong-signup{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1em;
+}
+
+/* main container */
 
 .footer {
     background-color: var(--base-color);
@@ -477,7 +483,7 @@ input, textarea {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid var(--accentuation_color);
-    outline: none;    
+    outline: none;
 }
 
 input[type="file"] {
@@ -778,6 +784,10 @@ input:focus, textarea:focus {
     color: red;
     padding-bottom: 4%;
     text-align: center;
+}
+
+.required-signup {
+    padding-bottom: 0;
 }
 
 .signup-eye {
