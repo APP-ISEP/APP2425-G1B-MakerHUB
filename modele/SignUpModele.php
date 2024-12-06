@@ -35,5 +35,11 @@ function VerifiePseudonyme(string $pseudonyme){ //REVOIR COMPLETEMENT, C'EST JUS
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valPseudo", $pseudonyme);
     }
+    catch(PDOException $e) {   
+        // Error executing the query
+        $error = $e->getMessage();
+        echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
+        return null;
+    }
 }
 ?>

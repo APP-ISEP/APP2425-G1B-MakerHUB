@@ -4,10 +4,8 @@ $title = "Inscription";
 ob_start();
 
 include_once 'views/sign-up.html';
-require_once 'controleur/SignUpControleur.php'
 require_once 'modele/SignUpModele.php';
-include_once "modele/connexionDB.php"; //essayé aussi avec require once
-require_once "modele/SignUpFunction.php";
+require_once "controleur/SignUpFunction.php";
 
 $telephone ="0612345678";
 $nom = $email = $telephone = $prenom = $motDePasse =$pseudonyme =  "";
@@ -28,19 +26,20 @@ if (isset($_POST['submit'])) {
   if($validateemail == true || $validatePhone == true){
     try{
       $hashedPassword = HashPassword($motDePasse);
-      $result = InsertUser(string $nom , string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone);
+      $result = InsertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone);
       if ($result){
       echo "<p>Tu viens de t'inscrire comme $pseudonyme.</p>";
     } else{
       $errors['inscription'] = "Erreur lors de l' insertion des données.";
   
     }
+  }
     catch (PDOException $e) {
-        echo "<p>Erreur : " . htmlspecialchars($e->getMessage()) . "</p>";
+        echo "<p>Erreur : ".htmlspecialchars($e->getMessage())."</p>";
     }
   }
   }
-}
+
 $body = ob_get_clean();
 
 include_once 'views/components/template.php';
