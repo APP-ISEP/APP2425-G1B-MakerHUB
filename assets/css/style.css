@@ -179,7 +179,7 @@ button {
     background-color: var(--base-color-3);
 }
 
-.wrong-login, .wrong-edit {
+.wrong-login, .wrong-edit, .wrong-signup {
     display: block;
     color: red;
     margin-top: 6%;
@@ -191,6 +191,12 @@ button {
     margin-top: -2% !important;
     margin-bottom: 2%;
     font-style: italic;
+}
+
+.wrong-signup{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1em;
 }
 
 /* main container */
@@ -720,6 +726,10 @@ input:focus, textarea:focus {
     color: red;
     padding-bottom: 4%;
     text-align: center;
+}
+
+.required-signup {
+    padding-bottom: 0;
 }
 
 .signup-eye {

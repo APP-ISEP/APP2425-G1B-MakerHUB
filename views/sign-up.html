@@ -1,8 +1,21 @@
 <div class="container container-sign-up">
     <div class="sign-up">
         <h1>Inscription</h1>
-        <p class="required">*Ces champs sont obligatoires</p>
-        <form action="sign-up.php" class="form sign-up-form" method="post">
+        <p class="required required-signup">*Ces champs sont obligatoires</p>
+
+        <?php if (!empty($errors)) : ?>
+
+        <?php foreach ($errors as $error): ?>
+
+        <div class="wrong-signup">
+            <?= $error ?> <br/>
+        </div>
+
+        <?php endforeach; ?>
+
+        <?php endif; ?>
+
+        <form action="" class="form sign-up-form" method="post">
             <div class="form-row">
                 <!-- first-name --->
                 <div class="form-control">

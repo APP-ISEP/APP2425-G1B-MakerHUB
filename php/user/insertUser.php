@@ -1,10 +1,9 @@
 <?php
 require_once "./php/connectToDB.php";
 
-function InsertUser( string $nom, string $prenom, string $pseudonyme, string $email, string $motDePasse, string $telephone)
+function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone)
 {
     try {
-        var_dump("try test");
         $pdo = connectToDB();
         $sql = "INSERT INTO utilisateur (nom, prenom, pseudonyme, mail, mot_de_passe, telephone) VALUES (:nom, :prenom, :pseudonyme, :email, :motDePasse, :telephone)";
         $stmt = $pdo->prepare($sql);
@@ -16,9 +15,8 @@ function InsertUser( string $nom, string $prenom, string $pseudonyme, string $em
             ':motDePasse' => $hashedPassword,
             ':telephone' => $telephone
         ]);
-    
 
-
+        $stmt->closeCursor();
     } catch (PDOException $e) {   
         // Error executing the query
         $error = $e->getMessage();
@@ -27,7 +25,7 @@ function InsertUser( string $nom, string $prenom, string $pseudonyme, string $em
     }
 }
 
-
+// TODO à faire le truc là
 function VerifiePseudonyme(string $pseudonyme){ //REVOIR COMPLETEMENT, C'EST JUSTE UN RAPPEL POUR QUE JE LE FASSE.
     try{
         $pdo=connectToDB();
@@ -42,4 +40,3 @@ function VerifiePseudonyme(string $pseudonyme){ //REVOIR COMPLETEMENT, C'EST JUS
         return null;
     }
 }
-?>
