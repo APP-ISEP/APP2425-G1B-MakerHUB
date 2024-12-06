@@ -4,6 +4,7 @@ require_once "./php/connectToDB.php";
 function InsertUser( string $nom, string $prenom, string $pseudonyme, string $email, string $motDePasse, string $telephone)
 {
     try {
+        var_dump("try test");
         $pdo = connectToDB();
         $sql = "INSERT INTO utilisateur (nom, prenom, pseudonyme, mail, mot_de_passe, telephone) VALUES (:nom, :prenom, :pseudonyme, :email, :motDePasse, :telephone)";
         $stmt = $pdo->prepare($sql);
@@ -15,6 +16,7 @@ function InsertUser( string $nom, string $prenom, string $pseudonyme, string $em
             ':motDePasse' => $hashedPassword,
             ':telephone' => $telephone
         ]);
+    
 
 
     } catch (PDOException $e) {   
