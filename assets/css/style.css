@@ -883,3 +883,68 @@ button {
     display: flex;
     justify-content: center;
 }
+
+input, textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--accentuation_color);
+    outline: none;
+
+}
+
+input:focus, textarea:focus {
+    border: 1px solid var(--secondary-text-color);
+}
+
+input, textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--accentuation_color);
+    outline: none;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#contact-page {
+    width: 30%;
+    margin-left: 35%;
+}
+
+.contact-form {
+    padding: 25px;
+    border-radius: 10px; /*arrondi les bords du form*/
+    display: flex;
+    border: 1px solid var(--accentuation_color);
+    flex-direction: column;
+    background-color: white;
+}
+
+button {
+    background-color: var(--important-element-color);
+    border: 3px solid var(--important-element-color);
+    font-family: 'Kanit', serif;
+    font-weight: bold;
+    color: var(--base-color-2);
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+.space { /* s'applique à tous les elements DANS .space*/
+    display: flex; /*flexiber tous les elements de .space*/
+    flex-direction: column; /*mettre en colonne*/
+    margin-bottom: 20px; /*marge en bas des divs*/
+}
+
+.send-button{
+    display: flex;
+    justify-content: center;
+}
+
