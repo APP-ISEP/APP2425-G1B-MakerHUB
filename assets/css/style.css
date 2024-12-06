@@ -79,6 +79,30 @@ button {
     width: 70%;
 }
 
+.navbar-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    list-style-type: none;
+}
+
+.navbar-links li {
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.navbar-links li a {
+    color: var(--base-color);
+    font-size: 1.3em;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar-links li:hover {
+    background-color: var(--accentuation_color);
+}
+
 .profil {
     position: relative;
     display: flex;
