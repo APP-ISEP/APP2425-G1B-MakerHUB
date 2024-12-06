@@ -193,7 +193,7 @@ button {
     font-style: italic;
 }
 
-/* main container */
+/* MAIN CONTAINER */
 
 .footer {
     background-color: var(--base-color);
@@ -364,7 +364,7 @@ button {
 }
 
 /* EDIT PROFILE PAGE */
-.edit-profile {
+.form-section {
     width: 50%;
     margin-left: 25%;
     margin-top: 6%;
@@ -376,8 +376,9 @@ button {
     background-color: var(--base-color-3);
 }
 
-.edit-profile h1 {
-    margin-bottom: 0;
+.form-section h1 {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .section {
@@ -398,7 +399,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 80%;
+    width: 100%;
     margin: auto;
     padding-bottom: 5%;
 }
@@ -450,7 +451,16 @@ input, textarea {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid var(--accentuation_color);
-    outline: none;
+    outline: none;    
+}
+
+input[type="file"] {
+    display: none;
+}
+
+textarea {
+    font-family: 'Kanit', serif;
+    font-size: 13px;
 }
 
 input:focus, textarea:focus {
@@ -518,6 +528,28 @@ input:focus, textarea:focus {
     display: flex;
     justify-content: flex-end;
 }
+
+/* DEMAND CREATION PAGE */
+.input-file-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--accentuation_color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.input-file-label:hover {
+    background-color: #e6e9ec;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
 
 /*HOME PAGE*/
 .hero-container {
