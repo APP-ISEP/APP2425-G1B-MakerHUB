@@ -1,8 +1,6 @@
 <?php
 $title = "Inscription";
 
-
-
 ob_start();
 
 include_once 'views/sign-up.html';
@@ -15,7 +13,8 @@ $telephone ="0612345678";
 $nom = $email = $telephone = $prenom = $motDePasse =$pseudonyme =  "";
 
 if (isset($_POST['submit'])) {
-  $nom = test_input($_POST["nom"]); //redondance ???
+  echo("test");
+  $nom = test_input($_POST["nom"]); 
   $prenom = test_input($_POST["prenom"]);
   $motDePasse = test_input($_POST["motDePasse"]);
   $pseudonyme = test_input($_POST["pseudonyme"]);
@@ -29,7 +28,7 @@ if (isset($_POST['submit'])) {
   if($validateemail == true || $validatePhone == true){
     try{
       $hashedPassword = HashPassword($motDePasse);
-      $result = InsertUser(string $nom , string $prenom, string $pseudonyme, string $email, string $motDePasse, string $telephone);
+      $result = InsertUser(string $nom , string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone);
       if ($result){
       echo "<p>Tu viens de t'inscrire comme $pseudonyme.</p>";
     } else{
