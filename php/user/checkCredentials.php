@@ -71,9 +71,8 @@ function lengthPseudonyme($pseudonyme) : bool
     }
 }
 function uniquePseudonyme($pseudonyme) : bool
-{echo ("je suid dans la fonction if");
-    if(verifyPseudonyme($pseudonyme)){
-        
+{
+    if(verifyUsername($pseudonyme)){
         return true;
     }else{
         return false;

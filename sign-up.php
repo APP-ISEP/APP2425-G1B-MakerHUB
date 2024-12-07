@@ -61,6 +61,18 @@ if (isset($_POST) && count($_POST) > 0) {
         $errors['pseudonymeUnique']="Ce pseudonyme existe déjà, veuillez en créer un nouveau";
     }
 
+    if (!isset($_POST['is18More'])) {
+        $errors['checkbox1'] = "Veullez confirmer d'avoir plus de 18 ans";
+        }
+    if (!isset($_POST['AccepteCGU'])) {
+        $errors['checkbox2'] = "Veullez accepter les CGU.";
+        }    
+    
+    if (!isset($_POST['AcceptCPGS'])) {
+        $errors['checkbox3'] = "Veullez accepter les CGPS";
+        }
+        
+        
 
     if (empty($errors)) {
         if ($validateEmail && $validatePhone && $validatePassword) {
