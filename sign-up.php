@@ -28,6 +28,11 @@ if (isset($_POST) && count($_POST) > 0) {
     $validateEmail = validateEmail($email);
     $validatePhone = validateTelephone($telephone);
     $validatePassword = validatePassword($motDePasse);
+    $validateLengthNom = lengthNom($nom);
+    $validateLengthPrenom = lengthPrenom($prenom);
+    $validateLengthPseudonyme = lengthPseudonyme($pseudonyme);
+    $validatePseudonymeUnique = uniquePseudonyme($pseudonyme);
+
 
     if (!$validateEmail) {
         $errors['email'] = "Veuillez saisir un mail valide.";
@@ -43,6 +48,19 @@ if (isset($_POST) && count($_POST) > 0) {
             . "- Un caractère spécial (#?!@$%^&*-).</br>"
             . "- Longueur minimale de 8 caractères.";
     }
+    if(!$validateLengthNom){
+        $errors['nom']="Veuillez saisir un nom avec moins de 50 caractères";
+    }
+    if(!$validateLengthPrenom){
+        $errors['prenom']="Veuillez saisir un prenom avec moins de 50 caractères";
+    }
+    if(!$validateLengthPseudonyme){
+        $errors['pseudonyme']="Veuillez saisir un pseudonyme avec moins de 50 caractères";
+    }
+    if(!$validatePseudonymeUnique){
+        $errors['pseudonymeUnique']="Ce pseudonyme existe déjà, veuillez en créer un nouveau";
+    }
+
 
     if (empty($errors)) {
         if ($validateEmail && $validatePhone && $validatePassword) {
