@@ -1,4 +1,5 @@
 <?php
+require_once('insertUser.php');
 
 function test_input($data): string
 {
@@ -19,6 +20,10 @@ function validateEmail($email): bool
 
 function validateTelephone($telephone): bool
 {
+    if (empty($telephone)) {
+       
+        return true;
+    }
     if (preg_match('#^0[0-9]{9}$#', $telephone)) {
         return true;
     } else {
@@ -34,9 +39,43 @@ function hashPassword($motDePasse): string
 
 function validatePassword($motDePasse): bool
 {
-    if (preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,255}$/', $motDePasse)) {
+    if (preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,255}$/', $motDePasse)) {
         return true;
     } else {
+        return false;
+    }
+}
+
+function lengthNom($nom) : bool
+{
+    if (strlen($nom) < 50){
+        return true;
+    } else{
+        return false;
+    }
+}
+function lengthPrenom($prenom) : bool
+{
+    if (strlen($prenom) < 50){
+        return true;
+    } else{
+        return false;
+    }
+}
+function lengthPseudonyme($pseudonyme) : bool
+{
+    if (strlen($pseudonyme) < 50){
+        return true;
+    } else{
+        return false;
+    }
+}
+function uniquePseudonyme($pseudonyme) : bool
+{echo ("je suid dans la fonction if");
+    if(verifyPseudonyme($pseudonyme)){
+        
+        return true;
+    }else{
         return false;
     }
 }
