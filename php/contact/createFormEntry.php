@@ -11,7 +11,8 @@ require_once "../connectToDB.php" //../permet de revenir en arriere d'un cran
 //Un PDOStatement est un objet en PHP qui représente une requête SQL préparée.
 //Il est créé quand tu appelles la méthode prepare() sur ton objet PDO (qui est la connexion à la base de données).
 
-function addInfosInTheForm(string $pseudo, string $email, string $message): ?bool {
+function addInfosInTheForm(string $pseudo, string $email, string $message): ?bool {// ici les attributs doivent etre les 
+    //meme que dans les attributs name de mes input html
     try {
         $pdo = connectToDB();
         $sql = "INSERT IGNORE INTO `form` (pseudo, email, message) VALUES (:valPseudo, :valEmail, :valMessage)";
