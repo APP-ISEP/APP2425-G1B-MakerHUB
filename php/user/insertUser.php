@@ -25,15 +25,20 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
     }
 }
 
-// TODO à faire le truc là
-function VerifiePseudonyme(string $pseudonyme){ //REVOIR COMPLETEMENT, C'EST JUSTE UN RAPPEL POUR QUE JE LE FASSE.
+
+function VerifyPseudonyme(string $pseudonyme){ 
     try{
         $pdo=connectToDB();
-        $sql="Select * FROM utilisateur WHERE pseudonyme = :valPseudo";
+        $sql="SELECT COUNT(*) FROM utilisateur WHERE pseudonyme = :valPseudo";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valPseudo", $pseudonyme);
-    }
-    catch(PDOException $e) {   
+        $count = (int) $stmt->fetchColumn();
+
+        if ($count > 0) {
+            return false;
+        }
+        return true;
+    }catch(PDOException $e) {   
         // Error executing the query
         $error = $e->getMessage();
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
