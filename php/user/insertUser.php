@@ -26,19 +26,22 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
 }
 
 
-function VerifyPseudonyme(string $pseudonyme){ 
-    try{
-        $pdo=connectToDB();
-        $sql="SELECT COUNT(*) FROM utilisateur WHERE pseudonyme = :valPseudo";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(":valPseudo", $pseudonyme);
-        $count = (int) $stmt->fetchColumn();
+function verifyUsername(string $pseudonyme): bool
+{
+    try {
+        $pdo = connectToDB();
+        $sql = "SELECT * FROM `utilisateur` WHERE pseudonyme=:valUsername";
 
-        if ($count > 0) {
-            return false;
-        }
-        return true;
-    }catch(PDOException $e) {   
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":valUsername", $pseudonyme);
+        $bool = $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+
+         return count($results) === 0;
+        
+    }
+    catch (PDOException $e) {
         // Error executing the query
         $error = $e->getMessage();
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
