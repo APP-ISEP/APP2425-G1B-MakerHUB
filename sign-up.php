@@ -71,9 +71,22 @@ if (isset($_POST) && count($_POST) > 0) {
     if (!isset($_POST['AcceptCPGS'])) {
         $errors['checkbox3'] = "Veullez accepter les CGPS";
         }
-        
-        
-
+    if(!isset($_POST['prenom'])){
+        $errors['prenom'] = "Le champ est obligatoire";
+    }
+    if(!isset($_POST['nom'])){
+        $errors['nom'] = "Le champ est obligatoire";
+    }
+    if(!isset($_POST['pseudonyme'])){
+        $errors['pseudonyme'] = "Le champ est obligatoire";
+    }
+    if(!isset($_POST['email'])){
+        $errors['email'] = "Le champ est obligatoire";
+    }
+    if (!empty($errors)) {
+        echo json_encode($errors);
+        exit;
+    }
     if (empty($errors)) {
         if ($validateEmail && $validatePhone && $validatePassword) {
             $hashedPassword = hashPassword($motDePasse);
@@ -81,7 +94,7 @@ if (isset($_POST) && count($_POST) > 0) {
             $account = getUser($email);
             $_SESSION['account'] = $account;
             $_SESSION['username'] = $account['pseudonyme'];
-
+            
             header("Location: index.php");
         }
     }
