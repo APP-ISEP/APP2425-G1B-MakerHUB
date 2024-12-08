@@ -72,7 +72,7 @@
             </div>
             <!-- submit --->
             <div class="button signup-button">
-                <input type="submit" class="btn submit" value="S'inscrire"/>
+                <input type="submit" class="btn submit" value="S'inscrire" id="submitForm"/>
             </div>
         </form>
 
@@ -81,3 +81,50 @@
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function () {
+    $('#submitForm').on('click', function (e) {
+        e.preventDefault(); 
+        resetErrors();
+
+        const url = 'sign-up.php';
+        const data = {};
+
+        // Collecte des données
+        $('#signUpForm input, #signUpForm select').each(function () {
+            if (this.type !== 'submit') {
+                data[this.name] = this.value;
+            }
+        });
+
+        // Envoi en AJAX
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: url,
+            data: data,
+            success: function (resp) {
+                if (resp === true) {
+                    $('#signUpForm').off('submit').submit();
+                } else {
+                    // Affichage des erreurs
+                    $.each(resp, function (field, error) {
+                        const errorHtml = `<span class="error">${error}</span>`;
+                        $(`[name="${field}"]`).addClass('inputTxtError').after(errorHtml);
+                    })
+                }
+            },
+            error: function () {
+                console.error('Une erreur est survenue lors de la validation.');
+            }
+        });
+    });
+});
+
+function resetErrors() {
+    $('#signUpForm input, #signUpForm select').removeClass('inputTxtError');
+    $('#signUpForm .error').remove();
+}
+
+</script>
