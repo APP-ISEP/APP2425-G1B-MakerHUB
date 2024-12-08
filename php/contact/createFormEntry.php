@@ -26,6 +26,9 @@ function addInfosInTheForm(string $pseudo, string $email, string $message): ?boo
 
         $bool =$stmt->execute(); //Cela envoie la requête préparée (avec les valeurs liées) à la base de données.
         //$bool contient true si l’exécution a réussi, sinon false.
+        if (!$stmt->execute()) {
+            echo "Erreur d'exécution de la requête.";
+        }        
         $stmt->closeCursor();
 
         return $bool;
