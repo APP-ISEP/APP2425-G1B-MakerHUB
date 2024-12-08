@@ -69,3 +69,26 @@ function verifyMail(string $email): ?bool
         return null;
     }
 }
+
+function verifyMail(string $email): bool
+{
+    try {
+        $pdo = connectToDB();
+        $sql = "SELECT * FROM `utilisateur` WHERE mail=:valMail";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":valMail", $email);
+        $bool = $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+
+         return count($results) === 0;
+        
+    }
+    catch (PDOException $e) {
+        // Error executing the query
+        $error = $e->getMessage();
+        echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
+        return null;
+    }
+}

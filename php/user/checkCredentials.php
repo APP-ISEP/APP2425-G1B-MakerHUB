@@ -25,6 +25,15 @@ function validateEmail($email): bool
         return false;
     }
 }
+function uniqueMail($email) : bool
+{
+    if(verifyMail($email)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 
 function uniqueMail($email): bool
 {
