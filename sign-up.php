@@ -26,6 +26,7 @@ if (isset($_POST) && count($_POST) > 0) {
     $telephone = test_input($_POST["telephone"]);
 
     $validateEmail = validateEmail($email);
+    $validateEmailUnique = uniqueMail($email);
     $validatePhone = validateTelephone($telephone);
     $validatePassword = validatePassword($motDePasse);
     $validateLengthNom = lengthNom($nom);
@@ -36,6 +37,9 @@ if (isset($_POST) && count($_POST) > 0) {
 
     if (!$validateEmail) {
         $errors['email'] = "Veuillez saisir un mail valide.";
+    }
+    if (!$validateEmailUnique) {
+        $errors['email'] = "Ce mail existe déjà";
     }
     if (!$validatePhone) {
         $errors['telephone'] = "Veuillez saisir un téléphone valide";
@@ -52,7 +56,7 @@ if (isset($_POST) && count($_POST) > 0) {
         $errors['nom']="Veuillez saisir un nom avec moins de 50 caractères";
     }
     if(!$validateLengthPrenom){
-        $errors['prenom']="Veuillez saisir un prenom avec moins de 50 caractères";
+        $errors['prenom']="Veuillez saisir un prénom avec moins de 50 caractères";
     }
     if(!$validateLengthPseudonyme){
         $errors['pseudonyme']="Veuillez saisir un pseudonyme avec moins de 50 caractères";
@@ -64,6 +68,7 @@ if (isset($_POST) && count($_POST) > 0) {
     if (!isset($_POST['is18More'])) {
         $errors['checkbox1'] = "Veullez confirmer d'avoir plus de 18 ans";
         }
+
     if (!isset($_POST['AccepteCGU'])) {
         $errors['checkbox2'] = "Veullez accepter les CGU.";
         }    
@@ -83,10 +88,7 @@ if (isset($_POST) && count($_POST) > 0) {
     if(!isset($_POST['email'])){
         $errors['email'] = "Le champ est obligatoire";
     }
-    if (!empty($errors)) {
-        echo json_encode($errors);
-        exit;
-    }
+   
     if (empty($errors)) {
         if ($validateEmail && $validatePhone && $validatePassword) {
             $hashedPassword = hashPassword($motDePasse);
