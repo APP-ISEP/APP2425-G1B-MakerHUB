@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <link href="/Users/kucinska/Documents/GitHub/APP2425-G1B-MakerHUB/assets/css/style.css" rel="stylesheet">
-    </head>
-
-<body>
 <div id="contact-page">
-    <div class="title">
-        <h1>Nous contacter</h1>
-    </div>
+    <h1>Nous contacter</h1>
 
     <form class="contact-form" action="contact-page.php" method="POST">
             <div class="space">
                 <label for="pseudo">Pseudonyme</label>
-                <input type="text" id="pseudo" name="pseudo" placeholder="pseudo" required>
+                <input type="text" id="pseudo" name="pseudo" placeholder="pseudo" maxlength="30" required>
             </div>
 
             <div class="space">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="email@email.com" required>
+                <input type="email" id="email" name="email" placeholder="email@email.com" maxlength="255" required>
             </div> 
 
             <div class="space">  
@@ -30,6 +21,7 @@
                     rows="10" 
                     cols="30"
                     placeholder="Message"
+                    maxlength="300"
                     required
                 ></textarea>
             </div> 
@@ -44,9 +36,3 @@
 
     
 </div>
-
-
-</body>
-
-
-</html>

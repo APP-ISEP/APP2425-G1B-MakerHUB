@@ -1,5 +1,5 @@
 <?php
-require_once "../connectToDB.php" //../permet de revenir en arriere d'un cran
+require_once "./php/connectToDB.php"; //../permet de revenir en arriere d'un cran
 //once car on veut se connecter qu'une sule fois la base de donnée et require parcq on a besoin que la fonction soit executé 
 
 //$anna->test(); dans anna y'a une méthode test et on l'appelle 
@@ -26,15 +26,15 @@ function addInfosInTheForm(string $pseudo, string $email, string $message): ?boo
 
         $bool =$stmt->execute(); //Cela envoie la requête préparée (avec les valeurs liées) à la base de données.
         //$bool contient true si l’exécution a réussi, sinon false.
-        if (!$stmt->execute()) {
+        if (!$bool) {
             echo "Erreur d'exécution de la requête.";
-        }        
+        }
         $stmt->closeCursor();
 
         return $bool;
     } catch(PDOException $e) { // $e est un objet de type PDOException.
         $error =$e->getMessage();  //dans l'objet e il y a une function getMessage, fait la et met la dans $error
-        echo mb_convert_encoding (string "database access error: $error \n", to_encoding:'UTF-8', from_encoding: 'UTF-8');
+        echo mb_convert_encoding("Database access error: $error \n", to_encoding:'UTF-8', from_encoding: 'UTF-8');
         return null;
     }
 }
