@@ -15,7 +15,7 @@
 
         <?php endif; ?>
 
-        <form action="" class="form sign-up-form" method="post">
+        <form action="" class="form sign-up-form" method="post" id="myForm">
             <div class="form-row">
                 <!-- first-name --->
                 <div class="form-control">
@@ -63,11 +63,11 @@
                 <label>En cochant cette case, vous confirmez avoir plus de 18 ans<span class="required">*</span></label>
             </div>
             <div class="checkbox-group">
-                <input class="checkbox" type="checkbox" id="check" name="AcceptCGU">
+                <input class="checkbox" type="checkbox" id="check1" name="AcceptCGU">
                 <label>En cochant cette case, vous confirmez avoir lu les <a href="cgu.php">CGU</a><span class="required">*</span></label>
             </div>
             <div class="checkbox-group">
-                <input class="checkbox" type="checkbox"id="check" name="AcceptCGPS">
+                <input class="checkbox" type="checkbox"id="check2" name="AcceptCGPS">
                 <label>En cochant cette case, vous confirmez avoir lu les <a href="cgps.php">CGPS</a><span class="required">*</span></label>
             </div>
             <!-- submit --->
@@ -81,50 +81,27 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
-/**$(document).ready(function () {
-    $('#submitForm').on('click', function (e) {
-        e.preventDefault(); 
-        resetErrors();
+<script>		
+$("#myForm").submit(function(event){
+	event.preventDefault();
+var email = $('#email').val();
+$('#email').change(function(){
+$.ajax({
+    url: './php/user/validation/UniqueMail.php', 
+    type: 'POST',
+    data: {fonction: 'uniqueMail', var1: 'email'}, 
+    success: function(data) {
+        if (data == false){
+            error.innerHTML = "Merci d'écrire une adresse e-mail valide.";
+        }
+      
+    }
 
-        const url = 'sign-up.php';
-        const data = {};
-
-        // Collecte des données
-        $('#signUpForm input, #signUpForm select').each(function () {
-            if (this.type !== 'submit') {
-                data[this.name] = this.value;
-            }
-        });
-
-        // Envoi en AJAX
-        $.ajax({
-            dataType: 'json',
-            type: 'POST',
-            url: url,
-            data: data,
-            success: function (resp) {
-                if (resp === true) {
-                    $('#signUpForm').off('submit').submit();
-                } else {
-                    // Affichage des erreurs
-                    $.each(resp, function (field, error) {
-                        const errorHtml = `<span class="error">${error}</span>`;
-                        $(`[name="${field}"]`).addClass('inputTxtError').after(errorHtml);
-                    })
-                }
-            },
-            error: function () {
-                console.error('Une erreur est survenue lors de la validation.');
-            }
-        });
-    });
 });
+})
+})
 
-function resetErrors() {
-    $('#signUpForm input, #signUpForm select').removeClass('inputTxtError');
-    $('#signUpForm .error').remove();
-}
-**/
+
 </script>
