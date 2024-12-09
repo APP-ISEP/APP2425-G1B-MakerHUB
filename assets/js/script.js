@@ -83,48 +83,80 @@ $(document).ready(() => {
 
 
 //--------- BEGINNING OF THE PAGINATION ---------//
-// TODO
 $(document).ready(() => {
-    const itemsPerPage = 16;
+    const itemsPerPage = 12;
 
-    function createPagination(container, paginationContainer, cards, totalPages) {
+    function createPaginationWithArrows(container, paginationContainer, cards, totalPages) {
+        let currentPage = 0;
+
         if (totalPages > 1) {
-            // ajout numéro des pages
+            const leftArrow = $('<i class="fa-solid fa-angles-left"></i>');
+            const rightArrow = $('<i class="fa-solid fa-angles-right"></i>');
+            paginationContainer.append(leftArrow);
+
+            // ajoute numéros de page
             for (let i = 1; i <= totalPages; i++) {
                 const paginationItem = $(`<div class="page-number"><a class="page-link">${i}</a></div>`);
                 paginationContainer.append(paginationItem);
             }
 
-            const paginationItems = paginationContainer.find('.page-number');
-            paginationItems.first().addClass('active');
+            paginationContainer.append(rightArrow);
 
-            // fix l'affichage de la première page
-            paginationItems.click(function() {
-                const page = $(this).index();
-                const start = page * itemsPerPage;
-                const end = start + itemsPerPage;
-                container.find(cards).hide().slice(start, end).show();
-                paginationItems.removeClass('active')   ;
-                $(this).addClass('active');
+            const paginationItems = paginationContainer.find('.page-number');
+
+            paginationItems.first().addClass('active');
+            container.find(cards).hide().slice(0, itemsPerPage).show();
+
+            // clic sur numéro de page
+            paginationItems.click(function () {
+                currentPage = $(this).index() - 1;
+                updatePagination();
             });
+
+            // clic sur flèche gauche
+            leftArrow.click(function () {
+                if (currentPage > 0) {
+                    currentPage--;
+                    updatePagination();
+                }
+            });
+
+            // clic sur flèche droite
+            rightArrow.click(function () {
+                if (currentPage < totalPages - 1) {
+                    currentPage++;
+                    updatePagination();
+                }
+            });
+
+            function updatePagination() {
+                const start = currentPage * itemsPerPage;
+                const end = start + itemsPerPage;
+
+                container.find(cards).hide().slice(start, end).show();
+
+                paginationItems.removeClass('active');
+                paginationItems.eq(currentPage).addClass('active');
+            }
+        } else {
+            container.find(cards).show();
         }
     }
 
-    // Offers pagination
+    // pagination pour les offres
     const offersContainer = $('.offers-container');
     const offersCards = $('.offers-cards-container .offer-card');
-    const numberOffers = offersCards.length
+    const numberOffers = offersCards.length;
     const offersTotalPages = Math.ceil(numberOffers / itemsPerPage);
     const offersPagination = $('#offers-pagination');
-    createPagination(offersContainer, offersPagination, offersCards, offersTotalPages);
+    createPaginationWithArrows(offersContainer, offersPagination, offersCards, offersTotalPages);
 
-
-    // Requests pagination
+    // pagination pour les demandes
     const requestsContainer = $('.requests-container');
     const requestsCards = $('.requests-cards-container .request-card');
-    const numberRequests = requestsCards.length
+    const numberRequests = requestsCards.length;
     const requestTotalPages = Math.ceil(numberRequests / itemsPerPage);
     const requestsPagination = $('#requests-pagination');
-    createPagination(requestsContainer, requestsPagination, requestsCards, requestTotalPages);
+    createPaginationWithArrows(requestsContainer, requestsPagination, requestsCards, requestTotalPages);
 });
 //--------- END OF THE PAGINATION ---------//

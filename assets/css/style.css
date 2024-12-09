@@ -749,6 +749,19 @@ input:focus, textarea:focus {
     font-size: 1.8em;
 }
 
+.page-number {
+    background-color: var(--base-color-2);
+    cursor: pointer;
+    width: 2%;
+    text-align: center;
+}
+
+.pagination > .active {
+    color: var(--base-color-3) !important;
+    background-color: var(--base-color) !important;
+    border-radius: 20%;
+}
+
 #aboutMe, #toggle-control {
     width: 90%;
 }
