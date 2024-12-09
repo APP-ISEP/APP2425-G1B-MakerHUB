@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title = "Mentions légales";
 
 ob_start();

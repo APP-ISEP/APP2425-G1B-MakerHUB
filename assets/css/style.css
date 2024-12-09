@@ -761,18 +761,13 @@ input:focus, textarea:focus {
 
 /* COOKIES */
 .cookies {
-    /*margin-top: 7em;
-    margin-bottom: 7em;
-    margin-left: 30%;
-    margin-right: 30%;
-    text-align: left;*/
-
     color: var(--secondary-text-color);
     display: flex;
     flex-direction: column;
     width: 60%;
     margin-left: 20%;
     padding-top: 2%;
+    padding-bottom: 2%;
     gap: 60px;
 }
 

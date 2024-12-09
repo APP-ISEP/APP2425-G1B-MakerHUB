@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title = "Politique de cookies";
 
 ob_start();
