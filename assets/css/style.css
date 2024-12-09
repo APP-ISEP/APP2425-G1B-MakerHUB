@@ -628,17 +628,17 @@ input:focus, textarea:focus {
 }
 
 .offers-cards-container, .requests-cards-container {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: start;
+
     text-align: center;
     margin: 2% auto auto auto;
     width: 95%;
 }
 
 .offer-card, .request-card {
-    width: 21%;
     background-color: var(--base-color-3);
     border: 1px solid var(--secondary-border-color);
     border-radius: 8px;

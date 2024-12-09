@@ -40,106 +40,22 @@
                 <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
+            <?php if (isset($offers)) : ?>
             <div class="offers-cards-container">
+                <?php foreach ($offers as $item) : ?>
                 <div class="offer-card">
                     <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
                     <div class="card-info">
-                        <h4 class="card-title">Titre de l'offre</h4>
-                        <h3 class="card-price">1 000 000 €</h3>
-                        <p class="card-description">Description de l'offre sur 200 caractères max</p>
-                        <p class="card-status">Statut : à imprimer</p>
+                        <h4 class="card-title"><?= $item['titre'] ?></h4>
+                        <h3 class="card-price"><?= number_format($item['prix'], 2, ',', ' ') ?> €</h3>
+                        <p class="card-description"><?= $item['description'] ?></p>
+                        <p class="card-status">Statut : <?= $item['statut_impression'] ?></p>
                         <button class="button button-buy">Acheter</button>
                     </div>
                 </div>
-
-                <div class="offer-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de l'offre</h4>
-                        <h3 class="card-price">1 000 000 €</h3>
-                        <p class="card-description">Description de l'offre sur 200 caractères max</p>
-                        <p class="card-status">Statut : à imprimer</p>
-                        <button class="button button-buy">Acheter</button>
-                    </div>
-                </div>
-
-                <div class="offer-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de l'offre</h4>
-                        <h3 class="card-price">1 000 000 €</h3>
-                        <p class="card-description">Description de l'offre sur 200 caractères max</p>
-                        <p class="card-status">Statut : à imprimer</p>
-                        <button class="button button-buy">Acheter</button>
-                    </div>
-                </div>
-
-                <div class="offer-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de l'offre</h4>
-                        <h3 class="card-price">1 000 000 €</h3>
-                        <p class="card-description">Description de l'offre sur 200 caractères max</p>
-                        <p class="card-status">Statut : à imprimer</p>
-                        <button class="button button-buy">Acheter</button>
-                    </div>
-                </div>
-
-                <div class="offer-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de l'offre</h4>
-                        <h3 class="card-price">1 000 000 €</h3>
-                        <p class="card-description">Description de l'offre sur 200 caractères max</p>
-                        <p class="card-status">Statut : à imprimer</p>
-                        <button class="button button-buy">Acheter</button>
-                    </div>
-                </div>
-
-                <div class="offer-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de l'offre</h4>
-                        <h3 class="card-price">1 000 000 €</h3>
-                        <p class="card-description">Description de l'offre sur 200 caractères max</p>
-                        <p class="card-status">Statut : à imprimer</p>
-                        <button class="button button-buy">Acheter</button>
-                    </div>
-                </div>
-
-                <div class="offer-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de l'offre</h4>
-                        <h3 class="card-price">1 000 000 €</h3>
-                        <p class="card-description">Description de l'offre sur 200 caractères max</p>
-                        <p class="card-status">Statut : à imprimer</p>
-                        <button class="button button-buy">Acheter</button>
-                    </div>
-                </div>
-
-                <div class="offer-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de l'offre</h4>
-                        <h3 class="card-price">1 000 000 €</h3>
-                        <p class="card-description">Description de l'offre sur 200 caractères max</p>
-                        <p class="card-status">Statut : à imprimer</p>
-                        <button class="button button-buy">Acheter</button>
-                    </div>
-                </div>
-
-                <div class="offer-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de l'offre</h4>
-                        <h3 class="card-price">1 000 000 €</h3>
-                        <p class="card-description">Description de l'offre sur 200 caractères max</p>
-                        <p class="card-status">Statut : à imprimer</p>
-                        <button class="button button-buy">Acheter</button>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
+            <?php endif; ?>
         </div>
 
         <div class="requests-container">
@@ -148,88 +64,21 @@
                 <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
+
+            <?php if (isset($requests)) : ?>
             <div class="requests-cards-container">
+                <?php foreach ($requests as $item) : ?>
                 <div class="request-card">
                     <img src="./assets/images/placeholder.svg" alt="Image de la demande">
                     <div class="card-info">
-                        <h4 class="card-title">Titre de la demande</h4>
-                        <p class="card-description">Description de la demande sur 200 caractères max</p>
+                        <h4 class="card-title"><?= $item['reference'] ?> - <?= $item['titre'] ?></h4>
+                        <p class="card-description"><?= $item['description'] ?></p>
                         <button class="button button-buy">Accepter</button>
                     </div>
                 </div>
-
-                <div class="request-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de la demande">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de la demande</h4>
-                        <p class="card-description">Description de la demande sur 200 caractères max</p>
-                        <button class="button button-buy">Accepter</button>
-                    </div>
-                </div>
-
-                <div class="request-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de la demande">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de la demande</h4>
-                        <p class="card-description">Description de la demande sur 200 caractères max</p>
-                        <button class="button button-buy">Accepter</button>
-                    </div>
-                </div>
-
-                <div class="request-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de la demande">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de la demande</h4>
-                        <p class="card-description">Description de la demande sur 200 caractères max</p>
-                        <button class="button button-buy">Accepter</button>
-                    </div>
-                </div>
-
-                <div class="request-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de la demande">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de la demande</h4>
-                        <p class="card-description">Description de la demande sur 200 caractères max</p>
-                        <button class="button button-buy">Accepter</button>
-                    </div>
-                </div>
-
-                <div class="request-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de la demande">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de la demande</h4>
-                        <p class="card-description">Description de la demande sur 200 caractères max</p>
-                        <button class="button button-buy">Accepter</button>
-                    </div>
-                </div>
-
-                <div class="request-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de la demande">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de la demande</h4>
-                        <p class="card-description">Description de la demande sur 200 caractères max</p>
-                        <button class="button button-buy">Accepter</button>
-                    </div>
-                </div>
-
-                <div class="request-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de la demande">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de la demande</h4>
-                        <p class="card-description">Description de la demande sur 200 caractères max</p>
-                        <button class="button button-buy">Accepter</button>
-                    </div>
-                </div>
-
-                <div class="request-card">
-                    <img src="./assets/images/placeholder.svg" alt="Image de la demande">
-                    <div class="card-info">
-                        <h4 class="card-title">Titre de la demande</h4>
-                        <p class="card-description">Description de la demande sur 200 caractères max</p>
-                        <button class="button button-buy">Accepter</button>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
