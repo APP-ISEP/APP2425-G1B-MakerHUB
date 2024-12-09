@@ -4,7 +4,7 @@
     <form class="contact-form" action="contact-page.php" method="POST">
             <div class="space">
                 <label for="pseudo">Pseudonyme</label>
-                <input type="text" id="pseudo" name="pseudo" placeholder="pseudo" maxlength="30" required>
+                <input type="text" id="pseudo" name="pseudo" placeholder="Pseudonyme" maxlength="30" required>
             </div>
 
             <div class="space">
@@ -16,14 +16,15 @@
                 <label for="message">Message</label>
         
                 <textarea
-                type="text"
                     name="message" 
+                    id="message-contact"
                     rows="10" 
                     cols="30"
                     placeholder="Message"
                     maxlength="300"
                     required
                 ></textarea>
+                <div class="word-counter">0/100</div>
             </div> 
                 <!-- send button -->
                 <div class="send-button">

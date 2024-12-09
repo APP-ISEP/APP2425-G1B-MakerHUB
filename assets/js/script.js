@@ -80,3 +80,13 @@ $(document).ready(() => {
 });
 
 //--------- END OF CATEGORIES INSIDE HOME PAGE---------//
+
+
+
+//--------- BEGINNING OF CONTACT PAGE COUNTER---------//
+const textarea = document.getElementById("message-contact");
+const wordCounter = document.querySelector(".word-counter");
+const maxLength = textarea.maxLength;
+
+
+//--------- END OF CONTACT PAGE COUNTER---------//
