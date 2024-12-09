@@ -37,6 +37,7 @@
             <div class="form-control">
                 <label for="email">Email<span class="required">*</span></label>
                 <input id="email" maxlength="255" placeholder="Votre email..." required type="email" name="email">
+                <div id="emailError" class="wrong-signup" style="display: none;"></div>  <!-- AJOUTE APRES-->
             </div>
             <!-- tel --->
             <div class="form-control">
@@ -45,9 +46,18 @@
             </div>
             <!-- password --->
             <div class="form-control">
-                <label for="password">Mot de passe<span class="required">*</span></label>
+                <label for="password" id="passwordLabel">Mot de passe<span class="required">*</span></label>
                 <input id="password" type="password" placeholder="Votre mot de passe..." required name="motDePasse">
-
+                <span class="tooltip" id="password-tooltip">
+                    Le mot de passe doit contenir :
+                    <ul>
+                      <li>Au moins 8 caractères</li>
+                      <li>Une lettre majuscule</li>
+                      <li>Une lettre minuscule</li>
+                      <li>Un chiffre</li>
+                      <li>Un caractère spécial (!@#$%^&*)</li>
+                    </ul>
+                  </span>
                 <!-- show/hide password  -->
                 <span class="eye-span signup-eye">
                 <i class="fa-solid fa-eye" aria-hidden="true"  type="button" id="eye"></i>
@@ -83,25 +93,74 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>		
-$("#myForm").submit(function(event){
-	event.preventDefault();
-var email = $('#email').val();
+<style>
+    .tooltip { /*si je deplace dans style.css il le lit plus*/
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+ <script>		
+
+
+    $(document).ready(function () {
+        var timer;
+
+        $("#passwordLabel").on("mouseover", function () {
+            clearTimeout(timer);
+            $("#password-tooltip").fadeIn("slow");
+        });
+
+        $("#passwordLabel").on("mouseout", function () {
+            timer = setTimeout(function () {
+                $("#password-tooltip").fadeOut("slow");
+            }, 200);
+        });
+    });
+/*$('#email').on('change', function () {
+    const email = $(this).val();
+    $.post('php/user/checkCredentials.php', { email: email })
+        .done(function (response) {
+            try {
+                const data = JSON.parse(response);
+                if (data.unique) {
+                    $('#emailError').hide();
+                } else {
+                    $('#emailError').show().text('Email already in use');
+                }
+            } catch (error) {
+                console.error("Invalid JSON response", response);
+            }
+        })
+        .fail(function () {
+            alert('An error occurred while validating the email.');
+        });
+});*/
+
+/*var email = $('#email').val();
+include_path='./xampp/php/PEAR';
+    
 $('#email').change(function(){
+    
 $.ajax({
-    url: './php/user/validation/UniqueMail.php', 
+    url: './php/user/checkCredentials.php', 
     type: 'POST',
     data: {fonction: 'uniqueMail', var1: 'email'}, 
     success: function(data) {
-        if (data == false){
-            error.innerHTML = "Merci d'écrire une adresse e-mail valide.";
-        }
-      
-    }
+        console.log("fonction change");
+        console.log(data);
+        if(data){
+            console.log("je suis dans le data true");
+           // alert("Data was NOT succesfully captured");
 
-});
+        }
+    }   
 })
-})
+})*/
 
 
 </script>
