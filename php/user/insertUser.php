@@ -1,6 +1,7 @@
 <?php
 require_once "./php/connectToDB.php";
 
+
 function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone)
 {
     try {
@@ -17,7 +18,7 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
         ]);
 
         $stmt->closeCursor();
-    } catch (PDOException $e) {   
+    } catch (PDOException $e) {
         // Error executing the query
         $error = $e->getMessage();
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
