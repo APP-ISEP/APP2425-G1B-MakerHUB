@@ -1,10 +1,10 @@
 <?php
 session_start();
-$title = "Mentions légales";
+$title = "Politique de cookies";
 
 ob_start();
 
-include_once 'views/legal-notices.html';
+include_once 'views/cookies.html';
 
 $body = ob_get_clean();
 
