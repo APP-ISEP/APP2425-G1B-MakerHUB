@@ -80,3 +80,51 @@ $(document).ready(() => {
 });
 
 //--------- END OF CATEGORIES INSIDE HOME PAGE---------//
+
+
+//--------- BEGINNING OF THE PAGINATION ---------//
+// TODO
+$(document).ready(() => {
+    const itemsPerPage = 16;
+
+    function createPagination(container, paginationContainer, cards, totalPages) {
+        if (totalPages > 1) {
+            // ajout numéro des pages
+            for (let i = 1; i <= totalPages; i++) {
+                const paginationItem = $(`<div class="page-number"><a class="page-link">${i}</a></div>`);
+                paginationContainer.append(paginationItem);
+            }
+
+            const paginationItems = paginationContainer.find('.page-number');
+            paginationItems.first().addClass('active');
+
+            // fix l'affichage de la première page
+            paginationItems.click(function() {
+                const page = $(this).index();
+                const start = page * itemsPerPage;
+                const end = start + itemsPerPage;
+                container.find(cards).hide().slice(start, end).show();
+                paginationItems.removeClass('active')   ;
+                $(this).addClass('active');
+            });
+        }
+    }
+
+    // Offers pagination
+    const offersContainer = $('.offers-container');
+    const offersCards = $('.offers-cards-container .offer-card');
+    const numberOffers = offersCards.length
+    const offersTotalPages = Math.ceil(numberOffers / itemsPerPage);
+    const offersPagination = $('#offers-pagination');
+    createPagination(offersContainer, offersPagination, offersCards, offersTotalPages);
+
+
+    // Requests pagination
+    const requestsContainer = $('.requests-container');
+    const requestsCards = $('.requests-cards-container .request-card');
+    const numberRequests = requestsCards.length
+    const requestTotalPages = Math.ceil(numberRequests / itemsPerPage);
+    const requestsPagination = $('#requests-pagination');
+    createPagination(requestsContainer, requestsPagination, requestsCards, requestTotalPages);
+});
+//--------- END OF THE PAGINATION ---------//

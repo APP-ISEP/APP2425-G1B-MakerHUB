@@ -739,6 +739,16 @@ input:focus, textarea:focus {
     cursor: pointer;
 }
 
+/* TODO */
+.pagination {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin: 2% 5% 5% auto;
+    gap: 10px;
+    font-size: 1.8em;
+}
+
 #aboutMe, #toggle-control {
     width: 90%;
 }
