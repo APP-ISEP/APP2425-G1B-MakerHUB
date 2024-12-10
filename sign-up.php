@@ -1,9 +1,17 @@
 <?php
+include 'config/constants.php';
+include 'autoload.php';
+
+use Config\Log\Log;
+use Config\Log\LogFileSingleton;
+use Config\Log\LogLevel;
+
 session_start();
 
 $title = "Inscription";
 $errors = array();
 $isAuthPage = true;
+$logFile = LogFileSingleton::getInstance();
 
 ob_start();
 
@@ -99,6 +107,8 @@ if (isset($_POST) && count($_POST) > 0) {
             $_SESSION['account'] = $account;
             $_SESSION['username'] = $account['pseudonyme'];
 
+
+            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a été créé depuis" . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: index.php");
         }
     }

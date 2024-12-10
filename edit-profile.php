@@ -70,7 +70,7 @@ if (isset($_POST) && count($_POST) > 0) {
             $_SESSION['roles'] = $userRoles;
             $_SESSION['account'] = $account;
 
-            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " a modifié son profil depuis" . $_SERVER['REMOTE_ADDR'] . "."));
+            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a modifié son profil depuis" . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: index.php");
         }
     }
