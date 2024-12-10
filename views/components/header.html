@@ -14,12 +14,16 @@
 <body>
 <div class="navbar">
     <a href="index.php">
-    <div class="header-logo">
-        <img alt="Logo MakerHUB" class="img-logo" src="./assets/images/logo.svg">
-    </div>
+        <div class="header-logo">
+            <img alt="Logo MakerHUB" class="img-logo" src="./assets/images/logo.svg">
+        </div>
     </a>
 
     <?php if (isset($username)) : ?>
+    <ul class="navbar-links">
+        <li><a href="demand-creation.php">Créer une demande</a></li>
+        <li><a href="#">Créer une offre</a></li>
+    </ul>
 
     <div class="profil" id="profil">
         <img alt="Photo de profil" class="img-profil" src="./assets/images/profil.svg">
@@ -42,7 +46,6 @@
         <button class="button button-signup" onclick="location.href = 'sign-up.php'">
             S'inscrire
         </button>
-
     </div>
 
     <?php endif; ?>

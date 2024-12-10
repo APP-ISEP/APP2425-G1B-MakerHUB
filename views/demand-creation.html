@@ -1,0 +1,66 @@
+<div class="container">
+    <form action="" method="post" class="form-section">
+        <h1>Créer une demande</h1>
+
+        <?php if (!empty($errors)) : ?>
+
+        <?php foreach ($errors as $error): ?>
+        <div class="wrong-edit">
+            <?= $error ?> <br/>
+        </div>
+        <?php endforeach; ?>
+
+        <?php endif; ?>
+
+        <div class="section">
+            <h2 class="subtitle">Informations de la demande</h2>
+
+            <!-- title -->
+            <div class="form-control">
+                <label for="title">Titre<span class="required">*</span></label>
+                <input type="text" id="title" name="title" placeholder="Titre de la demande..." maxlength="40" required>
+            </div>
+
+            <!-- description -->
+            <div class="form-control">
+                <label for="description">Description<span class="required">*</span></label>
+                <textarea id="description" name="description" rows="4" placeholder="Description de la demande..." maxlength="200"></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="subtitle">Fichiers de la demande</h2>
+
+            <div class="form-container">
+                <!-- description file -->
+                <div class="form-control">
+                    <label for="illustration" class="input-file-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                        </svg>
+                        Choisir une illustration...
+                    </label>
+                    <input type="file" id="illustration" name="illustration" accept="images/*">
+                </div>
+
+                <!-- file to print -->
+                <div class="form-control">
+                    <label for="fileToPrint" class="input-file-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                        </svg>
+                        Choisir un fichier 3D...
+                    </label>
+                    <input type="file" id="fileToPrint" name="fileToPrint" accept=".stl">
+                </div>
+            </div>
+        </div>
+
+        <!-- create button -->
+        <div class="save-button">
+            <button type="submit">
+                Créer la demande
+            </button>
+        </div>
+    </form>
+</div>
