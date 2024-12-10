@@ -84,6 +84,7 @@ button {
     justify-content: space-between;
     gap: 15px;
     list-style-type: none;
+    margin-left: -6%;
 }
 
 .navbar-links li {

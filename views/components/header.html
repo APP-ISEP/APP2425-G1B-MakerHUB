@@ -19,12 +19,11 @@
         </div>
     </a>
 
+    <?php if (isset($username)) : ?>
     <ul class="navbar-links">
         <li><a href="demand-creation.php">Créer une demande</a></li>
         <li><a href="#">Créer une offre</a></li>
     </ul>
-
-    <?php if (isset($username)) : ?>
 
     <div class="profil" id="profil">
         <img alt="Photo de profil" class="img-profil" src="./assets/images/profil.svg">
