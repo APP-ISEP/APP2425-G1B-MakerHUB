@@ -624,8 +624,29 @@ input:focus, textarea:focus {
     gap: 5%;
 }
 
+.price-filter-container {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    justify-content: space-around;
+}
+
+.price-filter-container button {
+    width: 80px
+}
+
+.price-filter-container input  {
+    appearance: textfield;
+}
+
+.price-filter-text {
+    color: var(--important-element-color);
+    font-size: 1.2em;
+    align-content: center;
+}
+
 .category {
-    width: 35%;
+    width: auto;
     border: 3px solid var(--important-element-color);
     border-radius: 10px;
     padding: 10px;
@@ -660,7 +681,7 @@ input:focus, textarea:focus {
     margin: -3% 1% 5% auto;
 }
 
-#search-bar-input, #search-bar-input-2 {
+.search-bar-input, #search-bar-input-2 {
     background-color: var(--base-color-2);
     border: 2px solid var(--important-element-color);
     color: var(--important-element-color);
@@ -671,7 +692,7 @@ input:focus, textarea:focus {
     width: 100%;
 }
 
-#search-bar-input::placeholder, #search-bar-input-2::placeholder {
+.search-bar-input::placeholder, #search-bar-input-2::placeholder {
     color: var(--important-element-color);
 }
 

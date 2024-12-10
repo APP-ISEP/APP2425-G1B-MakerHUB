@@ -25,6 +25,7 @@
     </div>
 
     <div class="catalog-container" id="catalog-container">
+
         <div class="categories">
             <div class="category category-offer button active-category">
                 Offres
@@ -35,8 +36,24 @@
         </div>
 
         <div class="offers-container">
+
+            <div class="price-filter-container">
+                <button class="active-category">Filtrer</button>
+                <div class="price-filter">
+                    <input type="number" class="search-bar-input" name="price-filter" min="0" max="10000,00" placeholder="min">
+                    <span class="price-filter-text">€</span>
+                </div>
+    
+                <span class="price-filter-text">-</span>
+    
+                <div class="price-filter">
+                    <input type="number" class="search-bar-input" name="price-filter" min="0" max="10000,00" placeholder="max">
+                    <span class="price-filter-text">€</span>
+                </div>
+            </div>
+
             <div class="search-bar-offer">
-                <input type="text" id="search-bar-input" placeholder="Rechercher une offre..." maxlength="50">
+                <input type="text" class="search-bar-input" placeholder="Rechercher une offre..." maxlength="50">
                 <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
