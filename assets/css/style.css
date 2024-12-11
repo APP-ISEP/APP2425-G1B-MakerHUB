@@ -68,7 +68,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    z-index: 99;
 }
 
 .header-logo {
@@ -622,6 +622,12 @@ input:focus, textarea:focus {
     margin: 2% auto auto auto;
     width: 25%;
     gap: 5%;
+    position: relative;
+    z-index: 1;
+}
+
+.offers-container {
+    transform: translateY(-60px);
 }
 
 .price-filter-container {
@@ -629,6 +635,7 @@ input:focus, textarea:focus {
     flex-direction: row;
     width: 25%;
     justify-content: space-around;
+    margin-left: 40px;
 }
 
 .price-filter-container button {
@@ -637,6 +644,7 @@ input:focus, textarea:focus {
 
 .price-filter-container input  {
     appearance: textfield;
+    width: 110px;
 }
 
 .price-filter-text {

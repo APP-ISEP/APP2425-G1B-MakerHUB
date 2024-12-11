@@ -1,11 +1,19 @@
 <?php
 
 require_once "./php/connectToDB.php";
-function getRequests(): ?array
+function getRequests($search = null): ?array
 {
     try {
         $pdo = connectToDB();
-        $sql = "SELECT * FROM `produit_demande`";
+
+        if (isset($search)) {
+            echo "search";
+            $sql = "SELECT * FROM `produit_demande` WHERE `titre` LIKE '%$search%' OR `description` LIKE '%$search%'";
+        }
+        else {
+            echo "no search";
+            $sql = "SELECT * FROM `produit_demande`";
+        }
 
         $stmt = $pdo->prepare($sql);
         $bool = $stmt->execute();

@@ -1,11 +1,19 @@
 <?php
 
 require_once "./php/connectToDB.php";
-function getOffers(): ?array
+function getOffers($minPrice = 0.00, $maxPrice = 10000.00, $search = null): ?array
 {
     try {
         $pdo = connectToDB();
-        $sql = "SELECT * FROM `produit_fini`";
+        if (isset($search)) {
+            echo "search";
+            $sql = "SELECT * FROM `produit_fini` WHERE `prix` >= $minPrice AND `prix` <= $maxPrice AND (`titre` LIKE '%$search%' OR `description` LIKE '%$search%')";
+        }
+        else {
+            echo "no search";
+            $sql = "SELECT * FROM `produit_fini` WHERE `prix` >= $minPrice";
+        }
+        
 
         $stmt = $pdo->prepare($sql);
         $bool = $stmt->execute();

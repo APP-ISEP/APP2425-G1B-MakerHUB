@@ -82,6 +82,36 @@ $(document).ready(() => {
 //--------- END OF CATEGORIES INSIDE HOME PAGE---------//
 
 
+//--------- BEGINNING OF FILTER CONDITIONS---------//
+
+$(document).ready(() => {
+    const minPrice = $('#minPrice');
+    const maxPrice = $('#maxPrice');
+
+    minPrice.on('blur', () => {
+        let maxVal = parseFloat(maxPrice.val());
+        if (parseFloat(minPrice.val()) > maxVal) {
+            minPrice.val(maxVal);
+        }
+        else if (parseFloat(minPrice.val()) < 0) {
+            minPrice.val(0);
+        }
+    });
+
+    maxPrice.on('blur', () => {
+        let minVal = parseFloat(minPrice.val());
+        if (parseFloat(maxPrice.val()) < minVal) {
+            maxPrice.val(minVal);
+        }
+        else if (parseFloat(maxPrice.val()) > 10000) {
+            maxPrice.val(10000);
+        }
+    });
+});
+
+//--------- END OF FILTER CONDITIONS---------//
+
+
 //--------- BEGINNING OF THE PAGINATION ---------//
 $(document).ready(() => {
     const itemsPerPage = 12;
