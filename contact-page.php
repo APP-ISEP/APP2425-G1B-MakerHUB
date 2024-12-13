@@ -11,7 +11,7 @@ $title = "Contactez-nous";
 
 ob_start();
 
-include_once 'views/contact-page/contact-page.html';
+include_once 'views/contact-page.html';
 
 $body = ob_get_clean();
 
