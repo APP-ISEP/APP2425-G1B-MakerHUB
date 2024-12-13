@@ -90,7 +90,7 @@ const textarea = document.getElementById("message-contact");//Cela te donne une 
 const wordCounter = document.querySelector(".word-counter");
 const maxLength = textarea.maxLength;
 var restLetter = maxLength - (textarea.value).length;
-console.log(restLetter);
+
 textarea.addEventListener ('input', () => {
     restLetter = maxLength - (textarea.value).length;
     wordCounter.textContent = `${restLetter} restants`;
