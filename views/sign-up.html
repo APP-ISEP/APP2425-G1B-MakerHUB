@@ -46,7 +46,7 @@
             </div>
             <!-- password --->
             <div class="form-control">
-                <label for="password" id="passwordLabel">Mot de passe<span class="required">*</span></label>
+                <label for="password" id="passwordLabel">Mot de passe<span class="required">*  </span><i class="fa-solid fa-circle-question" id="passwordInfo"></i></label>
                 <input id="password" type="password" placeholder="Votre mot de passe..." required name="motDePasse">
                 <span class="tooltip" id="password-tooltip">
                     Le mot de passe doit contenir :
@@ -55,7 +55,7 @@
                       <li>Une lettre majuscule</li>
                       <li>Une lettre minuscule</li>
                       <li>Un chiffre</li>
-                      <li>Un caractère spécial (!@#$%^&*)</li>
+                      <li>Un caractère spécial (!@#$%^&*.)</li>
                     </ul>
                   </span>
                 <!-- show/hide password  -->
@@ -110,15 +110,15 @@
     $(document).ready(function () {
         var timer;
 
-        $("#passwordLabel").on("mouseover", function () {
+        $("#passwordInfo").on("click", function () {
             clearTimeout(timer);
             $("#password-tooltip").fadeIn("slow");
         });
 
-        $("#passwordLabel").on("mouseout", function () {
+        $("#passwordInfo").on("mouseout", function () {
             timer = setTimeout(function () {
                 $("#password-tooltip").fadeOut("slow");
-            }, 200);
+            }, 2000);
         });
     });
 /*$('#email').on('change', function () {
