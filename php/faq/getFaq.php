@@ -1,9 +1,9 @@
 <?php
-require_once "./php/connectToDB.php";
+require_once "../php/connectToDB.php";
 function getFaq() {
     try {
         $pdo = connectToDB();
-        $sql="SELECT * FROM `faq`";
+        $sql="SELECT * FROM `faq` WHERE est_actif = 1";
 
         $stmt = $pdo->prepare($sql);
         $bool = $stmt->execute();

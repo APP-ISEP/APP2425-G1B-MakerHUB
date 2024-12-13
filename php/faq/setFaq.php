@@ -1,7 +1,15 @@
 <?php
-require_once "./php/connectToDB.php";
+require_once "../php/connectToDB.php";
 
-function setFAQ(int $id, string $question, string $reponse, date $cree_a, bool $est_actif, date $inactif_depuis): bool
+$id = $_GET['id'];
+$question = $_GET['question'];
+$reponse = $_GET['reponse'];
+$est_actif = $_GET['est_actif'];
+$inactif_depuis = $_GET['inactif_depuis'];
+
+setFAQ($id, $question, $reponse, $est_actif, $inactif_depuis);
+
+function setFAQ(int $id, string $question, string $reponse, bool $est_actif, date $inactif_depuis): bool
 {
     try {
         $pdo = connectToDB();
