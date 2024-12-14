@@ -1,5 +1,9 @@
 <?php
+
 require_once(__DIR__ . '/../connectToDB.php');
+
+
+
 function getUser(string $email): ?array
 {
     try {
@@ -26,11 +30,11 @@ function getUser(string $email): ?array
     }
 }
 
-function getUser(): ?array
+function getUsers(): ?array
 {
     try {
         $pdo = connectToDB();
-        $sql = "SELECT * FROM `utilisateur`;";
+        $sql = "SELECT * FROM `utilisateur` WHERE est_actif = 1;";
 
         $stmt = $pdo->prepare($sql);
         $bool = $stmt->execute();

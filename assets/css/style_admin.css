@@ -136,7 +136,7 @@ color:var(--base_color-2);
     color: var(--base-color-3);
 }
 
-.main a .submitButton{
+.main a .submitButton, a.submitButton{
     width : 100%;
     border: 3px solid var(--important-element-color);
     border-radius: 10px;

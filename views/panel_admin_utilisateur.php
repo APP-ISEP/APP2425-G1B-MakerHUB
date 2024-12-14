@@ -35,6 +35,30 @@
         </div>
    
 
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th><th></th></th>
+            </tr>
+            <?php
+            require('../php/user/getUser.php'); 
+        
+            $users = getUsers();
+            foreach($users as $user) {
+                $prenom = $user['prenom'];
+                $nom = $user['nom'];
+                $email = $user['email'];?>
+                <tr>
+                    <td><?php echo($prenom);?></td>
+                    <td><?php echo($nom);?></td>
+                    <td><?php echo($email);?></td>
+                    <td><a onclick="deleteFaq(<?php echo $user['id_utilisateur'];?>)"><button class="submit"><i class="fa-regular fa-trash-can" style="color: #ffffff;"></i></button></a></td>
+                </tr>
+            <?php } ?>
+        </table>
+
 
                 <section id="supprimer-utilisateur" class="section content-box">
                     <h2>Utilisateurs</h2>
@@ -42,7 +66,7 @@
                         <label for="suppression_utilisateur">Supprimer un utilisateur</label>
                         <select name="suppression_utilisateur" autocomplete="on">
                             <option value=""> -- Sélectionner un utilisateur -- </option>
-                            <?php foreach($utilisateurs as $utilisateur) {
+                            <?php foreach($users as $user) {
                                 $id_utilisateur = $utilisateur['id_utilisateur'];
                                 $email_utilisateur = $utilisateur['email'];?>
                                 <option value="<?php echo($id_utilisateur);?>"><?php echo($email_utilisateur);?></option>

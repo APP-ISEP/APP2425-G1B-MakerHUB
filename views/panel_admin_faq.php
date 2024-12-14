@@ -6,6 +6,80 @@
         <link href="../../assets/css/style.css" rel="stylesheet">
         <link href="../../assets/images/favico.ico" rel="icon">
         <title>Administration | Makerhub</title>
+        <script>
+            xmlhttp = new XMLHttpRequest();
+
+            
+            
+            function setFaq(id, question, reponse) {
+                try{
+                        if (window.XMLHttpRequest) {
+                        xmlhttp= new XMLHttpRequest();
+                    } else {
+                        if (window.ActiveXObject)
+                            try {
+                                xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                            } catch (e) {
+                                try {
+                                    xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                                } catch (e) {
+                                    return NULL;
+                                }
+                            }
+                    }
+
+                    xmlhttp.onreadystatechange = function ()
+                    {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                        {
+                            console.log(xmlhttp.responseText);
+                        }
+                    }
+                        console.log(id);
+                        console.log(question);
+                        console.log(reponse);
+                        xmlhttp.open("GET", "../php/faq/setFaq.php?id="+id+"&reponse="+reponse+"&question="+question, true);
+                        xmlhttp.send();
+                }
+                catch(e){
+                    console.log(e);
+                }
+            }
+
+            function deleteFaq(id) {
+                try{
+                    console.log(id);
+                    if (window.XMLHttpRequest) {
+                        xmlhttp= new XMLHttpRequest();
+                    } else {
+                        if (window.ActiveXObject)
+                            try {
+                                xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                            } catch (e) {
+                                try {
+                                    xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                                } catch (e) {
+                                    return NULL;
+                                }
+                            }
+                    }
+
+                    xmlhttp.onreadystatechange = function ()
+                    {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                        {
+                            console.log(xmlhttp.responseText);
+                        }
+                    }
+                    xmlhttp.open("GET", "../php/faq/setFaq.php?id="+id, true);
+                    xmlhttp.send();
+                }
+                catch(e){
+                    console.log(e);
+                }
+                
+            }
+        </script>
     </head>
 
     <body>
@@ -39,7 +113,7 @@
                     <h2>FAQ</h2>
                     <p>Vous pouvez ajouter ou supprimer des questions fréquemment posées.</p>
                     
-                    <form action="faq.php" method="POST">
+                    <form action="../php/faq/addFaq.php" method="POST">
                         <label for="question">Question</label>  
                         <br>  
                         <textarea type="text" name="question" placeholder="Question"></textarea>
@@ -49,7 +123,6 @@
                         <textarea type="text" name="reponse" placeholder="Réponse"></textarea>
                         <br>
                         <input class="submit" type="submit" value="Ajouter">
-                        <input hidden type="text" name="action" value="ajouter_faq">
                     </form>
 
                     <table>
@@ -60,7 +133,7 @@
                         </tr>
                        <?php
                        require_once('../php/faq/getFaq.php'); 
-                       require_once('../php/faq/setFaq.php');
+                   
                        $faqs = getFaq();
                        foreach($faqs as $faq) {
                             $question = $faq['question'];
@@ -68,8 +141,8 @@
                             <tr>
                                 <td><?php echo($question);?></td>
                                 <td><?php echo($reponse);?></td>
-                                <td><a href="setFaq.php?id=<?php echo($faq['id_faq']);?>"><button class="submit">Supprimer</button></a></td>
-                                <td><a onclick="deleteFaq(<?php echo $faq['id_faq'].','.$faq['question'].','.$faq['reponse']?>)"><button class="submit">Modifier</button></a></td>
+                                <td><a onclick="deleteFaq(<?php echo $faq['id_faq'];?>)"><button class="submit"><i class="fa-regular fa-trash-can" style="color: #ffffff;"></i></button></a></td>
+                                <td><a onclick="setFaq(<?php echo $faq['id_faq'].','.$question.','.$reponse?>)"><button class="submit"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
                             </tr>
                         <?php } ?>
                     </table>
@@ -81,12 +154,3 @@
 <?php
 include_once 'components/footer.html';
 ?>
-
-<script>
-    xmlhttp = new XMLHttpRequest();
-    function   deleteFaq(id, question, reponse) {
-
-        xmlhttp.open("GET", "setFaq.php?id="+id+"&est_actif=0"+"&inactif_depuis="+now(), true);
-        xmlhttp.send();
-    }
-</script>
