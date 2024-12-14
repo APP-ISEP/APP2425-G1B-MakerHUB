@@ -6,14 +6,11 @@ function getOffers($minPrice = 0.00, $maxPrice = 10000.00, $search = null): ?arr
     try {
         $pdo = connectToDB();
         if (isset($search)) {
-            echo "search";
             $sql = "SELECT * FROM `produit_fini` WHERE `prix` >= $minPrice AND `prix` <= $maxPrice AND (`titre` LIKE '%$search%' OR `description` LIKE '%$search%')";
         }
         else {
-            echo "no search";
             $sql = "SELECT * FROM `produit_fini` WHERE `prix` >= $minPrice";
-        }
-        
+        }        
 
         $stmt = $pdo->prepare($sql);
         $bool = $stmt->execute();
@@ -24,8 +21,8 @@ function getOffers($minPrice = 0.00, $maxPrice = 10000.00, $search = null): ?arr
             $offers = $results;
         $stmt->closeCursor();
         return $offers;
+        
     } catch (PDOException $e) {
-        // Error executing the query
         $error = $e->getMessage();
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
         return null;

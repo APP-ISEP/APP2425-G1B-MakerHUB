@@ -7,11 +7,9 @@ function getRequests($search = null): ?array
         $pdo = connectToDB();
 
         if (isset($search)) {
-            echo "search";
             $sql = "SELECT * FROM `produit_demande` WHERE `titre` LIKE '%$search%' OR `description` LIKE '%$search%'";
         }
         else {
-            echo "no search";
             $sql = "SELECT * FROM `produit_demande`";
         }
 

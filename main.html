@@ -26,7 +26,7 @@
 
     <div class="catalog-container" id="catalog-container">
 
-        <div class="categories">
+        <div class="categories" id="categories">
             <div class="category category-offer button active-category">
                 Offres
             </div>
@@ -39,25 +39,25 @@
 
         <div class="offers-container">
 
-            <form method="get" action="offers">
+            <form method="get" action="index.php#catalog-container">
 
                 <div class="price-filter-container">
                     <button class="active-category" type="submit">Filtrer</button>
                     <div class="price-filter">
-                        <input type="number" id="minPrice" class="search-bar-input" name="min-price" min="0" max="10000" value="0">
+                        <input type="number" id="minPrice" class="search-bar-input" name="min-price" min="0" max="10000" value="<?php echo $minPrice;?>">
                         <span class="price-filter-text">€</span>
                     </div>
         
                     <span class="price-filter-text">-</span>
         
                     <div class="price-filter">
-                        <input type="number" id="maxPrice" class="search-bar-input" name="max-price" min="0" max="10000" value="10000">
+                        <input type="number" id="maxPrice" class="search-bar-input" name="max-price" min="0" max="10000" value="<?php echo $maxPrice;?>">
                         <span class="price-filter-text">€</span>
                     </div>
                 </div>
 
                 <div class="search-bar-offer">
-                    <input type="text" class="search-bar-input" placeholder="Rechercher une offre..." maxlength="50" name="offers-search">
+                    <input type="text" class="search-bar-input" placeholder="Rechercher une offre..." maxlength="50" name="offers-search"  value="<?php echo $offersSearch;?>">
                     <button class="button-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
 
@@ -86,8 +86,8 @@
 
         <div class="requests-container">
 
-            <form class="search-bar-request" method="get" action="request">
-                <input type="text" id="search-bar-input-2" placeholder="Rechercher une demande..." maxlength="50" name="requests-search">
+            <form class="search-bar-request" method="get" action="index.php#catalog-container">
+                <input type="text" id="search-bar-input-2" placeholder="Rechercher une demande..." maxlength="50" name="requests-search"  value="<?php echo $requestsSearch;?>">
                 <button class="button-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
