@@ -79,6 +79,14 @@
                 }
                 
             }
+
+            function showPopUp() {
+                if (document.getElementById("popup").style.display == "block")
+                    document.getElementById("popup").style.display = "none";
+                else{
+                    document.getElementById("popup").style.display = "block";
+                }
+            }
         </script>
     </head>
 
@@ -142,13 +150,31 @@
                                 <td><?php echo($question);?></td>
                                 <td><?php echo($reponse);?></td>
                                 <td><a onclick="deleteFaq(<?php echo $faq['id_faq'];?>)"><button class="submit"><i class="fa-regular fa-trash-can" style="color: #ffffff;"></i></button></a></td>
-                                <td><a onclick="setFaq(<?php echo $faq['id_faq'].','.$question.','.$reponse?>)"><button class="submit"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
+                                <td><a onclick="showPopUp(<?php echo $faq['id_faq'];?>)"><button class="submit"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
                             </tr>
+
+                            <div id="popup" class="popup" style="display:none;">
+                            <br>
+                            <h2>Modifier la FAQ</h2>
+                            <p>Vous pouvez modifier la question et la réponse de la FAQ.</p>
+                            <br>
+                            <form action="../php/faq/setFaq.php" method="POST" onsubmit="return setFaq(<?php echo $faq['id_faq'].','.$question.','.$reponse?>)">
+                                <label for="question">Question</label>  
+                                <br>  
+                                <textarea type="text" name="question"><?php echo($question);?></textarea>
+                                <br>
+                                <label for="reponse">Réponse</label>
+                                <br>
+                                <textarea type="text" name="reponse"><?php echo($reponse);?></textarea>
+                                <input type="hidden" name="id" value="<?php echo $faq['id_faq'];?>">
+                                <input class="submit" type="submit" value="Modifier">
+                            </form>
+                            </div>
                         <?php } ?>
                     </table>
-
+                        
                 </section>
-
+                
     </main> 
 
 <?php
