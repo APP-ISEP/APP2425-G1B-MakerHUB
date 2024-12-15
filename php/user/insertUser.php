@@ -1,5 +1,5 @@
 <?php
-require_once "./php/connectToDB.php";
+require_once(__DIR__ . '/../connectToDB.php');
 
 
 function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone)
@@ -27,7 +27,7 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
 }
 
 
-function verifyUsername(string $pseudonyme): bool
+function verifyUsername(string $pseudonyme): ?bool
 {
     try {
         $pdo = connectToDB();
@@ -39,10 +39,9 @@ function verifyUsername(string $pseudonyme): bool
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
-         return count($results) === 0;
-        
-    }
-    catch (PDOException $e) {
+        return count($results) === 0;
+
+    } catch (PDOException $e) {
         // Error executing the query
         $error = $e->getMessage();
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
@@ -50,7 +49,7 @@ function verifyUsername(string $pseudonyme): bool
     }
 }
 
-function verifyMail(string $email): bool
+function verifyMail(string $email): ?bool
 {
     try {
         $pdo = connectToDB();
@@ -62,10 +61,10 @@ function verifyMail(string $email): bool
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
-         return count($results) === 0;
-        
-    }
-    catch (PDOException $e) {
+        $bool = count($results);
+
+        return $bool === 0;
+    } catch (PDOException $e) {
         // Error executing the query
         $error = $e->getMessage();
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');

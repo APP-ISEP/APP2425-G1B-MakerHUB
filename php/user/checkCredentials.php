@@ -1,6 +1,13 @@
 <?php
 require_once('insertUser.php');
 
+
+if (!empty($_POST)) {
+    $function = $_POST['fonction'];
+    unset($_POST['fonction']);
+    echo $function($_POST['email']);
+}
+
 function test_input($data): string
 {
     $data = trim($data);
@@ -17,19 +24,29 @@ function validateEmail($email): bool
         return false;
     }
 }
-function uniqueMail($email) : bool
+
+function uniqueMail($email): bool
 {
-    header('Content-Type: application/json');
-$email = $_POST['email'] ?? '';
-echo json_encode(['unique' => verifyMail($email)]);
-exit();
+    if (verifyMail($email)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
+function uniqueMailJSON($email): string
+{
+    if (verifyMail($email)) {
+        return json_encode(['unique' => 'true']);
+    } else {
+        return json_encode(['unique' => 'false']);
+    }
+}
 
 function validateTelephone($telephone): bool
 {
     if (empty($telephone)) {
-       
+
         return true;
     }
     if (preg_match('#^0[0-9]{9}$#', $telephone)) {
@@ -54,35 +71,38 @@ function validatePassword($motDePasse): bool
     }
 }
 
-function lengthNom($nom) : bool
+function lengthNom($nom): bool
 {
-    if (strlen($nom) < 50){
+    if (strlen($nom) < 50) {
         return true;
-    } else{
+    } else {
         return false;
     }
 }
-function lengthPrenom($prenom) : bool
+
+function lengthPrenom($prenom): bool
 {
-    if (strlen($prenom) < 50){
+    if (strlen($prenom) < 50) {
         return true;
-    } else{
+    } else {
         return false;
     }
 }
-function lengthPseudonyme($pseudonyme) : bool
+
+function lengthPseudonyme($pseudonyme): bool
 {
-    if (strlen($pseudonyme) < 50){
+    if (strlen($pseudonyme) < 50) {
         return true;
-    } else{
+    } else {
         return false;
     }
 }
-function uniquePseudonyme($pseudonyme) : bool
+
+function uniquePseudonyme($pseudonyme): bool
 {
-    if(verifyUsername($pseudonyme)){
+    if (verifyUsername($pseudonyme)) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
