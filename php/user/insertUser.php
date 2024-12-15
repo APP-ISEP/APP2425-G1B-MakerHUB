@@ -1,6 +1,9 @@
+<script>
+    include_path='C:/xampp/php/PEAR';
+</script>
+
 <?php
 require_once "./php/connectToDB.php";
-
 
 function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone)
 {
@@ -27,7 +30,7 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
 }
 
 
-function verifyUsername(string $pseudonyme): bool
+function verifyUsername(string $pseudonyme): ?bool
 {
     try {
         $pdo = connectToDB();
@@ -50,7 +53,7 @@ function verifyUsername(string $pseudonyme): bool
     }
 }
 
-function verifyMail(string $email): bool
+function verifyMail(string $email): ?bool
 {
     try {
         $pdo = connectToDB();

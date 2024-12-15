@@ -19,10 +19,11 @@ function validateEmail($email): bool
 }
 function uniqueMail($email) : bool
 {
-    header('Content-Type: application/json');
-$email = $_POST['email'] ?? '';
-echo json_encode(['unique' => verifyMail($email)]);
-exit();
+    if(verifyMail($email)){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 

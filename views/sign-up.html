@@ -68,6 +68,7 @@
                 <span class="toggle-label"></span>
                 Vous possédez une imprimante 3D et souhaitez proposer vos services.
             </label>
+        </div>
             <div class="checkbox-group">
                 <input class="checkbox" type="checkbox" id="check" name="is18More">
                 <label>En cochant cette case, vous confirmez avoir plus de 18 ans<span class="required">*</span></label>
@@ -105,8 +106,6 @@
     }
   </style>
  <script>		
-
-
     $(document).ready(function () {
         var timer;
 
@@ -121,29 +120,10 @@
             }, 2000);
         });
     });
-/*$('#email').on('change', function () {
-    const email = $(this).val();
-    $.post('php/user/checkCredentials.php', { email: email })
-        .done(function (response) {
-            try {
-                const data = JSON.parse(response);
-                if (data.unique) {
-                    $('#emailError').hide();
-                } else {
-                    $('#emailError').show().text('Email already in use');
-                }
-            } catch (error) {
-                console.error("Invalid JSON response", response);
-            }
-        })
-        .fail(function () {
-            alert('An error occurred while validating the email.');
-        });
-});*/
 
-/*var email = $('#email').val();
-include_path='./xampp/php/PEAR';
-    
+
+var email = $('#email').val();
+ 
 $('#email').change(function(){
     
 $.ajax({
@@ -160,7 +140,7 @@ $.ajax({
         }
     }   
 })
-})*/
+})
 
 
 </script>

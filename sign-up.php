@@ -25,6 +25,7 @@ if (isset($_POST) && count($_POST) > 0) {
     $email = test_input($_POST["email"]);
     $telephone = test_input($_POST["telephone"]);
 
+    
     $validateEmail = validateEmail($email);
     $validateEmailUnique = uniqueMail($email);
     $validatePhone = validateTelephone($telephone);
