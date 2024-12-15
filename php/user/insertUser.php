@@ -5,11 +5,11 @@
 <?php
 require_once(__DIR__ . '/../connectToDB.php');
 
-function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone)
+function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone, string $description)
 {
     try {
         $pdo = connectToDB();
-        $sql = "INSERT INTO utilisateur (nom, prenom, pseudonyme, mail, mot_de_passe, telephone) VALUES (:nom, :prenom, :pseudonyme, :email, :motDePasse, :telephone)";
+        $sql = "INSERT INTO utilisateur (nom, prenom, pseudonyme, mail, mot_de_passe, description, telephone) VALUES (:nom, :prenom, :pseudonyme, :email, :motDePasse, :description, :telephone)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':nom' => $nom,
@@ -17,6 +17,7 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
             ':pseudonyme' => $pseudonyme,
             ':email' => $email,
             ':motDePasse' => $hashedPassword,
+            ':description' =>$description,
             ':telephone' => $telephone
         ]);
 
