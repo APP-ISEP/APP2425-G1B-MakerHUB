@@ -68,7 +68,10 @@
                 <span class="toggle-label"></span>
                 Vous possédez une imprimante 3D et souhaitez proposer vos services.
             </label>
-        </div>
+            <div class="form-control" id="aboutMe">
+                <label for="description">À propos de vous</label>
+                <textarea id="description" name="description" rows="4" maxlength="255" value="<?= $user['description']?>"></textarea>
+            </div>
             <div class="checkbox-group">
                 <input class="checkbox" type="checkbox" id="check" name="is18More">
                 <label>En cochant cette case, vous confirmez avoir plus de 18 ans<span class="required">*</span></label>
@@ -85,6 +88,7 @@
             <div class="button signup-button">
                 <input type="submit" class="btn submit" value="S'inscrire" id="submitForm"/>
             </div>
+        
         </form>
 
         <div class="button go-login-button">
@@ -105,7 +109,15 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
   </style>
- <script>		
+ <script>
+  $("#toggleDescription").change(function () {
+            if ($(this).is(":checked")) {
+                $("#aboutMe").slideDown(); 
+            } else {
+                $("#aboutMe").slideUp(); 
+            }
+        }).trigger("change"); //assurer que au rechargement de la page, il n'est pas coché.
+
     $(document).ready(function () {
         var timer;
 
