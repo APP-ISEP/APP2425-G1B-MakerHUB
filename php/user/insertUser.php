@@ -1,6 +1,9 @@
+<script>
+    include_path='C:/xampp/php/PEAR';
+</script>
+
 <?php
 require_once(__DIR__ . '/../connectToDB.php');
-
 
 function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone)
 {

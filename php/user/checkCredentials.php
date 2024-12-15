@@ -46,7 +46,6 @@ function uniqueMailJSON($email): string
 function validateTelephone($telephone): bool
 {
     if (empty($telephone)) {
-
         return true;
     }
     if (preg_match('#^0[0-9]{9}$#', $telephone)) {
