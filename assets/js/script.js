@@ -81,7 +81,7 @@ $(document).ready(() => {
 
 //--------- END OF CATEGORIES INSIDE HOME PAGE---------//
 
-//---- BEGINNING OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
+//---- BEGINNING OF THE AJAX TO CHECK IF MAIL AND PSEUDONYME WAS ALREADY USED ----//
 $(document).ready(() => {
     let timer;
 
@@ -116,6 +116,37 @@ $(document).ready(() => {
             }
         })
     })
+    let userNameInput = document.getElementById('username');
+    emailInput.addEventListener('change', function() {
+        $.ajax({
+            url: 'php/user/checkCredentials.php',
+            type: 'POST',
+            data: {fonction: 'uniquePseudonymeJSON', pseudonyme: userNameInput.value},
+            success: function(data) {
+                const jsonData = JSON.parse(data);
+                //console.log("Succès :", jsonData);
+                //console.log(jsonData.unique);
+
+                if(jsonData.unique === "false") {
+                    alert("Le pseudonyme que vous avez choisi a déjà utilisé");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Erreur AJAX :", status, error);
+            }
+        })
+    })
 });
 
 //---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
+//---- BEGINNING OF THE "A PROPOS DE MOI" IN SIGN UP ----//
+$(document).ready(() => {
+$("#toggleDescription").change(function () {
+    if ($(this).is(":checked")) {
+        $("#aboutMe").slideDown(); 
+    } else {
+        $("#aboutMe").slideUp(); 
+    }
+}).trigger("change"); //assurer que au rechargement de la page, il n'est pas coché.
+});
+//---- END OF THE "A PROPOS DE MOI" IN SIGN UP ----//
