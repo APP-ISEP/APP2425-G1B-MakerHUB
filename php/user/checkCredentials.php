@@ -106,3 +106,11 @@ function uniquePseudonyme($pseudonyme): bool
         return false;
     }
 }
+function uniquePseudonymeJSON($email): string
+{
+    if (verifyUsername($pseudonyme)) {
+        return json_encode(['unique' => 'true']);
+    } else {
+        return json_encode(['unique' => 'false']);
+    }
+}
