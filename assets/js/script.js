@@ -80,3 +80,42 @@ $(document).ready(() => {
 });
 
 //--------- END OF CATEGORIES INSIDE HOME PAGE---------//
+
+//---- BEGINNING OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
+$(document).ready(() => {
+    let timer;
+
+    $("#passwordInfo").on("click", function () {
+        clearTimeout(timer);
+        $("#password-tooltip").fadeIn("slow");
+    });
+
+    $("#passwordInfo").on("mouseout", function () {
+        timer = setTimeout(function () {
+            $("#password-tooltip").fadeOut("slow");
+        }, 2000);
+    });
+
+    let emailInput = document.getElementById('email');
+    emailInput.addEventListener('change', function() {
+        $.ajax({
+            url: 'php/user/checkCredentials.php',
+            type: 'POST',
+            data: {fonction: 'uniqueMailJSON', email: emailInput.value},
+            success: function(data) {
+                const jsonData = JSON.parse(data);
+                //console.log("Succès :", jsonData);
+                //console.log(jsonData.unique);
+
+                if(jsonData.unique === "false") {
+                    alert("L'email que vous avez choisi a déjà utilisé");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Erreur AJAX :", status, error);
+            }
+        })
+    })
+});
+
+//---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//

@@ -91,10 +91,9 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
-    .tooltip { /*si je deplace dans style.css il le lit plus*/
+    .tooltip { /*si je deplace dans style.css il le lit plus*/ /* pas réussi à fix ;( */
       display: none;
       position: absolute;
       background-color: #f9f9f9;
@@ -103,64 +102,4 @@
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
-  </style>
- <script>		
-
-
-    $(document).ready(function () {
-        var timer;
-
-        $("#passwordInfo").on("click", function () {
-            clearTimeout(timer);
-            $("#password-tooltip").fadeIn("slow");
-        });
-
-        $("#passwordInfo").on("mouseout", function () {
-            timer = setTimeout(function () {
-                $("#password-tooltip").fadeOut("slow");
-            }, 2000);
-        });
-    });
-/*$('#email').on('change', function () {
-    const email = $(this).val();
-    $.post('php/user/checkCredentials.php', { email: email })
-        .done(function (response) {
-            try {
-                const data = JSON.parse(response);
-                if (data.unique) {
-                    $('#emailError').hide();
-                } else {
-                    $('#emailError').show().text('Email already in use');
-                }
-            } catch (error) {
-                console.error("Invalid JSON response", response);
-            }
-        })
-        .fail(function () {
-            alert('An error occurred while validating the email.');
-        });
-});*/
-
-/*var email = $('#email').val();
-include_path='./xampp/php/PEAR';
-    
-$('#email').change(function(){
-    
-$.ajax({
-    url: './php/user/checkCredentials.php', 
-    type: 'POST',
-    data: {fonction: 'uniqueMail', var1: 'email'}, 
-    success: function(data) {
-        console.log("fonction change");
-        console.log(data);
-        if(data){
-            console.log("je suis dans le data true");
-           // alert("Data was NOT succesfully captured");
-
-        }
-    }   
-})
-})*/
-
-
-</script>
+</style>
