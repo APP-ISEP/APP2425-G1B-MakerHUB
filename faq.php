@@ -1,9 +1,10 @@
 <?php
+session_start();
 $title = "FAQ";
 
 ob_start();
 
-include_once 'php/getFaq.php';
+include_once 'php/faq/getFaq.php';
 
 $faq = getFaq();
 
