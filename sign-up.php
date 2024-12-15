@@ -15,7 +15,7 @@ require_once 'php/user/insertUser.php';
 require_once 'php/user/checkCredentials.php';
 require_once 'php/user/getUser.php';
 
-$nom = $email = $telephone = $prenom = $motDePasse = $pseudonyme = "";
+$nom = $email = $telephone = $prenom = $motDePasse = $pseudonyme = $description = "";
 
 if (isset($_POST) && count($_POST) > 0) {
     $nom = test_input($_POST["nom"]);
@@ -24,7 +24,9 @@ if (isset($_POST) && count($_POST) > 0) {
     $pseudonyme = test_input($_POST["pseudonyme"]);
     $email = test_input($_POST["email"]);
     $telephone = test_input($_POST["telephone"]);
+    $description = test_input($_POST["description"]);
 
+    
     $validateEmail = validateEmail($email);
     $validateEmailUnique = uniqueMail($email);
     $validatePhone = validateTelephone($telephone);
@@ -92,7 +94,7 @@ if (isset($_POST) && count($_POST) > 0) {
     if (empty($errors)) {
         if ($validateEmail && $validatePhone && $validatePassword) {
             $hashedPassword = hashPassword($motDePasse);
-            $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone);
+            $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description);
             $account = getUser($email);
             $_SESSION['account'] = $account;
             $_SESSION['username'] = $account['pseudonyme'];
