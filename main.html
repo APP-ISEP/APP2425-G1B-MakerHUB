@@ -73,7 +73,7 @@
                         <h3 class="card-price"><?= number_format($item['prix'], 2, ',', ' ') ?> €</h3>
                         <p class="card-description"><?= $item['description'] ?></p>
                         <p class="card-status">Statut : <?= $item['statut_impression'] ?></p>
-                        <button class="button button-buy">Acheter</button>
+                        <button class="button button-buy">Ajouter au panier</button>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -100,7 +100,7 @@
                     <div class="card-info">
                         <h4 class="card-title"><?= $item['reference'] ?> - <?= $item['titre'] ?></h4>
                         <p class="card-description"><?= $item['description'] ?></p>
-                        <button class="button button-buy">Accepter</button>
+                        <button class="button button-buy">Générer un devis</button>
                     </div>
                 </div>
                 <?php endforeach; ?>
