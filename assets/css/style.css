@@ -56,6 +56,34 @@ button {
     border-radius: 10px;
 }
 
+input, textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--accentuation_color);
+    outline: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+textarea {
+    font-family: 'Kanit', serif;
+    font-size: 13px;
+}
+
+input:focus, textarea:focus {
+    border: 1px solid var(--secondary-text-color);
+}
+
+input, button {
+    font: inherit;
+}
+
+label {
+    margin-bottom: 3px;
+}
+
 .navbar {
     background-color: var(--base-color-2);
     width: 100%;
@@ -113,7 +141,7 @@ button {
     margin-right: 1.5%;
     cursor: pointer;
     user-select: none;
-    width: 8%;
+    width: 12%;
 }
 
 .img-profil {
@@ -167,6 +195,7 @@ button {
 .logout {
     color: var(--important-element-color);
     font-weight: bold;
+    text-decoration: none !important;
     margin-bottom: 5%;
 }
 
@@ -204,7 +233,7 @@ button {
     background-color: var(--base-color-3);
 }
 
-.wrong-login, .wrong-edit {
+.wrong-login, .wrong-edit, .wrong-signup {
     display: block;
     color: red;
     margin-top: 6%;
@@ -218,7 +247,13 @@ button {
     font-style: italic;
 }
 
-/* MAIN CONTAINER */
+.wrong-signup{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1em;
+}
+
+/* main container */
 
 .footer {
     background-color: var(--base-color);
@@ -264,6 +299,8 @@ button {
     align-items: center;
     background-color: var(--base-color-2);
     min-height: calc(89vh - 80px);
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 #faq-question-container {
@@ -275,20 +312,6 @@ button {
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
-}
-
-#faq-hr {
-    width: 60%;
-    border: 1.5px solid var(--base-color);
-    border-radius: 25px;
-}
-
-.title {
-    text-align: center;
-    font-size: 65px;
-    margin-bottom: 25px;
-    color: var(--base-color);
-    margin-top: 40px;
 }
 
 .question {
@@ -331,6 +354,7 @@ button {
 .up {
     transform: rotate(180deg);
 }
+/* END FAQ PAGE */
 
 /* LEGAL PAGES */
 .legal-page-container {
@@ -348,7 +372,7 @@ button {
     margin-bottom: 10px;
 }
 
-.legal-page-container h2 {
+.legal-notices h2 {
     margin-bottom: 10px;
 }
 
@@ -360,6 +384,7 @@ button {
     padding-left: 40px;
     margin-top: 10px;
 }
+/* END LEGAL PAGES */
 
 .log-in, .sign-up {
     width: 30%;
@@ -370,10 +395,9 @@ button {
     background-color: var(--base-color-3);
 }
 
-.log-in h1, .sign-up h1 {
+.log-in h1, .sign-up h1, .edit-profile h1, #contact-page h1 {
     text-align: center;
     margin-top: 2%;
-    margin-bottom: 20px;
 }
 
 .log-in a, .sign-up a {
@@ -429,10 +453,7 @@ button {
     margin: auto;
     padding-bottom: 5%;
 }
-
-input, button {
-    font: inherit;
-}
+/* END EDIT PROFILE PAGE */
 
 .login-button, .go-signup-button, .go-login-button, .signup-button {
     text-align: center;
@@ -477,7 +498,7 @@ input, textarea {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid var(--accentuation_color);
-    outline: none;    
+    outline: none;
 }
 
 input[type="file"] {
@@ -501,10 +522,6 @@ input:focus, textarea:focus {
 .subtitle {
     color: var(--secondary-text-color);
     margin-bottom: 15px;
-}
-
-input:focus, textarea:focus {
-    border: 1px solid var(--secondary-text-color);
 }
 
 .toggle {
@@ -864,23 +881,26 @@ input:focus, textarea:focus {
     margin-bottom: 5%;
     padding-bottom: 0;
 }
-/* END FORM*/
+/* END FORM */
 
-/*LABEL AND WRITE PART*/
+/* LABEL AND WRITE PART */
 .required {
     color: red;
     padding-bottom: 4%;
     text-align: center;
 }
 
+.required-signup {
+    padding-bottom: 0;
+}
+
 .signup-eye {
     left: 95%;
     margin-top: -4.5%;
 }
+/* END LABEL AND WRITE PART */
 
-/*END LABEL AND WRITE PART*/
-
-/*CHECK BOX AND BUTTON*/
+/* CHECK BOX AND BUTTON */
 .checkbox-group {
     display: flex;
     flex-direction: row;
@@ -904,10 +924,62 @@ input:focus, textarea:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /*TODO mettre en % */
+    margin-top: 20px;
+}
+/* END CHECKBOX AND BUTTON */
+
+/* CONTACT PAGE */
+#contact-page {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
 }
 
-/*END CHECKBOX AND BUTTON*/
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: left;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--base-color-3);
+}
+
+.send-button{
+    display: flex;
+    justify-content: center;
+}
+/* END CONTACT PAGE */
+
+
+/* COOKIES */
+.cookies {
+    color: var(--secondary-text-color);
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-left: 20%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    gap: 60px;
+}
+
+.cookies h2 {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.cookies h1 {
+    font-size: 2em;
+    color : var(--base-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 /* Format mobile */
 @media screen and (max-width: 817px) {
