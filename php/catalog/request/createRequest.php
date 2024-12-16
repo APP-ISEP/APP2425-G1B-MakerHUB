@@ -1,6 +1,6 @@
 <?php
 require_once "./php/connectToDB.php";
-function createDemand(string $title, string $description, int $userId): ?bool
+function createRequest(string $title, string $description, int $userId): ?bool
 {
     try {
         $pdo = connectToDB();

@@ -96,7 +96,7 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    z-index: 99;
 }
 
 .header-logo {
@@ -311,6 +311,7 @@ label {
     gap: 20px;
     width: 100%;
     padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .question {
@@ -523,6 +524,14 @@ input:focus, textarea:focus {
     margin-bottom: 15px;
 }
 
+.title {
+    text-align: center;
+    font-size: 65px;
+    margin-bottom: 25px;
+    color: var(--base-color);
+    margin-top: 40px;
+}
+
 .toggle {
     display: inline-flex;
     align-items: center;
@@ -640,18 +649,50 @@ input:focus, textarea:focus {
     margin: 2% auto auto auto;
     width: 25%;
     gap: 5%;
+    position: relative;
+    z-index: 1;
+}
+
+.offers-container {
+    transform: translateY(-60px);
+}
+
+.price-filter-container {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    justify-content: space-around;
+    margin-left: 40px;
+}
+
+.price-filter-container button {
+    font-weight: 600;
+    font-size: 1.3em;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.price-filter-container input  {
+    appearance: textfield;
+    width: 110px;
+}
+
+.price-filter-text {
+    color: var(--important-element-color);
+    font-size: 1.2em;
+    align-content: center;
 }
 
 .category {
-    width: 35%;
+    width: auto;
     border: 3px solid var(--important-element-color);
     border-radius: 10px;
-    padding: 10px;
     font-size: 1.8em;
     font-weight: 700;
     margin: auto;
     text-align: center;
     cursor: pointer;
+    padding: 10px 8%;
 }
 
 .active-category {
@@ -678,7 +719,7 @@ input:focus, textarea:focus {
     margin: -3% 1% 5% auto;
 }
 
-#search-bar-input, #search-bar-input-2 {
+.search-bar-input, #search-bar-input-2 {
     background-color: var(--base-color-2);
     border: 2px solid var(--important-element-color);
     color: var(--important-element-color);
@@ -689,7 +730,7 @@ input:focus, textarea:focus {
     width: 100%;
 }
 
-#search-bar-input::placeholder, #search-bar-input-2::placeholder {
+.search-bar-input::placeholder, #search-bar-input-2::placeholder {
     color: var(--important-element-color);
 }
 
@@ -702,23 +743,61 @@ input:focus, textarea:focus {
 }
 
 .offers-cards-container, .requests-cards-container {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: start;
+
     text-align: center;
     margin: 2% auto auto auto;
     width: 95%;
 }
 
-.offer-card, .request-card {
-    width: 21%;
+.offer-card {
     background-color: var(--base-color-3);
     border: 1px solid var(--secondary-border-color);
     border-radius: 8px;
     padding: 10px;
     text-align: center;
+}
+
+.offer-card {
     margin: auto auto 4%;
+}
+
+.requests-cards-container {
+    row-gap: 40px;
+}
+
+.request-card {
+    background-color: var(--base-color-3);
+    border: 1px solid var(--secondary-border-color);
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 83%;
+    margin-bottom: 7%;
+
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.request-card .card-title {
+    margin-top: 3%;
+}
+
+.request-card .card-description {
+    height:60px;
+    margin-right: 2%;
+    text-align: justify;
+}
+
+.request-card .button-buy {
+    align-self: center;
+    margin-top: auto;
 }
 
 .offer-card img, .request-card img {
@@ -755,6 +834,29 @@ input:focus, textarea:focus {
     margin: 0 2% 1% auto;
     text-align: right;
     cursor: pointer;
+}
+
+/* TODO */
+.pagination {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin: 2% 5% 2% auto;
+    gap: 10px;
+    font-size: 1.8em;
+}
+
+.page-number {
+    background-color: var(--base-color-2);
+    cursor: pointer;
+    width: 2%;
+    text-align: center;
+}
+
+.pagination > .active {
+    color: var(--base-color-3) !important;
+    background-color: var(--base-color) !important;
+    border-radius: 20%;
 }
 
 #aboutMe, #toggle-control {

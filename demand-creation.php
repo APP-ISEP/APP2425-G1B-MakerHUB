@@ -27,10 +27,10 @@ if (isset($_POST) && count($_POST) > 0) {
         $errors['description'] = "La description ne doit pas dépasser 200 caractères.";
     }
 
-    include_once("./php/demand/createDemand.php");
+    include_once("./php/catalog/request/createRequest.php");
 
     if (empty($errors)) {
-        $demand = createDemand($title, $description, $_SESSION['account']['id_utilisateur']);
+        $demand = createRequest($title, $description, $_SESSION['account']['id_utilisateur']);
 
         if ($demand) {
             header("Location: index.php");
