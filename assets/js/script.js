@@ -104,11 +104,9 @@ $(document).ready(() => {
             data: {fonction: 'uniqueMailJSON', email: emailInput.value},
             success: function(data) {
                 const jsonData = JSON.parse(data);
-                //console.log("Succès :", jsonData);
-                //console.log(jsonData.unique);
 
-                if(jsonData.unique === "false") {
-                    alert("L'email que vous avez choisi a déjà utilisé");
+                if(jsonData.uniqueEmail === "false") {
+                    alert("L'email que vous avez choisi a déjà été utilisé.");
                 }
             },
             error: function(xhr, status, error) {
@@ -116,19 +114,17 @@ $(document).ready(() => {
             }
         })
     })
-    let userNameInput = document.getElementById('username');
-    emailInput.addEventListener('change', function() {
+    let usernameInput = document.getElementById('username');
+    usernameInput.addEventListener('change', function() {
         $.ajax({
             url: 'php/user/checkCredentials.php',
             type: 'POST',
-            data: {fonction: 'uniquePseudonymeJSON', pseudonyme: userNameInput.value},
+            data: {fonction: 'uniquePseudonymeJSON', pseudonyme: usernameInput.value},
             success: function(data) {
                 const jsonData = JSON.parse(data);
-                //console.log("Succès :", jsonData);
-                //console.log(jsonData.unique);
 
-                if(jsonData.unique === "false") {
-                    alert("Le pseudonyme que vous avez choisi a déjà utilisé");
+                if(jsonData.uniquePseudonyme === "false") {
+                    alert("Le pseudonyme que vous avez choisi a déjà été utilisé.");
                 }
             },
             error: function(xhr, status, error) {
