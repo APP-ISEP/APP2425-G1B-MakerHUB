@@ -1,5 +1,5 @@
 <?php
-include 'config/constants.php';
+require_once 'config/constants.php';
 
 function connectToDB(): PDO
 {
