@@ -1,7 +1,3 @@
-<script>
-    include_path='C:/xampp/php/PEAR';
-</script>
-
 <?php
 require_once(__DIR__ . '/../connectToDB.php');
 
@@ -65,9 +61,7 @@ function verifyMail(string $email): ?bool
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
-        $bool = count($results);
-
-        return $bool === 0;
+        return count($results) === 0;
     } catch (PDOException $e) {
         // Error executing the query
         $error = $e->getMessage();

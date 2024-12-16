@@ -5,7 +5,7 @@ require_once('insertUser.php');
 if (!empty($_POST)) {
     $function = $_POST['fonction'];
     unset($_POST['fonction']);
-    echo $function($_POST['email']);
+    echo $function($_POST);
 }
 
 function test_input($data): string
@@ -36,10 +36,10 @@ function uniqueMail($email): bool
 
 function uniqueMailJSON($email): string
 {
-    if (verifyMail($email)) {
-        return json_encode(['unique' => 'true']);
+    if (verifyMail($email['email'])) {
+        return json_encode(['uniqueEmail' => 'true']);
     } else {
-        return json_encode(['unique' => 'false']);
+        return json_encode(['uniqueEmail' => 'false']);
     }
 }
 
@@ -106,11 +106,11 @@ function uniquePseudonyme($pseudonyme): bool
         return false;
     }
 }
-function uniquePseudonymeJSON($email): string
+function uniquePseudonymeJSON($pseudonyme): string
 {
-    if (verifyUsername($pseudonyme)) {
-        return json_encode(['unique' => 'true']);
+    if (verifyUsername($pseudonyme['pseudonyme'])) {
+        return json_encode(['uniquePseudonyme' => 'true']);
     } else {
-        return json_encode(['unique' => 'false']);
+        return json_encode(['uniquePseudonyme' => 'false']);
     }
 }
