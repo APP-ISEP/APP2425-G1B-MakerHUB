@@ -1,0 +1,37 @@
+<div class="container" id="contact-page">
+    <form class="contact-form" action="contact-page.php" method="POST">
+        <h1>Nous contacter</h1>
+
+        <div class="form-control">
+            <label for="pseudo">Pseudonyme</label>
+            <input type="text" id="pseudo" name="pseudo" placeholder="Pseudonyme" maxlength="30" required>
+        </div>
+
+        <div class="form-control">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="email@email.com" maxlength="255" required>
+        </div> 
+
+        <div class="form-control">  
+            <label for="message">Message</label>
+            <textarea
+                name="message" 
+                id="message-contact"
+                rows="10"
+                cols="30"
+                placeholder="Message"
+                maxlength="300"
+                required
+            ></textarea>
+
+            <div class="word-counter"></div>
+        </div>
+
+        <!-- send button -->
+        <div class="send-button">
+            <button type="submit">
+                Envoyer
+            </button>
+        </div>  
+    </form>
+</div>
