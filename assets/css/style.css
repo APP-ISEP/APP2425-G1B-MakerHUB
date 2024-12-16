@@ -829,10 +829,15 @@ input:focus, textarea:focus {
 /* order-history*/
 
 
-.order-history{
-    display :flex;
-
+.order-history {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
 }
 
+.order-history .offer-card {
+    flex-basis: calc(20%); 
+    box-sizing: border-box;
+}
 
 
