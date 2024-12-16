@@ -37,7 +37,7 @@
             <div class="form-control">
                 <label for="email">Email<span class="required">*</span></label>
                 <input id="email" maxlength="255" placeholder="Votre email..." required type="email" name="email">
-                <div id="emailError" class="wrong-signup" style="display: none;"></div>
+                <div id="emailError" class="wrong-signup" style="display: none;"></div>  <!-- AJOUTE APRES-->
             </div>
             <!-- tel --->
             <div class="form-control">
@@ -46,7 +46,7 @@
             </div>
             <!-- password --->
             <div class="form-control">
-                <label for="password" id="passwordLabel">Mot de passe<span class="required">*  </span><i class="fa-solid fa-circle-question" id="passwordInfo"></i></label>
+                <label for="password" id="passwordLabel">Mot de passe<span class="required">*</span></label>
                 <input id="password" type="password" placeholder="Votre mot de passe..." required name="motDePasse">
                 <span class="tooltip" id="password-tooltip">
                     Le mot de passe doit contenir :
@@ -55,7 +55,7 @@
                       <li>Une lettre majuscule</li>
                       <li>Une lettre minuscule</li>
                       <li>Un chiffre</li>
-                      <li>Un caractère spécial (!@#$%^&*.)</li>
+                      <li>Un caractère spécial (!@#$%^&*)</li>
                     </ul>
                   </span>
                 <!-- show/hide password  -->
@@ -68,10 +68,6 @@
                 <span class="toggle-label"></span>
                 Vous possédez une imprimante 3D et souhaitez proposer vos services.
             </label>
-            <div class="form-control" id="aboutMe">
-                <label for="description">À propos de vous</label>
-                <textarea id="description" name="description" rows="4" maxlength="255" value="<?= $user['description']?>"></textarea>
-            </div>
             <div class="checkbox-group">
                 <input class="checkbox" type="checkbox" id="check" name="is18More">
                 <label>En cochant cette case, vous confirmez avoir plus de 18 ans<span class="required">*</span></label>
@@ -88,7 +84,6 @@
             <div class="button signup-button">
                 <input type="submit" class="btn submit" value="S'inscrire" id="submitForm"/>
             </div>
-
         </form>
 
         <div class="button go-login-button">
@@ -96,9 +91,10 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
-    .tooltip { /*si je deplace dans style.css il le lit plus*/ /* pas réussi à fix ;( */
+    .tooltip { /*si je deplace dans style.css il le lit plus*/
       display: none;
       position: absolute;
       background-color: #f9f9f9;
@@ -107,4 +103,64 @@
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
-</style>
+  </style>
+ <script>		
+
+
+    $(document).ready(function () {
+        var timer;
+
+        $("#passwordLabel").on("mouseover", function () {
+            clearTimeout(timer);
+            $("#password-tooltip").fadeIn("slow");
+        });
+
+        $("#passwordLabel").on("mouseout", function () {
+            timer = setTimeout(function () {
+                $("#password-tooltip").fadeOut("slow");
+            }, 200);
+        });
+    });
+/*$('#email').on('change', function () {
+    const email = $(this).val();
+    $.post('php/user/checkCredentials.php', { email: email })
+        .done(function (response) {
+            try {
+                const data = JSON.parse(response);
+                if (data.unique) {
+                    $('#emailError').hide();
+                } else {
+                    $('#emailError').show().text('Email already in use');
+                }
+            } catch (error) {
+                console.error("Invalid JSON response", response);
+            }
+        })
+        .fail(function () {
+            alert('An error occurred while validating the email.');
+        });
+});*/
+
+/*var email = $('#email').val();
+include_path='./xampp/php/PEAR';
+    
+$('#email').change(function(){
+    
+$.ajax({
+    url: './php/user/checkCredentials.php', 
+    type: 'POST',
+    data: {fonction: 'uniqueMail', var1: 'email'}, 
+    success: function(data) {
+        console.log("fonction change");
+        console.log(data);
+        if(data){
+            console.log("je suis dans le data true");
+           // alert("Data was NOT succesfully captured");
+
+        }
+    }   
+})
+})*/
+
+
+</script>

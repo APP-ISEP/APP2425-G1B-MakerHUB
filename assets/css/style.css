@@ -253,6 +253,13 @@ label {
     font-size: 1em;
 }
 
+/* MAIN CONTAINER */
+.wrong-signup{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1em;
+}
+
 /* main container */
 
 .footer {
