@@ -110,8 +110,8 @@ $(document).ready(() => {
         if (parseFloat(maxPrice.val()) < minVal) {
             maxPrice.val(minVal);
         }
-        else if (parseFloat(maxPrice.val()) > 10000) {
-            maxPrice.val(10000);
+        else if (parseFloat(maxPrice.val()) > 99999.99) {
+            maxPrice.val(99999.99);
         }
     });
 });
