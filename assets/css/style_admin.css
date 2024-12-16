@@ -18,6 +18,7 @@
     box-sizing: border-box;
 }
 /*ADMIN PANEL*/
+
 .main{
     display: flex;
     flex-direction: column;
@@ -113,8 +114,6 @@ color:var(--base_color-2);
 .main tr:nth-child(odd):hover{
     background-color: var(--accentuation_color);
 }
-
-
 
 .main select{
     padding: 10px;

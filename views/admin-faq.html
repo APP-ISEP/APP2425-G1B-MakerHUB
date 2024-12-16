@@ -9,8 +9,7 @@
         <script>
             xmlhttp = new XMLHttpRequest();
 
-            
-            
+                  
             function setFaq(id, question, reponse) {
                 try{
                         if (window.XMLHttpRequest) {
@@ -38,7 +37,7 @@
                         console.log(id);
                         console.log(question);
                         console.log(reponse);
-                        xmlhttp.open("GET", "../php/faq/setFaq.php?id="+id+"&reponse="+reponse+"&question="+question, true);
+                        xmlhttp.open("GET", "./php/faq/setFaq.php?id="+id+"&reponse="+reponse+"&question="+question, true);
                         xmlhttp.send();
                 }
                 catch(e){
@@ -71,7 +70,7 @@
                             console.log(xmlhttp.responseText);
                         }
                     }
-                    xmlhttp.open("GET", "../php/faq/setFaq.php?id="+id, true);
+                    xmlhttp.open("GET", "./php/faq/setFaq.php?id="+id, true);
                     xmlhttp.send();
                 }
                 catch(e){
@@ -121,7 +120,7 @@
                     <h2>FAQ</h2>
                     <p>Vous pouvez ajouter ou supprimer des questions fréquemment posées.</p>
                     
-                    <form action="../php/faq/addFaq.php" method="POST">
+                    <form action="./php/faq/addFaq.php" method="POST">
                         <label for="question">Question</label>  
                         <br>  
                         <textarea type="text" name="question" placeholder="Question"></textarea>
@@ -140,9 +139,7 @@
                             <th><th></th></th>
                         </tr>
                        <?php
-                       require_once('../php/faq/getFaq.php'); 
-                   
-                       $faqs = getFaq();
+                       
                        foreach($faqs as $faq) {
                             $question = $faq['question'];
                             $reponse = $faq['reponse'];?>
@@ -158,7 +155,7 @@
                             <h2>Modifier la FAQ</h2>
                             <p>Vous pouvez modifier la question et la réponse de la FAQ.</p>
                             <br>
-                            <form action="../php/faq/setFaq.php" method="POST" onsubmit="return setFaq(<?php echo $faq['id_faq'].','.$question.','.$reponse?>)">
+                            <form action="./php/faq/setFaq.php" method="POST" onsubmit="return setFaq(<?php echo $faq['id_faq'].','.$question.','.$reponse?>)">
                                 <label for="question">Question</label>  
                                 <br>  
                                 <textarea type="text" name="question"><?php echo($question);?></textarea>
@@ -176,7 +173,3 @@
                 </section>
                 
     </main> 
-
-<?php
-include_once 'components/footer.html';
-?>
