@@ -1,9 +1,17 @@
 <?php
+require_once 'config/constants.php';
+include 'autoload.php';
+
+use Config\Log\Log;
+use Config\Log\LogFileSingleton;
+use Config\Log\LogLevel;
+
 session_start();
 
 $title = "Se connecter";
 $errors = array();
 $isAuthPage = true;
+$logFile = LogFileSingleton::getInstance();
 
 ob_start();
 
@@ -33,6 +41,7 @@ if (isset($_POST) && count($_POST) > 0) {
         $_SESSION['username'] = $account['pseudonyme'];
         $_SESSION['roles'] = getUserRoles($account['id_utilisateur']);
 
+        $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") s'est connecté depuis " . $_SERVER['REMOTE_ADDR'] . "."));
         header("Location: index.php");
     }
 }

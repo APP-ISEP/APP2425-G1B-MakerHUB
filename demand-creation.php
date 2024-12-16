@@ -1,9 +1,17 @@
 <?php
+require_once 'config/constants.php';
+include 'autoload.php';
+
+use Config\Log\Log;
+use Config\Log\LogFileSingleton;
+use Config\Log\LogLevel;
+
 session_start();
 
 $title = "Créer une demande";
 $errors = array();
 $isAuthPage = true;
+$logFile = LogFileSingleton::getInstance();
 
 ob_start();
 
@@ -33,6 +41,7 @@ if (isset($_POST) && count($_POST) > 0) {
         $demand = createRequest($title, $description, $_SESSION['account']['id_utilisateur']);
 
         if ($demand) {
+            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $_SESSION['account']['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a créé une demande (titre: " . $title . ")."));
             header("Location: index.php");
         } else {
             $errors['save'] = "Erreur lors de la création de la demande.";

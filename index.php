@@ -1,4 +1,7 @@
 <?php
+require_once 'config/constants.php';
+include 'autoload.php';
+
 session_start();
 
 $title = "Accueil";

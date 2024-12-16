@@ -1,12 +1,14 @@
 <?php
-function connectToDB()
+require_once 'config/constants.php';
+
+function connectToDB(): PDO
 {
-    $host = 'sql3.minestrator.com';
-    $db = 'minesr_moBQkITL';
-    $user = 'minesr_moBQkITL';
-    $pass = 'gObeWJtKcGGA8AvS'; // #sécurité
-    $port = "3306";
-    $charset = 'utf8mb4';
+    $host = DB_HOST;
+    $db = DB_NAME;
+    $user = DB_USER;
+    $pass = DB_PASS;
+    $port = DB_PORT;
+    $charset = DB_CHARSET;
 
     $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

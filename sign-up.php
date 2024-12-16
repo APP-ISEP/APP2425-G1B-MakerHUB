@@ -1,9 +1,17 @@
 <?php
+require_once 'config/constants.php';
+include 'autoload.php';
+
+use Config\Log\Log;
+use Config\Log\LogFileSingleton;
+use Config\Log\LogLevel;
+
 session_start();
 
 $title = "Inscription";
 $errors = array();
 $isAuthPage = true;
+$logFile = LogFileSingleton::getInstance();
 
 ob_start();
 
@@ -15,7 +23,7 @@ require_once 'php/user/insertUser.php';
 require_once 'php/user/checkCredentials.php';
 require_once 'php/user/getUser.php';
 
-$nom = $email = $telephone = $prenom = $motDePasse = $pseudonyme = $description = "";
+$nom = $email = $telephone = $prenom = $motDePasse = $pseudonyme = "";
 
 if (isset($_POST) && count($_POST) > 0) {
     $nom = test_input($_POST["nom"]);
@@ -26,7 +34,6 @@ if (isset($_POST) && count($_POST) > 0) {
     $telephone = test_input($_POST["telephone"]);
     $description = test_input($_POST["description"]);
 
-    
     $validateEmail = validateEmail($email);
     $validateEmailUnique = uniqueMail($email);
     $validatePhone = validateTelephone($telephone);
@@ -73,8 +80,8 @@ if (isset($_POST) && count($_POST) > 0) {
 
     if (empty($_POST['AcceptCGU'])) {
         $errors['checkbox2'] = "Veullez accepter les CGU.";
-        }    
-    
+        }
+
     if (empty($_POST['AcceptCGPS'])) {
         $errors['checkbox3'] = "Veullez accepter les CGPS";
         }
@@ -90,7 +97,7 @@ if (isset($_POST) && count($_POST) > 0) {
     if(!isset($_POST['email'])){
         $errors['email'] = "Le champ est obligatoire";
     }
-   
+
     if (empty($errors)) {
         if ($validateEmail && $validatePhone && $validatePassword) {
             $hashedPassword = hashPassword($motDePasse);
@@ -98,7 +105,8 @@ if (isset($_POST) && count($_POST) > 0) {
             $account = getUser($email);
             $_SESSION['account'] = $account;
             $_SESSION['username'] = $account['pseudonyme'];
-            
+
+            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a été créé depuis" . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: index.php");
         }
     }

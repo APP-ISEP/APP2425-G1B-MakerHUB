@@ -91,18 +91,18 @@ function lengthPrenom($prenom): bool
 
 function lengthPseudonyme($pseudonyme): bool
 {
-    if (strlen($pseudonyme) < 50) {
+    if (strlen($pseudonyme) < 50){
         return true;
-    } else {
+    } else{
         return false;
     }
 }
 
 function uniquePseudonyme($pseudonyme): bool
 {
-    if (verifyUsername($pseudonyme)) {
+    if(verifyUsername($pseudonyme)){
         return true;
-    } else {
+    }else{
         return false;
     }
 }
