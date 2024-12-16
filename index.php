@@ -12,7 +12,7 @@ $offers = getOffers();
 $requests = getRequests();
 
 $minPrice = 0;
-$maxPrice = 10000;
+$maxPrice = 99999.99;
 $offersSearch = "";
 $requestsSearch = "";
 
@@ -28,7 +28,6 @@ else if (isset($_GET) && isset($_GET['requests-search'])) {
 }
 
 include_once 'main.html';
-
 
 $body = ob_get_clean();
 

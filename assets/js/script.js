@@ -77,6 +77,13 @@ $(document).ready(() => {
     categoryRequest.click(() => {
         toggleCategories(categoryRequest, categoryOffer, requestsContainer, offersContainer);
     });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('requests-search')) {
+        toggleCategories(categoryRequest, categoryOffer, requestsContainer, offersContainer);
+    } else if (urlParams.has('offers-search')) {
+        toggleCategories(categoryOffer, categoryRequest, offersContainer, requestsContainer);
+    }
 });
 
 //--------- END OF CATEGORIES INSIDE HOME PAGE---------//
