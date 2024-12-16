@@ -21,15 +21,6 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
 };
 
 include_once 'views/order-history.html';
-$result = getOrder();
-if($result->rowCount() > 0){
-    while(row -> $result(FETCH_ASSOC))
-    {
-        $titre = row['titre'];
-        $prix = row['prix'];
-        $description = row['description'];
-        $statut_commande = row['statut_impression'];
-        $chemin_image = row['chemin_image'];
 
 echo '<div class="order-history">';
 $result = getOrder($id_account);
