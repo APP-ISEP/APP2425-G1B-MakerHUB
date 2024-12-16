@@ -112,7 +112,7 @@ label {
     justify-content: space-between;
     gap: 15px;
     list-style-type: none;
-    margin-left: -6%;
+    margin-left: -4%;
 }
 
 .navbar-links li {
@@ -141,7 +141,7 @@ label {
     margin-right: 1.5%;
     cursor: pointer;
     user-select: none;
-    width: 8%;
+    width: 12%;
 }
 
 .img-profil {
@@ -233,7 +233,7 @@ label {
     background-color: var(--base-color-3);
 }
 
-.wrong-login, .wrong-edit {
+.wrong-login, .wrong-edit, .wrong-signup {
     display: block;
     color: red;
     margin-top: 6%;
@@ -247,7 +247,13 @@ label {
     font-style: italic;
 }
 
-/* MAIN CONTAINER */
+.wrong-signup{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1em;
+}
+
+/* main container */
 
 .footer {
     background-color: var(--base-color);
@@ -481,6 +487,30 @@ label {
 .submit {
     background-color: var(--important-element-color);
     color: var(--base-color-3);
+}
+
+label {
+    margin-bottom: 3px;
+}
+
+input, textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--accentuation_color);
+    outline: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+textarea {
+    font-family: 'Kanit', serif;
+    font-size: 13px;
+}
+
+input:focus, textarea:focus {
+    border: 1px solid var(--secondary-text-color);
 }
 
 .edit-profile h1 {
@@ -764,6 +794,10 @@ label {
     color: red;
     padding-bottom: 4%;
     text-align: center;
+}
+
+.required-signup {
+    padding-bottom: 0;
 }
 
 .signup-eye {

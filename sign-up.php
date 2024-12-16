@@ -1,11 +1,111 @@
 <?php
 session_start();
+
 $title = "Inscription";
+$errors = array();
+$isAuthPage = true;
 
 ob_start();
+
+if (isset($_SESSION['account'])) {
+    header("Location: index.php");
+}
+
+require_once 'php/user/insertUser.php';
+require_once 'php/user/checkCredentials.php';
+require_once 'php/user/getUser.php';
+
+$nom = $email = $telephone = $prenom = $motDePasse = $pseudonyme = $description = "";
+
+if (isset($_POST) && count($_POST) > 0) {
+    $nom = test_input($_POST["nom"]);
+    $prenom = test_input($_POST["prenom"]);
+    $motDePasse = test_input($_POST["motDePasse"]);
+    $pseudonyme = test_input($_POST["pseudonyme"]);
+    $email = test_input($_POST["email"]);
+    $telephone = test_input($_POST["telephone"]);
+    $description = test_input($_POST["description"]);
+
+    
+    $validateEmail = validateEmail($email);
+    $validateEmailUnique = uniqueMail($email);
+    $validatePhone = validateTelephone($telephone);
+    $validatePassword = validatePassword($motDePasse);
+    $validateLengthNom = lengthNom($nom);
+    $validateLengthPrenom = lengthPrenom($prenom);
+    $validateLengthPseudonyme = lengthPseudonyme($pseudonyme);
+    $validatePseudonymeUnique = uniquePseudonyme($pseudonyme);
+
+
+    if (!$validateEmail) {
+        $errors['email'] = "Veuillez saisir un mail valide.";
+    }
+    if (!$validateEmailUnique) {
+        $errors['email'] = "Ce mail existe déjà";
+    }
+    if (!$validatePhone) {
+        $errors['telephone'] = "Veuillez saisir un téléphone valide";
+    }
+    if (!$validatePassword) {
+        $errors['motDePasse'] = "Veuillez saisir un mot de passe valide.</br> Il doit contenir au moins :</br>"
+            . '- Un chiffre.</br>'
+            . "- Une majuscule.</br>"
+            . "- Une minuscule.</br>"
+            . "- Un caractère spécial (#?!@$%^&*-).</br>"
+            . "- Longueur minimale de 8 caractères.";
+    }
+    if(!$validateLengthNom){
+        $errors['nom']="Veuillez saisir un nom avec moins de 50 caractères";
+    }
+    if(!$validateLengthPrenom){
+        $errors['prenom']="Veuillez saisir un prénom avec moins de 50 caractères";
+    }
+    if(!$validateLengthPseudonyme){
+        $errors['pseudonyme']="Veuillez saisir un pseudonyme avec moins de 50 caractères";
+    }
+    if(!$validatePseudonymeUnique){
+        $errors['pseudonymeUnique']="Ce pseudonyme existe déjà, veuillez en créer un nouveau";
+    }
+
+    if (empty($_POST['is18More'])) {
+        $errors['checkbox1'] = "Veullez confirmer d'avoir plus de 18 ans";
+        }
+
+    if (empty($_POST['AcceptCGU'])) {
+        $errors['checkbox2'] = "Veullez accepter les CGU.";
+        }    
+    
+    if (empty($_POST['AcceptCGPS'])) {
+        $errors['checkbox3'] = "Veullez accepter les CGPS";
+        }
+    if(!isset($_POST['prenom'])){
+        $errors['prenom'] = "Le champ est obligatoire";
+    }
+    if(!isset($_POST['nom'])){
+        $errors['nom'] = "Le champ est obligatoire";
+    }
+    if(!isset($_POST['pseudonyme'])){
+        $errors['pseudonyme'] = "Le champ est obligatoire";
+    }
+    if(!isset($_POST['email'])){
+        $errors['email'] = "Le champ est obligatoire";
+    }
+   
+    if (empty($errors)) {
+        if ($validateEmail && $validatePhone && $validatePassword) {
+            $hashedPassword = hashPassword($motDePasse);
+            $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description);
+            $account = getUser($email);
+            $_SESSION['account'] = $account;
+            $_SESSION['username'] = $account['pseudonyme'];
+            
+            header("Location: index.php");
+        }
+    }
+}
 
 include_once 'views/sign-up.html';
 
 $body = ob_get_clean();
 
-include_once "views/components/template.php";
+include_once 'views/components/template.php';
