@@ -273,6 +273,7 @@ button {
     gap: 20px;
     width: 100%;
     padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 #faq-hr {
