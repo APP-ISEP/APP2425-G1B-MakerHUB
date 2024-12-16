@@ -84,7 +84,7 @@ button {
     justify-content: space-between;
     gap: 15px;
     list-style-type: none;
-    margin-left: -6%;
+    margin-left: -4%;
 }
 
 .navbar-links li {
@@ -113,7 +113,7 @@ button {
     margin-right: 1.5%;
     cursor: pointer;
     user-select: none;
-    width: 8%;
+    width: 12%;
 }
 
 .img-profil {

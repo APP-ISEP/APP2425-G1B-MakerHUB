@@ -1,11 +1,12 @@
 <?php
 require_once('insertUser.php');
 
-
 if (!empty($_POST)) {
-    $function = $_POST['fonction'];
-    unset($_POST['fonction']);
-    echo $function($_POST);
+    if (isset($_POST['fonction'])) {
+        $function = $_POST['fonction'];
+        unset($_POST['fonction']);
+        echo $function($_POST);
+    }
 }
 
 function test_input($data): string
@@ -105,6 +106,7 @@ function uniquePseudonyme($pseudonyme): bool
         return false;
     }
 }
+
 function uniquePseudonymeJSON($pseudonyme): string
 {
     if (verifyUsername($pseudonyme['pseudonyme'])) {
