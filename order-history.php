@@ -1,11 +1,19 @@
+<script src="views/order-img.js"></script>
+
 <?php
 
 session_start();
 require_once("php/getOrder.php");
 
+
 $title = "Order History";
 
 ob_start();
+
+if (!isset($_SESSION) || !isset($_SESSION['account'])) {
+    header("Location: ./log-in.php");
+    die();
+};
 
 include_once 'views/order-history.html';
 
@@ -13,6 +21,7 @@ echo '<div class="order-history">';
 $result = getOrder($id_account);
 if($result->rowCount() > 0){
     while($row= $result->fetch(PDO::FETCH_ASSOC)){
+        $id_produit=$row['id_produit_fini'];
         $titre = $row['titre'];
         $prix = $row['prix'];
         $description = $row['description'];
@@ -20,14 +29,14 @@ if($result->rowCount() > 0){
         $chemin_image = $row['chemin_image'];
 
 ?>      
-            <div class="offer-card">
+            <div id="modal" class="offer-card">
                 <img src="./assets/images/placeholder.svg<?php echo $chemin_image ?>" alt="">
                 <div class="card-info">                    
                     <h4 class="card-title"><?php echo $titre ?></h4>
                     <h3 class="card-price"><?php echo $prix ?></h3>
-                    <p class ="card-description"> <?php echo $description ?></p>
+                    <p class ="card-description"> <?php echo substr_replace($description,'...',30) ?></p>
                     <p class="card-status">Statut : <?php echo $statut_commande ?></p>
-                    <button class="button button-buy">Voir</button>
+                    <button class="button button-buy" onclick="HideShow()">Voir</button>
                 </div>
             </div>
                    
