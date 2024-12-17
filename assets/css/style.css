@@ -549,8 +549,8 @@ input:focus, textarea:focus {
     align-items: center;
     cursor: pointer;
     gap: 15px;
-    margin-top: 35px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     width: 100%;
 }
 
@@ -869,10 +869,6 @@ input:focus, textarea:focus {
     color: var(--base-color-3) !important;
     background-color: var(--base-color) !important;
     border-radius: 20%;
-}
-
-#aboutMe, #toggle-control {
-    width: 90%;
 }
 
 /*Inscription*/

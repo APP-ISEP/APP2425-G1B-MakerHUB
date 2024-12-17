@@ -1,5 +1,6 @@
 <?php
 require_once "./php/connectToDB.php";
+
 function createOffer(string $title, string $description, float $price, string $status, int $userId): ?bool
 {
     try {
