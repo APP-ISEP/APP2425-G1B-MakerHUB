@@ -56,7 +56,7 @@ button {
     border-radius: 10px;
 }
 
-input, textarea {
+input, textarea, select {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid var(--accentuation_color);
@@ -72,12 +72,16 @@ textarea {
     font-size: 13px;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     border: 1px solid var(--secondary-text-color);
 }
 
 input, button {
     font: inherit;
+}
+
+select {
+    background-color: white;
 }
 
 label {
@@ -450,6 +454,7 @@ label {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     width: 100%;
+    padding-bottom: 2%;
 }
 
 .form-control {
