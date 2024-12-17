@@ -1131,60 +1131,7 @@ td {
 }
 
 /* order-history*/
-.order {
-    float: left;
-    margin-left: 4%;
-    border: 1px solid rgb(155, 155, 155);
-    border-radius: 5px;
-    width: 20%;
-    height: 70%;
-    background-color: white;
-    padding: 0;
-    margin-top: 1em;
-}
 
-.card {
-    display : flex-end;
-}
-
-
-.img_order{
-    padding-top: 4%;
-    margin-left: 2.5%;
-    width: 10%;
-    height: 55%;
-}
-
-.see-order {
-    position : relative;
-    bottom : 1%;
-    right : -74%;
-    background-color: var(--base-color);
-    border: 3px solid var(--base-color);
-    font-family: 'Kanit', serif;
-    font-weight: bold;
-    color: var(--base-color-2);
-    padding: 0.5em 1em;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 10px;
-}
-.order-price,.order-title{
-    font-size: 16px;
-    color: #1E1E1E;
-    margin : 6%;
-    position : relative;
-    top : 0%;
-}
-.order-desc {
-    font-size: 14px;
-    color: #1E1E1E;
-    margin : 6%;
-    position : relative;
-    top : 0%;
-}
 
 .order-history {
     display: flex;
