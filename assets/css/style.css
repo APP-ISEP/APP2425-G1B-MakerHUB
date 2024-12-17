@@ -1050,16 +1050,13 @@ td {
     gap: 60px;
 }
 
+.first-h2-cookie {
+    margin-top: -2%!important;
+}
+
 .cookies h2 {
     margin-top: 2em;
     margin-bottom: 2em;
-}
-
-.cookies h1 {
-    font-size: 2em;
-    color: var(--base-color);
-    text-align: center;
-    margin-bottom: 20px;
 }
 
 /* Format mobile */
