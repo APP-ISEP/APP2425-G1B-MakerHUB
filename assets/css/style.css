@@ -41,7 +41,7 @@ body {
     text-decoration: underline;
 }
 
-button {
+button{
     background-color: var(--important-element-color);
     border: 3px solid var(--important-element-color);
     font-family: 'Kanit', serif;
@@ -1129,3 +1129,19 @@ td {
         margin-left: 10%;
     }
 }
+
+/* order-history*/
+
+
+.order-history {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.order-history .offer-card {
+    flex-basis: calc(20%);
+    box-sizing: border-box;
+}
+
+

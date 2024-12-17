@@ -7,6 +7,7 @@
 // pour appeler la fonction addInfosInTheForm() du modèle et les insérer dans la base de données.
 // dès qu'on voit $ c'est qu'on déclare ou qu'on utilise une variable
 
+session_start();
 $title = "Contactez-nous";
 
 ob_start();
