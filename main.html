@@ -75,7 +75,7 @@
                         <h4 class="card-title"><?= $item['titre'] ?></h4>
                         <h3 class="card-price"><?= number_format($item['prix'], 2, ',', ' ') ?> €</h3>
                         <p class="card-description">
-                            <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 50) . "..." : $item['description']; ?>
+                            <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 45) . "..." : $item['description']; ?>
                         </p>
                         <p class="card-status">Statut : <?= $item['statut_impression'] ?></p>
                         <button class="button button-buy">Ajouter au panier</button>
@@ -105,7 +105,7 @@
                     <div class="card-info">
                         <h4 class="card-title"><?= $item['reference'] ?> - <?= $item['titre'] ?></h4>
                         <p class="card-description">
-                            <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 50) . "..." : $item['description']; ?>
+                            <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 45) . "..." : $item['description']; ?>
                         </p>
                         <button class="button button-buy">Générer un devis</button>
                     </div>

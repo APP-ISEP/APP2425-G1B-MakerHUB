@@ -258,14 +258,14 @@ label {
     font-style: italic;
 }
 
-.wrong-signup{
+.wrong-signup {
     margin-top: 2%;
     margin-bottom: 2%;
     font-size: 1em;
 }
 
 /* MAIN CONTAINER */
-.wrong-signup{
+.wrong-signup {
     margin-top: 2%;
     margin-bottom: 2%;
     font-size: 1em;
@@ -372,6 +372,7 @@ label {
 .up {
     transform: rotate(180deg);
 }
+
 /* END FAQ PAGE */
 
 /* LEGAL PAGES */
@@ -402,6 +403,7 @@ label {
     padding-left: 40px;
     margin-top: 10px;
 }
+
 /* END LEGAL PAGES */
 
 .log-in, .sign-up {
@@ -472,6 +474,7 @@ label {
     margin: auto;
     padding-bottom: 5%;
 }
+
 /* END EDIT PROFILE PAGE */
 
 .login-button, .go-signup-button, .go-login-button, .signup-button {
@@ -633,20 +636,20 @@ table {
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-  
+
 th {
     border: 1px solid var(--accentuation_color);
     text-align: left;
     padding: 8px;
 }
 
-td{
+td {
     text-align: left;
     padding: 8px;
     border: 1px solid var(--accentuation_color);
 }
 
-.elements{
+.elements {
     font-size: 20px;
 }
 
@@ -655,15 +658,16 @@ td{
     margin-top: 5%;
 }
 
-.title{
-   justify-content: center;
+.title {
+    justify-content: center;
 }
 
-.small{
+.small {
     text-align: center;
     font-size: 24px;
     margin-top: -30px;
 }
+
 /* END SHOPPING CART PAGE */
 
 
@@ -737,7 +741,7 @@ td{
     padding-right: 5%;
 }
 
-.price-filter-container input  {
+.price-filter-container input {
     appearance: textfield;
     width: 110px;
 }
@@ -818,7 +822,7 @@ td{
     width: 95%;
 }
 
-.offer-card {
+.offer-card, .request-card {
     background-color: var(--base-color-3);
     border: 1px solid var(--secondary-border-color);
     border-radius: 8px;
@@ -831,10 +835,14 @@ td{
 }
 
 .requests-cards-container {
-    row-gap: 40px;
+    gap: 90px;
 }
 
-.request-card {
+.requests-cards-container .card-description {
+    margin-bottom: 5%;
+}
+
+/*.request-card {
     background-color: var(--base-color-3);
     border: 1px solid var(--secondary-border-color);
     border-radius: 8px;
@@ -863,7 +871,7 @@ td{
 .request-card .button-buy {
     align-self: center;
     margin-top: auto;
-}
+}*/
 
 .offer-card img, .request-card img {
     width: 100%;
@@ -945,11 +953,12 @@ td{
     width: 100%;
 }
 
-.sign-up .toggle{
+.sign-up .toggle {
     margin-top: 2%;
     margin-bottom: 5%;
     padding-bottom: 0;
 }
+
 /* END FORM */
 
 /* LABEL AND WRITE PART */
@@ -967,6 +976,7 @@ td{
     left: 95%;
     margin-top: -4.5%;
 }
+
 /* END LABEL AND WRITE PART */
 
 /* CHECK BOX AND BUTTON */
@@ -995,6 +1005,7 @@ td{
     align-items: center;
     margin-top: 20px;
 }
+
 /* END CHECKBOX AND BUTTON */
 
 /* CONTACT PAGE */
@@ -1019,10 +1030,11 @@ td{
     background-color: var(--base-color-3);
 }
 
-.send-button{
+.send-button {
     display: flex;
     justify-content: center;
 }
+
 /* END CONTACT PAGE */
 
 
@@ -1045,7 +1057,7 @@ td{
 
 .cookies h1 {
     font-size: 2em;
-    color : var(--base-color);
+    color: var(--base-color);
     text-align: center;
     margin-bottom: 20px;
 }
