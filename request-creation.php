@@ -25,8 +25,8 @@ if (isset($_POST) && count($_POST) > 0) {
         $errors['fields'] = "Veuillez remplir tous les champs.";
     }
 
-    $title = htmlentities($_POST['title']);
-    $description = htmlentities($_POST['description']);
+    $title = htmlspecialchars($_POST['title']);
+    $description = htmlspecialchars($_POST['description']);
 
     if (strlen($title) > 40) {
         $errors['title'] = "Le titre ne doit pas dépasser 40 caractères.";

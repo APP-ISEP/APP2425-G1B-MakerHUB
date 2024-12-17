@@ -1,5 +1,6 @@
 <?php
 require_once "./php/connectToDB.php";
+
 function createRequest(string $title, string $description, int $userId): ?bool
 {
     try {

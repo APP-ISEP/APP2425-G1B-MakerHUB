@@ -38,8 +38,8 @@
     align-items: center;
     cursor: pointer;
     gap: 15px;
-    margin-top: 35px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .toggle-input {
