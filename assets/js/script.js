@@ -219,7 +219,6 @@ $(document).ready(() => {
             type: 'POST',
             data: {fonction: 'uniqueMailJSON', email: emailInput.value},
             success: function(data) {
-                console.log(data);
                 const jsonData = JSON.parse(data);
 
                 if(jsonData.uniqueEmail === "false") {
