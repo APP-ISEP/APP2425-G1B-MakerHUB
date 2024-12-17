@@ -33,6 +33,6 @@ function addFaq(string $question, string $reponse): bool
         return false;
     }
 }
-header('Location: ../../views/panel_admin_faq.php');
+header('Location: /admin-faq.php');
 die();
 ?>

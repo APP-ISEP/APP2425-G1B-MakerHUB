@@ -2,19 +2,24 @@
 require_once "../connectToDB.php";
 echo "hello";
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_POST['id']) && isset($_POST['question']) && isset($_POST['reponse'])) {
+    $id = $_POST['id'];
+    echo $id;
+    $question = $_POST['question'];
+    echo $question;
+    $reponse = $_POST['reponse'];
+    echo $reponse;
+    setFaq($id, $question, $reponse);
+    header('Location: /admin-faq.php');
+    die();
+}
+if (isset($_POST['id']) && !isset($_POST['question']) && !isset($_POST['reponse'])) {
+    $id = $_POST['id'];
     $est_actif = 0;
     $inactif_depuis = date("Y-m-d H:i:s");
     deleteFaq($id, $est_actif, $inactif_depuis);
-    header('Location: ../../views/panel_admin_faq.php');
-} 
-else if (isset($_POST['id']) && isset($_POST['question']) && isset($_POST['reponse'])) {
-    $id = $_POST['id'];
-    $question = $_POST['question'];
-    $reponse = $_POST['reponse'];
-    setFaq($id, $question, $reponse);
-    header('Location: ../../views/panel_admin_faq.php');
+    header('Location: /admin-faq.php');
+    die();
 } else {
     echo "Error: id not set";
     return false;

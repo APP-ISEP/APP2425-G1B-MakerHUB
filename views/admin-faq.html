@@ -1,55 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <link href="../../assets/css/style_admin.css" rel="stylesheet">
-        <link href="../../assets/css/style.css" rel="stylesheet">
-        <link href="../../assets/images/favico.ico" rel="icon">
-        <title>Administration | Makerhub</title>
+
         <script>
             xmlhttp = new XMLHttpRequest();
+            function setFaq() {
+                id = document.getElementById("id_faq").value;
+                question = document.getElementById("question_faq").value;
+                reponse = document.getElementById("reponse_faq").value;
 
-                  
-            function setFaq(id, question, reponse) {
                 try{
-                        if (window.XMLHttpRequest) {
-                        xmlhttp= new XMLHttpRequest();
-                    } else {
-                        if (window.ActiveXObject)
-                            try {
-                                xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
-                            } catch (e) {
-                                try {
-                                    xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
-                                } catch (e) {
-                                    return NULL;
-                                }
-                            }
-                    }
-
-                    xmlhttp.onreadystatechange = function ()
-                    {
-                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-                        {
-                            console.log(xmlhttp.responseText);
-                        }
-                    }
-                        console.log(id);
-                        console.log(question);
-                        console.log(reponse);
-                        xmlhttp.open("GET", "./php/faq/setFaq.php?id="+id+"&reponse="+reponse+"&question="+question, true);
-                        xmlhttp.send();
-                }
-                catch(e){
-                    console.log(e);
-                }
-            }
-
-            function deleteFaq(id) {
-                try{
-                    console.log(id);
                     if (window.XMLHttpRequest) {
                         xmlhttp= new XMLHttpRequest();
+                
                     } else {
                         if (window.ActiveXObject)
                             try {
@@ -68,46 +28,80 @@
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
                         {
                             console.log(xmlhttp.responseText);
+                        
                         }
                     }
-                    xmlhttp.open("GET", "./php/faq/setFaq.php?id="+id, true);
-                    xmlhttp.send();
+                        xmlhttp.open("POST", "./php/faq/setFaq.php", true);
+                        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xmlhttp.send("id="+id+"&reponse="+reponse+"&question="+question);
+                        window.location.reload();
                 }
                 catch(e){
-                    console.log(e);
+                    console.log(e.toString());
                 }
+            }
+
+    function deleteFaq(id) {
+        try{
+            console.log(id);
+            if (window.XMLHttpRequest) {
+                xmlhttp= new XMLHttpRequest();
+            } else {
+                if (window.ActiveXObject)
+                    try {
+                        xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            return NULL;
+                        }
+                    }
+            }
+
+            xmlhttp.onreadystatechange = function ()
+            {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                {
+                    console.log(xmlhttp.responseText);
+                }
+            }
+            xmlhttp.open("GET", "./php/faq/setFaq.php?id="+id, true);
+            xmlhttp.send();
+            xmlhttp.open("POST","./php/faq/setFaq.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id="+id);
+            window.location.reload();
+        }
+        catch(e){
+            console.log(e);
+        }
+    
+}
+
+function showPopUp(id) {
+    if (document.getElementById("popup").style.display == "block")
+        document.getElementById("popup").style.display = "none";
+    else{
+        document.getElementById("popup").style.display = "block";
+
+        console.log(id);
+
+        
+        xmlhttp.open("GET", "./php/faq/getFaq.php?id_faq=" + id, true);
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 
+                //console.log(xmlhttp.responseText);
+                //document.getElementById("question_faq").value = question;
+                //document.getElementById("reponse_faq").value = reponse;
             }
+        };
+        xmlhttp.send();
+    }
+}
 
-            function showPopUp() {
-                if (document.getElementById("popup").style.display == "block")
-                    document.getElementById("popup").style.display = "none";
-                else{
-                    document.getElementById("popup").style.display = "block";
-                }
-            }
         </script>
-    </head>
-
-    <body>
-    <div class="navbar">
-        <div class="header-logo">
-            <img alt="Logo MakerHUB" class="img-logo" src="../../assets/images/logo.svg">
-        </div>
-
-        <div class="profil" id="profil">
-            <img alt="Photo de profil" class="img-profil" src="../../assets/images/profil.svg">
-            <p id="pseudo">Panel</p>
-
-            <div id="dropdown">
-                <a href="#faq" ><div class="drop-content">FAQ</div></a>
-                <a href="panel_admin_produit.php" ><div class="drop-content">Produit</div></a>
-                <a href="panel_admin_utilisateur.php" ><div class="drop-content">Utilisateur</div></a>
-                <hr id="separation-bar">
-                <a href="log-out.php" ><div class="drop-content logout">Se déconnecter</div></a>
-            </div>
-        </div>
-    </div>
 
    <main class="main">
     <div class="mini-menu">
@@ -139,15 +133,17 @@
                             <th><th></th></th>
                         </tr>
                        <?php
-                       
                        foreach($faqs as $faq) {
                             $question = $faq['question'];
-                            $reponse = $faq['reponse'];?>
+                            $reponse = $faq['reponse'];
+                            $id = $faq['id_faq'];
+                        ?>
+
                             <tr>
                                 <td><?php echo($question);?></td>
                                 <td><?php echo($reponse);?></td>
-                                <td><a onclick="deleteFaq(<?php echo $faq['id_faq'];?>)"><button class="submit"><i class="fa-regular fa-trash-can" style="color: #ffffff;"></i></button></a></td>
-                                <td><a onclick="showPopUp(<?php echo $faq['id_faq'];?>)"><button class="submit"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
+                                <td><a onclick="deleteFaq(<?php echo($id);?>)"><button class="submit"><i class="fa-regular fa-trash-can" style="color: #ffffff;"></i></button></a></td>
+                                <td><a onclick="showPopUp(<?php echo($id);?>)"><button class="submit"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
                             </tr>
 
                             <div id="popup" class="popup" style="display:none;">
@@ -155,21 +151,19 @@
                             <h2>Modifier la FAQ</h2>
                             <p>Vous pouvez modifier la question et la réponse de la FAQ.</p>
                             <br>
-                            <form action="./php/faq/setFaq.php" method="POST" onsubmit="return setFaq(<?php echo $faq['id_faq'].','.$question.','.$reponse?>)">
+                            <form onsubmit="setFaq()">
                                 <label for="question">Question</label>  
                                 <br>  
-                                <textarea type="text" name="question"><?php echo($question);?></textarea>
+                                <textarea type="text" id="question_faq" name="question"><?php echo($question);?></textarea>
                                 <br>
                                 <label for="reponse">Réponse</label>
                                 <br>
-                                <textarea type="text" name="reponse"><?php echo($reponse);?></textarea>
-                                <input type="hidden" name="id" value="<?php echo $faq['id_faq'];?>">
+                                <textarea type="text" id="reponse_faq" name="reponse"><?php echo($reponse);?></textarea>
+                                <input type="hidden" id="id_faq" name="id" value="<?php echo($id);?>">
                                 <input class="submit" type="submit" value="Modifier">
                             </form>
                             </div>
                         <?php } ?>
                     </table>
-                        
                 </section>
-                
     </main> 
