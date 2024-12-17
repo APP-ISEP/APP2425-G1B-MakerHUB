@@ -219,6 +219,7 @@ $(document).ready(() => {
             type: 'POST',
             data: {fonction: 'uniqueMailJSON', email: emailInput.value},
             success: function(data) {
+                console.log(data);
                 const jsonData = JSON.parse(data);
 
                 if(jsonData.uniqueEmail === "false") {
@@ -272,7 +273,7 @@ c'est-à-dire à tous ses attributs et propriétés. Cela ne récupère pas auto
 maxlength, mais l'objet entier représentant l'élément <textarea>.
 */
 
-const textarea = document.getElementById("message-contact");
+/*const textarea = document.getElementById("message-contact");
 const wordCounter = document.querySelector(".word-counter");
 const maxLength = textarea.maxLength;
 var restLetter = maxLength - (textarea.value).length;
@@ -282,3 +283,4 @@ textarea.addEventListener ('input', () => {
     wordCounter.textContent = `${restLetter} restants`;
 })
 //--------- END OF CONTACT PAGE COUNTER---------//
+*/
