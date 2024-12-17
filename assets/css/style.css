@@ -148,9 +148,16 @@ label {
     width: 12%;
 }
 
+.img-shopping-cart {
+    width: 35px;
+    height: 35px;
+    margin-top: 10%;
+    margin-right: 10px;
+}
+
 .img-profil {
-    width: 64px;
-    height: 64px;
+    width: 50px;
+    height: 50px;
 }
 
 #pseudo {
@@ -612,6 +619,52 @@ input:focus, textarea:focus {
     width: 20px;
     height: 20px;
 }
+
+/* SHOPPING CART PAGE */
+table {
+    font-family: arial, sans-serif;
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 2%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+  
+th {
+    border: 1px solid var(--accentuation_color);
+    text-align: left;
+    padding: 8px;
+}
+
+td{
+    text-align: left;
+    padding: 8px;
+    border: 1px solid var(--accentuation_color);
+}
+
+.elements{
+    font-size: 20px;
+}
+
+.button-order {
+    margin-left: 75%;
+    margin-top: 5%;
+}
+
+.title{
+   justify-content: center;
+}
+
+.small{
+    text-align: center;
+    font-size: 24px;
+    margin-top: -30px;
+}
+/* END SHOPPING CART PAGE */
 
 
 /*HOME PAGE*/
