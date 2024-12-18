@@ -1,13 +1,5 @@
 <?php
-require_once "../connectToDB.php";
-
-$question = $_POST['question'];
-$reponse = $_POST['reponse'];
-
-addFaq($question, $reponse);
-if($add){
-    header("Location: admin-faq.php");
-};
+require_once(__DIR__ . '/../connectToDB.php');
 
 
 
@@ -39,6 +31,4 @@ function addFaq(string $question, string $reponse): bool
     }
 }
 
-
-die();
 ?>
