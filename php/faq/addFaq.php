@@ -5,6 +5,11 @@ $question = $_POST['question'];
 $reponse = $_POST['reponse'];
 
 addFaq($question, $reponse);
+if($add){
+    header("Location: admin-faq.php");
+};
+
+
 
 function addFaq(string $question, string $reponse): bool
 {
@@ -33,6 +38,7 @@ function addFaq(string $question, string $reponse): bool
         return false;
     }
 }
-header('Location: /admin-faq.php');
+
+
 die();
 ?>
