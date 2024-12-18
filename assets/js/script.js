@@ -199,55 +199,57 @@ $(document).ready(() => {
 
 //---- BEGINNING OF THE AJAX TO CHECK IF MAIL AND PSEUDONYME WAS ALREADY USED ----//
 $(document).ready(() => {
-    let timer;
+    if (window.location.pathname.includes('sign-up.php')) {
+        let timer;
 
-    $("#passwordInfo").on("click", function () {
-        clearTimeout(timer);
-        $("#password-tooltip").fadeIn("slow");
-    });
+        $("#passwordInfo").on("click", function () {
+            clearTimeout(timer);
+            $("#password-tooltip").fadeIn("slow");
+        });
 
-    $("#passwordInfo").on("mouseout", function () {
-        timer = setTimeout(function () {
-            $("#password-tooltip").fadeOut("slow");
-        }, 2000);
-    });
+        $("#passwordInfo").on("mouseout", function () {
+            timer = setTimeout(function () {
+                $("#password-tooltip").fadeOut("slow");
+            }, 2000);
+        });
 
-    let emailInput = document.getElementById('email');
-    emailInput.addEventListener('change', function() {
-        $.ajax({
-            url: 'php/user/checkCredentials.php',
-            type: 'POST',
-            data: {fonction: 'uniqueMailJSON', email: emailInput.value},
-            success: function(data) {
-                const jsonData = JSON.parse(data);
+        let emailInput = document.getElementById('email');
+        emailInput.addEventListener('change', function () {
+            $.ajax({
+                url: 'php/user/checkCredentials.php',
+                type: 'POST',
+                data: {fonction: 'uniqueMailJSON', email: emailInput.value},
+                success: function (data) {
+                    const jsonData = JSON.parse(data);
 
-                if(jsonData.uniqueEmail === "false") {
-                    alert("L'email que vous avez choisi a déjà été utilisé.");
+                    if (jsonData.uniqueEmail === "false") {
+                        alert("L'email que vous avez choisi a déjà été utilisé.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Erreur AJAX :", status, error);
                 }
-            },
-            error: function(xhr, status, error) {
-                console.error("Erreur AJAX :", status, error);
-            }
+            })
         })
-    })
-    let usernameInput = document.getElementById('username');
-    usernameInput.addEventListener('change', function() {
-        $.ajax({
-            url: 'php/user/checkCredentials.php',
-            type: 'POST',
-            data: {fonction: 'uniquePseudonymeJSON', pseudonyme: usernameInput.value},
-            success: function(data) {
-                const jsonData = JSON.parse(data);
+        let usernameInput = document.getElementById('username');
+        usernameInput.addEventListener('change', function () {
+            $.ajax({
+                url: 'php/user/checkCredentials.php',
+                type: 'POST',
+                data: {fonction: 'uniquePseudonymeJSON', pseudonyme: usernameInput.value},
+                success: function (data) {
+                    const jsonData = JSON.parse(data);
 
-                if(jsonData.uniquePseudonyme === "false") {
-                    alert("Le pseudonyme que vous avez choisi a déjà été utilisé.");
+                    if (jsonData.uniquePseudonyme === "false") {
+                        alert("Le pseudonyme que vous avez choisi a déjà été utilisé.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Erreur AJAX :", status, error);
                 }
-            },
-            error: function(xhr, status, error) {
-                console.error("Erreur AJAX :", status, error);
-            }
+            })
         })
-    })
+    }
 });
 
 //---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
