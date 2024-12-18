@@ -626,7 +626,7 @@ input:focus, textarea:focus {
 
 /* SHOPPING CART PAGE */
 table {
-    font-family: arial, sans-serif;
+    font-family: 'Kanit', serif;
     border: 1px solid black;
     border-collapse: collapse;
     width: 60%;
