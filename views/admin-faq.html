@@ -1,0 +1,67 @@
+
+      
+
+   <main class="main">
+    <div class="mini-menu">
+        <a href="./admin-product.php" ><div class="submitButton">Produit</div></a>
+        <a href="./admin-user.php" ><div class="submitButton">Utilisateur</div></a>
+    </div>
+
+        <section id="faq" class="section content-box">
+           
+                    <h2>FAQ</h2>
+                    <p>Vous pouvez ajouter ou supprimer des questions fréquemment posées.</p>
+                    
+                    <form action="./admin-faq.php" method="POST">
+                        <label for="question">Question</label>  
+                        <br>  
+                        <textarea type="text" name="question" placeholder="Question"></textarea>
+                        <br>
+                        <label for="reponse">Réponse</label>
+                        <br>
+                        <textarea type="text" name="reponse" placeholder="Réponse"></textarea>
+                        <br>
+                        <input class="submit" type="submit" value="Ajouter">
+                    </form>
+
+                    <table>
+                        <tr>
+                            <th>Question</th>
+                            <th>Réponse</th>
+                            <th><th></th></th>
+                        </tr>
+                       <?php
+                       foreach($faqs as $faq) {
+                            $question = $faq['question'];
+                            $reponse = $faq['reponse'];
+                            $id = $faq['id_faq'];
+                        ?>
+
+                            <tr>
+                                <td><?php echo($question);?></td>
+                                <td><?php echo($reponse);?></td>
+                                <td><a onclick="deleteFaq(<?php echo($id);?>)"><button class="submit"><i class="fa-regular fa-trash-can" style="color: #ffffff;"></i></button></a></td>
+                                <td><a onclick="showPopUp(<?php echo($id);?>)"><button class="submit"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
+                            </tr>
+
+                            <div id="popup" class="popup" style="display:none;">
+                            <br>
+                            <h2>Modifier la FAQ</h2>
+                            <p>Vous pouvez modifier la question et la réponse de la FAQ.</p>
+                            <br>
+                            <form onsubmit="setFaq()">
+                                <label for="question">Question</label>  
+                                <br>  
+                                <textarea type="text" id="question_faq" name="question"><?php echo($question);?></textarea>
+                                <br>
+                                <label for="reponse">Réponse</label>
+                                <br>
+                                <textarea type="text" id="reponse_faq" name="reponse"><?php echo($reponse);?></textarea>
+                                <input type="hidden" id="id_faq" name="id" value="<?php echo($id);?>">
+                                <input class="submit" type="submit" value="Modifier">
+                            </form>
+                            </div>
+                        <?php } ?>
+                    </table>
+                </section>
+    </main> 
