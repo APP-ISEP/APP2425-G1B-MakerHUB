@@ -18,6 +18,7 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
         ]);
 
         $stmt->closeCursor();
+        return $pdo->lastInsertId(); 
     } catch (PDOException $e) {
         // Error executing the query
         $error = $e->getMessage();
@@ -68,4 +69,22 @@ function verifyMail(string $email): ?bool
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
         return null;
     }
+}
+
+function isAMaker(int $isAMaker, $userId): ?bool{ 
+    try {
+        $pdo = connectToDB();
+        $sql = "INSERT INTO role_utilisateur (role_id, utilisateur_id) VALUES ((:roleId),(SELECT id_utilisateur FROM utilisateur WHERE id_utilisateur = :userId))";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam("roleId", $isAMaker);
+        $stmt->bindParam("userId", $userId);
+
+        $bool = $stmt->execute();
+        $stmt->closeCursor();
+    } catch (PDOException $e) {
+        $error = $e->getMessage();
+        echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
+        return null;
+    }
+        
 }

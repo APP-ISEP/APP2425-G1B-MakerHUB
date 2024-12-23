@@ -63,6 +63,12 @@
                 <i class="fa-solid fa-eye" aria-hidden="true"  type="button" id="eye"></i>
             </span>
             </div>
+            <div class="form-control">
+                <label for="password" id="passwordLabelConfirmation">Confirmez le mot de passe<span class="required">* </span></label>
+                <input id="passwordConfirmation" type="password" placeholder="Votre mot de passe..." required name="motDePasseConfirmed">
+                <span class="eye-span signup-eye">
+                <i class="fa-solid fa-eye" aria-hidden="true"  type="button" id="eye1"></i>
+            </div>
             <label class="toggle">
                 <input type="checkbox" class="toggle-input" id="toggleDescription">
                 <span class="toggle-label"></span>
@@ -70,7 +76,7 @@
             </label>
             <div class="form-control" id="aboutMe">
                 <label for="description">À propos de vous</label>
-                <textarea id="description" name="description" rows="4" maxlength="255" value="<?= $user['description']?>"></textarea>
+                <textarea id="description" name="description" rows="4" maxlength="255"></textarea>
             </div>
             <div class="checkbox-group">
                 <input class="checkbox" type="checkbox" id="check" name="is18More">
