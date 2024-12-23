@@ -1,10 +1,11 @@
 <?php
 require_once 'config/constants.php';
 include 'autoload.php';
-
+ 
 use Config\Log\Log;
 use Config\Log\LogFile;
 use Config\Log\LogLevel;
+
 
 session_start();
 
@@ -12,7 +13,6 @@ $title = "Inscription";
 $errors = array();
 $isAuthPage = true;
 $logFile = LogFile::getInstance();
-
 ob_start();
 
 if (isset($_SESSION['account'])) {
@@ -26,23 +26,26 @@ require_once 'php/user/getUser.php';
 $nom = $email = $telephone = $prenom = $motDePasse = $pseudonyme = "";
 
 if (isset($_POST) && count($_POST) > 0) {
-    $nom = test_input($_POST["nom"]);
+    $nom = test_input(data: $_POST["nom"]);
     $prenom = test_input($_POST["prenom"]);
     $motDePasse = test_input($_POST["motDePasse"]);
+    $motDePasseConfirmed = test_input($_POST["motDePasseConfirmed"]);
     $pseudonyme = test_input($_POST["pseudonyme"]);
     $email = test_input($_POST["email"]);
     $telephone = test_input($_POST["telephone"]);
     $description = test_input($_POST["description"]);
+    $isMaker = isset($_POST['toggleDescription']); //"ON" if is selected
+
 
     $validateEmail = validateEmail($email);
     $validateEmailUnique = uniqueMail($email);
     $validatePhone = validateTelephone($telephone);
     $validatePassword = validatePassword($motDePasse);
+    $hashedPassword= validatePassword($motDePasse);
     $validateLengthNom = lengthNom($nom);
     $validateLengthPrenom = lengthPrenom($prenom);
     $validateLengthPseudonyme = lengthPseudonyme($pseudonyme);
-    $validatePseudonymeUnique = uniquePseudonyme($pseudonyme);
-
+    $validatePseudonymeUnique = uniquePseudonyme($pseudonyme); 
 
     if (!$validateEmail) {
         $errors['email'] = "Veuillez saisir un mail valide.";
@@ -73,6 +76,9 @@ if (isset($_POST) && count($_POST) > 0) {
     if(!$validatePseudonymeUnique){
         $errors['pseudonymeUnique']="Ce pseudonyme existe déjà, veuillez en créer un nouveau";
     }
+    if($motDePasse !== $motDePasseConfirmed){
+         $errors['ConfirmdPassword']="Les mots de passe ne correspondent pas";
+    }
 
     if (empty($_POST['is18More'])) {
         $errors['checkbox1'] = "Veullez confirmer d'avoir plus de 18 ans";
@@ -98,16 +104,22 @@ if (isset($_POST) && count($_POST) > 0) {
         $errors['email'] = "Le champ est obligatoire";
     }
 
+
     if (empty($errors)) {
         if ($validateEmail && $validatePhone && $validatePassword) {
             $hashedPassword = hashPassword($motDePasse);
             $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description);
-            $account = getUser($email);
-            $_SESSION['account'] = $account;
-            $_SESSION['username'] = $account['pseudonyme'];
+            if ($isMaker) {
+                $userId = $pdo->lastInsertId();
+                isAMaker(3, $userId);
+            }
 
-            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a été créé depuis" . $_SERVER['REMOTE_ADDR'] . "."));
-            header("Location: index.php");
+            // $account = getUser($email);
+            // $_SESSION['account'] = $account;
+            // $_SESSION['username'] = $account['pseudonyme'];
+
+            // $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a été créé depuis" . $_SERVER['REMOTE_ADDR'] . "."));
+            header("Location: log-in.php");
         }
     }
 }
