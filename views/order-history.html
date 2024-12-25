@@ -2,7 +2,21 @@
     
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<h1 class="title">Historique de commandes</h1>
+<h1 class="title">Commandes</h1>
+<div class="filter">
+    <label for="filter-status">Filtrer par statut :</label>
+    <select id="filter-status">
+        <option value="all">Tous</option>
+        <option value="Devis Envoyé">Devis envoyé</option>
+        <option value="Devis Accepté">Devis accepté</option>
+        <option value="Devis Refusé">Devis refusé</option>
+        <option value="à payer">à payer</option>
+        <option value="Payé">Payé</option>
+        <option value="Imprimé">Imprimé</option>
+        <option value="Envoyé">Envoyé</option>
+        <option value="Livré">Livré</option>
+    </select>
+</div>
 <div class="history">
     <div class="order-history">
 

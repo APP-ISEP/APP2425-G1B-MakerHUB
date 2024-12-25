@@ -1154,6 +1154,9 @@ input:focus, textarea:focus {
 .order-history .offer-card {
     flex-basis: calc(20%);
     box-sizing: border-box;
+    flex: 1 0 30%;
+    max-width: 280px; 
 }
+
 
 

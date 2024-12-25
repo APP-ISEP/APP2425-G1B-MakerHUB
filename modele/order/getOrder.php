@@ -13,7 +13,7 @@ function getOrder($id_account)
     $db = connectToDB();
     $query = "SELECT id_produit_fini,chemin_image,prix,description,titre 
     FROM commande left join produit_fini on produit_fini.commande_id = commande.id_commande 
-    WHERE commande.utilisateur_id = ?";
+    WHERE commande.utilisateur_id = ? ORDER BY commande.cree_a desc";
     try {
         $stmt = $db->prepare($query);
         $stmt->bindparam(1, $id_account);
