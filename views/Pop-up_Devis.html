@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Example</title>
+    <style>
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            background-color: rgba(0, 0, 0, 0.5); 
+        }
+
+     
+        .modal-content {
+            position: relative;
+            margin: 10% auto; 
+            padding: 20px;
+            background-color: floralwhite;
+            width: 50%; 
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Modal header */
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        /* Modal body */
+        .modal-body {
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Close button */
+        .close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .close:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="modal" id="myModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Delete User</h5>
+            <button class="close" id="closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete this user?</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+     $("#filter_action").click(function () {
+         $("#myModal").modal("show");
+     });
+     $("#ApplyFilter").click(function () {
+         $("#myModal").modal("hide");
+     });
+ });
+
+</script>
+
+</body>
+</html>
