@@ -30,3 +30,26 @@ function getRequests($search = null): ?array
         return null;
     }
 }
+
+function getRequestId(string $id): ?array
+{
+    try {
+        $pdo = connectToDB();
+        $sql = "SELECT * FROM `produit_demande` WHERE `id_produit_demande` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id
+        ]);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $request = null;
+        if (count($results) > 0)
+            $request = $results[0];
+        $stmt->closeCursor();
+        return $request;
+    } catch (PDOException $e) {
+        // Error executing the query
+        $error = $e->getMessage();
+        echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
+        return null;
+    }
+}
