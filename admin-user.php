@@ -5,8 +5,13 @@ $title = "Administration User | Makerhub";
 
 ob_start();
 
-include_once 'views/admin-user.html';
+require('php/user/getUser.php'); 
+$users = getUsers();
+
+include 'views/admin-user.html';
 
 $body = ob_get_clean();
 
-include_once "views/components/template.php";
+include "views/components/template.php";
+
+?>

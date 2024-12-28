@@ -1,6 +1,5 @@
 <?php
 require_once "../connectToDB.php";
-echo "hello";
 
 if (isset($_POST['id']) && isset($_POST['question']) && isset($_POST['reponse'])) {
     $id = $_POST['id'];

@@ -24,3 +24,5 @@ include_once 'views/admin-faq.html';
 $body = ob_get_clean();
 
 include_once "views/components/template.php";
+
+?>
