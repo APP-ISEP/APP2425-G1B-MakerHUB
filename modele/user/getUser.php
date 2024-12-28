@@ -39,12 +39,12 @@ function getUsers(): ?array
         $bool = $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $account = null;
+        $accounts = null;
         if (count($results) > 0)
-            $account = $results[0];
+            $accounts = $results;
         
         $stmt->closeCursor();
-        return $account;
+        return $accounts;
     }
     catch (PDOException $e) {
         // Error executing the query

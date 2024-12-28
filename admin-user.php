@@ -9,8 +9,13 @@ if ($_SESSION['role'] !== 'admin') {
 
 ob_start();
 
-include_once 'views/admin/admin-user.html';
+require('php/user/getUser.php'); 
+$users = getUsers();
+
+include 'views/admin/admin-user.html';
 
 $body = ob_get_clean();
 
-include_once "views/components/template.php";
+include "views/components/template.php";
+
+?>
