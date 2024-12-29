@@ -1,15 +1,14 @@
 <?php
 require_once "./php/connectToDB.php";
 
-function createOffer(string $title, string $description, float $price, string $status, int $userId): ?bool
+function createOffer(string $title, string $description, float $price, int $userId): ?bool
 {
     try {
         $pdo = connectToDB();
-        $sql = "INSERT INTO `produit_fini` (titre, description, prix, statut_impression, vendeur_id) VALUES (
+        $sql = "INSERT INTO `produit_fini` (titre, description, prix, vendeur_id) VALUES (
             :valTitle,
             :valDescription,
             :valPrix,
-            :valStatutImpression,
             :valUserId
         )";
 
@@ -17,7 +16,6 @@ function createOffer(string $title, string $description, float $price, string $s
         $stmt->bindParam(":valTitle", $title);
         $stmt->bindParam(":valDescription", $description);
         $stmt->bindParam(":valPrix", $price);
-        $stmt->bindParam(":valStatutImpression", $status);
         $stmt->bindParam(":valUserId", $userId);
 
         $bool = $stmt->execute();

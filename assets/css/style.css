@@ -679,7 +679,6 @@ td {
     align-items: center;
     min-height: calc(100vh - var(--navbar-height));
     border-bottom: #B1BFB2 0.5px solid;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .hero-text {
@@ -698,9 +697,10 @@ td {
 
 .hero-container img {
     width: 48vw;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
-.button-catalog {
+.button-hero {
     width: 30%;
     padding: 2%;
     font-size: 1.1em;

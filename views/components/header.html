@@ -22,8 +22,8 @@
 
     <?php if (isset($username)) : ?>
     <ul class="navbar-links">
-        <li><a href="offer-creation.php">Créer une offre</a></li>
-        <li><a href="request-creation.php">Créer une demande</a></li>
+        <li><a href="offer-creation.php">Proposer une offre</a></li>
+        <li><a href="request-creation.php">Demander un service</a></li>
     </ul>
 
     <div class="profil" id="profil">
@@ -35,7 +35,7 @@
         <p id="pseudo"><?= $username ?></p>
 
         <div id="dropdown">
-            <a href="order-history.php"><div class="drop-content">Historique des commandes et devis</div></a>
+            <a href="order-history.php"><div class="drop-content">Mes commandes</div></a>
             <a href="edit-profile.php"><div class="drop-content">Éditer le profil</div></a>
             <hr id="separation-bar">
             <a href="log-out.php"><div class="drop-content logout">Se déconnecter</div></a>
