@@ -393,7 +393,7 @@ xmlhttp.send();
 //---- BEGINNING OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
 
 document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.button-buy');
+    const buttons = document.querySelectorAll('#add-shopping-cart');
 
     // Permet de détetcer le clic d'un des boutons de la liste
     buttons.forEach(button => {

@@ -73,7 +73,7 @@
                             <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 45) . "..." : $item['description']; ?>
                         </p>
 
-                        <button class="button button-buy" data-product-id="<?= $item['id_produit_fini'] ?>">
+                        <button id="add-shopping-cart" class="button button-buy" data-product-id="<?= $item['id_produit_fini'] ?>">
                             Ajouter au panier
                         </button>
                     </div>
