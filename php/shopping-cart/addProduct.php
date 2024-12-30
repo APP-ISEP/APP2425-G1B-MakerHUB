@@ -1,25 +1,28 @@
 <?php
-require_once "./php/connectToDB.php";
+require_once(__DIR__ . '/../connectToDB.php');
 
-function addProduct(int $productId): ?bool
-{
+if (isset($_POST['productId'])) {
+    session_start();
+
+    if (!isset($_SESSION) || !isset($_SESSION['account'])) {
+        die();
+    };
+
+    $userId = $_SESSION['account']['id_utilisateur'];
+    echo addProduct($_POST['productId'], $userId);
+}
+
+function addProduct(int $productId, int $userId): ?bool {
     try {
         $pdo = connectToDB();
-
-        $sql = "INSERT INTO panier_produit (utilisateur_id, produit_fini_id) VALUES (
-            :valUserId,
-            :valProduitFiniId
-        )";
-
-        $userId = $_SESSION['account']['id_utilisateur'];
-
+        
+        $sql = "INSERT IGNORE INTO `panier_produits` (id_utilisateur, id_produit_fini) VALUES (:valUserId, :valProductId)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valUserId", $userId);
-        $stmt->bindParam(":valProduitFiniId", $productId);
-
+        $stmt->bindParam(":valProductId", $productId);
         $bool = $stmt->execute();
         $stmt->closeCursor();
-
+        
         return $bool;
     }
     catch (PDOException $e) {

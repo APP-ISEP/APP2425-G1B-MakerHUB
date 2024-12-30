@@ -5,6 +5,7 @@ function createOffer(string $title, string $description, float $price, int $user
 {
     try {
         $pdo = connectToDB();
+        
         $sql = "INSERT INTO `produit_fini` (titre, description, prix, vendeur_id) VALUES (
             :valTitle,
             :valDescription,

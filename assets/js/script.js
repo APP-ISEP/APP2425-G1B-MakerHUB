@@ -236,7 +236,7 @@ $(document).ready(() => {
             $.ajax({
                 url: 'php/user/checkCredentials.php',
                 type: 'POST',
-                data: {fonction: 'uniquePseudonymeJSON', pseudonyme: usernameInput.value},
+                data: { fonction: 'uniquePseudonymeJSON', pseudonyme: usernameInput.value },
                 success: function (data) {
                     const jsonData = JSON.parse(data);
 
@@ -398,26 +398,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Permet de détetcer le clic d'un des boutons de la liste
     buttons.forEach(button => {
         button.addEventListener('click', function() {
-            const productId = this.getAttribute('data-product-id');
+            const productId = parseInt(this.getAttribute('data-product-id'));
 
             fetch('php/shopping-cart/addProduct.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: `productId=${productId}`
+                body: new URLSearchParams({
+                    'productId': productId
+                })
             })
-            .then(response => response.json())
+            .then(response => response.text())
             .then(data => {
-                if (data.success) {
+                if (data === '1') {
                     alert("Le produit a bien été ajouté dans le panier.");
                 } else {
-                    alert("Impossible d'ajouter le poduit dans le panier.");
+                    alert("Impossible d'ajouter le produit dans le panier.");
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert("Impossible d'ajouter le poduit dans le panier.");
+                alert("Une erreur est survenue.");
             });
         });
     });
