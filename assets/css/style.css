@@ -640,6 +640,7 @@ input:focus, textarea:focus {
     gap: 30px; 
     justify-items: stretch;
     margin-top: 25px;
+    margin-bottom: 50px;
     margin-left: 150px;
     margin-right: 150px;
 }
@@ -687,7 +688,7 @@ input:focus, textarea:focus {
     margin-bottom: 20px;
 }
 
-.delete-button {
+.delete-product {
     position: absolute;
     bottom: 20px;
     right: 20px;

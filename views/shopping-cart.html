@@ -16,14 +16,16 @@
                     <p class="product-title"><?= $item['titre'] ?> - <?= $item['prix'] ?> €</p>
                     <p class="product-description"><?= $item['description'] ?></p>
                 </div>
-        
-                <button class="button delete-button">Supprimer du panier</button>
+
+                <form action="" method="post">
+                    <input type="hidden" name="productId" value="<?= $item['id_produit_fini'] ?>">
+                    <button type="submit" class="button delete-product">Supprimer du panier</button>
+                </form>
             </div>
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
         
-
     </div>
 
 </div>
