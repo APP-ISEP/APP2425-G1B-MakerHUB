@@ -1,26 +1,14 @@
 <div class="container">
     <h1 class="shopping-cart-title">Mon panier</h1>
 
-    <table class="table-shopping-cart">
-        <thead>
-            <tr>
-                <th class="elements">Photo Produit</th>
-                <th class="elements">Référence du produit</th>
-                <th class="elements">Titre du produit</th>
-                <th class="elements">Prix</th>
-                <th class="elements">Vendeur</th>
-                <th class="elements">Supprimer du panier</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>photo...</td>
-                <td>REF-F45GHI</td>
-                <td>Cintre en plastique</td>
-                <td>5€</td>
-                <td>Mathieu GEISSEL</td>
-                <td><button>Supprimer</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <?php if (isset($products)) : ?>
+    <div class="items-cards-container">
+        <?php foreach ($products as $item) : ?>
+
+        <p><?= $item['titre'] ?></p>
+
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+
 </div>

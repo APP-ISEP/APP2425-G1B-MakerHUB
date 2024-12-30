@@ -1,6 +1,9 @@
 <?php
+
 session_start();
-$title = "Panier";
+
+$title = "Mon panier";
+$isAuthPage = true;
 
 ob_start();
 
@@ -8,6 +11,12 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
     header("Location: ./log-in.php");
     die();
 };
+
+include_once("./php/shopping-cart/getProductsByUserId.php");
+$products = getProductsByUserId($_SESSION['account']['id_utilisateur']);
+
+
+
 
 
 
