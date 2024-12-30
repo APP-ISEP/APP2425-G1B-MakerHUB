@@ -288,7 +288,6 @@ textarea.addEventListener ('input', () => {
 
 //--------- ADMIN FAQ ---------//
 
-
 xmlhttp = new XMLHttpRequest();
 function setFaq() {
     id = document.getElementById("id_faq").value;
@@ -391,3 +390,37 @@ xmlhttp.send();
 }
 
 
+//---- BEGINNING OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
+
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.button-buy');
+
+    // Permet de détetcer le clic d'un des boutons de la liste
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.getAttribute('data-product-id');
+
+            fetch('php/shopping-cart/addProduct.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `productId=${productId}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Le produit a bien été ajouté dans le panier.");
+                } else {
+                    alert("Impossible d'ajouter le poduit dans le panier.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Impossible d'ajouter le poduit dans le panier.");
+            });
+        });
+    });
+});
+
+//---- END OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//

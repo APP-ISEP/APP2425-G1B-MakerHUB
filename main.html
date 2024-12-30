@@ -62,9 +62,9 @@
             </form>
 
             <?php if (isset($offers)) : ?>
-            <div class="offers-cards-container">
+            <div class="items-cards-container">
                 <?php foreach ($offers as $item) : ?>
-                <div class="offer-card">
+                <div class="item-card">
                     <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
                     <div class="card-info">
                         <h4 class="card-title"><?= $item['titre'] ?></h4>
@@ -72,15 +72,17 @@
                         <p class="card-description">
                             <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 45) . "..." : $item['description']; ?>
                         </p>
-                        <button class="button button-buy">Ajouter au panier</button>
+
+                        <button class="button button-buy" data-product-id="<?= $item['id_produit_fini'] ?>">
+                            Ajouter au panier
+                        </button>
                     </div>
                 </div>
                 <?php endforeach; ?>
             </div>
             <?php endif; ?>
 
-            <div class="pagination" id="offers-pagination">
-            </div>
+            <div class="pagination" id="offers-pagination"></div>
         </div>
 
         <div class="requests-container">
@@ -90,9 +92,9 @@
             </form>
 
             <?php if (isset($requests)) : ?>
-            <div class="requests-cards-container">
+            <div class="items-cards-container">
                 <?php foreach ($requests as $item) : ?>
-                <div class="request-card">
+                <div class="item-card">
                     <img src="./assets/images/placeholder.svg" alt="Image de la demande">
                     <div class="card-info">
                         <h4 class="card-title"><?= $item['reference'] ?> - <?= $item['titre'] ?></h4>

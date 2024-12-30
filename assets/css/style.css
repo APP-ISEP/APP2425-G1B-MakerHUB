@@ -660,14 +660,8 @@ td {
     margin-top: 5%;
 }
 
-.title {
-    justify-content: center;
-}
-
-.small {
+.shopping-cart-title {
     text-align: center;
-    font-size: 24px;
-    margin-top: -30px;
 }
 
 /* END SHOPPING CART PAGE */
@@ -813,7 +807,8 @@ td {
     color: var(--important-element-color);
 }
 
-.offers-cards-container, .requests-cards-container {
+/*
+.items-cards-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
@@ -824,59 +819,41 @@ td {
     width: 95%;
 }
 
-.offer-card, .request-card {
+.item-card {
     background-color: var(--base-color-3);
     border: 1px solid var(--secondary-border-color);
     border-radius: 8px;
     padding: 10px;
-    text-align: center;
-}
-
-.offer-card {
     margin: auto auto 4%;
-}
-
-.requests-cards-container {
-    gap: 90px;
-}
-
-.requests-cards-container .card-description {
-    margin-bottom: 5%;
-}
-
-/*.request-card {
-    background-color: var(--base-color-3);
-    border: 1px solid var(--secondary-border-color);
-    border-radius: 8px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 83%;
-    margin-bottom: 7%;
-
-    padding: 10px;
     text-align: center;
-    box-sizing: border-box;
+}
+*/
+
+.items-cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
-.request-card .card-title {
-    margin-top: 3%;
+.item-card {
+    background-color: #fff; /* Fond blanc pour chaque carte */
+    border: 1px solid #ddd; /* Bordure légère */
+    border-radius: 8px; /* Coins arrondis */
+    overflow: hidden; /* Pour gérer le contenu débordant */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour un effet esthétique */
+    text-align: center; /* Centrer le contenu de la carte */
+    padding: 15px;
 }
 
-.request-card .card-description {
-    height:60px;
-    margin-right: 2%;
-    text-align: justify;
-}
-
-.request-card .button-buy {
-    align-self: center;
-    margin-top: auto;
-}*/
-
-.offer-card img, .request-card img {
+.item-card img {
     width: 100%;
+}
+
+.card-description {
+    margin-bottom: 5%;
 }
 
 .card-info {
@@ -892,10 +869,6 @@ td {
     font-weight: 300;
     color: var(--secondary-border-color);
     text-align: left;
-}
-
-.card-status {
-    font-style: italic;
 }
 
 .button-buy, .button-accept {
