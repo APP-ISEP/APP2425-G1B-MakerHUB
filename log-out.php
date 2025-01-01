@@ -11,6 +11,14 @@ session_start();
 $logFile = LogFileSingleton::getInstance();
 $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $_SESSION['username'] . " s'est déconnecté depuis " . $_SERVER['REMOTE_ADDR'] . "."));
 
+// Supprimer tous les fichiers dans le dossier uploads
+foreach (glob("uploads/*.*") as $filename) {
+    if (is_file($filename)) {
+        unlink($filename);
+    }
+}
+
+
 $_SESSION = [];
 
 session_unset();

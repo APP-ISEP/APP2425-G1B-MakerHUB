@@ -12,5 +12,5 @@ const DB_CHARSET = 'utf8mb4';
 const FTP_HOST = 'ftp.cluster029.hosting.ovh.net';
 const FTP_USER = 'makerho';
 const FTP_PASS = 'Hog7Fudb25Vp';
-const LOCAL_IMG_DIR = PROJECT_ROOT . '/images';
-const REMOTE_IMG_DIR = '/imgs';
+const LOCAL_IMG_DIR = PROJECT_ROOT . '/uploads/';
+const REMOTE_IMG_DIR = '/imgs/';
