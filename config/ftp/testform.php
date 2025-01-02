@@ -54,3 +54,8 @@ if (isset($_POST) && count($_POST) > 0) {
 
 // SUPPRESSION IMG
 // FAIT - 1 - à la déconnexion, vider le dossier local
+
+
+
+// verif quand on ajt pas dimg que ça crash pas
+// limite de taille de fichier

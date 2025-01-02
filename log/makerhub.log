@@ -40,3 +40,34 @@
 2024-12-30 11:53:34 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis 127.0.0.1.
 2025-01-01 18:39:50 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis 127.0.0.1.
 2025-01-01 21:43:01 [INFO] L'utilisateur r000t s'est déconnecté depuis 127.0.0.1.
+2025-01-02 22:30:06 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis 127.0.0.1.
+2025-01-02 22:40:17 [INFO] Le fichier '6dcb42b7ef64138f.jpg' a été upload sur le serveur FTP.
+2025-01-02 22:42:12 [INFO] Le fichier '36fc009a31cc362e.jpg' a été upload dans le dossier local /uploads/.
+2025-01-02 22:42:12 [INFO] Le fichier '36fc009a31cc362e.jpg' a été upload sur le serveur FTP.
+2025-01-02 22:42:12 [INFO] Le fichier '36fc009a31cc362e.jpg' a été supprimé du dossier local /uploads/.
+2025-01-02 22:56:24 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: testimg).
+2025-01-02 22:57:13 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: testimg).
+2025-01-02 22:59:47 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: aa).
+2025-01-02 23:00:11 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: &quot;&quot;&quot;).
+2025-01-02 23:02:03 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: &quot;&quot;&quot;).
+2025-01-02 23:03:23 [INFO] Le fichier 'b6902422b1314193.png' a été upload dans le dossier local /uploads/.
+2025-01-02 23:03:23 [INFO] Le fichier 'b6902422b1314193.png' a été upload sur le serveur FTP.
+2025-01-02 23:03:23 [INFO] Le fichier 'b6902422b1314193.png' a été supprimé du dossier local /uploads/.
+2025-01-02 23:03:23 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: salut).
+2025-01-02 23:16:49 [INFO] Le fichier 'd23821471260f114.jpg' a été upload dans le dossier local /uploads/.
+2025-01-02 23:16:49 [INFO] Le fichier 'd23821471260f114.jpg' a été upload sur le serveur FTP.
+2025-01-02 23:16:49 [INFO] Le fichier 'd23821471260f114.jpg' a été supprimé du dossier local /uploads/.
+2025-01-02 23:16:49 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: bjr).
+2025-01-02 23:17:17 [INFO] Le fichier '975a00a1f1cb4c1a.jpg' a été upload dans le dossier local /uploads/.
+2025-01-02 23:17:17 [INFO] Le fichier '975a00a1f1cb4c1a.jpg' a été upload sur le serveur FTP.
+2025-01-02 23:17:17 [INFO] Le fichier '975a00a1f1cb4c1a.jpg' a été supprimé du dossier local /uploads/.
+2025-01-02 23:17:17 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: coucou).
+2025-01-02 23:20:41 [INFO] Le fichier 'a5473a22e59e6492.png' a été upload dans le dossier local /uploads/.
+2025-01-02 23:20:41 [INFO] Le fichier 'a5473a22e59e6492.png' a été upload sur le serveur FTP.
+2025-01-02 23:20:41 [INFO] Le fichier 'a5473a22e59e6492.png' a été supprimé du dossier local /uploads/.
+2025-01-02 23:20:41 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: salut).
+2025-01-02 23:21:32 [INFO] Le fichier '3b9b3c65c2048691.jpg' a été upload dans le dossier local /uploads/.
+2025-01-02 23:21:32 [INFO] Le fichier '3b9b3c65c2048691.jpg' a été upload sur le serveur FTP.
+2025-01-02 23:21:32 [INFO] Le fichier '3b9b3c65c2048691.jpg' a été supprimé du dossier local /uploads/.
+2025-01-02 23:21:32 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: zzz).
+2025-01-02 23:21:54 [INFO] L'utilisateur r000t (id: 1) a créé une offre (titre: gttg).

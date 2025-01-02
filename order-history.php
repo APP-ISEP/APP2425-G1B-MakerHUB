@@ -25,7 +25,6 @@ if($result->rowCount() > 0){
         $titre = $row['titre'];
         $prix = $row['prix'];
         $description = $row['description'];
-        $statut_commande = $row['statut_impression'];
         $chemin_image = $row['chemin_image'];
 
 ?>      
@@ -35,7 +34,6 @@ if($result->rowCount() > 0){
                     <h4 class="card-title"><?php echo $titre ?></h4>
                     <h3 class="card-price"><?php echo $prix ?></h3>
                     <p class ="card-description"> <?php echo substr_replace($description,'...',30) ?></p>
-                    <p class="card-status">Statut : <?php echo $statut_commande ?></p>
                     <button class="button button-buy" onclick="HideShow()">Voir</button>
                 </div>
             </div>

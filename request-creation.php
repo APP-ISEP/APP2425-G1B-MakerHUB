@@ -3,7 +3,7 @@ require_once 'config/constants.php';
 include 'autoload.php';
 
 use Config\Log\Log;
-use Config\Log\LogFileSingleton;
+use Config\Log\LogFile;
 use Config\Log\LogLevel;
 
 session_start();
@@ -11,7 +11,7 @@ session_start();
 $title = "Créer une demande";
 $errors = array();
 $isAuthPage = true;
-$logFile = LogFileSingleton::getInstance();
+$logFile = LogFile::getInstance();
 
 ob_start();
 

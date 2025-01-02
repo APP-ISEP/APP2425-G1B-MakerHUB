@@ -17,7 +17,7 @@ $imgName = '20220611_005931.jpg';
 $ftpInstance->getFile($imgName);
 ?>
 
-<img src="/uploads/7e81810b74435301.png" alt="Image">
+<img src="/uploads/7e81810b74435301.png" alt="Image23">
 
 <img src="<?= '/uploads/' . $imgName ?>" alt="Image">
 

@@ -2,8 +2,12 @@
 
 namespace Config\Ftp;
 
+use DateMalformedStringException;
 use FTP\Connection;
 use Random\RandomException;
+use Config\Log\Log;
+use Config\Log\LogFile;
+use Config\Log\LogLevel;
 
 class FTP
 {
@@ -45,14 +49,14 @@ class FTP
 
     /**
      * Save a file locally inside the project in /uploads/
-     * @throws RandomException
+     * @throws RandomException|DateMalformedStringException
      */
     public function addLocalFile(array $file): string
     {
         $extension = $this->getFileExtension($file['name']);
         $fileName = $this->generateRandomFileName($extension);
         move_uploaded_file($file['tmp_name'], LOCAL_IMG_DIR . $fileName);
-
+        LogFile::getInstance()->addLog(new Log(LogLevel::INFO, "Le fichier '" . $fileName . "' a été upload dans le dossier local /uploads/."));
         return $fileName;
     }
 
@@ -65,31 +69,38 @@ class FTP
     public function addFile(string $localFilePath): bool
     {
         $remoteFileName = basename($localFilePath);
+        LogFile::getInstance()->addLog(new Log(LogLevel::INFO, "Le fichier '" . $remoteFileName . "' a été upload sur le serveur FTP."));
         return ftp_put($this->getFtpConnection(), REMOTE_IMG_DIR . $remoteFileName, $localFilePath);
     }
 
     /**
      * Delete a file from the local directory
-     * @param string $fileName, the name of the file to delete
+     * @param string $fileName , the name of the file to delete
      * @return bool true if the file was deleted successfully, false otherwise
+     * @throws DateMalformedStringException
      */
     public function deleteLocalFile(string $fileName): bool
     {
+        LogFile::getInstance()->addLog(new Log(LogLevel::INFO, "Le fichier '" . $fileName . "' a été supprimé du dossier local /uploads/."));
         return unlink(LOCAL_IMG_DIR . $fileName);
     }
 
     public function deleteFile(string $remoteFilePath): bool
     {
+        LogFile::getInstance()->addLog(new Log(LogLevel::INFO, "Le fichier '" . $remoteFilePath . "' a été supprimé du serveur FTP."));
         return ftp_delete($this->getFtpConnection(), REMOTE_IMG_DIR . $remoteFilePath);
     }
 
     /**
      * Download a file from the FTP server. The file will be saved in /uploads/
-     * @param string $remoteImageName, name of the file to download with extension (ex: 8905bf46fff952e6.jpg)
+     * @param string|null $remoteImageName , name of the file to download with extension (ex: 8905bf46fff952e6.jpg)
      * @return bool true if the file was downloaded successfully, false otherwise
      */
-    public function getFile(string $remoteImageName): bool
+    public function getFile(?string $remoteImageName): bool
     {
+        if ($remoteImageName === '' || $remoteImageName === null) {
+            return false;
+        }
         return ftp_get($this->getFtpConnection(), LOCAL_IMG_DIR . $remoteImageName,REMOTE_IMG_DIR . $remoteImageName);
     }
 
