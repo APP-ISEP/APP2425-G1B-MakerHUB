@@ -2,6 +2,7 @@
 require_once 'config/constants.php';
 include 'autoload.php';
 
+use Config\Ftp\FTP;
 use Config\Log\Log;
 use Config\Log\LogFile;
 use Config\Log\LogLevel;
@@ -12,6 +13,9 @@ $title = "Créer une demande";
 $errors = array();
 $isAuthPage = true;
 $logFile = LogFile::getInstance();
+$ftpInstance = FTP::getInstance();
+$imageName = null;
+$fileName = null;
 
 ob_start();
 
@@ -35,10 +39,42 @@ if (isset($_POST) && count($_POST) > 0) {
         $errors['description'] = "La description ne doit pas dépasser 200 caractères.";
     }
 
+    if ($_FILES['illustration'] !== "" && $_FILES['illustration']['size'] > 0) {
+        $file = $_FILES['illustration'];
+
+        if ($file['size'] > MAX_FILE_SIZE) {
+            $errors['file_size'] = "La taille de l'image ne doit pas dépasser 5 Mo.";
+        }
+
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            die("Erreur lors de l'upload : " . $file['error']);
+        }
+
+        $imageName = $ftpInstance->addLocalFile($file); // save l'image dans /uploads/
+        $ftpInstance->addFile(LOCAL_IMG_DIR . $imageName); // upload l'image sur le ftp
+        $ftpInstance->deleteLocalFile($imageName); // supprime l'image dans /uploads/
+    }
+
+    if ($_FILES['fileToPrint'] !== "" && $_FILES['fileToPrint']['size'] > 0) {
+        $file = $_FILES['fileToPrint'];
+
+        if ($file['size'] > MAX_FILE_SIZE) {
+            $errors['file_size'] = "La taille du fichier 3D ne doit pas dépasser 5 Mo.";
+        }
+
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            die("Erreur lors de l'upload : " . $file['error']);
+        }
+
+        $fileName = $ftpInstance->addLocalFile($file); // save l'image dans /uploads/
+        $ftpInstance->addFile(LOCAL_IMG_DIR . $fileName); // upload l'image sur le ftp
+        $ftpInstance->deleteLocalFile($fileName); // supprime l'image dans /uploads/
+    }
+
     include_once("./php/catalog/request/createRequest.php");
 
     if (empty($errors)) {
-        $demand = createRequest($title, $description, $_SESSION['account']['id_utilisateur']);
+        $demand = createRequest($title, $description, $_SESSION['account']['id_utilisateur'], $imageName, $fileName);
 
         if ($demand) {
             $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $_SESSION['account']['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a créé une demande (titre: " . $title . ")."));

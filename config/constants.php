@@ -14,3 +14,4 @@ const FTP_USER = 'makerho';
 const FTP_PASS = 'Hog7Fudb25Vp';
 const LOCAL_IMG_DIR = PROJECT_ROOT . '/uploads/';
 const REMOTE_IMG_DIR = '/imgs/';
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 Mo

@@ -22,6 +22,9 @@ $requests = getRequests();
 foreach ($offers as $offer) {
     $ftpInstance->getFile($offer['chemin_image']);
 }
+foreach ($requests as $request) {
+    $ftpInstance->getFile($request['chemin_image']);
+}
 
 $minPrice = 0;
 $maxPrice = 99999.99;
