@@ -625,6 +625,12 @@ input:focus, textarea:focus {
     height: 20px;
 }
 
+.file-label-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* SHOPPING CART PAGE */
 .shopping-cart {
     margin-top: 8%;
