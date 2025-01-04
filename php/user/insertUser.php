@@ -1,7 +1,18 @@
 <?php
 require_once(__DIR__ . '/../connectToDB.php');
 
-function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone, string $description)
+/**
+ * @param string $nom
+ * @param string $prenom
+ * @param string $pseudonyme
+ * @param string $email
+ * @param string $hashedPassword
+ * @param string $telephone
+ * @param string $description
+ * @param string $role
+ * @return int|null
+ */
+function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone, string $description, string $role): ?int
 {
     try {
         $pdo = connectToDB();
@@ -15,6 +26,13 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
             ':motDePasse' => $hashedPassword,
             ':description' =>$description,
             ':telephone' => $telephone
+        ]);
+
+        $sql = "INSERT INTO role_utilisateur (role_id, utilisateur_id) VALUES ((SELECT id_role FROM role WHERE nom = :role), (SELECT id_utilisateur FROM utilisateur WHERE mail = :email))";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':role' => $role,
+            ':email' => $email
         ]);
 
         $stmt->closeCursor();
@@ -69,22 +87,4 @@ function verifyMail(string $email): ?bool
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
         return null;
     }
-}
-
-function isAMaker(int $isAMaker, $userId): ?bool{ 
-    try {
-        $pdo = connectToDB();
-        $sql = "INSERT INTO role_utilisateur (role_id, utilisateur_id) VALUES ((:roleId),(SELECT id_utilisateur FROM utilisateur WHERE id_utilisateur = :userId))";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam("roleId", $isAMaker);
-        $stmt->bindParam("userId", $userId);
-
-        $bool = $stmt->execute();
-        $stmt->closeCursor();
-    } catch (PDOException $e) {
-        $error = $e->getMessage();
-        echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
-        return null;
-    }
-        
 }
