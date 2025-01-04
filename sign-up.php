@@ -1,7 +1,7 @@
 <?php
 require_once 'config/constants.php';
 include 'autoload.php';
- 
+
 use Config\Log\Log;
 use Config\Log\LogFile;
 use Config\Log\LogLevel;
@@ -45,7 +45,7 @@ if (isset($_POST) && count($_POST) > 0) {
     $validateLengthNom = lengthNom($nom);
     $validateLengthPrenom = lengthPrenom($prenom);
     $validateLengthPseudonyme = lengthPseudonyme($pseudonyme);
-    $validatePseudonymeUnique = uniquePseudonyme($pseudonyme); 
+    $validatePseudonymeUnique = uniquePseudonyme($pseudonyme);
 
     if (!$validateEmail) {
         $errors['email'] = "Veuillez saisir un mail valide.";
