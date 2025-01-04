@@ -113,8 +113,8 @@ if (isset($_POST) && count($_POST) > 0) {
             $_SESSION['account'] = $account;
             $_SESSION['username'] = $account['pseudonyme'];
 
-            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a été créé depuis" . $_SERVER['REMOTE_ADDR'] . "."));
-            //header("Location: log-in.php");
+            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a été créé depuis " . $_SERVER['REMOTE_ADDR'] . "."));
+            header("Location: log-in.php");
         }
     }
 }
