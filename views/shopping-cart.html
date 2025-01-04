@@ -9,7 +9,8 @@
             <?php foreach ($products as $item) : ?>
             <div class="product-card">
                 <div class="product-image">
-                    <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
+                    <?php $imgName = $item['chemin_image'] ? '/uploads/' . $item['chemin_image'] : './assets/images/placeholder.svg'; ?>
+                    <img src="<?= $imgName ?>" alt="Image de l'offre">
                 </div>
                 
                 <div class="product-details">

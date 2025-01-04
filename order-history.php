@@ -29,8 +29,9 @@ if($result->rowCount() > 0){
 
 ?>      
             <div id="modal" class="offer-card">
-                <img src="./assets/images/placeholder.svg<?php echo $chemin_image ?>" alt="">
-                <div class="card-info">                    
+                <?php $imgName = $row['chemin_image'] ? '/uploads/' . $row['chemin_image'] : './assets/images/placeholder.svg'; ?>
+                <img src="<?= $imgName ?>" alt="Image de l'offre" class="order-history-img">
+                <div class="card-info">
                     <h4 class="card-title"><?php echo $titre ?></h4>
                     <h3 class="card-price"><?php echo $prix ?></h3>
                     <p class ="card-description"> <?php echo substr_replace($description,'...',30) ?></p>

@@ -5,7 +5,7 @@ function getProductsByUserId(int $userId): ?array {
     try {
         $pdo = connectToDB();
 
-        $sql = "SELECT pf.id_produit_fini, pf.titre, pf.description, pf.prix
+        $sql = "SELECT pf.id_produit_fini, pf.titre, pf.description, pf.prix, pf.chemin_image
                 FROM panier_produits pp
                 INNER JOIN produit_fini pf ON pp.id_produit_fini = pf.id_produit_fini
                 WHERE pp.id_utilisateur = :valUserId";
