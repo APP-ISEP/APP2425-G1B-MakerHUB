@@ -19,7 +19,7 @@ if (isset($_POST) && count($_POST) > 0) {
 }
 
 
-include_once 'views/admin-faq.html';
+include_once 'views/admin/admin-faq.html';
 
 $body = ob_get_clean();
 

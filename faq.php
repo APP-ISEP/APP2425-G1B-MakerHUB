@@ -2,6 +2,12 @@
 session_start();
 $title = "FAQ";
 
+if (isset($_SESSION['account'])) {
+    if($_SESSION['role'] === 'admin') {
+        header("Location: admin.php");
+    }
+}
+
 ob_start();
 
 include_once 'php/faq/getFaq.php';

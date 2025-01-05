@@ -9,11 +9,17 @@ session_start();
 $ftpInstance = FTP::getInstance();
 $title = "Accueil";
 
+// Rediriger l'utilisateur sur le panel admin s'il est admin
+if (isset($_SESSION['account'])) {
+    if($_SESSION['role'] === 'admin') {
+        header("Location: admin.php");
+    }
+}
+
 ob_start();
 
 include_once 'php/catalog/offer/getOffers.php';
 include_once 'php/catalog/request/getRequests.php';
-
 
 $offers = getOffers();
 $requests = getRequests();

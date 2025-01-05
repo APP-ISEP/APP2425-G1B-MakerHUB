@@ -21,23 +21,29 @@
     </a>
 
     <?php if (isset($username)) : ?>
+    <?php if ($_SESSION['role'] !== 'admin') : ?>
     <ul class="navbar-links">
         <li><a href="offer-creation.php">Proposer une offre</a></li>
         <li><a href="request-creation.php">Demander un service</a></li>
     </ul>
+    <?php endif; ?>
 
     <div class="profil" id="profil">
+        <?php if ($_SESSION['role'] !== 'admin') : ?>
         <a href="shopping-cart.php">
             <img alt="Panier" class="img-shopping-cart" src="./assets/images/shopping-cart.svg">
         </a>
+        <?php endif; ?>
 
         <img alt="Photo de profil" class="img-profil" src="./assets/images/profil.svg">
         <p id="pseudo"><?= $username ?></p>
 
         <div id="dropdown">
+            <?php if ($_SESSION['role'] !== 'admin') : ?>
             <a href="order-history.php"><div class="drop-content">Mes commandes</div></a>
             <a href="edit-profile.php"><div class="drop-content">Éditer le profil</div></a>
             <hr id="separation-bar">
+            <?php endif; ?>
             <a href="log-out.php"><div class="drop-content logout">Se déconnecter</div></a>
         </div>
     </div>

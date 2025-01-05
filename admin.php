@@ -5,7 +5,7 @@ $title = "Administration | Makerhub";
 
 ob_start();
 
-include_once 'views/admin-menu.html';
+include_once 'views/admin/admin-menu.html';
 
 $body = ob_get_clean();
 

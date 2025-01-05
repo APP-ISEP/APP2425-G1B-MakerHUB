@@ -1,23 +1,30 @@
 <?php
 require_once "./php/connectToDB.php";
 
-function getUserRoles(int $userId): ?array
+/**
+ * Retourne le rôle de l'utilisateur
+ * Attention, ne marche que si l'utilisateur n'a qu'un seul role
+ * @param int $userId
+ * @return string|null
+ */
+function getUserRole(int $userId): ?string
 {
     try {
         $pdo = connectToDB();
-        $sql = "SELECT * FROM `role_utilisateur` WHERE utilisateur_id=:valUserId";
+        $sql = "SELECT r.nom
+        FROM `role_utilisateur`
+        JOIN role r on role_utilisateur.role_id = r.id_role
+        WHERE utilisateur_id=:valUserId";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valUserId", $userId);
         $bool = $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $userRoles = null;
-        if (count($results) > 0)
-            $userRoles = $results;
+        $userRole = $results[0]['nom'];
         $stmt->closeCursor();
 
-        return $userRoles;
+        return $userRole;
     } catch (PDOException $e) {
         // Error executing the query
         $error = $e->getMessage();
