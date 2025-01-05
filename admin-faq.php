@@ -3,6 +3,10 @@ session_start();
 
 $title = "Administration FAQ | Makerhub";
 
+if ($_SESSION['role'] !== 'admin') {
+    header("Location: index.php");
+}
+
 ob_start();
 require('php/faq/getFaq.php');
 require_once 'php/faq/addFaq.php';
@@ -15,7 +19,7 @@ if (isset($_POST) && count($_POST) > 0) {
     $add = addFaq($question, $reponse);
     if ($add) {
         header("Location: admin-faq.php");
-    };
+    }
 }
 
 

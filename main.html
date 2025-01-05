@@ -28,15 +28,18 @@
 
     <div class="catalog-container" id="catalog-container">
         <div class="categories" id="categories">
-            <div class="category category-offer button active-category">
-                Offres
+            <?php if (!isset($_SESSION['role']) || $_SESSION['role'] === 'acheteur') : ?>
+            <div class="category category-offer button category-title">
+                Consulter les produits
             </div>
-            <div class="category category-request button inactive-category">
-                Demandes
+            <?php elseif ($_SESSION['role'] === 'vendeur') : ?>
+            <div class="category category-request category-title">
+                Consulter les demandes de service
             </div>
+            <?php endif; ?>
         </div>
 
-
+        <?php if (!isset($_SESSION['role']) || $_SESSION['role'] === 'acheteur') : ?>
         <div class="offers-container">
             <form method="get" action="index.php#catalog-container">
 
@@ -56,7 +59,7 @@
                 </div>
 
                 <div class="search-bar-offer">
-                    <input type="text" class="search-bar-input" placeholder="Rechercher une offre..." maxlength="50" name="offers-search"  value="<?php echo $offersSearch;?>">
+                    <input type="text" class="search-bar-input" placeholder="Rechercher un produit..." maxlength="50" name="offers-search"  value="<?php echo $offersSearch;?>">
                     <button class="button-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
@@ -86,6 +89,7 @@
             <div class="pagination" id="offers-pagination"></div>
         </div>
 
+        <?php elseif (!isset($_SESSION['role']) || $_SESSION['role'] === 'vendeur') : ?>
         <div class="requests-container">
             <form class="search-bar-request" method="get" action="index.php#catalog-container">
                 <input type="text" id="search-bar-input-2" placeholder="Rechercher une demande..." maxlength="50" name="requests-search"  value="<?php echo $requestsSearch;?>">
@@ -112,5 +116,6 @@
 
             <div class="pagination" id="requests-pagination"></div>
         </div>
+        <?php endif; ?>
     </div>
 </div>
