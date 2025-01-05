@@ -3,23 +3,22 @@
     <div class="hero-container">
 
         <div class="hero-text">
-
             <h1 class="title">Born to make</h1>
 
             <p class="description">
                 Bienvenue sur MakerHub,
-                la plateforme qui connecte les passionnés d’impression 3D !
+                la plateforme qui connecte les passionnés d'impression 3D !
                 MakerHub facilite la mise en relation entre ceux qui ont des projets et ceux qui ont les outils pour les réaliser. <br><br>
                 Explorez les offres, publiez vos demandes et donnez vie à vos idées en quelques clics !
             </p>
 
             <?php if (isset($_SESSION['username'])) : ?>
 
-            <button class="button button-catalog" onclick="location.href = '#catalog-container'">Consulter le catalogue</button>
+            <button class="button button-hero" onclick="location.href = '#catalog-container'">Consulter le catalogue</button>
 
             <?php else : ?>
 
-            <button class="button button-log-in" onclick="location.href = 'sign-up.php'">S'inscrire</button>
+            <button class="button button-hero" onclick="location.href = 'sign-up.php'">S'inscrire</button>
 
             <?php endif; ?>
         </div>
@@ -28,7 +27,6 @@
     </div>
 
     <div class="catalog-container" id="catalog-container">
-
         <div class="categories" id="categories">
             <div class="category category-offer button active-category">
                 Offres
@@ -39,9 +37,7 @@
         </div>
 
 
-
         <div class="offers-container">
-
             <form method="get" action="index.php#catalog-container">
 
                 <div class="price-filter-container">
@@ -63,13 +59,12 @@
                     <input type="text" class="search-bar-input" placeholder="Rechercher une offre..." maxlength="50" name="offers-search"  value="<?php echo $offersSearch;?>">
                     <button class="button-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
-
             </form>
 
             <?php if (isset($offers)) : ?>
-            <div class="offers-cards-container">
+            <div class="items-cards-container">
                 <?php foreach ($offers as $item) : ?>
-                <div class="offer-card">
+                <div class="item-card">
                     <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
                     <div class="card-info">
                         <h4 class="card-title"><?= $item['titre'] ?></h4>
@@ -77,45 +72,43 @@
                         <p class="card-description">
                             <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 45) . "..." : $item['description']; ?>
                         </p>
-                        <p class="card-status">Statut : <?= $item['statut_impression'] ?></p>
-                        <button class="button button-buy">Ajouter au panier</button>
+
+                        <button id="add-shopping-cart" class="button button-buy" data-product-id="<?= $item['id_produit_fini'] ?>">
+                            Ajouter au panier
+                        </button>
                     </div>
                 </div>
                 <?php endforeach; ?>
             </div>
             <?php endif; ?>
 
-            <div class="pagination" id="offers-pagination">
-            </div>
+            <div class="pagination" id="offers-pagination"></div>
         </div>
 
         <div class="requests-container">
-
             <form class="search-bar-request" method="get" action="index.php#catalog-container">
                 <input type="text" id="search-bar-input-2" placeholder="Rechercher une demande..." maxlength="50" name="requests-search"  value="<?php echo $requestsSearch;?>">
                 <button class="button-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
-
             <?php if (isset($requests)) : ?>
-            <div class="requests-cards-container">
+            <div class="items-cards-container">
                 <?php foreach ($requests as $item) : ?>
-                <div class="request-card">
+                <div class="item-card">
                     <img src="./assets/images/placeholder.svg" alt="Image de la demande">
                     <div class="card-info">
                         <h4 class="card-title"><?= $item['reference'] ?> - <?= $item['titre'] ?></h4>
                         <p class="card-description">
                             <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 45) . "..." : $item['description']; ?>
                         </p>
-                        <button class="button button-buy">Générer un devis</button>
+                        <button class="button button-buy">Envoyer un devis</button>
                     </div>
                 </div>
                 <?php endforeach; ?>
             </div>
             <?php endif; ?>
 
-            <div class="pagination" id="requests-pagination">
-            </div>
+            <div class="pagination" id="requests-pagination"></div>
         </div>
     </div>
 </div>

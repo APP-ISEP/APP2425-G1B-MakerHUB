@@ -1,30 +1,31 @@
 <div class="container">
-    <h1 class="title">Panier</h1>
-    
-    <div class="small">
-        <p>Passez la commande</p>
+
+    <div class="shopping-cart">
+
+        <h1 class="shopping-cart-title">Mon panier</h1>
+
+        <?php if (isset($products)) : ?>
+        <div class="shopping-cart-container">
+            <?php foreach ($products as $item) : ?>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/images/placeholder.svg" alt="Image de l'offre">
+                </div>
+                
+                <div class="product-details">
+                    <p class="product-title"><?= $item['titre'] ?> - <?= $item['prix'] ?> €</p>
+                    <p class="product-description"><?= $item['description'] ?></p>
+                </div>
+
+                <form action="" method="post">
+                    <input type="hidden" name="productId" value="<?= $item['id_produit_fini'] ?>">
+                    <button type="submit" class="button delete-product">Supprimer du panier</button>
+                </form>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+        
     </div>
 
-    <table class="table-shopping-cart">
-        <thead>
-            <tr>
-                <th class="elements">Photo Produit</th>
-                <th class="elements">Référence du produit</th>
-                <th class="elements">Titre du produit</th>
-                <th class="elements">Prix</th>
-                <th class="elements">Vendeur</th>
-                <th class="elements">Supprimer du panier</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>photo...</td>
-                <td>REF-F45GHI</td>
-                <td>Cintre en plastique</td>
-                <td>5€</td>
-                <td>Mathieu GEISSEL</td>
-                <td><button>Supprimer</button></td>
-            </tr>
-        </tbody>
-    </table>
 </div>

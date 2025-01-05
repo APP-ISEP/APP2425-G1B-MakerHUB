@@ -4,6 +4,13 @@ $(document).ready(function () {
     });
 });
 
+// ALLOWS TO DISPLAY FILENAME IN THE INPUT
+function updateFileName(input) {
+    const label = input.previousElementSibling.querySelector('.file-label-text');
+    const fileName = input.files.length > 0 ? input.files[0].name : 'Choisir un fichier...';
+    label.textContent = fileName;
+}
+
 //--------- BEGINNING OF THE CHEVRON IN FAQ PAGE ---------//
 $(document).ready(function() {
     $(".question").click(function() {
@@ -236,7 +243,7 @@ $(document).ready(() => {
             $.ajax({
                 url: 'php/user/checkCredentials.php',
                 type: 'POST',
-                data: {fonction: 'uniquePseudonymeJSON', pseudonyme: usernameInput.value},
+                data: { fonction: 'uniquePseudonymeJSON', pseudonyme: usernameInput.value },
                 success: function (data) {
                     const jsonData = JSON.parse(data);
 
@@ -287,7 +294,6 @@ textarea.addEventListener ('input', () => {
 */
 
 //--------- ADMIN FAQ ---------//
-
 
 xmlhttp = new XMLHttpRequest();
 function setFaq() {
@@ -390,4 +396,39 @@ xmlhttp.send();
 }
 }
 
+//---- BEGINNING OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
 
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('#add-shopping-cart');
+
+    // Permet de détetcer le clic d'un des boutons de la liste
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = parseInt(this.getAttribute('data-product-id'));
+
+            fetch('php/shopping-cart/addProduct.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'productId': productId
+                })
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data === '1') {
+                    alert("Le produit a bien été ajouté dans le panier.");
+                } else {
+                    alert("Impossible d'ajouter le produit dans le panier.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Une erreur est survenue.");
+            });
+        });
+    });
+});
+
+//---- END OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//

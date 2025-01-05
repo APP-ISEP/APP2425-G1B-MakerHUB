@@ -1,19 +1,20 @@
 <div class="container" id="contact-page">
     <form class="contact-form" action="contact-page.php" method="POST">
         <h1>Nous contacter</h1>
+        <p class="required">*Ces champs sont obligatoires</p>
 
         <div class="form-control">
-            <label for="pseudo">Pseudonyme</label>
+            <label for="pseudo">Pseudonyme<span class="required">*</span></label>
             <input type="text" id="pseudo" name="pseudo" placeholder="Pseudonyme" maxlength="30" required>
         </div>
 
         <div class="form-control">
-            <label for="email">Email</label>
+            <label for="email">Email<span class="required">*</span></label>
             <input type="email" id="email" name="email" placeholder="email@email.com" maxlength="255" required>
         </div> 
 
         <div class="form-control">  
-            <label for="message">Message</label>
+            <label for="message">Message<span class="required">*</span></label>
             <textarea
                 name="message" 
                 id="message-contact"

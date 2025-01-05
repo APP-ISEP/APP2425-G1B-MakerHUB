@@ -21,7 +21,7 @@ function addFaq(string $question, string $reponse): bool
         $bool = $stmt->execute();
         $stmt->closeCursor();
 
-        return $bool;
+        return true;
 
     } catch (PDOException $e) {
         // Error executing the query

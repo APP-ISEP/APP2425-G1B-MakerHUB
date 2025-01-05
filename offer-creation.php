@@ -21,14 +21,13 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
 };
 
 if (isset($_POST) && count($_POST) > 0) {
-    if (empty($_POST['title']) || empty($_POST['description']) || empty($_POST['price']) || empty($_POST['status'])) {
+    if (empty($_POST['title']) || empty($_POST['description']) || empty($_POST['price'])) {
         $errors['fields'] = "Veuillez remplir tous les champs.";
     }
 
     $title = htmlspecialchars($_POST['title']);
     $description = htmlspecialchars($_POST['description']);
     $price = htmlspecialchars($_POST['price']);
-    $status = htmlspecialchars($_POST['status']);
 
     if (strlen($title) > 40) {
         $errors['title'] = "Le titre ne doit pas dépasser 40 caractères.";
@@ -39,14 +38,11 @@ if (isset($_POST) && count($_POST) > 0) {
     if ($price > 999999.99) {
         $errors['price'] = "Le prix ne doit pas dépasser 999999,99€.";
     }
-    if (strlen($status) > 30) {
-        $errors['status'] = "Le statut de l'offre doit être choisit depuis la liste déroulante.";
-    }
 
     include_once("./php/catalog/offer/createOffer.php");
 
     if (empty($errors)) {
-        $offer = createOffer($title, $description, $price, $status, $_SESSION['account']['id_utilisateur']);
+        $offer = createOffer($title, $description, $price, $_SESSION['account']['id_utilisateur']);
 
         if ($offer) {
             $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $_SESSION['account']['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a créé une offre (titre: " . $title . ")."));
