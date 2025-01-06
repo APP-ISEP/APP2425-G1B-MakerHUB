@@ -1,7 +1,18 @@
 <?php
 require_once(__DIR__ . '/../connectToDB.php');
 
-function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone, string $description)
+/**
+ * @param string $nom
+ * @param string $prenom
+ * @param string $pseudonyme
+ * @param string $email
+ * @param string $hashedPassword
+ * @param string $telephone
+ * @param string $description
+ * @param string $role
+ * @return int|null
+ */
+function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone, string $description, string $role): ?int
 {
     try {
         $pdo = connectToDB();
@@ -17,7 +28,15 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
             ':telephone' => $telephone
         ]);
 
+        $sql = "INSERT INTO role_utilisateur (role_id, utilisateur_id) VALUES ((SELECT id_role FROM role WHERE nom = :role), (SELECT id_utilisateur FROM utilisateur WHERE mail = :email))";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':role' => $role,
+            ':email' => $email
+        ]);
+
         $stmt->closeCursor();
+        return $pdo->lastInsertId(); 
     } catch (PDOException $e) {
         // Error executing the query
         $error = $e->getMessage();

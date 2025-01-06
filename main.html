@@ -68,7 +68,7 @@
             <div class="items-cards-container">
                 <?php foreach ($offers as $item) : ?>
                 <div class="item-card">
-                    <?php $imgName = $item['chemin_image'] ? '/uploads/' . $item['chemin_image'] : './assets/images/placeholder.svg'; ?>
+                    <?php $imgName = $item['chemin_image'] ? './uploads/' . $item['chemin_image'] : './assets/images/placeholder.svg'; ?>
                     <img src="<?= $imgName ?>" alt="Image">
                     <div class="card-info">
                         <h4 class="card-title"><?= $item['titre'] ?></h4>
@@ -100,14 +100,14 @@
             <div class="items-cards-container">
                 <?php foreach ($requests as $item) : ?>
                 <div class="item-card">
-                    <?php $imgName = $item['chemin_image'] ? '/uploads/' . $item['chemin_image'] : './assets/images/placeholder.svg'; ?>
+                    <?php $imgName = $item['chemin_image'] ? './uploads/' . $item['chemin_image'] : './assets/images/placeholder.svg'; ?>
                     <img src="<?= $imgName ?>" alt="Image">
                     <div class="card-info">
                         <h4 class="card-title"><?= $item['reference'] ?> - <?= $item['titre'] ?></h4>
                         <p class="card-description">
                             <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 45) . "..." : $item['description']; ?>
                         </p>
-                        <button class="button button-buy">Générer un devis</button>
+                        <button class="button button-buy">Envoyer un devis</button>
                     </div>
                 </div>
                 <?php endforeach; ?>

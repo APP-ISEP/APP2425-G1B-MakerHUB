@@ -4,6 +4,13 @@ $(document).ready(function () {
     });
 });
 
+// ALLOWS TO DISPLAY FILENAME IN THE INPUT
+function updateFileName(input) {
+    const label = input.previousElementSibling.querySelector('.file-label-text');
+    const fileName = input.files.length > 0 ? input.files[0].name : 'Choisir un fichier...';
+    label.textContent = fileName;
+}
+
 //--------- BEGINNING OF THE CHEVRON IN FAQ PAGE ---------//
 $(document).ready(function() {
     $(".question").click(function() {
@@ -42,7 +49,20 @@ if(eye) {
     }
 }
 //--------- END EYE BUTTON TO SEE PASSWORD---------//
+let pwShown1 = 0;
+const passwordContainer1 = document.getElementById('passwordConfirmation');
+const eye1 = document.getElementById('eye1');
 
+const editAttributePassword1 = (valueName) => {
+    passwordContainer1.setAttribute('type', valueName);
+};
+
+if (eye1) {
+    eye1.onclick = () => {
+        editAttributePassword1(pwShown1 === 0 ? 'text' : 'password');
+        pwShown1 = pwShown1 === 0 ? 1 : 0;
+    };
+}
 
 //--------- BEGINNING TOGGLE BUTTON ---------//
 $(document).ready(() => {
@@ -252,7 +272,20 @@ $(document).ready(() => {
     }
 });
 
+
 //---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
+//---- BEGINNING OF VALIDATION PASSWORD SIGN_UP ----//
+    var motDePasse = document.getElementById('password');
+    var motDePasseConfirmed = document.getElementById('passwordConfirmation');
+
+    motDePasseConfirmed.addEventListener('change', function () {
+        if (motDePasse.value !== motDePasseConfirmed.value) {
+            alert("Les mots de passe ne correspondent pas");
+        }
+    });
+
+//---- END OF VALIDATION PASSWORD SIGN_UP ----//
+
 
 //---- BEGINNING OF THE "A PROPOS DE MOI" IN SIGN UP ----//
 $(document).ready(() => {
@@ -388,7 +421,6 @@ if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 xmlhttp.send();
 }
 }
-
 
 //---- BEGINNING OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
 

@@ -21,6 +21,7 @@
     </a>
 
     <?php if (isset($username)) : ?>
+    <?php if ($_SESSION['role'] !== 'admin') : ?>
     <ul class="navbar-links">
         <?php if ($_SESSION['role'] === 'vendeur') : ?>
         <li><a href="offer-creation.php">Proposer un produit</a></li>
@@ -28,6 +29,7 @@
         <li><a href="request-creation.php">Demander un service</a></li>
         <?php endif; ?>
     </ul>
+    <?php endif; ?>
 
     <div class="profil" id="profil">
         <?php if ($_SESSION['role'] === 'acheteur') : ?>

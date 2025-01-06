@@ -62,6 +62,7 @@ function hashPassword($motDePasse): string
     return $hashedPassword;
 }
 
+
 function validatePassword($motDePasse): bool
 {
     if (preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,255}$/', $motDePasse)) {
