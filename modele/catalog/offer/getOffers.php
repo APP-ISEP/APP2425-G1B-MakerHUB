@@ -7,10 +7,10 @@ function getOffers($minPrice = 0, $maxPrice = 99999.99, $search = null): ?array
     try {
         $pdo = connectToDB();
         if (isset($search)) {
-            $sql = "SELECT * FROM `produit_fini` WHERE `prix` >= $minPrice AND `prix` <= $maxPrice AND (`titre` LIKE '%$search%' OR `description` LIKE '%$search%')";
+            $sql = "SELECT * FROM `produit_fini` WHERE `prix` >= $minPrice AND `prix` <= $maxPrice AND (`titre` LIKE '%$search%' OR `description` LIKE '%$search%') AND est_actif = 1";
         }
         else {
-            $sql = "SELECT * FROM `produit_fini` WHERE `prix` >= $minPrice AND `prix` <= $maxPrice";
+            $sql = "SELECT * FROM `produit_fini` WHERE `prix` >= $minPrice AND `prix` <= $maxPrice AND est_actif = 1";
         }        
 
         $stmt = $pdo->prepare($sql);
