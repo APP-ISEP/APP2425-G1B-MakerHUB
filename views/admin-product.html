@@ -1,58 +1,139 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <link href="../../assets/css/style_admin.css" rel="stylesheet">
-        <link href="../../assets/css/style.css" rel="stylesheet">
-        <link href="../../assets/images/favico.ico" rel="icon">
-        
-        <title>Administration | Makerhub</title>
-    </head>
-
-    <body>
-    <div class="navbar">
-        <div class="header-logo">
-            <img alt="Logo MakerHUB" class="img-logo" src="../../assets/images/logo.svg">
-        </div>
-
-        <div class="profil" id="profil">
-            <img alt="Photo de profil" class="img-profil" src="../../assets/images/profil.svg">
-            <p id="pseudo">Panel</p>
-
-            <div id="dropdown">
-                <a href="/admin-faq.php" ><div class="drop-content">FAQ</div></a>
-                <a href="/admin-product.php" ><div class="drop-content">Produit</div></a>
-                <a href="/admin-user.php" ><div class="drop-content">Utilisateur</div></a>
-                <hr id="separation-bar">
-                <a href="log-out.php" ><div class="drop-content logout">Se déconnecter</div></a>
-            </div>
-        </div>
-    </div>
-
-   <main class="main">
+  <main class="main">
     <div class="mini-menu">
-        <a href="panel_admin_faq.php" ><div class="submitButton">FAQ</div></a>
-        <a href="panel_admin_utilisateur.php" ><div class="submitButton">Utilisateur</div></a>
+        <a href="/admin-faq.php" ><div class="submitButton">FAQ</div></a>
+        <a href="/admin-user.php" ><div class="submitButton">Utilisateur</div></a>
     </div>
+
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Prix</th>
+            
+            <th>Image</th>
+            <th></th>
+        </tr>
+        <?php
+        foreach($products as $product) {
+            $titre = $product['titre'];
+            $description = $product['description'];
+            $prix = $product['prix'];
+            
+            $id = $product['id_produit_fini'];
+            $chemin_image = $product['chemin_image'];
+        ?>
+            <tr>
+                <td><?php echo($titre);?></td>
+                <td><?php echo($description);?></td>
+                <td><?php echo($prix);?> €</td>
+               
+                <td>
+                    <?php 
+                    if ($chemin_image == NULL){
+                        $chemin_image = "./images/placeholder.png";
+                    }else{
+                    ?>
+                        <!--<img src="<?php echo $chemin_image;?>" alt="<?php echo $titre; ?>" style="width: 100px; height: 100px;">-->
+                    <?php } ?>
+                <td>
+                    <a onclick="deleteProduct(<?php echo($id); ?>)">
+                        <button>
+                            <i class="fa-regular fa-trash-can" style="color: #ffffff;">                                   
+                            </i>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        <?php } ?>
+    </table>
 
         <section id="supprimer-produit" class="section content-box">
             <h2>Produits</h2>
-            <form class="form-container" action="supprimer_produit.php" method="POST">
+            <form class="form-container" method="post" action="./php/catalog/offer/getOfferById.php">
             <label for="suppression_produit">Supprimer un produit</label>
-            <select name="suppression_produit" autocomplete="on">
+            <select name="show_product" autocomplete="on" required>
                     <option value=""> -- Sélectionner un produit -- </option>
-                    <?php foreach($produits as $produit) {
-                        $id_produit = $produit['id_produit'];
-                        $nom_produit = $produit['nom_produit'];?>
-                        <option value="<?php echo($id_produit);?>"><?php echo($nom_produit);?></option>
+                    <?php foreach($products as $product) {
+                        $id = $product['id_produit_fini'];
+                        $titre = $product['titre']; 
+                        ?>
+                        <option value="<?php echo($id);?>"><?php echo($titre);?></option>
                     <?php } ?>
                 </select>
-                <input class="submit" type="submit" value="Supprimer">
+                <input class="submit" type="submit" value="Voir">
             </form>
+            <?php 
+            if (isset($_GET['product'])){
+                $product =  $_GET['product'];
+                $product = json_decode($product, true);
+                
+
+                $titre = $product['titre'];
+                $description = $product['description'];
+                $prix = $product['prix'];
+                $vendeur = $product['vendeur'];    
+                $chemin_image = $product['chemin_image'];          
+            ?>
+            <div>
+                <?php 
+                if ($chemin_image == NULL){
+                    $chemin_image = "./images/placeholder.png";
+                }else{
+                ?>
+                    <!--<img src="<?php echo $chemin_image;?>" alt="<?php echo $titre; ?>" style="width: 100px; height: 100px;">-->
+                <?php } ?>
+                
+                <p>Titre : <?php echo $titre;?></span></p>
+                <p>Description : <?php echo $description;?></span></p>
+                <p>Prix : <?php echo $prix;?></span> </p>
+                <p>Vendeur : <?php echo $vendeur;?></span></p>
+
+            </div>
+            <?php } else {
+                echo "Aucun produit sélectionné";
+            }?>
         </section>
 
     </main> 
 
-<?php
-include_once 'components/footer.html';
-?>
+<script>
+    function deleteProduct(id){
+    confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce produit ?");
+    if (confirmation){
+        try{
+            console.log(id);
+            if (window.XMLHttpRequest) {
+                xmlhttp= new XMLHttpRequest();
+            } else {
+                if (window.ActiveXObject)
+                    try {
+                        xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            return NULL;
+                        }
+                    }
+            }
+            xmlhttp.onreadystatechange = function ()
+            {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                {
+                    console.log(xmlhttp.responseText);
+                    console.log(xmlhttp);
+                    window.location.reload();
+                }
+            }
+            xmlhttp.open("POST","./php/catalog/offer/deleteOffer.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id="+id);
+            console.log(xmlhttp);
+            
+            }
+            catch(e){
+            console.log(e);
+            }
+    }
+}
+</script>
