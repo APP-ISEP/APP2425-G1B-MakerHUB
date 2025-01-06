@@ -8,13 +8,14 @@ include_once 'php/catalog/offer/getOffers.php';
 include_once 'php/catalog/request/getRequests.php';
 include_once 'php/catalog/request/InsertDevis.php';
 
-if (isset($_SESSION['account']) && isset($_SESSION['account']['id_utilisateur'])) {
-    $idFournisseur = $_SESSION['account']['id_utilisateur'];
-    var_dump('idPresent');
-} else {
-    var_dump('Pas utilisateur');
-    $errors['user'] = "Utilisateur non connecté.";
-}
+// if (isset($_SESSION['account']) && isset($_SESSION['account']['id_utilisateur'])) {
+//     $idFournisseur = $_SESSION['account']['id_utilisateur'];
+//     var_dump('idPresent');
+// } else {
+//     var_dump('Pas utilisateur');
+//     $errors['user'] = "Utilisateur non connecté.";
+// }
+$idFournisseur = 1;
 
 $offers = getOffers();
 $requests = getRequests();
@@ -64,7 +65,7 @@ if (isset($_POST) && count($_POST) > 0) {
 
     if (empty($errors)) {
             $result = insertDevis($idProduit, $idFournisseur, $prixProduit, $prixLivraison, $dateLivraison, $commentaire);
-            // header("Location: index.php");
+            header("Location: index.php");
         
     }
 }

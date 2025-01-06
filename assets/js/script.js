@@ -316,7 +316,7 @@ function setFaq() {
 
         xmlhttp.onreadystatechange = function ()
         {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
             {
                 console.log(xmlhttp.responseText);
             
@@ -352,7 +352,7 @@ if (window.XMLHttpRequest) {
 
 xmlhttp.onreadystatechange = function ()
 {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+    if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
     {
         console.log(xmlhttp.responseText);
     }
@@ -429,7 +429,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //---- END OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
 
-
 //--Order-history--//
 document.addEventListener("DOMContentLoaded", function () {
     const filterDropdown = document.getElementById("filter-status");
@@ -465,4 +464,50 @@ function confirmAction(action) {
         return false; 
     }
 }
-console.log("pipi")
+
+//POP UP JS
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("myModal");
+    const closeModal = document.getElementById("closeModal");
+    const btnDevis = document.querySelectorAll(".btn-devis");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalForm = document.getElementById("devisForm");
+    const inputIdProduit = document.getElementById("IdProduit");
+
+    // Ouvrir le modal
+    btnDevis.forEach(button => {
+        button.addEventListener("click", () => {
+            const productId = button.dataset.id;
+            const productTitle = button.dataset.title;
+
+            modalTitle.textContent = `Devis produit n. ${productTitle}`; //titre du modal
+            inputIdProduit.value = productId;
+             console.log("ID produit envoyé : " + productId);
+
+
+            // Afficher le modal
+            modal.style.display = "block";
+        });
+    });
+
+    // Fermer le modal
+    closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+
+
+    // Calcul automatique du prix final (optionnel)
+    var produitPrixInput = document.getElementById("ProduitPrix");
+    var livraisonPrixInput = document.getElementById("LivraisonPrix");
+    var prixFinalInput = document.getElementById("prixFinal");
+
+    var updatePrixFinal = () => {
+   
+        var prixFinal = (parseFloat(produitPrixInput.value) + parseFloat(livraisonPrixInput.value)); 
+        prixFinalInput.value = prixFinal; 
+    };
+
+    produitPrixInput.addEventListener("input", updatePrixFinal);
+    livraisonPrixInput.addEventListener("input", updatePrixFinal);
+   
+})

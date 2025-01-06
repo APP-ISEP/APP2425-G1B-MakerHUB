@@ -16,7 +16,6 @@ function insertDevis(int $idProduit,int $fournisseur_id, int $prixProduit, int $
             ':dateLivraison' => $dateLivraison,
             ':commentaire' => $commentaire,
         ]);
-        var_dump( "Record inserted successfully");
         $stmt->closeCursor();
     } catch (PDOException $e) {
         // Error executing the query
