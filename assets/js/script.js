@@ -317,13 +317,14 @@ function setFaq() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
             {
                 console.log(xmlhttp.responseText);
+                window.location.reload();
             
             }
         }
             xmlhttp.open("POST", "./php/faq/setFaq.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("id="+id+"&reponse="+reponse+"&question="+question);
-            window.location.reload();
+            //window.location.reload();
     }
     catch(e){
         console.log(e.toString());
@@ -353,6 +354,7 @@ xmlhttp.onreadystatechange = function ()
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
     {
         console.log(xmlhttp.responseText);
+        window.location.reload();
     }
 }
 xmlhttp.open("GET", "./php/faq/setFaq.php?id="+id, true);
@@ -360,7 +362,7 @@ xmlhttp.send();
 xmlhttp.open("POST","./php/faq/setFaq.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send("id="+id);
-window.location.reload();
+//window.location.reload();
 }
 catch(e){
 console.log(e);

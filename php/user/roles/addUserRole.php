@@ -1,5 +1,6 @@
 <?php
-require_once "./php/connectToDB.php";
+require_once(__DIR__ . '/../../connectToDB.php');
+
 
 function addUserRole(int $userId, int $roleId): ?bool
 {

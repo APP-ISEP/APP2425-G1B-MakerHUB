@@ -53,7 +53,14 @@
                     <td><?php echo($prenom);?></td>
                     <td><?php echo($nom);?></td>
                     <td><?php echo($email);?></td>
-                    <td><a onclick="deleteUser(<?php echo($id); ?>)"><button class="submit"><i class="fa-regular fa-trash-can" style="color: #ffffff;"></i></button></a></td>
+                    <td>
+                        <a onclick="deleteUser(<?php echo($id); ?>)">
+                            <button>
+                                <i class="fa-regular fa-trash-can" style="color: #ffffff;">                                   
+                                </i>
+                            </button>
+                        </a>
+                    </td>
                 </tr>
             <?php } ?>
         </table>
@@ -61,7 +68,7 @@
 
                 <section id="supprimer-utilisateur" class="section content-box">
                     <h2>Utilisateurs</h2>
-                    <form class="form-container">
+                    <form class="form-container" method="post" action="./php/user/getUser.php">
                         <label for="show_user">Rechercher un utilisateur</label>
                         <select name="show_user" autocomplete="on" required>
                             <option value=""> -- Sélectionner un utilisateur -- </option>
@@ -70,20 +77,43 @@
                                 $email = $user['mail'];?>
                                 <option value="<?php echo($id_user);?>"><?php echo($email);?></option>
                             <?php } ?>
-                            <option value="1">test</option>
-
                         </select>
-                        <input class="submit"  onclick="showUser(<?php echo($id_user);?>)" type="submit" value="Supprimer">
+
+                        <input class="submit" type="submit" value="Voir">
+                        <!--onclick="showUser(<?php echo($users);?>,<?php echo($id_user);?>)"-->
                     </form>
+                    <?php 
+                    if (isset($_GET['user'])){
+                        $user =  $_GET['user'];
+                        $user = json_decode($user, true);
+                        $prenom = $user['prenom'];
+                        $nom = $user['nom'];
+                        $email = $user['mail'];
+                        $id = $user['id_utilisateur'];
+                        $pseudo = $user['pseudonyme'];
+                        $description = $user['description'];
+                        $telephone = $user['telephone'];
+                        
+                    ?>
+                    <div>
+                        <p>Nom : <?php echo $nom;?></span></p>
+                        <p>Prénom : <?php echo $prenom;?></span></p>
+                        <p>Pseudonyme : <?php echo $pseudo;?></span> </p>
+                        <p>Adresse email : <?php echo $email;?></span></p>
+                        <p>Description : <?php echo $description;?></span></p>
+                        <p>Téléphone : <?php echo $telephone;?></span></p>    
+                    </div>
+                    <?php } else {
+                        echo "Aucun utilisateur sélectionné";
+                    }?>
                 </section>
     </main> 
 
     <script>
         
-function deleteUser(id){
-    console.log("Je suis la");
+function deleteUser(id_param){
     confirmation = confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
-    if (confirmation)
+    if (confirmation){
         try{
             console.log(id);
             if (window.XMLHttpRequest) {
@@ -100,26 +130,24 @@ function deleteUser(id){
                         }
                     }
             }
-            
             xmlhttp.onreadystatechange = function ()
             {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
                 {
                     console.log(xmlhttp.responseText);
+                    console.log(xmlhttp);
+                    window.location.reload();
                 }
             }
-            xmlhttp.open("GET", "./php/user/updateUser.php?id="+id, true);
-            xmlhttp.send();
-            //xmlhttp.open("POST","./php/faq/setFaq.php", true);
-            //xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            //xmlhttp.send("id="+id);
-            window.location.reload();
+            xmlhttp.open("POST","./php/user/deleteUser.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id="+id);
+            console.log(xmlhttp);
+            
             }
             catch(e){
             console.log(e);
             }
+    }
 }
-
-
-
     </script>
