@@ -1,37 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <link href="../../assets/css/style_admin.css" rel="stylesheet">
-        <link href="../../assets/css/style.css" rel="stylesheet">
-        <link href="../../assets/images/favico.ico" rel="icon">
-        <title>Administration | Makerhub</title>
-    </head>
-
-    <body>
-    <div class="navbar">
-        <div class="header-logo">
-            <img alt="Logo MakerHUB" class="img-logo" src="../../assets/images/logo.svg">
-        </div>
-
-        <div class="profil" id="profil">
-            <img alt="Photo de profil" class="img-profil" src="../../assets/images/profil.svg">
-            <p id="pseudo">Panel</p>
-
-            <div id="dropdown">
-                <a href="panel_admin_faq.php" ><div class="drop-content">FAQ</div></a>
-                <a href="panel_admin_produit.php" ><div class="drop-content">Produit</div></a>
-                <a href="#supprimer-utilisateur" ><div class="drop-content">Utilisateur</div></a>
-                <hr id="separation-bar">
-                <a href="log-out.php" ><div class="drop-content logout">Se déconnecter</div></a>
-            </div>
-        </div>
-    </div>
-
-   <main class="main">
+<main class="main">
         <div class="mini-menu">
-                <a href="panel_admin_faq.php" ><div class="submitButton">FAQ</div></a>
-                <a href="panel_admin_produit.php" ><div class="submitButton">Produit</div></a>
+                <a href="/admin-faq.php" ><div class="submitButton">FAQ</div></a>
+                <a href="/admin-product.php" ><div class="submitButton">Produit</div></a>
         </div>
    
 
@@ -109,9 +79,8 @@
                 </section>
     </main> 
 
-    <script>
-        
-function deleteUser(id_param){
+<script>
+    function deleteUser(id_param){
     confirmation = confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
     if (confirmation){
         try{
@@ -150,4 +119,4 @@ function deleteUser(id_param){
             }
     }
 }
-    </script>
+</script>
