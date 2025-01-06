@@ -4,6 +4,13 @@ $(document).ready(function () {
     });
 });
 
+// ALLOWS TO DISPLAY FILENAME IN THE INPUT
+function updateFileName(input) {
+    const label = input.previousElementSibling.querySelector('.file-label-text');
+    const fileName = input.files.length > 0 ? input.files[0].name : 'Choisir un fichier...';
+    label.textContent = fileName;
+}
+
 //--------- BEGINNING OF THE CHEVRON IN FAQ PAGE ---------//
 $(document).ready(function() {
     $(".question").click(function() {
@@ -388,7 +395,6 @@ if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 xmlhttp.send();
 }
 }
-
 
 //---- BEGINNING OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
 
