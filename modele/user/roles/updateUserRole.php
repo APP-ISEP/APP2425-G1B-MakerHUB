@@ -1,5 +1,6 @@
 <?php
-require_once "./modele/connectToDB.php";
+require_once(__DIR__ . '/../../connectToDB.php');
+
 
 function updateUserRole(int $userId, int $roleId): ?bool
 {

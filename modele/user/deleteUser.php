@@ -17,6 +17,6 @@ function deleteUser(int $id): ?bool
         // Error executing the query
         $error = $e->getMessage();
         echo mb_convert_encoding("Database access error: $error \n", 'UTF-8', 'UTF-8');
-        return null;
+        return false;
     }
 }
