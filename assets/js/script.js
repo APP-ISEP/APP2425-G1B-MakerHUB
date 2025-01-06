@@ -76,7 +76,7 @@ $(document).ready(() => {
 
 
 //--------- BEGINNING OF CATEGORIES INSIDE HOME PAGE---------//
-$(document).ready(() => {
+/*$(document).ready(() => {
     const categoryOffer = $('.category-offer');
     const categoryRequest = $('.category-request');
     const offersContainer = $('.offers-container');
@@ -104,7 +104,7 @@ $(document).ready(() => {
     } else if (urlParams.has('offers-search')) {
         toggleCategories(categoryOffer, categoryRequest, offersContainer, requestsContainer);
     }
-});
+});*/
 
 //--------- END OF CATEGORIES INSIDE HOME PAGE---------//
 

@@ -20,8 +20,11 @@ $fileName = null;
 ob_start();
 
 if (isset($_SESSION['account'])) {
-    if($_SESSION['role'] === 'admin') {
+    if ($_SESSION['role'] === 'admin') {
         header("Location: admin.php");
+    }
+    if ($_SESSION['role'] !== 'acheteur') {
+        header("Location: index.php");
     }
 }
 

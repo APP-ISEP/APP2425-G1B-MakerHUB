@@ -19,15 +19,18 @@ $fileName = null;
 ob_start();
 
 if (isset($_SESSION['account'])) {
-    if($_SESSION['role'] === 'admin') {
+    if ($_SESSION['role'] === 'admin') {
         header("Location: admin.php");
+    }
+    if ($_SESSION['role'] !== 'vendeur') {
+        header("Location: index.php");
     }
 }
 
 if (!isset($_SESSION) || !isset($_SESSION['account'])) {
     header("Location: ./log-in.php");
     die();
-};
+}
 
 if (isset($_POST) && count($_POST) > 0) {
     if (empty($_POST['title']) || empty($_POST['description']) || empty($_POST['price'])) {

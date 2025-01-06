@@ -645,10 +645,7 @@ input:focus, textarea:focus {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px; 
     justify-items: stretch;
-    margin-top: 25px;
-    margin-bottom: 50px;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin: 25px 150px 50px;
 }
 
 .product-card {
@@ -749,15 +746,10 @@ input:focus, textarea:focus {
 }
 
 .categories {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     text-align: center;
-    margin: 2% auto auto auto;
-    width: 25%;
-    gap: 5%;
-    position: relative;
+    width: auto;
     z-index: 1;
+    margin: 2% auto 5%;
 }
 
 .offers-container {
@@ -791,26 +783,11 @@ input:focus, textarea:focus {
 }
 
 .category {
-    width: auto;
-    border: 3px solid var(--important-element-color);
-    border-radius: 10px;
+    color: var(--important-element-color);
     font-size: 1.8em;
-    font-weight: 700;
-    margin: auto;
-    text-align: center;
-    cursor: pointer;
+    font-weight: 600;
+    font-style: italic;
     padding: 10px 8%;
-}
-
-.active-category {
-    background-color: var(--important-element-color);
-    color: var(--base-color-3);
-}
-
-.inactive-category {
-    background-color: var(--base-color-2);
-    color: var(--base-color);
-    border: none;
 }
 
 .search-bar-offer, .search-bar-request {
@@ -818,12 +795,12 @@ input:focus, textarea:focus {
     justify-content: center;
     align-items: center;
     width: 15%;
-    margin: -3% 3% 5% auto;
+    margin: -3% 2% 1% auto;
 }
 
 .search-bar-request {
     width: 20%;
-    margin: -3% 1% 5% auto;
+    margin: -3% 0.5% 1% auto;
 }
 
 .search-bar-input, #search-bar-input-2 {
@@ -845,31 +822,9 @@ input:focus, textarea:focus {
     all: inherit;
     position: relative;
     right: 14%;
-    margin-top: 5%;
+    margin-top: 1%;
     color: var(--important-element-color);
 }
-
-/*
-.items-cards-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    justify-content: start;
-
-    text-align: center;
-    margin: 2% auto auto auto;
-    width: 95%;
-}
-
-.item-card {
-    background-color: var(--base-color-3);
-    border: 1px solid var(--secondary-border-color);
-    border-radius: 8px;
-    padding: 10px;
-    margin: auto auto 4%;
-    text-align: center;
-}
-*/
 
 .items-cards-container {
     display: grid;

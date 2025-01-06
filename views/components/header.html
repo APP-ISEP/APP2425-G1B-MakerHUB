@@ -23,13 +23,16 @@
     <?php if (isset($username)) : ?>
     <?php if ($_SESSION['role'] !== 'admin') : ?>
     <ul class="navbar-links">
-        <li><a href="offer-creation.php">Proposer une offre</a></li>
+        <?php if ($_SESSION['role'] === 'vendeur') : ?>
+        <li><a href="offer-creation.php">Proposer un produit</a></li>
+        <?php elseif ($_SESSION['role'] === 'acheteur') : ?>
         <li><a href="request-creation.php">Demander un service</a></li>
+        <?php endif; ?>
     </ul>
     <?php endif; ?>
 
     <div class="profil" id="profil">
-        <?php if ($_SESSION['role'] !== 'admin') : ?>
+        <?php if ($_SESSION['role'] === 'acheteur') : ?>
         <a href="shopping-cart.php">
             <img alt="Panier" class="img-shopping-cart" src="./assets/images/shopping-cart.svg">
         </a>
