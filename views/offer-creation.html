@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="" method="post" class="form-section">
+    <form action="" method="post" class="form-section" enctype="multipart/form-data">
         <h1>Proposer une offre</h1>
         <p class="required">*Ces champs sont obligatoires</p>
 
@@ -46,7 +46,8 @@
                     </svg>
                     <span class="file-label-text">Choisir une illustration...</span>
                 </label>
-                <input type="file" id="illustration" name="illustration" accept="images/*" onchange="updateFileName(this)">
+
+                <input type="file" id="illustration" name="illustration" accept="image/jpeg, image/png" onchange="updateFileName(this)">
             </div>            
         </div>
 

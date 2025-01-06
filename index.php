@@ -1,9 +1,12 @@
 <?php
+
+use Config\Ftp\FTP;
+
 require_once 'config/constants.php';
 include 'autoload.php';
 
 session_start();
-
+$ftpInstance = FTP::getInstance();
 $title = "Accueil";
 
 ob_start();
@@ -11,8 +14,17 @@ ob_start();
 include_once 'php/catalog/offer/getOffers.php';
 include_once 'php/catalog/request/getRequests.php';
 
+
 $offers = getOffers();
 $requests = getRequests();
+
+// charger toutes les images à l'avance
+foreach ($offers as $offer) {
+    $ftpInstance->getFile($offer['chemin_image']);
+}
+foreach ($requests as $request) {
+    $ftpInstance->getFile($request['chemin_image']);
+}
 
 $minPrice = 0;
 $maxPrice = 99999.99;

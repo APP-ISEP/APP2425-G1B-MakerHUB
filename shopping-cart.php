@@ -1,9 +1,13 @@
 <?php
 
-session_start();
+use Config\Ftp\FTP;
 
+require_once 'config/constants.php';
+include 'autoload.php';
+
+session_start();
+$ftpInstance = FTP::getInstance();
 $title = "Mon panier";
-$isAuthPage = true;
 
 ob_start();
 
@@ -15,6 +19,9 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
 include_once("./php/shopping-cart/getProductsByUserId.php");
 $products = getProductsByUserId($_SESSION['account']['id_utilisateur']);
 
+foreach($products as $product) {
+    $ftpInstance->getFile($product['chemin_image']);
+}
 
 if (isset($_POST) && count($_POST) > 0) {
     include_once("./php/shopping-cart/deleteProduct.php");

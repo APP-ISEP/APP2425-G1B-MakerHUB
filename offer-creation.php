@@ -2,8 +2,9 @@
 require_once 'config/constants.php';
 include 'autoload.php';
 
+use Config\Ftp\FTP;
 use Config\Log\Log;
-use Config\Log\LogFileSingleton;
+use Config\Log\LogFile;
 use Config\Log\LogLevel;
 
 session_start();
@@ -11,7 +12,9 @@ session_start();
 $title = "Créer une offre";
 $errors = array();
 $isAuthPage = true;
-$logFile = LogFileSingleton::getInstance();
+$logFile = LogFile::getInstance();
+$ftpInstance = FTP::getInstance();
+$fileName = null;
 
 ob_start();
 
@@ -36,13 +39,29 @@ if (isset($_POST) && count($_POST) > 0) {
         $errors['description'] = "La description ne doit pas dépasser 200 caractères.";
     }
     if ($price > 999999.99) {
-        $errors['price'] = "Le prix ne doit pas dépasser 999999,99€.";
+        $errors['price'] = "Le prix ne doit pas dépasser 999 999,99€.";
+    }
+
+    if ($_FILES['illustration'] !== "" && $_FILES['illustration']['size'] > 0) {
+        $file = $_FILES['illustration'];
+
+        if ($file['size'] > MAX_FILE_SIZE) {
+            $errors['file_size'] = "La taille de l'image ne doit pas dépasser 5 Mo.";
+        }
+
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            die("Erreur lors de l'upload : " . $file['error']);
+        }
+
+        $fileName = $ftpInstance->addLocalFile($file); // save l'image dans /uploads/
+        $ftpInstance->addFile(LOCAL_IMG_DIR . $fileName); // upload l'image sur le ftp
+        $ftpInstance->deleteLocalFile($fileName); // supprime l'image dans /uploads/
     }
 
     include_once("./php/catalog/offer/createOffer.php");
 
     if (empty($errors)) {
-        $offer = createOffer($title, $description, $price, $_SESSION['account']['id_utilisateur']);
+        $offer = createOffer($title, $description, $price, $_SESSION['account']['id_utilisateur'], $fileName);
 
         if ($offer) {
             $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $_SESSION['account']['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a créé une offre (titre: " . $title . ")."));

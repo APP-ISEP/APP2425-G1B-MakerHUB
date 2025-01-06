@@ -4,6 +4,8 @@ namespace Config\Log;
 
 class LogFile
 {
+    private static ?LogFile $instance = null;
+
     /** @var string $filePath */
     private string $filePath;
 
@@ -16,6 +18,14 @@ class LogFile
             file_put_contents($filePath, ''); // Create file if it doesn't exist
         }
         $this->logs = array();
+    }
+
+    public static function getInstance(): LogFile
+    {
+        if (self::$instance === null) {
+            self::$instance = new LogFile(LOG_FILE_PATH);
+        }
+        return self::$instance;
     }
 
     /**
