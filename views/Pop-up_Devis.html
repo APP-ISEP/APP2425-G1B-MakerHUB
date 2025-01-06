@@ -19,8 +19,8 @@
                     .modal-content {
                         position: relative;
                         margin: 10% auto;
-                        padding: 20px;
-                        background-color: floralwhite;
+                        padding: 2%;
+                        background-color: white;
                         width: 50%;
                         border-radius: 10px;
                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -36,13 +36,12 @@
             
                     .modal-body {
                         padding: 15px;
-                        text-align: center;
                     }
             
                     .close {
                         background: none;
                         border: none;
-                        font-size: 1.5rem;
+                        font-size: 20px;
                         cursor: pointer;
                         color: #333;
                     }
@@ -132,7 +131,6 @@
                             <p class="card-description">
                                 <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 45) . "..." : $item['description']; ?>
                             </p>
-                            <p class="card-status">Statut : <?= $item['statut_impression'] ?></p>
                             <button class="button button-buy">Ajouter au panier</button>
                         </div>
                        
@@ -174,21 +172,20 @@
                         </div>
                         <div class="modal-body" id="modalBody">
                             <label>Prix Produit</label>
-                            <input placeholder="prix" type="int">
+                            <input placeholder="prix" type="int" name="prixProduit" id="ProduitPrix">
                             <br>
                             <label>Prix de livraison</label>
-                            <input placeholder="prix de livraison" type="int">
+                            <input placeholder="prix de livraison" type="int" name="prixLivraison"  id="LivraisonPrix">
                             <br>
                             <label>Prix final</label>
-                            <input placeholder="prix final" type="int">
+                            <input placeholder="prix final" type="int" id="prixFinal">
                             <br>
                             <label> Date de livraison estimée</label>
-                            <input placeholder="date" type="date">
+                            <input placeholder="date" type="date" name="dateLivraison">
                             <br>
                             <label>Commentaire</label>
-                            <input placeholder="Commentaire" type="text">
+                            <input placeholder="Commentaire" type="text" name="">
                             <br>
-                            <button href="../index.php">Retour</button>
                             <button>Envoyer le devis</button>
                         </div>
                     </div>
@@ -202,11 +199,11 @@
             
                         document.querySelectorAll('.btn-devis').forEach(button => {
                             button.addEventListener('click', () => {
-                                const title = button.getAttribute('data-title');
-                                const description = button.getAttribute('data-description');
-        
+                                const reference = button.getAttribute('data-title');        
                                 modal.style.display = 'block';
                             });
+
+                        const prixFinal = document.getElementById('ProduitPrix') + document.getElementById('LivraisonPrix');
                         });
             
                         // Close modal
