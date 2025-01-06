@@ -8,14 +8,14 @@ include_once 'php/catalog/offer/getOffers.php';
 include_once 'php/catalog/request/getRequests.php';
 include_once 'php/catalog/request/InsertDevis.php';
 
-// if (isset($_SESSION['account']) && isset($_SESSION['account']['id_utilisateur'])) {
-//     $idFournisseur = $_SESSION['account']['id_utilisateur'];
-//     var_dump('idPresent');
-// } else {
-//     var_dump('Pas utilisateur');
-//     $errors['user'] = "Utilisateur non connecté.";
-// }
-$idFournisseur = 1;
+ if (isset($_SESSION['account']) && isset($_SESSION['account']['id_utilisateur'])) {
+     $idFournisseur = $_SESSION['account']['id_utilisateur'];
+     
+ } else {
+     
+    $errors['user'] = "Utilisateur non connecté.";
+}
+// $idFournisseur = 1;
 
 $offers = getOffers();
 $requests = getRequests();
