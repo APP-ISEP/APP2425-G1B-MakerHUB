@@ -49,7 +49,20 @@ if(eye) {
     }
 }
 //--------- END EYE BUTTON TO SEE PASSWORD---------//
+let pwShown1 = 0;
+const passwordContainer1 = document.getElementById('passwordConfirmation');
+const eye1 = document.getElementById('eye1');
 
+const editAttributePassword1 = (valueName) => {
+    passwordContainer1.setAttribute('type', valueName);
+};
+
+if (eye1) {
+    eye1.onclick = () => {
+        editAttributePassword1(pwShown1 === 0 ? 'text' : 'password');
+        pwShown1 = pwShown1 === 0 ? 1 : 0;
+    };
+}
 
 //--------- BEGINNING TOGGLE BUTTON ---------//
 $(document).ready(() => {
@@ -259,7 +272,20 @@ $(document).ready(() => {
     }
 });
 
+
 //---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
+//---- BEGINNING OF VALIDATION PASSWORD SIGN_UP ----//
+    var motDePasse = document.getElementById('password');
+    var motDePasseConfirmed = document.getElementById('passwordConfirmation');
+
+    motDePasseConfirmed.addEventListener('change', function () {
+        if (motDePasse.value !== motDePasseConfirmed.value) {
+            alert("Les mots de passe ne correspondent pas");
+        }
+    });
+
+//---- END OF VALIDATION PASSWORD SIGN_UP ----//
+
 
 //---- BEGINNING OF THE "A PROPOS DE MOI" IN SIGN UP ----//
 $(document).ready(() => {
