@@ -21,6 +21,7 @@ ob_start();
 include_once 'php/catalog/offer/getOffers.php';
 include_once 'php/catalog/request/getRequests.php';
 
+
 $offers = getOffers();
 $requests = getRequests();
 

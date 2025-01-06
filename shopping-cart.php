@@ -32,11 +32,18 @@ foreach($products as $product) {
 if (isset($_POST) && count($_POST) > 0) {
     include_once("./php/shopping-cart/deleteProduct.php");
 
-    // delete the product in the shopping-cart then refresh products array
-    $isDeleted = deleteProduct($_POST['productId'], $_SESSION['account']['id_utilisateur']);
-    $products = getProductsByUserId($_SESSION['account']['id_utilisateur']);
-}
+    // supprime le produit du panier de l'utilisateur
+    $productId = $_POST['productId'];
+    $isDeleted = deleteProduct($productId, $_SESSION['account']['id_utilisateur']);
 
+    // supprimer le produit de la liste des produits à afficher
+    if ($isDeleted) {
+        $products = array_filter(
+            $products,
+            fn($product) => $product['id_produit_fini'] != $productId
+        );
+    }
+}
 
 include_once 'views/shopping-cart.html';
 
