@@ -10,7 +10,7 @@ include_once 'php/catalog/request/InsertDevis.php';
 
 if (isset($_SESSION['account']) && isset($_SESSION['account']['id_utilisateur'])) {
     $idFournisseur = $_SESSION['account']['id_utilisateur'];
-    var_dump('idPresent')
+    var_dump('idPresent');
 } else {
     var_dump('Pas utilisateur');
     $errors['user'] = "Utilisateur non connecté.";
