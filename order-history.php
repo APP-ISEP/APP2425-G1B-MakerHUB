@@ -5,10 +5,15 @@
 session_start();
 require_once("php/getOrder.php");
 
-
 $title = "Order History";
 
 ob_start();
+
+if (isset($_SESSION['account'])) {
+    if($_SESSION['role'] === 'admin') {
+        header("Location: admin.php");
+    }
+}
 
 if (!isset($_SESSION) || !isset($_SESSION['account'])) {
     header("Location: ./log-in.php");

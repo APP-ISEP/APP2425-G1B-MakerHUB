@@ -14,7 +14,6 @@ $errors = array();
 $isAuthPage = true;
 $logFile = LogFile::getInstance();
 
-
 ob_start();
 
 if (isset($_SESSION['account'])) {

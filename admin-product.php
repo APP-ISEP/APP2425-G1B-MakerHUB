@@ -5,7 +5,7 @@ $title = "Administration Product | Makerhub";
 
 ob_start();
 
-include_once 'views/admin-product.html';
+include_once 'views/admin/admin-product.html';
 
 $body = ob_get_clean();
 

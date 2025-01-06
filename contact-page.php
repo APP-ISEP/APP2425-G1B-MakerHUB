@@ -20,6 +20,12 @@ include_once "views/components/template.php";
 
 require_once "php/contact/createFormEntry.php";
 
+if (isset($_SESSION['account'])) {
+    if($_SESSION['role'] === 'admin') {
+        header("Location: admin.php");
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //Cela permet de vérifier si la méthode de la requête est bien POST avant de traiter le formulaire.
     $pseudo = htmlspecialchars(trim($_POST['pseudo']));
     $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL); 

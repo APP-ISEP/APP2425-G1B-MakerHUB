@@ -16,7 +16,11 @@ $logFile = LogFile::getInstance();
 ob_start();
 
 if (isset($_SESSION['account'])) {
-    header("Location: index.php");
+    if($_SESSION['role'] === 'admin') {
+        header("Location: admin.php");
+    } else {
+        header("Location: index.php");
+    }
 }
 
 if (isset($_POST) && count($_POST) > 0) {
@@ -39,10 +43,15 @@ if (isset($_POST) && count($_POST) > 0) {
 
         $_SESSION['account'] = $account;
         $_SESSION['username'] = $account['pseudonyme'];
-        $_SESSION['roles'] = getUserRoles($account['id_utilisateur']);
+        $role = $_SESSION['username']['role'] = getUserRole($account['id_utilisateur']);
 
         $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") s'est connecté depuis " . $_SERVER['REMOTE_ADDR'] . "."));
-        header("Location: index.php");
+
+        if($role === 'admin') {
+            header("Location: admin.php");
+        } else {
+            header("Location: index.php");
+        }
     }
 }
 
