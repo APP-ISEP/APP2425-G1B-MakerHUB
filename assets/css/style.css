@@ -735,9 +735,21 @@ input:focus, textarea:focus {
 }
 
 .button-hero {
-    width: 30%;
     padding: 2%;
     font-size: 1.1em;
+}
+
+.button-bordered-second {
+    background-color: var(--base-color-2);
+    color: var(--important-element-color);
+    border: 3px solid var(--important-element-color);
+}
+
+.hero-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
 }
 
 .button-log-in {
