@@ -36,10 +36,10 @@
                 </div>
             </div>
 
+            <!-- toogle about me -->
             <div class="form-control" id="toggle-control">
-                <!-- toogle about me -->
                 <label class="toggle">
-                    <input type="checkbox" class="toggle-input" id="maker-checkbox" name="toggleAboutMe" <?php if ($isMaker) echo "checked";?>>
+                    <input type="checkbox" class="toggle-input" id="maker-checkbox" name="toggleAboutMe" <?php if ($isMaker) echo "checked"; ?>>
                     <span class="toggle-label"></span>
                     Vous possédez une imprimante 3D et souhaitez proposer vos services.
                 </label>
@@ -47,7 +47,7 @@
 
             <!-- about me -->
             <div class="form-control" id="aboutMe">
-                <label for="description">À propos de vous</label>
+                <label for="description">A propos de vous</label>
                 <textarea id="description" name="description" rows="4" maxlength="255" value="<?= $user['description']?>"></textarea>
             </div>
         </div>

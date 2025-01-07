@@ -65,20 +65,18 @@ if (isset($_POST) && count($_POST) > 0) {
     }
 
     include_once("./modele/user/updateUser.php");
-    include_once("./modele/user/roles/getUserRoles.php");
 
     if (empty($errors)) {
-        $account = updateUser($user['id_utilisateur'], $firstname, $name, $username, $isMaker, $description, $email, $phone);
+        $updatedUser = updateUser($user['id_utilisateur'], $firstname, $name, $username, $isMaker, $description, $email, $phone);
 
-        if (empty($account)) {
-            $errors['save'] = "Erreur lors de la modification de votre profil.";
-        } else {
-            $userRoles = getUserRoles($account['id_utilisateur']);
-            $_SESSION['roles'] = $userRoles;
-            $_SESSION['account'] = $account;
+        if ($updatedUser) {
+            $_SESSION['account'] = $updatedUser;
+            $_SESSION['role'] = $isMaker == "vendeur" ? "vendeur" : "acheteur";
 
             $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a modifié son profil depuis" . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: index.php");
+        } else {
+            $errors['save'] = "Erreur lors de la modification de votre profil.";
         }
     }
 }
