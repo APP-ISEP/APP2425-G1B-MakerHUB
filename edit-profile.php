@@ -28,9 +28,9 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
 
 
 $user = $_SESSION['account'];
-$roles = $_SESSION['roles'];
+$role = $_SESSION['role'];
 
-$isMaker = !empty($roles) && isset($roles['role_id']) && $roles['role_id'] === 2;
+$isMaker = !empty($role) && $role == "vendeur";
 
 if (isset($_POST) && count($_POST) > 0) {
     if (empty($_POST['firstname']) || empty($_POST['name']) || empty($_POST['username']) || empty($_POST['email'])) {
@@ -64,8 +64,8 @@ if (isset($_POST) && count($_POST) > 0) {
         $errors['phone'] = "Le numéro de téléphone ne doit pas dépasser 13 caractères.";
     }
 
-    include_once("./php/user/updateUser.php");
-    include_once("./php/user/roles/getUserRoles.php");
+    include_once("./modele/user/updateUser.php");
+    include_once("./modele/user/roles/getUserRoles.php");
 
     if (empty($errors)) {
         $account = updateUser($user['id_utilisateur'], $firstname, $name, $username, $isMaker, $description, $email, $phone);

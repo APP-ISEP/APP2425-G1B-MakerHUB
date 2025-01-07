@@ -1,9 +1,9 @@
-<script src="views/order-img.js"></script>
+<script src="assets/js/order-img.js"></script>
 
 <?php
 
 session_start();
-require_once("php/getOrder.php");
+require_once("modele/order/getOrder.php");
 
 $title = "Order History";
 

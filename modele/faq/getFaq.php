@@ -1,5 +1,5 @@
 <?php
-require "./php/connectToDB.php";
+require "./modele/connectToDB.php";
 
 if (isset($_GET['id_faq'])) {
     $id = $_GET['id_faq'];

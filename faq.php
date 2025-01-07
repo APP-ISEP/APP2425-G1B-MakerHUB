@@ -10,7 +10,7 @@ if (isset($_SESSION['account'])) {
 
 ob_start();
 
-include_once 'php/faq/getFaq.php';
+include_once 'modele/faq/getFaq.php';
 
 $faq = getFaq();
 

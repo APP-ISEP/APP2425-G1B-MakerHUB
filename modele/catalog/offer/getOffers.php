@@ -1,6 +1,7 @@
 <?php
 
-require_once "./php/connectToDB.php";
+require_once "./modele/connectToDB.php";
+
 function getOffers($minPrice = 0, $maxPrice = 99999.99, $search = null): ?array
 {
     try {

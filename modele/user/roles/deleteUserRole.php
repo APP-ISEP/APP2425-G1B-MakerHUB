@@ -1,11 +1,11 @@
 <?php
-require_once "./php/connectToDB.php";
+require_once "./modele/connectToDB.php";
 
-function addUserRole(int $userId, int $roleId): ?bool
+function deleteUserRole(int $userId, int $roleId): ?bool
 {
     try {
         $pdo = connectToDB();
-        $sql = "INSERT IGNORE INTO `role_utilisateur` (utilisateur_id, role_id) VALUES (:valUserId, :valRoleId)";
+        $sql = "DELETE FROM `role_utilisateur` WHERE utilisateur_id = :valUserId AND role_id = :valRoleId";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valUserId", $userId);

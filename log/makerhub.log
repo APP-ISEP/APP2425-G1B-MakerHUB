@@ -138,3 +138,10 @@
 2025-01-05 17:13:29 [INFO] L'utilisateur admin (id: 36) s'est connecté depuis 127.0.0.1.
 2025-01-05 17:15:25 [INFO] L'utilisateur admin s'est déconnecté depuis 127.0.0.1.
 2025-01-05 17:15:33 [INFO] L'utilisateur admin (id: 36) s'est connecté depuis 127.0.0.1.
+2025-01-07 16:23:07 [INFO] L'utilisateur r000t s'est déconnecté depuis 127.0.0.1.
+2025-01-07 16:23:33 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis 127.0.0.1.
+2025-01-07 16:23:41 [INFO] L'utilisateur r000t s'est déconnecté depuis 127.0.0.1.
+2025-01-07 16:24:02 [INFO] L'utilisateur acheteur (id: 37) s'est connecté depuis 127.0.0.1.
+2025-01-07 16:24:35 [INFO] L'utilisateur acheteur (id: 37) a créé une demande (titre: MATHIEU).
+2025-01-07 16:24:55 [INFO] L'utilisateur acheteur s'est déconnecté depuis 127.0.0.1.
+2025-01-07 16:24:58 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis 127.0.0.1.

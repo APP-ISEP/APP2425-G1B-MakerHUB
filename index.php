@@ -1,5 +1,4 @@
 <?php
-
 use Config\Ftp\FTP;
 
 require_once 'config/constants.php';
@@ -18,8 +17,8 @@ if (isset($_SESSION['account'])) {
 
 ob_start();
 
-include_once 'php/catalog/offer/getOffers.php';
-include_once 'php/catalog/request/getRequests.php';
+include_once 'modele/catalog/offer/getOffers.php';
+include_once 'modele/catalog/request/getRequests.php';
 
 
 $offers = getOffers();

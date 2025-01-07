@@ -1,5 +1,5 @@
 <?php
-require_once "./php/connectToDB.php";
+require_once "./modele/connectToDB.php";
 
 /**
  * Retourne le rôle de l'utilisateur

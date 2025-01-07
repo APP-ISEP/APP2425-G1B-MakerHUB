@@ -67,7 +67,7 @@ if (isset($_POST) && count($_POST) > 0) {
         $ftpInstance->deleteLocalFile($fileName); // supprime l'image dans /uploads/
     }
 
-    include_once("./php/catalog/offer/createOffer.php");
+    include_once("./modele/catalog/offer/createOffer.php");
 
     if (empty($errors)) {
         $offer = createOffer($title, $description, $price, $_SESSION['account']['id_utilisateur'], $fileName);

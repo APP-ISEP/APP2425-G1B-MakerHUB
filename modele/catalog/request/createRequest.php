@@ -1,5 +1,6 @@
 <?php
-require_once "./php/connectToDB.php";
+
+require_once "./modele/connectToDB.php";
 
 function createRequest(string $title, string $description, int $userId, ?string $imagePath, ?string $stlFilePath): ?bool
 {
