@@ -115,7 +115,11 @@
                         <p class="card-description">
                             <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 45) . "..." : $item['description']; ?>
                         </p>
-                        <button class="button button-buy">Envoyer un devis</button>
+
+                        <button button class="button button-buy btn-devis" 
+                        data-title="<?= $item['titre'] ?>" 
+                        data-description="<?= $item['description'] ?>"
+                        data-id="<?= $item['id_produit_demande'] ?>">Générer un devis</button>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -125,5 +129,35 @@
             <div class="pagination" id="requests-pagination"></div>
         </div>
         <?php endif; ?>
+    </div>
+</div>
+<div class="modal" id="myModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modalTitle"> Devis produit n. <?= $item['titre']?></h3>
+            <button class="close" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+        <form id="devisForm" method="post" action="">
+            <input type="hidden"  id="IdProduit" name="idProduit"> <!-- Stock id du produit selectionné-->
+            <br>
+            <label>Prix Produit</label>
+            <input placeholder="prix" type="int" name="prixProduit" id="ProduitPrix" required>
+            <br>
+            <label>Prix de livraison</label>
+            <input placeholder="prix de livraison" type="int" name="prixLivraison"  id="LivraisonPrix" required>
+            <br>
+            <label>Prix final</label>
+            <input placeholder="prix final" type="int" id="prixFinal">
+            <br>
+            <label> Date de livraison estimée</label>
+            <input placeholder="date" type="date" name="dateLivraison" required>
+            <br>
+            <label>Commentaire</label>
+            <input placeholder="Commentaire" type="text" name="Commentaire">
+            <br>
+            <button type="submit" id="envoyerDevis">Envoyer le devis</button>
+        </form>
+        </div>
     </div>
 </div>
