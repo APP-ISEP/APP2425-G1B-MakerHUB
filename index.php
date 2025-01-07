@@ -26,10 +26,10 @@ if (isset($_SESSION['account']) && isset($_SESSION['account']['id_utilisateur'])
     $idFournisseur = $_SESSION['account']['id_utilisateur'];
     
 } else {
-    
    $errors['user'] = "Utilisateur non connecté.";
 }
 // $idFournisseur = 1;
+
 $offers = getOffers();
 $requests = getRequests();
 
@@ -79,12 +79,23 @@ if (isset($_POST) && count($_POST) > 0) {
         var_dump($idProduit);
         $errors['Id'] = "Produit pas trouvé";
     }
-   
+    if ($prixProduit >= $minPrice && $prixProduit <= $maxPrice) {
+        return true;
+    } else {
+        $errors['prixProduit1'] = "Le prix doit être compris entre $minPrice et $maxPrice";
+    }
+    if ($prixLivraison >= $minPrice && $prixLivraison <= $maxPrice) {
+        return true;
+    } else {
+        $errors['prixProduit2'] = "Le prix doit être compris entre $minPrice et $maxPrice";
+    }
 
     if (empty($errors)) {
             $result = insertDevis($idProduit, $idFournisseur, $prixProduit, $prixLivraison, $dateLivraison, $commentaire);
             header("Location: index.php");
         
+        }else{
+            var_dump($errors);
     }
 }
 include_once 'main.html';

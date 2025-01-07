@@ -116,7 +116,7 @@
                             <?= strlen($item['description']) > 50 ? mb_substr($item['description'], 0, 45) . "..." : $item['description']; ?>
                         </p>
 
-                        <button button class="button button-buy btn-devis" 
+                        <button class="button button-buy btn-devis" 
                         data-title="<?= $item['titre'] ?>" 
                         data-description="<?= $item['description'] ?>"
                         data-id="<?= $item['id_produit_demande'] ?>">Générer un devis</button>
@@ -142,13 +142,13 @@
             <input type="hidden"  id="IdProduit" name="idProduit"> <!-- Stock id du produit selectionné-->
             <br>
             <label>Prix Produit</label>
-            <input placeholder="prix" type="int" name="prixProduit" id="ProduitPrix" required>
+            <input placeholder="prix" type="int" name="prixProduit" id="ProduitPrix" required><span>€</span>
             <br>
             <label>Prix de livraison</label>
-            <input placeholder="prix de livraison" type="int" name="prixLivraison"  id="LivraisonPrix" required>
+            <input placeholder="prix de livraison" type="int" name="prixLivraison"  id="LivraisonPrix" required><span>€</span>
             <br>
             <label>Prix final</label>
-            <input placeholder="prix final" type="int" id="prixFinal">
+            <input placeholder="prix final" type="int" id="prixFinal"><span>€</span>
             <br>
             <label> Date de livraison estimée</label>
             <input placeholder="date" type="date" name="dateLivraison" required>
