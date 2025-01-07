@@ -18,7 +18,7 @@ $body = ob_get_clean();
 
 include_once "views/components/template.php";
 
-require_once "php/contact/createFormEntry.php";
+require_once "modele/contact/createFormEntry.php";
 
 if (isset($_SESSION['account'])) {
     if($_SESSION['role'] === 'admin') {

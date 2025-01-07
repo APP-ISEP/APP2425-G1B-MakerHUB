@@ -1,5 +1,6 @@
 <?php
-require_once "./php/connectToDB.php";
+
+require_once "./modele/connectToDB.php";
 
 function createOffer(string $title, string $description, float $price, int $userId, ?string $imagePath): ?bool
 {

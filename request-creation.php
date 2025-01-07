@@ -1,6 +1,6 @@
 <?php
 require_once 'config/constants.php';
-include 'autoload.php';
+include 'config/autoload.php';
 
 use Config\Ftp\FTP;
 use Config\Log\Log;
@@ -80,7 +80,7 @@ if (isset($_POST) && count($_POST) > 0) {
         $ftpInstance->deleteLocalFile($fileName); // supprime l'image dans /uploads/
     }
 
-    include_once("./php/catalog/request/createRequest.php");
+    include_once("./modele/catalog/request/createRequest.php");
 
     if (empty($errors)) {
         $demand = createRequest($title, $description, $_SESSION['account']['id_utilisateur'], $imageName, $fileName);

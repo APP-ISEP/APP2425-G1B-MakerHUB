@@ -3,7 +3,7 @@
 use Config\Ftp\FTP;
 
 require_once 'config/constants.php';
-include 'autoload.php';
+include 'config/autoload.php';
 
 session_start();
 $ftpInstance = FTP::getInstance();
@@ -25,7 +25,7 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
     die();
 };
 
-include_once("./php/shopping-cart/getProductsByUserId.php");
+include_once("./modele/shopping-cart/getProductsByUserId.php");
 $products = getProductsByUserId($_SESSION['account']['id_utilisateur']);
 
 foreach($products as $product) {
@@ -33,7 +33,7 @@ foreach($products as $product) {
 }
 
 if (isset($_POST) && count($_POST) > 0) {
-    include_once("./php/shopping-cart/deleteProduct.php");
+    include_once("./modele/shopping-cart/deleteProduct.php");
 
     // supprime le produit du panier de l'utilisateur
     $productId = $_POST['productId'];

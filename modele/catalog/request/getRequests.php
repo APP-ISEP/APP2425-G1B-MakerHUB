@@ -1,6 +1,7 @@
 <?php
 
-require_once "./php/connectToDB.php";
+require_once "./modele/connectToDB.php";
+
 function getRequests($search = null): ?array
 {
     try {

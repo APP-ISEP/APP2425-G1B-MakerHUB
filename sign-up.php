@@ -1,6 +1,6 @@
 <?php
 require_once 'config/constants.php';
-include 'autoload.php';
+include 'config/autoload.php';
  
 use Config\Log\Log;
 use Config\Log\LogFile;
@@ -20,9 +20,9 @@ if (isset($_SESSION['account'])) {
     header("Location: index.php");
 }
 
-require_once 'php/user/insertUser.php';
-require_once 'php/user/checkCredentials.php';
-require_once 'php/user/getUser.php';
+require_once 'modele/user/insertUser.php';
+require_once 'modele/user/checkCredentials.php';
+require_once 'modele/user/getUser.php';
 
 $nom = $email = $telephone = $prenom = $motDePasse = $pseudonyme = "";
 

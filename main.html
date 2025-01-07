@@ -14,11 +14,19 @@
 
             <?php if (isset($_SESSION['username'])) : ?>
 
-            <button class="button button-hero" onclick="location.href = '#catalog-container'">Consulter le catalogue</button>
+            <div class="hero-button-group">
+                <button class="button button-hero" onclick="location.href = '#catalog-container'">Consulter le catalogue</button>
+                
+                <?php if ($_SESSION['role'] === 'vendeur') : ?>
+                <button class="button button-bordered-second button-hero" onclick="location.href = 'offer-creation.php'">Proposer un produit</button>    
+                <?php elseif ($_SESSION['role'] === 'acheteur') : ?>
+                <button class="button button-bordered-second button-hero" onclick="location.href = 'request-creation.php'">Demander un service</button>    
+                <?php endif; ?>
+            </div>
 
             <?php else : ?>
 
-            <button class="button button-hero" onclick="location.href = 'sign-up.php'">S'inscrire</button>
+            <button class="button button-hero" onclick="location.href = 'sign-up.php'">S'inscrire sur la plateforme</button>
 
             <?php endif; ?>
         </div>
@@ -34,7 +42,7 @@
             </div>
             <?php elseif ($_SESSION['role'] === 'vendeur') : ?>
             <div class="category category-request category-title">
-                Consulter les demandes de service
+                Consulter les demandes de services
             </div>
             <?php endif; ?>
         </div>

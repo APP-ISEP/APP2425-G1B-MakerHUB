@@ -1,6 +1,6 @@
 <?php
 require_once 'config/constants.php';
-include 'autoload.php';
+include 'config/autoload.php';
 
 use Config\Log\Log;
 use Config\Log\LogFile;
@@ -31,7 +31,7 @@ if (isset($_POST) && count($_POST) > 0) {
     $email = htmlentities($_POST['email']);
     $password = htmlentities($_POST['password']);
 
-    include_once("./php/user/checkLogin.php");
+    include_once("./modele/user/checkLogin.php");
     $account = areCrendentialsCorrect($email, $password);
 
     if (!$account) {
@@ -39,7 +39,7 @@ if (isset($_POST) && count($_POST) > 0) {
     }
 
     if (empty($errors)) {
-        include_once("./php/user/roles/getUserRoles.php");
+        include_once("./modele/user/roles/getUserRoles.php");
 
         $_SESSION['account'] = $account;
         $_SESSION['username'] = $account['pseudonyme'];

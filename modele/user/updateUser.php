@@ -1,7 +1,7 @@
 <?php
-require_once "./php/connectToDB.php";
-require_once "./php/user/roles/addUserRole.php";
-require_once "./php/user/roles/deleteUserRole.php";
+require_once "./modele/connectToDB.php";
+require_once "./modele/user/roles/addUserRole.php";
+require_once "./modele/user/roles/deleteUserRole.php";
 require_once "getUser.php";
 
 function updateUser(int $id, string $firstname, string $name, string $username, bool $isMaker, ?string $description, string $email, ?string $phone): ?array
