@@ -67,10 +67,13 @@ if (eye1) {
 //--------- BEGINNING TOGGLE BUTTON ---------//
 $(document).ready(() => {
     const aboutMe = $('#aboutMe');
-    aboutMe.hide();
-    $('#maker-checkbox').change(() => {
+    const makerCheckbox = $('#maker-checkbox');
+
+    if (makerCheckbox.is(':checked')) aboutMe.show();
+
+    makerCheckbox.change(() => {
         aboutMe.toggle();
-    })
+    });
 });
 //--------- END TOGGLE BUTTON ---------//
 

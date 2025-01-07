@@ -3,7 +3,6 @@
 require_once(__DIR__ . '/../connectToDB.php');
 
 
-
 function getUser(string $email): ?array
 {
     try {

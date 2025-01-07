@@ -1,10 +1,10 @@
 <?php
+
 require_once "./modele/connectToDB.php";
-require_once "./modele/user/roles/addUserRole.php";
-require_once "./modele/user/roles/deleteUserRole.php";
+require_once "./modele/user/roles/updateUserRole.php";
 require_once "getUser.php";
 
-function updateUser(int $id, string $firstname, string $name, string $username, bool $isMaker, ?string $description, string $email, ?string $phone): ?array
+function updateUser(int $id, string $firstname, string $name, string $username, ?string $description, string $email, ?string $phone): ?array
 {
     try {
         $pdo = connectToDB();
@@ -30,14 +30,12 @@ function updateUser(int $id, string $firstname, string $name, string $username, 
         $bool = $stmt->execute();
         $stmt->closeCursor();
 
-        // add or delete the user role `maker`
-        if ($isMaker) {
-            addUserRole($id, 2);
-        } else {
-            deleteUserRole($id, 2);
-        }
+        // update current user role
+        $newRole = ($description === null) ? 2 : 3;
+        $updateRole = updateUserRole($id, $newRole);
 
-        return getUser($email);
+        $updatedUser = getUser($email);
+        return $updatedUser;
     } catch (PDOException $e) {
         // Error executing the query
         $error = $e->getMessage();

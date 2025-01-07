@@ -1,15 +1,17 @@
 <?php
 require_once "./modele/connectToDB.php";
 
-function addUserRole(int $userId, int $roleId): ?bool
+function updateUserRole(int $userId, int $roleId): ?bool
 {
     try {
         $pdo = connectToDB();
-        $sql = "INSERT IGNORE INTO `role_utilisateur` (utilisateur_id, role_id) VALUES (:valUserId, :valRoleId)";
+        $sql = "UPDATE `role_utilisateur` SET role_id = :valRoleId WHERE utilisateur_id = :valUserId";
 
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(":valUserId", $userId);
         $stmt->bindParam(":valRoleId", $roleId);
+        $stmt->bindParam(":valUserId", $userId);
+        $stmt->execute();
+        $stmt->closeCursor();
 
         $bool = $stmt->execute();
         $stmt->closeCursor();
