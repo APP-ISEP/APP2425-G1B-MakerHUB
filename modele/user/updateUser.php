@@ -4,7 +4,7 @@ require_once "./modele/connectToDB.php";
 require_once "./modele/user/roles/updateUserRole.php";
 require_once "getUser.php";
 
-function updateUser(int $id, string $firstname, string $name, string $username, bool $isMaker, ?string $description, string $email, ?string $phone): ?array
+function updateUser(int $id, string $firstname, string $name, string $username, ?string $description, string $email, ?string $phone): ?array
 {
     try {
         $pdo = connectToDB();
@@ -31,8 +31,7 @@ function updateUser(int $id, string $firstname, string $name, string $username, 
         $stmt->closeCursor();
 
         // update current user role
-        $roleDictionary = ["admin" => 1, "acheteur" => 2, "vendeur" => 3];
-        $newRole = $isMaker ? $roleDictionary['vendeur'] : $roleDictionary['acheteur'];
+        $newRole = ($description === null) ? 2 : 3;
         $updateRole = updateUserRole($id, $newRole);
 
         $updatedUser = getUser($email);

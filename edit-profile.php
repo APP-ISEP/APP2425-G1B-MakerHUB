@@ -26,24 +26,20 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
     die();
 }
 
-
 $user = $_SESSION['account'];
 $role = $_SESSION['role'];
-
-$isMaker = !empty($role) && $role == "vendeur";
 
 if (isset($_POST) && count($_POST) > 0) {
     if (empty($_POST['firstname']) || empty($_POST['name']) || empty($_POST['username']) || empty($_POST['email'])) {
         $errors['fields'] = "Veuillez remplir tous les champs.";
     }
 
-    $firstname = htmlentities($_POST['firstname']);
-    $name = htmlentities($_POST['name']);
-    $username = htmlentities($_POST['username']);
-    $isMaker = isset($_POST['toggleAboutMe']);
-    $description = !empty($_POST['description']) ? htmlentities($_POST['description']) : null;
-    $email = htmlentities($_POST['email']);
-    $phone = !empty($_POST['phone']) ? htmlentities($_POST['phone']) : null;
+    $firstname = htmlspecialchars($_POST['firstname']);
+    $name = htmlspecialchars($_POST['name']);
+    $username = htmlspecialchars($_POST['username']);
+    $description = !empty($_POST['description']) ? htmlspecialchars($_POST['description']) : null;
+    $email = htmlspecialchars($_POST['email']);
+    $phone = !empty($_POST['phone']) ? htmlspecialchars($_POST['phone']) : null;
 
     if (strlen($firstname) > 50) {
         $errors['firstname'] = "Le prénom ne doit pas dépasser 50 caractères.";
@@ -67,13 +63,16 @@ if (isset($_POST) && count($_POST) > 0) {
     include_once("./modele/user/updateUser.php");
 
     if (empty($errors)) {
-        $updatedUser = updateUser($user['id_utilisateur'], $firstname, $name, $username, $isMaker, $description, $email, $phone);
+        if (!isset($_POST['toggleAboutMe'])) $description = null;
+        
+        $updatedUser = updateUser($user['id_utilisateur'], $firstname, $name, $username, $description, $email, $phone);
 
         if ($updatedUser) {
             $_SESSION['account'] = $updatedUser;
-            $_SESSION['role'] = $isMaker == "vendeur" ? "vendeur" : "acheteur";
+            $_SESSION['role'] = ($description === null) ? "acheteur" : "vendeur";
+            ($description === null) ? 2 : 3;
 
-            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a modifié son profil depuis" . $_SERVER['REMOTE_ADDR'] . "."));
+            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $updatedUser['pseudonyme'] . " (id: " . $updatedUser["id_utilisateur"] . ") a modifié son profil depuis" . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: index.php");
         } else {
             $errors['save'] = "Erreur lors de la modification de votre profil.";
