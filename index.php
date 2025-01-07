@@ -2,9 +2,10 @@
 use Config\Ftp\FTP;
 
 require_once 'config/constants.php';
-include 'autoload.php';
+include __DIR__ . '/config/autoload.php';
 
 session_start();
+
 $ftpInstance = FTP::getInstance();
 $title = "Accueil";
 

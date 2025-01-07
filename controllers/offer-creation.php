@@ -1,6 +1,7 @@
 <?php
-require_once 'config/constants.php';
-include 'autoload.php';
+
+require_once '../config/constants.php';
+include '../config/autoload.php';
 
 use Config\Ftp\FTP;
 use Config\Log\Log;
