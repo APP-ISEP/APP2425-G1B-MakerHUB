@@ -3,7 +3,7 @@
 use Config\Ftp\FTP;
 
 require_once 'config/constants.php';
-include 'autoload.php';
+include 'config/autoload.php';
 
 session_start();
 $ftpInstance = FTP::getInstance();

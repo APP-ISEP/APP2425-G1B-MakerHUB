@@ -1,4 +1,5 @@
 <?php
+
 require_once 'config/constants.php';
 include 'config/autoload.php';
 
@@ -9,12 +10,11 @@ use Config\Log\LogLevel;
 
 session_start();
 
-$title = "Créer une demande";
+$title = "Créer une offre";
 $errors = array();
 $isAuthPage = true;
 $logFile = LogFile::getInstance();
 $ftpInstance = FTP::getInstance();
-$imageName = null;
 $fileName = null;
 
 ob_start();
@@ -23,7 +23,7 @@ if (isset($_SESSION['account'])) {
     if ($_SESSION['role'] === 'admin') {
         header("Location: admin.php");
     }
-    if ($_SESSION['role'] !== 'acheteur') {
+    if ($_SESSION['role'] !== 'vendeur') {
         header("Location: index.php");
     }
 }
@@ -31,21 +31,25 @@ if (isset($_SESSION['account'])) {
 if (!isset($_SESSION) || !isset($_SESSION['account'])) {
     header("Location: ./log-in.php");
     die();
-};
+}
 
 if (isset($_POST) && count($_POST) > 0) {
-    if (empty($_POST['title']) || empty($_POST['description'])) {
+    if (empty($_POST['title']) || empty($_POST['description']) || empty($_POST['price'])) {
         $errors['fields'] = "Veuillez remplir tous les champs.";
     }
 
     $title = htmlspecialchars($_POST['title']);
     $description = htmlspecialchars($_POST['description']);
+    $price = htmlspecialchars($_POST['price']);
 
     if (strlen($title) > 40) {
         $errors['title'] = "Le titre ne doit pas dépasser 40 caractères.";
     }
     if (strlen($description) > 200) {
         $errors['description'] = "La description ne doit pas dépasser 200 caractères.";
+    }
+    if ($price > 999999.99) {
+        $errors['price'] = "Le prix ne doit pas dépasser 999 999,99€.";
     }
 
     if ($_FILES['illustration'] !== "" && $_FILES['illustration']['size'] > 0) {
@@ -59,42 +63,26 @@ if (isset($_POST) && count($_POST) > 0) {
             die("Erreur lors de l'upload : " . $file['error']);
         }
 
-        $imageName = $ftpInstance->addLocalFile($file); // save l'image dans /uploads/
-        $ftpInstance->addFile(LOCAL_IMG_DIR . $imageName); // upload l'image sur le ftp
-        $ftpInstance->deleteLocalFile($imageName); // supprime l'image dans /uploads/
-    }
-
-    if ($_FILES['fileToPrint'] !== "" && $_FILES['fileToPrint']['size'] > 0) {
-        $file = $_FILES['fileToPrint'];
-
-        if ($file['size'] > MAX_FILE_SIZE) {
-            $errors['file_size'] = "La taille du fichier 3D ne doit pas dépasser 5 Mo.";
-        }
-
-        if ($file['error'] !== UPLOAD_ERR_OK) {
-            die("Erreur lors de l'upload : " . $file['error']);
-        }
-
         $fileName = $ftpInstance->addLocalFile($file); // save l'image dans /uploads/
         $ftpInstance->addFile(LOCAL_IMG_DIR . $fileName); // upload l'image sur le ftp
         $ftpInstance->deleteLocalFile($fileName); // supprime l'image dans /uploads/
     }
 
-    include_once("./modele/catalog/request/createRequest.php");
+    include_once("./modele/catalog/offer/createOffer.php");
 
     if (empty($errors)) {
-        $demand = createRequest($title, $description, $_SESSION['account']['id_utilisateur'], $imageName, $fileName);
+        $offer = createOffer($title, $description, $price, $_SESSION['account']['id_utilisateur'], $fileName);
 
-        if ($demand) {
-            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $_SESSION['account']['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a créé une demande (titre: " . $title . ")."));
+        if ($offer) {
+            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $_SESSION['account']['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a créé une offre (titre: " . $title . ")."));
             header("Location: index.php");
         } else {
-            $errors['save'] = "Erreur lors de la création de la demande.";
+            $errors['save'] = "Erreur lors de la création de l'offre.";
         }
     }
 }
 
-include_once 'views/request-creation.html';
+include_once 'views/offer-creation.html';
 
 $body = ob_get_clean();
 

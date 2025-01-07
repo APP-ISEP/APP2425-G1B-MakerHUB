@@ -1,6 +1,6 @@
 <?php
 require_once 'config/constants.php';
-include 'autoload.php';
+include 'config/autoload.php';
  
 use Config\Log\Log;
 use Config\Log\LogFile;

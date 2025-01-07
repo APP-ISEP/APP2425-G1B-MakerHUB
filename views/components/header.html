@@ -24,9 +24,9 @@
     <?php if ($_SESSION['role'] !== 'admin') : ?>
     <ul class="navbar-links">
         <?php if ($_SESSION['role'] === 'vendeur') : ?>
-        <li><a href="controllers/offer-creation.php">Proposer un produit</a></li>
+        <li><a href="offer-creation.php">Proposer un produit</a></li>
         <?php elseif ($_SESSION['role'] === 'acheteur') : ?>
-        <li><a href="controllers/request-creation.php">Demander un service</a></li>
+        <li><a href="request-creation.php">Demander un service</a></li>
         <?php endif; ?>
     </ul>
     <?php endif; ?>
