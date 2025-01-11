@@ -1232,7 +1232,13 @@ input:focus, textarea:focus {
     }
 }
 
-
+/* page de paiement */
+body {
+    font-family: 'Kanit', serif;
+    background-color: var(--base-color-2);
+    color: var(--base-color);
+    margin-top: var(--navbar-height);
+}
 
 .admin-menu ul li {
     margin:5% 5%;
@@ -1262,26 +1268,6 @@ input:focus, textarea:focus {
     align-items: center;
 }
 
-.main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10em;
-    gap : 50px;
-}
-
-
-.main section#faq,.main section#supprimer-utilisateur,.main section#supprimer-produit {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border: 1px solid var(--accentuation_color);
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    justify-content: center;
-    align-items: center;
-}
 
 .main form{
     display: flex;
@@ -1399,9 +1385,69 @@ color:var(--base_color-2);
     text-decoration: none;
 }
 
-.main .mini-menu{
-    display: flex;
-    justify-content: center;
+.main .mini-menu {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+
+.payment-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--base-color-3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: var(--base-color);
+}
+
+.resumeCommande, .formulairePaiement {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid var(--accentuation_color);
+    border-radius: 8px;
+    background-color: var(--base-color-3);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--secondary-text-color);
+}
+
+input[type="text"], input[type="submit"] {
     width: 100%;
-    gap: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--accentuation_color);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: var(--important-element-color);
+    color: var(--base-color-3);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: darken(var(--important-element-color), 10%);
+}
+
+p {
+    font-size: 16px;
+    color: var(--base-color);
+}
+
+span {
+    font-weight: bold;
 }
