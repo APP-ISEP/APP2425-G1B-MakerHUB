@@ -107,8 +107,12 @@ if (isset($_POST) && count($_POST) > 0) {
     if (empty($errors)) {
         if ($validateEmail && $validatePhone && $validatePassword) {
             $hashedPassword = hashPassword($motDePasse);
-            $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description, $role);
-
+            $token = bin2hex(random_bytes(16));
+            $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description, $role,$token);
+            $headers = "From:no-reply@makerhub.fr\r\n";
+            $validationLink = "http://makerhub.fr/validate.php?token=$validationToken";        
+            mail($email, "Inscription", "Bonjour, vous avez bien été inscrit sur notre site. Votre pseudo est : " . $pseudonyme, $headers);
+            
             $account = getUser($email);
 
             $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $account["id_utilisateur"] . ") a été créé depuis " . $_SERVER['REMOTE_ADDR'] . "."));
