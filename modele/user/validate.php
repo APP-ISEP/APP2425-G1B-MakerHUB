@@ -4,7 +4,6 @@ include 'config/autoload.php';
 
 if (isset($_GET['token'])) {
     $token = $_GET['token'];
-
     $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE token = :valtoken AND is_verified = 0");
     $stmt->execute([
         ':valtoken' => $token
