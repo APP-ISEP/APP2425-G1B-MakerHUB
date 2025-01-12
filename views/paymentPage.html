@@ -11,14 +11,18 @@
 
         <div class="resumeCommande">
             <h2>Résumé de la commande</h2>
-            <p>Produit: <span id="product-name">Nom du produit</span></p>
-            <p>Prix: <span id="product-price">€0.00</span></p>
+            <?php $totalPrice = 0; ?>
+            <?php foreach ($products as $product) : ?>
+                <p>Produit: <span id="product-name"><?= $product['titre']?></span></p>
+                <p>Prix: <span id="product-price">€<?= number_format($product['prix'], 2, ',', ' ') ?></span></p>
+                <?php $totalPrice += $product['prix']; ?>
+            <?php endforeach; ?>
             <p>Livraison: <span id="delivery-price">€0.00</span></p>
-            <p>Total: <span id="total-price">€0.00</span></p>
+            <p>Total: <span id="total-price">€<?= number_format($totalPrice, 2, ',', ' ') ?></span></p>
         </div>
         <div class="formulairePaiement">
             <h2>Informations de paiement</h2>
-            <form action="payment.php" method="POST">
+            <form action="paymentPage.php" method="POST">
                 <label for="card-number">Numéro de carte:</label>
                 <input type="text" id="card-number" name="card-number" required>
 
@@ -28,6 +32,7 @@
                 <label for="cvv">CVV:</label>
                 <input type="text" id="cvv" name="cvv" required>
 
+                <input type="hidden" name="total-price" value="<?= $totalPrice ?>">
                 <input type="submit" value="Payer">
             </form>
         </div>
