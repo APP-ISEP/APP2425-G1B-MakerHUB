@@ -11,10 +11,10 @@ function getOrder($id_account)
 
 
     $db = connectToDB();
-    $query = "SELECT commande.cree_a,id_produit_fini,chemin_image,prix,description,titre
+    $query = "SELECT commande.cree_a,id_produit_fini,chemin_image,prix,description,titre,statut_commande.libelle
     FROM commande 
     left join produit_fini on produit_fini.commande_id = commande.id_commande 
-    left join id_statut_commande on statut_commande.id_statut_commande =commande.statut_commande_id
+    left join statut_commande on statut_commande.id_statut_commande =commande.statut_commande_id
     WHERE commande.utilisateur_id = ? ORDER BY commande.cree_a desc";
     try {
         $stmt = $db->prepare($query);

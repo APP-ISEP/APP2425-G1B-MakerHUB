@@ -430,3 +430,24 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //---- END OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
+
+
+//--Order-history--//
+document.addEventListener("DOMContentLoaded", function () {
+    const filterDropdown = document.getElementById("filter-status");
+    const orderItems = document.querySelectorAll(".order-item");
+
+    filterDropdown.addEventListener("change", function () {
+        const selectedStatus = filterDropdown.value;
+
+        orderItems.forEach(order => {
+            const orderStatus = order.getAttribute("data-status");
+
+            if (selectedStatus === "all" || orderStatus === selectedStatus) {
+                order.style.display = "block"; // Afficher si le statut correspond ou si "Tous" est sélectionné
+            } else {
+                order.style.display = "none"; // Masquer sinon
+            }
+        });
+    });
+});
