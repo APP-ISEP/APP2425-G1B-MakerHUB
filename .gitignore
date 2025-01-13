@@ -4,3 +4,4 @@
 /log/*
 qodana.yaml
 *.log
+/log/makerhub.log

@@ -31,6 +31,8 @@ function insertDevis(int $idProduit,int $fournisseur_id, int $prixProduit, int $
     $request = getRequestId($idProduit);
     $user = getUserId($request['demandeur_id']);
     $fournisseur = getUserId($fournisseur_id);
+    $newDate = new DateTime($dateLivraison);
+    $dateLivraison = $newDate->format('d') . " " . strftime('%B', $newDate->getTimestamp()) . ' ' . $newDate->format('Y');
 
     $to = $user['mail'];
     $from = "victor.munerot@gmail.com";
