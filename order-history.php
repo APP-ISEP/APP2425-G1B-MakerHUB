@@ -21,7 +21,9 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
     die();
 };
 
+
 include_once 'views/order-history.html';
+
 
 echo '<div class="order-history">';
 $result = getOrder($id_account);
@@ -31,6 +33,7 @@ if($result->rowCount() > 0){
         $titre = $row['titre'];
         $prix = $row['prix'];
         $description = $row['description'];
+        $statut_commande = $row['libelle'];
         $chemin_image = $row['chemin_image'];
 
 ?>      
