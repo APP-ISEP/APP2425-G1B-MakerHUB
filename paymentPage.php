@@ -13,7 +13,9 @@ if($_SESSION['role'] === ['admin']) {
 }
 //Récupérer les produits de l'utilisateur
 include_once 'modele/shopping-cart/getProductsByUserId.php';
-$products = getProductsByUserId($_SESSION['account']['id_utilisateur']);
+$id_acheteur = $_SESSION['account']['id_utilisateur'];
+$products = getProductsByUserId($id_acheteur);
+
 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,6 +27,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $totalPrice = htmlspecialchars($_POST['total-price']);
     $userId = $_SESSION['account']['id_utilisateur'];
 
+    //vérifications 
+    if (strlen($cardNumber) != 16) {
+        echo "Le numéro de carte doit contenir 16 chiffres";
+    }
+    
+    if (strlen($cvv) != 3) {
+        echo "Le CVV doit contenir 3 chiffres";
+    }
+
+    if(!preg_match("[0-1]{1}[0-9]{1}+\/+[2-3][0-9]", $expiryDate)){
+        echo "Mauvais format";
+    }
+
     //connexion à la bdd
     include_once 'modele/connectToDB.php';
     $pdo = connectToDB();
@@ -34,13 +49,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":user_id", $userId);
     $stmt->bindParam(":card-number", $cardNumber);
-    $stmt->binParam(":expiry-date", $expiryDate);
+    $stmt->bindParam(":expiry-date", $expiryDate);
     $stmt->bindParam(":cvv", $cvv);
     $stmt->bindParam(":total-price", $totalPrice);
     $stmt->execute();
 
     //metttre à jour l'étatde la commande
-    $sql = "UPDATE commandes SET etat='payée', data_paiement=NOW() WHere user_id=:user_id AND etat='en attente'";
+    $sql = "UPDATE commande SET statut_commande_id='payée', cree_a=NOW()  WHERE user_id=:user_id AND etat='en attente'";
     $stmt =$pdo->prepare($sql);
     $stmt->bindParam(":user_id", $userId);
     $stmt->execute();
