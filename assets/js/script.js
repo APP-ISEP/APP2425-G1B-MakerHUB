@@ -433,3 +433,87 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //---- END OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
+
+
+//---- BEGINNING OF THE AJAX TO DELETE USER ----//
+function deleteUser(id){
+    confirmation = confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+    if (confirmation){
+        try{
+            console.log(id);
+            if (window.XMLHttpRequest) {
+                xmlhttp= new XMLHttpRequest();
+            } else {
+                if (window.ActiveXObject)
+                    try {
+                        xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            return NULL;
+                        }
+                    }
+            }
+            xmlhttp.onreadystatechange = function ()
+            {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                {
+                    console.log(xmlhttp.responseText);
+                    console.log(xmlhttp);
+                    window.location.reload();
+                }
+            }
+            xmlhttp.open("POST","./modele/user/deleteUser.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id="+id);
+            console.log(xmlhttp);
+            
+            }
+            catch(e){
+            console.log(e);
+            }
+    }
+}
+//---- END OF THE AJAX TO DELETE USER ----//
+
+//---- BEGINNING OF THE AJAX TO DELETE PRODUCT ----//
+function deleteProduct(id){
+    confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce produit ?");
+    if (confirmation){
+        try{
+            console.log(id);
+            if (window.XMLHttpRequest) {
+                xmlhttp= new XMLHttpRequest();
+            } else {
+                if (window.ActiveXObject)
+                    try {
+                        xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            return NULL;
+                        }
+                    }
+            }
+            xmlhttp.onreadystatechange = function ()
+            {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                {
+                    console.log(xmlhttp.responseText);
+                    console.log(xmlhttp);
+                    window.location.reload();
+                }
+            }
+            xmlhttp.open("POST","./modele/catalog/offer/deleteOffer.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id="+id);
+            console.log(xmlhttp);
+            
+            }
+            catch(e){
+            console.log(e);
+            }
+    }
+}//---- END OF THE AJAX TO DELETE PRODUCT ----//
