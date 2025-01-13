@@ -16,9 +16,9 @@ $logFile = LogFile::getInstance();
 
 ob_start();
 
-if (isset($_SESSION['account'])) {
-    header("Location: index.php");
-}
+// if (isset($_SESSION['account'])) {
+//     header("Location: index.php");
+// }
 
 require_once 'modele/user/insertUser.php';
 require_once 'modele/user/checkCredentials.php';
@@ -110,9 +110,9 @@ if (isset($_POST) && count($_POST) > 0) {
             $hashedPassword = hashPassword($motDePasse);
             $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description, $role);
 
-            $account = getUser($email);
-            $_SESSION['account'] = $account;
-            $_SESSION['username'] = $account['pseudonyme'];
+            // $account = getUser($email);
+            // $_SESSION['account'] = $account;
+            // $_SESSION['username'] = $account['pseudonyme'];
 
             $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a été créé depuis " . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: log-in.php");
