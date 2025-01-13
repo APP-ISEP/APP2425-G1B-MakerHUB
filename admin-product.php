@@ -8,7 +8,7 @@ if ($_SESSION['role'] !== 'admin') {
 }
 
 ob_start();
-require('php/catalog/offer/getOffers.php'); 
+require('modele/catalog/offer/getOffers.php'); 
 $products = getOffers();
 include_once 'views/admin/admin-product.html';
 

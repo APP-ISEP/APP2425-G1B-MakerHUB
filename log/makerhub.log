@@ -232,3 +232,7 @@
 2025-01-13 10:51:10 [INFO] L'utilisateur r000t s'est déconnecté depuis 127.0.0.1.
 2025-01-13 10:51:24 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis 127.0.0.1.
 2025-01-13 12:36:39 [INFO] L'utilisateur admin s'est déconnecté depuis ::1.
+2025-01-13 22:21:14 [INFO] L'utilisateur admin (id: 36) s'est connecté depuis ::1.
+2025-01-13 22:31:31 [INFO] L'utilisateur admin s'est déconnecté depuis ::1.
+2025-01-13 22:31:40 [INFO] L'utilisateur admin (id: 36) s'est connecté depuis ::1.
+2025-01-13 22:35:17 [INFO] L'utilisateur admin s'est déconnecté depuis ::1.

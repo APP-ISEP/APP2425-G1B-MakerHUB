@@ -277,16 +277,17 @@ $("#toggleDescription").change(function () {
 
 
 //--------- BEGINNING OF CONTACT PAGE COUNTER---------//
-
+if (window.location.pathname.includes('contact-page.php')) { 
 const textarea = document.getElementById("message-contact");
 const wordCounter = document.querySelector(".word-counter");
-const maxLength = textarea.maxLength;
+const maxLength = 300;
 var restLetter = maxLength - (textarea.value).length;
 
 textarea.addEventListener ('input', () => {
     restLetter = maxLength - (textarea.value).length;
     wordCounter.textContent = `${restLetter} restants`;
 })
+};
 
 //--------- END OF CONTACT PAGE COUNTER---------//
 
@@ -325,7 +326,7 @@ function setFaq() {
             
             }
         }
-            xmlhttp.open("POST", "./php/faq/setFaq.php", true);
+            xmlhttp.open("POST", "./modele/faq/setFaq.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("id="+id+"&reponse="+reponse+"&question="+question);
             //window.location.reload();
@@ -361,9 +362,9 @@ xmlhttp.onreadystatechange = function ()
         window.location.reload();
     }
 }
-xmlhttp.open("GET", "./php/faq/setFaq.php?id="+id, true);
+xmlhttp.open("GET", "./modele/faq/setFaq.php?id="+id, true);
 xmlhttp.send();
-xmlhttp.open("POST","./php/faq/setFaq.php", true);
+xmlhttp.open("POST","./modele/faq/setFaq.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send("id="+id);
 //window.location.reload();

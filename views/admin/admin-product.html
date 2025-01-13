@@ -49,8 +49,8 @@
 
         <section id="supprimer-produit" class="section content-box">
             <h2>Produits</h2>
-            <form class="form-container" method="post" action="./php/catalog/offer/getOfferById.php">
-            <label for="suppression_produit">Supprimer un produit</label>
+            <form class="form-container" method="post" action="./modele/catalog/offer/getOfferById.php">
+            <label for="suppression_produit">Rechercher un produit</label>
             <select name="show_product" autocomplete="on" required>
                     <option value=""> -- Sélectionner un produit -- </option>
                     <?php foreach($products as $product) {
