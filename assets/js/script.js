@@ -278,6 +278,7 @@ $(document).ready(() => {
 
 //---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
 //---- BEGINNING OF VALIDATION PASSWORD SIGN_UP ----//
+if (window.location.pathname.includes('sign-up.php')) {    
     var motDePasse = document.getElementById('password');
     var motDePasseConfirmed = document.getElementById('passwordConfirmation');
 
@@ -286,6 +287,7 @@ $(document).ready(() => {
             alert("Les mots de passe ne correspondent pas");
         }
     });
+}
 
 //---- END OF VALIDATION PASSWORD SIGN_UP ----//
 
@@ -430,12 +432,12 @@ xmlhttp.send();
 document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('#add-shopping-cart');
 
-    // Permet de détetcer le clic d'un des boutons de la liste
+    // Permet de détecter le clic d'un des boutons de la liste
     buttons.forEach(button => {
         button.addEventListener('click', function() {
             const productId = parseInt(this.getAttribute('data-product-id'));
 
-            fetch('php/shopping-cart/addProduct.php', {
+            fetch('modele/shopping-cart/addProduct.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'

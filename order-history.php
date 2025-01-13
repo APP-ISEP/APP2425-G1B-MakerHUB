@@ -34,7 +34,7 @@ if($result->rowCount() > 0){
 
 ?>      
             <div id="modal" class="offer-card">
-                <?php $imgName = $row['chemin_image'] ? '/uploads/' . $row['chemin_image'] : './assets/images/placeholder.svg'; ?>
+                <?php $imgName = $row['chemin_image'] ? './uploads/' . $row['chemin_image'] : './assets/images/placeholder.svg'; ?>
                 <img src="<?= $imgName ?>" alt="Image de l'offre" class="order-history-img">
                 <div class="card-info">
                     <h4 class="card-title"><?php echo $titre ?></h4>

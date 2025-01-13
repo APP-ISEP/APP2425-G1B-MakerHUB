@@ -4,7 +4,7 @@ $account = $_SESSION['account'];
 $id_account = $account['id_utilisateur'];
 
 
-require_once("connectToDB.php");
+require_once(__DIR__ . '/../connectToDB.php');
 
 function getOrder($id_account)
 {
