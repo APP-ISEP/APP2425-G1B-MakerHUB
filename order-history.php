@@ -1,5 +1,3 @@
-<script src="assets/js/order-img.js"></script>
-
 <?php
 
 session_start();
@@ -33,17 +31,18 @@ if($result->rowCount() > 0){
         $titre = $row['titre'];
         $prix = $row['prix'];
         $description = $row['description'];
-        $statut_commande = $row['libelle'];
+        $statut_commande = isset($row['libelle']) ? $row['libelle'] : 'Statut inconnu';
         $chemin_image = $row['chemin_image'];
 
 ?>      
-            <div id="modal" class="offer-card">
-                <?php $imgName = $row['chemin_image'] ? '/uploads/' . $row['chemin_image'] : './assets/images/placeholder.svg'; ?>
+            <div id="modal" class="offer-card order-item" data-status="<?= htmlspecialchars($statut_commande) ?>">
+                <?php $imgName = $row['chemin_image'] ? './uploads/' . $row['chemin_image'] : './assets/images/placeholder.svg'; ?>
                 <img src="<?= $imgName ?>" alt="Image de l'offre" class="order-history-img">
                 <div class="card-info">
                     <h4 class="card-title"><?php echo $titre ?></h4>
                     <h3 class="card-price"><?php echo $prix ?></h3>
-                    <p class ="card-description"> <?php echo substr_replace($description,'...',30) ?></p>
+                    <p class ="card-description"> <?php echo substr_replace($description,'...',40) ?></p>
+                    <h3 class="statut_commande"><?php echo $statut_commande ?></h3>
                     <button class="button button-buy" onclick="HideShow()">Voir</button>
                 </div>
             </div>
