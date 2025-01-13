@@ -10,6 +10,12 @@ if (isset($_GET['token'])) {
     ]);
     $utilisateur = $stmt->fetch();
 
+    $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE token = :valtoken AND is_verified = 0");
+    $stmt->execute([
+        ':valtoken' => $token
+    ]);
+    $utilisateur = $stmt->fetch();
+
     if ($utilisateur) {
         // Activer le compte
         $stmt = $conn->prepare("UPDATE utilisateur SET is_verified = 1, token = NULL WHERE token = :valtoken");
