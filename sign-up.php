@@ -109,13 +109,38 @@ if (isset($_POST) && count($_POST) > 0) {
             $hashedPassword = hashPassword($motDePasse);
             $token = bin2hex(random_bytes(16));
             $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description, $role,$token);
-            $headers = "From:no-reply@makerhub.fr\r\n";
 
-            $from = "no-reply@makerhub.fr";
-            $validationLink = "http://makerhub.fr/validate.php?token=$token";       
-            mail('berylronget@gmail.com', 'test', 'test'); 
-            mail($email, "Inscription", "Bonjour, vous avez bien été inscrit sur notre site. Votre pseudo est : " . $pseudonyme, $headers, $from);
+            $to = $email;
+            $validationLink = "http://makerhub.fr/validate.php?token=$token";   
+            $from = "fazi.serena04@gmail.com";
+            $subject = "[MakerHub] Nouveau devis : ";
+            $message = "
+                <html>
+                    <head>
+                        <title>Inscription</title>
+                    </head>
+        
+                    <body>
+                        <h1>Confirmation Inscription</h1><br>
+                        <p>Cliquez sur le lien pour confirmer votre mail: ".$validationLink."</a>.</p><br><br>
+                        <p>Merci de votre confiance.</p><br>
+                        <p>L'équipe de MakerHub.</p>
+                    </body>
+                </html>
+                ";
+        
+            $headers = "From: " . $from . "\r\n" . 
+                        "Content-Type: text/html; charset=UTF-8\r\n" .
+                        "MIME-Version: 1.0\r\n";
+            
+            if(mail($to, $subject, $message, $headers)) {
+                echo "Email sent successfully.";
+            } else {
+                echo "Failed to send email.";
+            }
 
+             mail('berylronget@gmail.com', 'test', 'test', $headers); 
+            
             $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $account["id_utilisateur"] . ") a été créé depuis " . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: log-in.php");
         }
