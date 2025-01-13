@@ -78,40 +78,6 @@ $(document).ready(() => {
 //--------- END TOGGLE BUTTON ---------//
 
 
-//--------- BEGINNING OF CATEGORIES INSIDE HOME PAGE---------//
-/*$(document).ready(() => {
-    const categoryOffer = $('.category-offer');
-    const categoryRequest = $('.category-request');
-    const offersContainer = $('.offers-container');
-    const requestsContainer = $('.requests-container');
-    requestsContainer.hide();
-
-    function toggleCategories(activeCategory, inactiveCategory, showContainer, hideContainer) {
-        activeCategory.addClass("active-category").removeClass("inactive-category");
-        inactiveCategory.addClass("inactive-category").removeClass("active-category");
-        showContainer.show();
-        hideContainer.hide();
-    }
-
-    categoryOffer.click(() => {
-        toggleCategories(categoryOffer, categoryRequest, offersContainer, requestsContainer);
-    });
-
-    categoryRequest.click(() => {
-        toggleCategories(categoryRequest, categoryOffer, requestsContainer, offersContainer);
-    });
-
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('requests-search')) {
-        toggleCategories(categoryRequest, categoryOffer, requestsContainer, offersContainer);
-    } else if (urlParams.has('offers-search')) {
-        toggleCategories(categoryOffer, categoryRequest, offersContainer, requestsContainer);
-    }
-});*/
-
-//--------- END OF CATEGORIES INSIDE HOME PAGE---------//
-
-
 //--------- BEGINNING OF FILTER CONDITIONS---------//
 
 $(document).ready(() => {
@@ -142,6 +108,7 @@ $(document).ready(() => {
 
 
 //--------- BEGINNING OF THE PAGINATION ---------//
+
 $(document).ready(() => {
     const itemsPerPage = 12;
 
@@ -203,22 +170,25 @@ $(document).ready(() => {
     }
 
     // pagination pour les offres
-    const offersContainer = $('.offers-container');
-    const offersCards = $('.offers-cards-container .offer-card');
+    const offersContainer = $('.catalog-container');
+    const offersCards = $('.items-cards-container .item-card');
     const numberOffers = offersCards.length;
     const offersTotalPages = Math.ceil(numberOffers / itemsPerPage);
     const offersPagination = $('#offers-pagination');
+
     createPaginationWithArrows(offersContainer, offersPagination, offersCards, offersTotalPages);
 
     // pagination pour les demandes
-    const requestsContainer = $('.requests-container');
-    const requestsCards = $('.requests-cards-container .request-card');
+    const requestsContainer = $('.catalog-container');
+    const requestsCards = $('.items-cards-container .item-card');
     const numberRequests = requestsCards.length;
     const requestTotalPages = Math.ceil(numberRequests / itemsPerPage);
     const requestsPagination = $('#requests-pagination');
     createPaginationWithArrows(requestsContainer, requestsPagination, requestsCards, requestTotalPages);
 });
+
 //--------- END OF THE PAGINATION ---------//
+
 
 //---- BEGINNING OF THE AJAX TO CHECK IF MAIL AND PSEUDONYME WAS ALREADY USED ----//
 $(document).ready(() => {
@@ -304,15 +274,10 @@ $("#toggleDescription").change(function () {
 });
 //---- END OF THE "A PROPOS DE MOI" IN SIGN UP ----//
 
+
 //--------- BEGINNING OF CONTACT PAGE COUNTER---------//
-
 /*
-Cela te donne une référence au champ de texte entier dans le DOM, 
-c'est-à-dire à tous ses attributs et propriétés. Cela ne récupère pas automatiquement la valeur d’un attribut spécifique comme 
-maxlength, mais l'objet entier représentant l'élément <textarea>.
-*/
-
-/*const textarea = document.getElementById("message-contact");
+const textarea = document.getElementById("message-contact");
 const wordCounter = document.querySelector(".word-counter");
 const maxLength = textarea.maxLength;
 var restLetter = maxLength - (textarea.value).length;
@@ -321,8 +286,9 @@ textarea.addEventListener ('input', () => {
     restLetter = maxLength - (textarea.value).length;
     wordCounter.textContent = `${restLetter} restants`;
 })
-//--------- END OF CONTACT PAGE COUNTER---------//
 */
+//--------- END OF CONTACT PAGE COUNTER---------//
+
 
 //--------- ADMIN FAQ ---------//
 
