@@ -3,6 +3,8 @@ use Config\Ftp\FTP;
 
 require_once 'config/constants.php';
 include __DIR__ . '/config/autoload.php';
+include __DIR__ . '/modele/user/checkCredentials.php';
+include __DIR__ . '/modele/catalog/request/insertDevis.php';
 
 session_start();
 
@@ -57,6 +59,7 @@ else if (isset($_GET) && isset($_GET['requests-search'])) {
     $requests = getRequests($requestsSearch);
 }
 if (isset($_POST) && count($_POST) > 0) {
+    
     $prixProduit = intval($_POST["prixProduit"]);
     $prixLivraison = intval($_POST["prixLivraison"]);
     $dateLivraison = $_POST["dateLivraison"];
@@ -79,14 +82,10 @@ if (isset($_POST) && count($_POST) > 0) {
         var_dump($idProduit);
         $errors['Id'] = "Produit pas trouvé";
     }
-    if ($prixProduit >= $minPrice && $prixProduit <= $maxPrice) {
-        return true;
-    } else {
+    if ($prixProduit <= $minPrice || $prixProduit >= $maxPrice)  {
         $errors['prixProduit1'] = "Le prix doit être compris entre $minPrice et $maxPrice";
     }
-    if ($prixLivraison >= $minPrice && $prixLivraison <= $maxPrice) {
-        return true;
-    } else {
+    if ($prixLivraison <= $minPrice || $prixLivraison >= $maxPrice) {
         $errors['prixProduit2'] = "Le prix doit être compris entre $minPrice et $maxPrice";
     }
 
