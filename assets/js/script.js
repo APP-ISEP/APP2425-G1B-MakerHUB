@@ -248,6 +248,7 @@ $(document).ready(() => {
 
 //---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
 //---- BEGINNING OF VALIDATION PASSWORD SIGN_UP ----//
+
 if (window.location.pathname.includes('sign-up.php')) {    
     var motDePasse = document.getElementById('password');
     var motDePasseConfirmed = document.getElementById('passwordConfirmation');
@@ -276,7 +277,7 @@ $("#toggleDescription").change(function () {
 
 
 //--------- BEGINNING OF CONTACT PAGE COUNTER---------//
-/*
+
 const textarea = document.getElementById("message-contact");
 const wordCounter = document.querySelector(".word-counter");
 const maxLength = textarea.maxLength;
@@ -286,7 +287,7 @@ textarea.addEventListener ('input', () => {
     restLetter = maxLength - (textarea.value).length;
     wordCounter.textContent = `${restLetter} restants`;
 })
-*/
+
 //--------- END OF CONTACT PAGE COUNTER---------//
 
 
