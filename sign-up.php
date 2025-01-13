@@ -15,9 +15,9 @@ $logFile = LogFile::getInstance();
 
 ob_start();
 
-if (isset($_SESSION['account'])) {
-    header("Location: index.php");
-}
+// if (isset($_SESSION['account'])) {
+//     header("Location: index.php");
+// }
 
 require_once 'modele/user/insertUser.php';
 require_once 'modele/user/checkCredentials.php';
@@ -110,10 +110,10 @@ if (isset($_POST) && count($_POST) > 0) {
             $token = bin2hex(random_bytes(16));
             $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description, $role,$token);
             $headers = "From:no-reply@makerhub.fr\r\n";
-            $validationLink = "http://makerhub.fr/validate.php?token=$token";        
-            mail($email, "Inscription", "Bonjour, vous avez bien été inscrit sur notre site. Votre pseudo est : " . $pseudonyme, $headers, $validationLink);
-            mail('berylronget@gmail.com', 'test', 'test');
-            $account = getUser($email);
+            $from = "no-reply@makerhub.fr";
+            $validationLink = "http://makerhub.fr/validate.php?token=$token";       
+            mail('berylronget@gmail.com', 'test', 'test'); 
+            mail($email, "Inscription", "Bonjour, vous avez bien été inscrit sur notre site. Votre pseudo est : " . $pseudonyme, $headers, $from);
 
             $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $account["id_utilisateur"] . ") a été créé depuis " . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: log-in.php");
