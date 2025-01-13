@@ -29,53 +29,71 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
 $user = $_SESSION['account'];
 $role = $_SESSION['role'];
 
-if (isset($_POST) && count($_POST) > 0) {
-    if (empty($_POST['firstname']) || empty($_POST['name']) || empty($_POST['username']) || empty($_POST['email'])) {
-        $errors['fields'] = "Veuillez remplir tous les champs.";
-    }
 
-    $firstname = htmlspecialchars($_POST['firstname']);
-    $name = htmlspecialchars($_POST['name']);
-    $username = htmlspecialchars($_POST['username']);
-    $description = !empty($_POST['description']) ? htmlspecialchars($_POST['description']) : null;
-    $email = htmlspecialchars($_POST['email']);
-    $phone = !empty($_POST['phone']) ? htmlspecialchars($_POST['phone']) : null;
+if (isset($_POST['action'])) {
+    // récupère le type d'action à effectuer
+    $action = $_POST['action'];
 
-    if (strlen($firstname) > 50) {
-        $errors['firstname'] = "Le prénom ne doit pas dépasser 50 caractères.";
-    }
-    if (strlen($name) > 50) {
-        $errors['name'] = "Le nom ne doit pas dépasser 50 caractères.";
-    }
-    if (strlen($username) > 30) {
-        $errors['username'] = "Le pseudonyme ne doit pas dépasser 30 caractères.";
-    }
-    if (strlen($description ?? '') > 255) {
-        $errors['description'] = "La description ne doit pas dépasser 255 caractères.";
-    }
-    if (strlen($email) > 255) {
-        $errors['email'] = "L'adresse mail ne doit pas dépasser 255 caractères.";
-    }
-    if (strlen($phone ?? '') > 13) {
-        $errors['phone'] = "Le numéro de téléphone ne doit pas dépasser 13 caractères.";
-    }
+    // SUPPRESSION DU COMPTE
+    if ($action === 'delete') {
+        include_once("./modele/user/deleteUser.php");
 
-    include_once("./modele/user/updateUser.php");
+        $deleted = deleteUser($user['id_utilisateur']);
 
-    if (empty($errors)) {
-        if (!isset($_POST['toggleAboutMe'])) $description = null;
-        
-        $updatedUser = updateUser($user['id_utilisateur'], $firstname, $name, $username, $description, $email, $phone);
-
-        if ($updatedUser) {
-            $_SESSION['account'] = $updatedUser;
-            $_SESSION['role'] = ($description === null) ? "acheteur" : "vendeur";
-            ($description === null) ? 2 : 3;
-
-            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $updatedUser['pseudonyme'] . " (id: " . $updatedUser["id_utilisateur"] . ") a modifié son profil depuis" . $_SERVER['REMOTE_ADDR'] . "."));
-            header("Location: index.php");
+        if ($deleted) {
+            header("Location: log-out.php");
         } else {
-            $errors['save'] = "Erreur lors de la modification de votre profil.";
+            $errors['delete'] = "Erreur lors de la suppression de votre compte.";
+        }
+    } elseif ($action === 'save') {
+        // SAUVEGARDE DU COMPTE
+        if (empty($_POST['firstname']) || empty($_POST['name']) || empty($_POST['username']) || empty($_POST['email'])) {
+            $errors['fields'] = "Veuillez remplir tous les champs.";
+        }
+    
+        $firstname = htmlspecialchars($_POST['firstname']);
+        $name = htmlspecialchars($_POST['name']);
+        $username = htmlspecialchars($_POST['username']);
+        $description = !empty($_POST['description']) ? htmlspecialchars($_POST['description']) : null;
+        $email = htmlspecialchars($_POST['email']);
+        $phone = !empty($_POST['phone']) ? htmlspecialchars($_POST['phone']) : null;
+    
+        if (strlen($firstname) > 50) {
+            $errors['firstname'] = "Le prénom ne doit pas dépasser 50 caractères.";
+        }
+        if (strlen($name) > 50) {
+            $errors['name'] = "Le nom ne doit pas dépasser 50 caractères.";
+        }
+        if (strlen($username) > 30) {
+            $errors['username'] = "Le pseudonyme ne doit pas dépasser 30 caractères.";
+        }
+        if (strlen($description ?? '') > 255) {
+            $errors['description'] = "La description ne doit pas dépasser 255 caractères.";
+        }
+        if (strlen($email) > 255) {
+            $errors['email'] = "L'adresse mail ne doit pas dépasser 255 caractères.";
+        }
+        if (strlen($phone ?? '') > 13) {
+            $errors['phone'] = "Le numéro de téléphone ne doit pas dépasser 13 caractères.";
+        }
+    
+        include_once("./modele/user/updateUser.php");
+    
+        if (empty($errors)) {
+            if (!isset($_POST['toggleAboutMe'])) $description = null;
+            
+            $updatedUser = updateUser($user['id_utilisateur'], $firstname, $name, $username, $description, $email, $phone);
+    
+            if ($updatedUser) {
+                $_SESSION['account'] = $updatedUser;
+                $_SESSION['role'] = ($description === null) ? "acheteur" : "vendeur";
+                ($description === null) ? 2 : 3;
+    
+                $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $updatedUser['pseudonyme'] . " (id: " . $updatedUser["id_utilisateur"] . ") a modifié son profil depuis" . $_SERVER['REMOTE_ADDR'] . "."));
+                header("Location: index.php");
+            } else {
+                $errors['save'] = "Erreur lors de la modification de votre profil.";
+            }
         }
     }
 }

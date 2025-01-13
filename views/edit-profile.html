@@ -47,9 +47,9 @@
 
             <!-- about me -->
             <div class="form-control" id="aboutMe" style="display: none;">
-                <label for="description">A propos de vous</label>
+                <label for="firstname">A propos de vous<span class="required">*</span></label>
                 <textarea id="description" name="description" rows="4" maxlength="255"><?= $user['description'] ?></textarea>            </div>
-        </div>
+            </div>
 
         <div class="section">
             <h2 class="subtitle">Coordonnées</h2>
@@ -69,13 +69,13 @@
             </div>
         </div>
 
-        <!-- action buttons (save and delete) -->
+        <!-- action buttons (delete and save) -->
         <div class="save-button">
-            <button class="button button-bordered">
+            <button class="button button-bordered" type="submit" name="action" value="delete">
                 Supprimer mon compte
             </button>
-
-            <button type="submit">
+    
+            <button type="submit" name="action" value="save">
                 Sauvegarder
             </button>
         </div>
