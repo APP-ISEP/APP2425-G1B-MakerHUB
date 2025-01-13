@@ -84,9 +84,20 @@ $(document).ready(() => {
 
 
 //--------- BEGINNING OF CONTACT PAGE COUNTER---------//
+<<<<<<< Updated upstream
 const textarea = document.getElementById("message-contact");//Cela te donne une référence au champ de texte entier dans le DOM, 
 //c'est-à-dire à tous ses attributs et propriétés. Cela ne récupère pas automatiquement la valeur d’un attribut spécifique comme 
 //maxlength, mais l'objet entier représentant l'élément <textarea>.
+=======
+
+/*
+Cela te donne une référence au champ de texte entier dans le DOM, 
+c'est-à-dire à tous ses attributs et propriétés. Cela ne récupère pas automatiquement la valeur d’un attribut spécifique comme 
+maxlength, mais l'objet entier représentant l'élément <textarea>.
+*/
+
+const textarea = document.getElementById("message-contact");
+>>>>>>> Stashed changes
 const wordCounter = document.querySelector(".word-counter");
 const maxLength = textarea.maxLength;
 var restLetter = maxLength - (textarea.value).length;
@@ -95,5 +106,10 @@ textarea.addEventListener ('input', () => {
     restLetter = maxLength - (textarea.value).length;
     wordCounter.textContent = `${restLetter} restants`;
 })
+<<<<<<< Updated upstream
+=======
+//--------- END OF CONTACT PAGE COUNTER---------//
+
+>>>>>>> Stashed changes
 
 //--------- END OF CONTACT PAGE COUNTER---------//

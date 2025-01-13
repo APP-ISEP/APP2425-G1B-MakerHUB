@@ -1,0 +1,51 @@
+<div class="container" id="contact-page">
+    <form class="contact-form" action="contact-page.php" method="POST">
+        <h1>Nous contacter</h1>
+        <p class="required">*Ces champs sont obligatoires</p>
+
+        <div class="form-control">
+            <label for="pseudo">Pseudonyme<span class="required">*</span></label>
+            <input type="text" id="pseudo" name="pseudo" placeholder="Pseudonyme" maxlength="30" required>
+        </div>
+
+        <div class="form-control">
+            <label for="email">Email<span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="email@email.com" maxlength="255" required>
+        </div> 
+
+        <div class="form-control">  
+            <label for="message">Message<span class="required">*</span></label>
+            <textarea
+                name="message" 
+                id="message-contact"
+                rows="10"
+                cols="30"
+                placeholder="Message"
+                maxlength="300"
+                required
+            ></textarea>
+
+            <div class="word-counter"></div>
+        </div>
+
+        <!-- send button -->
+        <div class="send-button">
+            <button type="submit">
+                Envoyer
+            </button>
+        </div>  
+    </form>
+</div>
+
+
+<script>
+    const textarea = document.getElementById("message-contact");
+const wordCounter = document.querySelector(".word-counter");
+const maxLength = textarea.maxLength;
+var restLetter = maxLength - (textarea.value).length;
+
+textarea.addEventListener ('input', () => {
+    restLetter = maxLength - (textarea.value).length;
+    wordCounter.textContent = `${restLetter} restants`;
+})
+</script>
