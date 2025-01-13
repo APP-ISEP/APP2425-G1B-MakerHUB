@@ -108,7 +108,7 @@
                     window.location.reload();
                 }
             }
-            xmlhttp.open("POST","./php/user/deleteUser.php", true);
+            xmlhttp.open("POST","./modele/user/deleteUser.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("id="+id);
             console.log(xmlhttp);
