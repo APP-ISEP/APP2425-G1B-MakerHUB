@@ -1148,14 +1148,16 @@ input:focus, textarea:focus {
 .order-history {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    justify-content: center;
+    gap: 30px;
 }
 
-.order-history .offer-card {
-    flex-basis: calc(20%);
+.order-history .item-card {
+    flex-basis: calc(30%);
     box-sizing: border-box;
-    flex: 1 0 30%;
-    max-width: 280px; 
+    flex: 1 0 20%;
+    max-width: 243px; 
+    
 }
 
 

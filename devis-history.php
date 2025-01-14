@@ -1,13 +1,13 @@
 <script>src="assets/js/scrpit.js"
-    console.log("caca")
+    console.log("zizi")
 </script>
 <?php
 
 session_start();
-require_once("modele/order/getOrder.php");
+require_once("modele/order/getDevis.php");
 
 
-$title = "Order History";
+$title = "Devis History";
 
 ob_start();
 
@@ -23,16 +23,16 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
 };
 
 
-include_once 'views/order-history.html';
+include_once 'views/devis-history.html';
 
 
 echo '<div class="order-history">';
-$result = getOrder($id_account);
+$result = getDevis($id_account);
 if($result->rowCount() > 0){
     while($row= $result->fetch(PDO::FETCH_ASSOC)){
-        $id_produit=$row['id_produit_fini'];
+        $id_produit=$row['produit_demande_id'];
         $titre = $row['titre'];
-        $prix = $row['prix'];
+        $prix = $row['prix_produit'];
         $description = $row['description'];
         $statut_commande = isset($row['libelle']) ? $row['libelle'] : 'Statut inconnu';
         $chemin_image = $row['chemin_image'];
@@ -53,7 +53,7 @@ if($result->rowCount() > 0){
     <?php
     }
 } else{
-    echo "Pas encore de commande";
+    echo "Pas encore de devis";
 }
 ?>
 

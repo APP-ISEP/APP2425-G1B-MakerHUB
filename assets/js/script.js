@@ -277,6 +277,7 @@ $("#toggleDescription").change(function () {
 
 
 //--------- BEGINNING OF CONTACT PAGE COUNTER---------//
+/*
 
 const textarea = document.getElementById("message-contact");
 const wordCounter = document.querySelector(".word-counter");
@@ -287,7 +288,7 @@ textarea.addEventListener ('input', () => {
     restLetter = maxLength - (textarea.value).length;
     wordCounter.textContent = `${restLetter} restants`;
 })
-
+*/
 //--------- END OF CONTACT PAGE COUNTER---------//
 
 
@@ -435,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //--Order-history--//
 document.addEventListener("DOMContentLoaded", function () {
     const filterDropdown = document.getElementById("filter-status");
-    const orderItems = document.querySelectorAll(".order-item");
+    const orderItems = document.querySelectorAll(".item-card");
 
     filterDropdown.addEventListener("change", function () {
         const selectedStatus = filterDropdown.value;
@@ -444,10 +445,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const orderStatus = order.getAttribute("data-status");
 
             if (selectedStatus === "all" || orderStatus === selectedStatus) {
-                order.style.display = "block"; // Afficher si le statut correspond ou si "Tous" est sélectionné
+                order.style.display = "block"; 
             } else {
-                order.style.display = "none"; // Masquer sinon
+                order.style.display = "none"; 
             }
         });
     });
 });
+console.log("pipi")
