@@ -376,25 +376,33 @@ console.log(e);
 }
 
 function showPopUp(id) {
-if (document.getElementById("popup").style.display == "block")
-document.getElementById("popup").style.display = "none";
-else{
-document.getElementById("popup").style.display = "block";
+    id = id.toString();
+    reponse = document.getElementById("r"+id).innerHTML ;
+    question = document.getElementById("q"+id).innerHTML ;
 
-console.log(id);
+    console.log(reponse);
+    console.log(question);
 
 
-xmlhttp.open("GET", "./php/faq/getFaq.php?id_faq=" + id, true);
-xmlhttp.onreadystatechange = function () {
-if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    
-    //console.log(xmlhttp.responseText);
-    //document.getElementById("question_faq").value = question;
-    //document.getElementById("reponse_faq").value = reponse;
-}
-};
-xmlhttp.send();
-}
+    if (document.getElementById("popup").style.display == "block")
+        document.getElementById("popup").style.display = "none";
+    else{
+        document.getElementById("id_faq").value = id;
+        document.getElementById("question_faq").value = question;
+        document.getElementById("reponse_faq").value = reponse;
+        document.getElementById("popup").style.display = "block";
+
+        xmlhttp.open("GET", "./modele/faq/getFaq.php?id_faq=" + id, true);
+        xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            
+            console.log(xmlhttp.responseText);
+            document.getElementById("question_faq").placeholder = question;
+            document.getElementById("reponse_faq").placeholder = reponse;
+        }
+        };
+        xmlhttp.send();
+    }
 }
 
 //---- BEGINNING OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
