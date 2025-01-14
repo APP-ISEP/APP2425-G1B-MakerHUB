@@ -8,7 +8,7 @@ function getProductsByUserId(int $userId): ?array {
         $sql = "SELECT pf.id_produit_fini, pf.titre, pf.description, pf.prix, pf.chemin_image
                 FROM panier_produits pp
                 INNER JOIN produit_fini pf ON pp.id_produit_fini = pf.id_produit_fini
-                WHERE pp.id_utilisateur = :valUserId";
+                WHERE pp.id_utilisateur = :valUserId AND pp.est_actif=1";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valUserId", $userId);

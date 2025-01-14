@@ -28,7 +28,7 @@ if (isset($_SESSION['account'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //Cela permet de vérifier si la méthode de la requête est bien POST avant de traiter le formulaire.
     $pseudo = htmlspecialchars(trim($_POST['pseudo']));
-    $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL); 
+    $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL); //pq pas de htmlspecialchars ici? Vu que ca securise et filter filtre 
     $message = htmlspecialchars(trim($_POST['message']));
 
     if (strlen($pseudo)>30) {
