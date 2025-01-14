@@ -35,7 +35,7 @@ function insertDevis(int $idProduit,int $fournisseur_id, int $prixProduit, int $
     $dateLivraison = $newDate->format('d') . " " . strftime('%B', $newDate->getTimestamp()) . ' ' . $newDate->format('Y');
 
     $to = $user['mail'];
-    $from = "victor.munerot@gmail.com";
+    $from = "no-reply@makerhub.fr";
     $subject = "[MakerHub] Nouveau devis : " . $request['reference'];
     $message = "
         <html>
