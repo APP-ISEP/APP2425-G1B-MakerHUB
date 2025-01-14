@@ -35,7 +35,7 @@ if (isset($_POST) && count($_POST) > 0) {
     $account = areCrendentialsCorrect($email, $password);
 
     if (!$account) {
-        $errors['login'] = "Erreur lors de l'identification. Login ($email) et/ou mot de passe incorrects.";
+        $errors['login'] = "Erreur lors de l'identification. Login ($email) et/ou mot de passe incorrects. Si vous venez de vous inscrire, veuillez vérifier votre boîte mail pour valider votre compte."; 
     }
 
     if (empty($errors)) {
