@@ -32,7 +32,7 @@ if (isset($_GET['token'])) {
                         <p>L'équipe de MakerHub.</p>
                     </body>
                 </html>";
-    $from = "fazi.serena04@gmail.com";
+    $from = "no-reply@makerhub.fr";
     $headers = "From: " . $from . "\r\n" . 
                         "Content-Type: text/html; charset=UTF-8\r\n" .
                         "MIME-Version: 1.0\r\n";
