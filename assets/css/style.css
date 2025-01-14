@@ -848,12 +848,12 @@ input:focus, textarea:focus {
 }
 
 .item-card {
-    background-color: #fff; /* Fond blanc pour chaque carte */
-    border: 1px solid #ddd; /* Bordure légère */
-    border-radius: 8px; /* Coins arrondis */
-    overflow: hidden; /* Pour gérer le contenu débordant */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour un effet esthétique */
-    text-align: center; /* Centrer le contenu de la carte */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
     padding: 15px;
 }
 
@@ -895,7 +895,7 @@ input:focus, textarea:focus {
     cursor: pointer;
 }
 
-/* TODO */
+/* PAGINATION (HOME PAGE) */
 .pagination {
     display: flex;
     justify-content: right;
@@ -918,8 +918,7 @@ input:focus, textarea:focus {
     border-radius: 20%;
 }
 
-/*Inscription*/
-/*FORM */
+/* SIGN UP */
 .sign-up {
     width: 45%;
     margin: 2% auto 3% auto !important;
@@ -945,7 +944,6 @@ input:focus, textarea:focus {
     padding-bottom: 0;
 }
 
-/* END FORM */
 
 /* LABEL AND WRITE PART */
 .required {
@@ -963,7 +961,6 @@ input:focus, textarea:focus {
     margin-top: -4.5%;
 }
 
-/* END LABEL AND WRITE PART */
 
 /* CHECK BOX AND BUTTON */
 .checkbox-group {
@@ -992,8 +989,6 @@ input:focus, textarea:focus {
     margin-top: 20px;
 }
 
-/* END CHECKBOX AND BUTTON */
-
 /* CONTACT PAGE */
 #contact-page {
     text-align: center;
@@ -1021,8 +1016,6 @@ input:focus, textarea:focus {
     justify-content: center;
 }
 
-/* END CONTACT PAGE */
-
 
 /* COOKIES */
 .cookies {
@@ -1045,9 +1038,8 @@ input:focus, textarea:focus {
     margin-bottom: 2em;
 }
 
-/*ADMIN PANEL*/
-.admin-menu
-{
+/* ADMIN PANEL */
+.admin-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1064,87 +1056,18 @@ input:focus, textarea:focus {
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .admin-menu ul li {
     margin:5% 5%;
 }
+
 .admin-menu ul li a {
     text-decoration: none;
     color: #fff;
     font-size: 20px;
 }
 
-/* Format mobile */
-@media screen and (max-width: 817px) {
-    #dropdown {
-        right: 0;
-        width: 98vw;
-        transform: none;
-        left: auto;
-    }
-
-    .footer {
-        height: 20vh;
-    }
-
-    .footer-logo, .footer-copyrights {
-        display: none;
-    }
-
-    .footer-links {
-        width: 100%;
-    }
-
-    .footer-links-list {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10%;
-    }
-
-    /*HOME PAGE*/
-    .hero-container {
-        flex-direction: column-reverse;
-    }
-
-    .hero-container img {
-        display: none;
-    }
-
-    /* EDIT PROFILE PAGE */
-    .edit-profile {
-        width: 95%;
-        margin-left: 2.5%;
-    }
-
-    /* LEGAL PAGES */
-    .legal-page-container {
-        width: 80%;
-        margin-left: 10%;
-    }
-}
-
-/* Format tablette */
-@media screen and (min-width: 818px) and (max-width: 1561px) {
-    body {
-        font-size: 0.8em;
-    }
-
-    .footer-links {
-        width: 60%;
-    }
-
-    /* LEGAL PAGES */
-    .legal-page-container {
-        width: 80%;
-        margin-left: 10%;
-    }
-}
-
-
-/* order-history*/
-
-
+/* ORDER HISTORY */
 .order-history {
     display: flex;
     flex-wrap: wrap;
@@ -1157,9 +1080,8 @@ input:focus, textarea:focus {
 }
 
 
-/*ADMIN PANEL*/
-
-.main{
+/* ADMIN PANEL */
+.main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1167,7 +1089,7 @@ input:focus, textarea:focus {
     gap : 50px;
 }
 
-.main section#faq,.main section#supprimer-utilisateur,.main section#supprimer-produit {
+.main section#faq, .main section#supprimer-utilisateur, .main section#supprimer-produit {
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -1179,7 +1101,7 @@ input:focus, textarea:focus {
     align-items: center;
 }
 
-.main form{
+.main form {
     display: flex;
     width: 80%;
     flex-direction: column;
@@ -1202,13 +1124,12 @@ input:focus, textarea:focus {
 
 .main form button{
     width: 20%
-    }
+}
 
 .main table{
     width: 90%;
     margin-top: 2em;
     border-collapse: collapse;
-
 }
 
 .main th, td{
@@ -1235,8 +1156,8 @@ input:focus, textarea:focus {
 }
 
 .main th{
-background-color: var(--accentuation_color);
-color:var(--base_color-2);
+    background-color: var(--accentuation_color);
+    color:var(--base_color-2);
 }
 
 .main tr:nth-child(even){
@@ -1295,3 +1216,70 @@ color:var(--base_color-2);
     text-decoration: none;
 }
 
+/* Format mobile */
+@media screen and (max-width: 817px) {
+    #dropdown {
+        right: 0;
+        width: 98vw;
+        transform: none;
+        left: auto;
+    }
+
+    .footer {
+        height: 20vh;
+    }
+
+    .footer-logo, .footer-copyrights {
+        display: none;
+    }
+
+    .footer-links {
+        width: 100%;
+    }
+
+    .footer-links-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+    }
+
+    /* HOME PAGE */
+    .hero-container {
+        flex-direction: column-reverse;
+    }
+
+    .hero-container img {
+        display: none;
+    }
+
+    /* EDIT PROFILE PAGE */
+    .edit-profile {
+        width: 95%;
+        margin-left: 2.5%;
+    }
+
+    /* LEGAL PAGES */
+    .legal-page-container {
+        width: 80%;
+        margin-left: 10%;
+    }
+}
+
+/* Format tablette */
+@media screen and (min-width: 818px) and (max-width: 1561px) {
+    body {
+        font-size: 0.8em;
+    }
+
+    .footer-links {
+        width: 60%;
+    }
+
+    /* LEGAL PAGES */
+    .legal-page-container {
+        width: 80%;
+        margin-left: 10%;
+    }
+}

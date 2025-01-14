@@ -1,5 +1,6 @@
 <?php
 require_once "../connectToDB.php";
+// require_once(__DIR__ . '/../connectToDB.php');
 
 if (isset($_POST['id']) && isset($_POST['question']) && isset($_POST['reponse'])) {
     $id = $_POST['id'];
@@ -9,7 +10,7 @@ if (isset($_POST['id']) && isset($_POST['question']) && isset($_POST['reponse'])
     $reponse = $_POST['reponse'];
     echo $reponse;
     setFaq($id, $question, $reponse);
-    header('Location: /admin-faq.php');
+    
     die();
 }
 if (isset($_POST['id']) && !isset($_POST['question']) && !isset($_POST['reponse'])) {
@@ -17,7 +18,7 @@ if (isset($_POST['id']) && !isset($_POST['question']) && !isset($_POST['reponse'
     $est_actif = 0;
     $inactif_depuis = date("Y-m-d H:i:s");
     deleteFaq($id, $est_actif, $inactif_depuis);
-    header('Location: /admin-faq.php');
+
     die();
 } else {
     echo "Error: id not set";
