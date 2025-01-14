@@ -15,11 +15,11 @@
                     <form action="./admin-faq.php" method="POST">
                         <label for="question">Question</label>  
                         <br>  
-                        <textarea type="text" name="question" placeholder="Question"></textarea>
+                        <textarea type="text" name="question" placeholder="Question" required></textarea>
                         <br>
                         <label for="reponse">Réponse</label>
                         <br>
-                        <textarea type="text" name="reponse" placeholder="Réponse"></textarea>
+                        <textarea type="text" name="reponse" placeholder="Réponse" required></textarea>
                         <br>
                         <input class="submit" type="submit" value="Ajouter">
                     </form>
@@ -55,11 +55,11 @@
                             <form onsubmit="setFaq()">
                                 <label for="question">Question</label>  
                                 <br>  
-                                <textarea type="text" id="question_faq" name="question"></textarea>
+                                <textarea type="text" id="question_faq" name="question" required></textarea>
                                 <br>
                                 <label for="reponse">Réponse</label>
                                 <br>
-                                <textarea type="text" id="reponse_faq" name="reponse"></textarea>
+                                <textarea type="text" id="reponse_faq" name="reponse" required></textarea>
                                 <input type="hidden" id="id_faq" name="id" value="">
                                 <input class="submit" type="submit" value="Modifier">
                             </form>
