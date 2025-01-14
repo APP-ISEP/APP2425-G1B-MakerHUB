@@ -7,7 +7,7 @@ function getUser(string $email): ?array
 {
     try {
         $pdo = connectToDB();
-        $sql = "SELECT * FROM `utilisateur` WHERE mail=:valEmail and est_actif = 1;";
+        $sql = "SELECT * FROM `utilisateur` WHERE mail=:valEmail and est_actif = 1 and is_verified = 1;";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valEmail", $email);
