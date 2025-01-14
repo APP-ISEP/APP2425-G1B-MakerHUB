@@ -300,6 +300,8 @@ function setFaq() {
     question = document.getElementById("question_faq").value;
     reponse = document.getElementById("reponse_faq").value;
 
+    console.log(id, question, reponse)
+
     try{
         if (window.XMLHttpRequest) {
             xmlhttp= new XMLHttpRequest();
@@ -329,50 +331,47 @@ function setFaq() {
             xmlhttp.open("POST", "./modele/faq/setFaq.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("id="+id+"&reponse="+reponse+"&question="+question);
-            //window.location.reload();
-    }
-    catch(e){
+    } catch(e) {
         console.log(e.toString());
     }
 }
 
-function deleteFaq(id) {
-try{
-console.log(id);
-if (window.XMLHttpRequest) {
-    xmlhttp= new XMLHttpRequest();
-} else {
-    if (window.ActiveXObject)
-        try {
-            xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try {
-                xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e) {
-                return NULL;
+function deleteFaq(id){
+    confirmation = confirm("Êtes-vous sûr de vouloir supprimer cette question ?");
+    if (confirmation){
+        try{
+            console.log(id);
+            if (window.XMLHttpRequest) {
+                xmlhttp= new XMLHttpRequest();
+            } else {
+                if (window.ActiveXObject)
+                    try {
+                        xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            return NULL;
+                        }
+                    }
             }
+            xmlhttp.onreadystatechange = function ()
+            {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                {
+                    console.log(xmlhttp.responseText);
+                    console.log(xmlhttp);
+                    window.location.reload();
+                }
+            }
+            xmlhttp.open("POST", "./modele/faq/setFaq.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id="+id);
+            console.log(xmlhttp);
+            } catch(e) {
+            console.log(e);
         }
-}
-
-xmlhttp.onreadystatechange = function ()
-{
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-    {
-        console.log(xmlhttp.responseText);
-        window.location.reload();
     }
-}
-xmlhttp.open("GET", "./modele/faq/setFaq.php?id="+id, true);
-xmlhttp.send();
-xmlhttp.open("POST","./modele/faq/setFaq.php", true);
-xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xmlhttp.send("id="+id);
-//window.location.reload();
-}
-catch(e){
-console.log(e);
-}
-
 }
 
 function showPopUp(id) {
@@ -380,8 +379,7 @@ function showPopUp(id) {
     reponse = document.getElementById("r"+id).innerHTML ;
     question = document.getElementById("q"+id).innerHTML ;
 
-    console.log(reponse);
-    console.log(question);
+    console.log(id, question, reponse);
 
 
     if (document.getElementById("popup").style.display == "block")
@@ -392,7 +390,7 @@ function showPopUp(id) {
         document.getElementById("reponse_faq").value = reponse;
         document.getElementById("popup").style.display = "block";
 
-        xmlhttp.open("GET", "./modele/faq/getFaq.php?id_faq=" + id, true);
+        /* xmlhttp.open("GET", "./modele/faq/getFaq.php?id_faq=" + id, true);
         xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             
@@ -402,6 +400,7 @@ function showPopUp(id) {
         }
         };
         xmlhttp.send();
+        */
     }
 }
 
@@ -524,4 +523,5 @@ function deleteProduct(id){
             console.log(e);
             }
     }
-}//---- END OF THE AJAX TO DELETE PRODUCT ----//
+}
+//---- END OF THE AJAX TO DELETE PRODUCT ----//

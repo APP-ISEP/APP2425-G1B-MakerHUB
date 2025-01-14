@@ -8,8 +8,12 @@ if ($_SESSION['role'] !== 'admin') {
 }
 
 ob_start();
-require('modele/faq/getFaq.php');
-require_once 'modele/faq/addFaq.php';
+//require('./modele/faq/getFaq.php');
+//require_once 'modele/faq/addFaq.php';
+
+include_once("./modele/faq/getFaq.php");
+include_once("./modele/faq/addFaq.php");
+
 
 $faqs = getFaq();
 
