@@ -16,6 +16,7 @@ function getDevis($id_account)
     join produit_demande pd on pd.id_produit_demande = d.produit_demande_id
     join statut_commande sc on sc.id_statut_commande = d.statut_devis_id
     where d.fournisseur_id = ? ORDER BY d.cree_a desc";
+    
     try {
         $stmt = $db->prepare($query);
         $stmt->bindparam(1, $id_account);
