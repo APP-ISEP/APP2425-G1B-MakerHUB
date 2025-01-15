@@ -277,7 +277,7 @@ $("#toggleDescription").change(function () {
 
 
 //--------- BEGINNING OF CONTACT PAGE COUNTER---------//
-
+/*
 const textarea = document.getElementById("message-contact");
 const wordCounter = document.querySelector(".word-counter");
 const maxLength = textarea.maxLength;
@@ -287,7 +287,7 @@ textarea.addEventListener ('input', () => {
     restLetter = maxLength - (textarea.value).length;
     wordCounter.textContent = `${restLetter} restants`;
 })
-
+*/
 //--------- END OF CONTACT PAGE COUNTER---------//
 
 
