@@ -7,6 +7,9 @@ session_start();
 require_once("modele/order/getDevis.php");
 $title = "Devis History";
 
+var_dump($_SESSION['role']); 
+
+
 ob_start();
 
 if (isset($_SESSION['account'])) {
