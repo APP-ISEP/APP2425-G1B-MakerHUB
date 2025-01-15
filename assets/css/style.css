@@ -41,7 +41,7 @@ body {
     text-decoration: underline;
 }
 
-button {
+button{
     background-color: var(--important-element-color);
     border: 2px solid var(--important-element-color);
     font-family: 'Kanit', serif;
@@ -1153,16 +1153,16 @@ input:focus, textarea:focus {
 
 /* order-history*/
 
-
-.order-history {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+.order-history-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 3%;
 }
 
-.order-history .offer-card {
-    flex-basis: calc(20%);
-    box-sizing: border-box;
+.filter-status {
+    padding-left: 3%;
 }
-
-

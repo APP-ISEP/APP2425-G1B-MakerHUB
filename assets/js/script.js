@@ -248,8 +248,7 @@ $(document).ready(() => {
 
 //---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
 //---- BEGINNING OF VALIDATION PASSWORD SIGN_UP ----//
-
-if (window.location.pathname.includes('sign-up.php')) {    
+/*
     var motDePasse = document.getElementById('password');
     var motDePasseConfirmed = document.getElementById('passwordConfirmation');
 
@@ -258,8 +257,7 @@ if (window.location.pathname.includes('sign-up.php')) {
             alert("Les mots de passe ne correspondent pas");
         }
     });
-}
-
+*/
 //---- END OF VALIDATION PASSWORD SIGN_UP ----//
 
 
@@ -430,3 +428,41 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //---- END OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
+
+
+//--Order-history--//
+document.addEventListener("DOMContentLoaded", function () {
+    const filterDropdown = document.getElementById("filter-status");
+    const orderItems = document.querySelectorAll(".item-card");
+
+    filterDropdown.addEventListener("change", function () {
+        const selectedStatus = filterDropdown.value;
+
+        orderItems.forEach(order => {
+            const orderStatus = order.getAttribute("data-status");
+
+            if (selectedStatus === "all" || orderStatus === selectedStatus) {
+                order.style.display = "block"; 
+            } else {
+                order.style.display = "none"; 
+            }
+        });
+    });
+});
+
+
+function confirmAction(action) {
+    let message = '';
+    if (action === 'accepter') {
+        message = 'Êtes-vous sûr de vouloir accepter ce devis ?';
+    } else if (action === 'refuser') {
+        message = 'Êtes-vous sûr de vouloir refuser ce devis ?';
+    }
+
+    if (confirm(message)) {
+        return true;  
+    } else {
+        return false; 
+    }
+}
+console.log("pipi")
