@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$title = "Administration FAQ | Makerhub";
+$title = "Administration FAQ";
 
 if ($_SESSION['role'] !== 'admin') {
     header("Location: index.php");
