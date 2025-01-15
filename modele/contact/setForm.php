@@ -7,12 +7,13 @@ if (isset($_POST['id']) && isset($_POST['answer']) && $_POST['email']) {
         $answer = $_POST['answer'];
         $email = $_POST['email'];
         setForm($id, $answer, $email);
+        header("Location: ./../../admin-contact.php");
     } else {
-        header("Location: /admin-contact.php");
+        header("Location: ./../../admin-contact.php");
     }
 }
 else {
-    header("Location: /admin-contact.php");
+    header("Location: ./../../admin-contact.php");
 }
 
 function setForm($id, $answer, $email) {

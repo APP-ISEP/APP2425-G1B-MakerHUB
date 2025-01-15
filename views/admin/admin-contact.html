@@ -100,13 +100,11 @@ function setForm() {
             {
                 console.log(xmlhttp.responseText);
                 window.location.reload();
-            
             }
         }
             xmlhttp.open("POST", "./modele/contact/setForm.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("id="+id+"&answer="+answer+"&email="+email);
-            //window.location.reload();
     }
     catch(e){
         console.log(e.toString());
