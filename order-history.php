@@ -1,13 +1,10 @@
-<script>src="assets/js/scrpit.js"
-    console.log("caca")
-</script>
 <?php
 
 session_start();
 require_once("modele/order/getOrder.php");
 
 
-$title = "Order History";
+$title = "Historique de commandes";
 
 ob_start();
 
@@ -26,7 +23,7 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
 include_once 'views/order-history.html';
 
 
-echo '<div class="order-history">';
+echo '<div class="order-history-container">';
 $result = getOrder($id_account);
 if($result->rowCount() > 0){
     while($row= $result->fetch(PDO::FETCH_ASSOC)){

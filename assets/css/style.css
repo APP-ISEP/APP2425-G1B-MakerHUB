@@ -1153,21 +1153,16 @@ input:focus, textarea:focus {
 
 /* order-history*/
 
-
-.order-history {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+.order-history-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 3%;
 }
 
-.order-history .item-card {
-    flex-basis: calc(30%);
-    box-sizing: border-box;
-    flex: 1 0 20%;
-    max-width: 243px; 
-    
+.filter-status {
+    padding-left: 3%;
 }
-
-
-
