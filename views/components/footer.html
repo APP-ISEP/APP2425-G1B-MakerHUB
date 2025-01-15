@@ -1,4 +1,9 @@
-    <footer class="footer">
+   
+   <?php 
+   if (isset($_SESSION['role'] && $_SESSION['role'] !== 'admin') {
+   ?>
+
+   <footer class="footer">
         <div class="footer-logo">
             <img src="./assets/images/maker-hub-icon.svg" alt="Icône MakerHUB">
         </div>
@@ -19,7 +24,7 @@
             </ul>
         </div>
     </footer>
-
+<?php } ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./assets/js/script.js" defer></script>
     <script src="https://kit.fontawesome.com/c54f418805.js" crossorigin="anonymous"></script>
