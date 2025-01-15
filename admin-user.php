@@ -9,7 +9,7 @@ if ($_SESSION['role'] !== 'admin') {
 
 ob_start();
 
-require('modele/user/getUser.php'); 
+require('./modele/user/getUser.php'); 
 $users = getUsers();
 
 include 'views/admin/admin-user.html';

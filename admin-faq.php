@@ -17,13 +17,18 @@ include_once("./modele/faq/addFaq.php");
 
 $faqs = getFaq();
 
-if (isset($_POST) && count($_POST) > 0) {
+if (isset($_POST) && !empty($_POST['question']) && !empty($_POST['reponse'])) {
+
     $question = $_POST['question'];
     $reponse = $_POST['reponse'];
     $add = addFaq($question, $reponse);
+    $error = null;
     if ($add) {
         header("Location: admin-faq.php");
     }
+}
+else {
+    $error = "Veuillez remplir tous les champs";
 }
 
 
