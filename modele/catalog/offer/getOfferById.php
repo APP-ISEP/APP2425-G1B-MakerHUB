@@ -5,7 +5,7 @@ require_once(__DIR__ . '/../../connectToDB.php');
 if (isset($_POST['show_product'])){
     $id = $_POST['show_product'];
     $product = getOfferById($id);
-    header('Location: /admin-product.php?product='.json_encode($product).'#supprimer-produit');
+    header('Location: ./../../../admin-product.php?product='.json_encode($product).'#supprimer-produit');
     die();
 }
 

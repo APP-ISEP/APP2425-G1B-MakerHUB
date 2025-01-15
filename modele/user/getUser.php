@@ -5,7 +5,14 @@ require_once(__DIR__ . '/../connectToDB.php');
 if (isset($_POST['show_user'])){
     $id = $_POST['show_user'];
     $account = getUserById($id);
-    header('Location: /admin-user.php?user='.json_encode($account).'#supprimer-utilisateur');
+    unset($account['mot_de_passe']);
+    unset($account['est_actif']);
+    unset($account['inactif_depuis']);
+    unset($account['cree_a']);
+    unset($account['token']);
+    unset($account['is_verified']);
+    unset($account['role_id']);
+    header('Location: ./../../admin-user.php?user='.json_encode($account).'#supprimer-utilisateur');
     die();
 }
 
