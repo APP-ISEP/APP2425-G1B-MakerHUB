@@ -5,7 +5,7 @@ function updateUserRole(int $userId, int $roleId): ?bool
 {
     try {
         $pdo = connectToDB();
-        $sql = "UPDATE `role_utilisateur` SET role_id = :valRoleId WHERE utilisateur_id = :valUserId";
+        $sql = "UPDATE `utilisateur` SET role_id = :valRoleId WHERE id_utilisateur = :valUserId";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valRoleId", $roleId);

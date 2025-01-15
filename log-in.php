@@ -39,7 +39,7 @@ if (isset($_POST) && count($_POST) > 0) {
     }
 
     if (empty($errors)) {
-        include_once("./modele/user/roles/getUserRoles.php");
+        include_once("./modele/user/roles/getUserRole.php");
 
         $_SESSION['account'] = $account;
         $_SESSION['username'] = $account['pseudonyme'];

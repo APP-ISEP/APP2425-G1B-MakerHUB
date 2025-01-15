@@ -1,13 +1,12 @@
 <?php
 require_once "./modele/connectToDB.php";
-function deleteUserRole(int $userId, int $roleId): ?bool
+function deleteUserRole(int $userId): ?bool
 {
     try {
         $pdo = connectToDB();
-        $sql = "DELETE FROM `role_utilisateur` WHERE utilisateur_id = :valUserId AND role_id = :valRoleId";
+        $sql = "UPDATE utilisateur SET role_id = 2 WHERE id_utilisateur = :valUserId";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valUserId", $userId);
-        $stmt->bindParam(":valRoleId", $roleId);
         $bool = $stmt->execute();
         $stmt->closeCursor();
         return $bool;

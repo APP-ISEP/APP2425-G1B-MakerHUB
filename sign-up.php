@@ -1,11 +1,10 @@
 <?php
 require_once 'config/constants.php';
 include 'config/autoload.php';
- 
+
 use Config\Log\Log;
 use Config\Log\LogFile;
 use Config\Log\LogLevel;
-
 
 session_start();
 
@@ -111,10 +110,8 @@ if (isset($_POST) && count($_POST) > 0) {
             $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description, $role);
 
             $account = getUser($email);
-            $_SESSION['account'] = $account;
-            $_SESSION['username'] = $account['pseudonyme'];
 
-            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $_SESSION["account"]["id_utilisateur"] . ") a été créé depuis " . $_SERVER['REMOTE_ADDR'] . "."));
+            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $account["id_utilisateur"] . ") a été créé depuis " . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: log-in.php");
         }
     }
