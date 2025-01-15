@@ -11,9 +11,9 @@ function getUserRole(int $userId): ?string
     try {
         $pdo = connectToDB();
         $sql = "SELECT r.nom
-        FROM `role_utilisateur`
-        JOIN role r on role_utilisateur.role_id = r.id_role
-        WHERE utilisateur_id=:valUserId";
+        FROM `role` as r
+        JOIN utilisateur as u on u.role_id = r.id_role
+        WHERE u.id_utilisateur=:valUserId";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":valUserId", $userId);
         $bool = $stmt->execute();
