@@ -248,8 +248,7 @@ $(document).ready(() => {
 
 //---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
 //---- BEGINNING OF VALIDATION PASSWORD SIGN_UP ----//
-
-if (window.location.pathname.includes('sign-up.php')) {    
+/*
     var motDePasse = document.getElementById('password');
     var motDePasseConfirmed = document.getElementById('passwordConfirmation');
 
@@ -258,8 +257,7 @@ if (window.location.pathname.includes('sign-up.php')) {
             alert("Les mots de passe ne correspondent pas");
         }
     });
-}
-
+*/
 //---- END OF VALIDATION PASSWORD SIGN_UP ----//
 
 
