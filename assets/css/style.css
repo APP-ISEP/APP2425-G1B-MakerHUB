@@ -703,10 +703,21 @@ input:focus, textarea:focus {
     text-align: center;
     margin-top: 30px;
 }
+
+.container-payment {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+
+.button-payment {
+    padding: 15px;
+    width: 30%;
+}
 /* END SHOPPING CART PAGE */
 
 
-/*HOME PAGE*/
+/* HOME PAGE */
 .hero-container {
     display: flex;
     justify-content: space-between;
@@ -848,12 +859,12 @@ input:focus, textarea:focus {
 }
 
 .item-card {
-    background-color: #fff; /* Fond blanc pour chaque carte */
-    border: 1px solid #ddd; /* Bordure légère */
-    border-radius: 8px; /* Coins arrondis */
-    overflow: hidden; /* Pour gérer le contenu débordant */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour un effet esthétique */
-    text-align: center; /* Centrer le contenu de la carte */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
     padding: 15px;
 }
 
@@ -918,8 +929,7 @@ input:focus, textarea:focus {
     border-radius: 20%;
 }
 
-/*Inscription*/
-/*FORM */
+/* SIGN UP */
 .sign-up {
     width: 45%;
     margin: 2% auto 3% auto !important;
@@ -945,7 +955,6 @@ input:focus, textarea:focus {
     padding-bottom: 0;
 }
 
-/* END FORM */
 
 /* LABEL AND WRITE PART */
 .required {
