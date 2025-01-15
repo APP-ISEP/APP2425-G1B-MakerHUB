@@ -452,4 +452,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+function confirmAction(action) {
+    let message = '';
+    if (action === 'accepter') {
+        message = 'Êtes-vous sûr de vouloir accepter ce devis ?';
+    } else if (action === 'refuser') {
+        message = 'Êtes-vous sûr de vouloir refuser ce devis ?';
+    }
+
+    if (confirm(message)) {
+        return true;  
+    } else {
+        return false; 
+    }
+}
 console.log("pipi")

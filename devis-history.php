@@ -7,9 +7,6 @@ session_start();
 require_once("modele/order/getDevis.php");
 $title = "Devis History";
 
-var_dump($_SESSION['role']); 
-
-
 ob_start();
 
 if (isset($_SESSION['account'])) {
@@ -50,7 +47,7 @@ if($result->rowCount() > 0){
                     <h3 class="statut_commande"><?php echo $statut_commande ?></h3>
 
                     <?php if (($_SESSION['role'] === 'acheteur') && $statut_commande === 'Devis envoyé'): ?>
-                    <form method="POST" action="process_devis.php">
+                    <form method="POST" action="process_devis.php"onsubmit="return confirmAction(this.querySelector('[name=action]').value)">
                         <input type="hidden" name="id_devis" value="<?= $id_devis ?>">
                         <button type="submit" name="action" value="accepter" class="btn btn-success">Accepter</button>
                         <button type="submit" name="action" value="refuser" class="btn btn-danger">Refuser</button>
