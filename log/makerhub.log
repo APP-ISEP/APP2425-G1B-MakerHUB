@@ -231,3 +231,15 @@
 2025-01-13 10:50:48 [INFO] L'utilisateur r000t (id: 1) a modifié son profil depuis127.0.0.1.
 2025-01-13 10:51:10 [INFO] L'utilisateur r000t s'est déconnecté depuis 127.0.0.1.
 2025-01-13 10:51:24 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis 127.0.0.1.
+2025-01-15 18:15:46 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis ::1.
+2025-01-15 18:18:10 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis ::1.
+2025-01-15 18:20:51 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis ::1.
+2025-01-15 18:21:15 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis ::1.
+2025-01-15 18:25:42 [INFO] L'utilisateur r000t s'est déconnecté depuis ::1.
+2025-01-15 18:28:31 [INFO] L'utilisateur acheteur (id: 37) s'est connecté depuis ::1.
+2025-01-15 19:14:01 [INFO] L'utilisateur acheteur s'est déconnecté depuis ::1.
+2025-01-15 19:14:26 [INFO] L'utilisateur acheteur (id: 37) s'est connecté depuis ::1.
+2025-01-15 19:45:44 [INFO] L'utilisateur acheteur s'est déconnecté depuis ::1.
+2025-01-15 19:45:51 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis ::1.
+2025-01-15 20:07:24 [INFO] L'utilisateur r000t s'est déconnecté depuis ::1.
+2025-01-15 20:07:32 [INFO] L'utilisateur acheteur (id: 37) s'est connecté depuis ::1.
