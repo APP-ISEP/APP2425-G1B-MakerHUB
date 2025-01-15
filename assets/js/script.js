@@ -525,3 +525,68 @@ function deleteProduct(id){
     }
 }
 //---- END OF THE AJAX TO DELETE PRODUCT ----//
+
+//---- BEGINNING OF DISPLAY FORM ANSWER ----//
+    function answerForm(id) {
+        var answerForm = document.getElementById('answer_form');
+        var modifButton = document.getElementById('modif_button');
+        var email = document.getElementById('source_email').innerHTML;
+        
+        if (answerForm.style.display === 'none') {
+            answerForm.style.display = 'block';
+            modifButton.style.display = 'none';
+            document.querySelector('input[name="id"]').value = id;
+            document.querySelector('input[name="email"]').value = email;
+
+
+        } else {
+            answerForm.style.display = 'none';
+            modifButton.style.display = 'block';
+        }
+                  
+    }
+
+//---- END OF DISPLAY FORM ANSWER ----//
+
+//---- BEGINNING OF THE AJAX TO ANSWER FORM ----//
+function setForm() {
+    xmlhttp = new XMLHttpRequest();
+    id = document.getElementById("id_form_answer").value;
+    answer = document.getElementById("answer_text").value;
+    email = document.getElementById("email_form_answer").value;
+
+    try{
+        if (window.XMLHttpRequest) {
+            xmlhttp= new XMLHttpRequest();
+    
+        } else {
+            if (window.ActiveXObject)
+                try {
+                    xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        return NULL;
+                    }
+                }
+        }
+
+        xmlhttp.onreadystatechange = function ()
+        {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+            {
+                console.log(xmlhttp.responseText);
+                window.location.reload();
+            }
+        }
+            xmlhttp.open("POST", "./modele/contact/setForm.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id="+id+"&answer="+answer+"&email="+email);
+    }
+    catch(e){
+        console.log(e.toString());
+    }
+}
+
+//---- END OF THE AJAX TO ANSWER FORM ----//

@@ -1,0 +1,50 @@
+<main class="main">
+    <div class="mini-menu">
+            <a href="./admin-faq.php" ><div class="submitButton">FAQ</div></a>
+            <a href="./admin-product.php" ><div class="submitButton">Produit</div></a>
+            <a href="./admin-user.php" ><div class="submitButton">Utilisateur</div></a>
+    </div>
+
+
+    <table>
+        <tr>
+            <th>Pseudo</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th></th>
+        </tr>
+        <?php
+        foreach($forms as $form) {
+            $pseudo = $form['pseudo'];
+            $email = $form['email'];
+            $message = $form['message'];
+            $id = $form['id_formulaire'];
+        ?>
+            <tr>
+                <td><?php echo($pseudo);?></td>
+                <td id="source_email"><?php echo($email);?></td>
+                <td><?php echo($message);?></td>
+                <td id="modif_button" style="display:block;">
+                    <a onclick="answerForm(<?php echo($id); ?>)">
+                        <button>
+                            <i class="fa-regular fa-pen-to-square" style="color: #ffffff;">                                   
+                            </i>
+                        </button>
+                    </a>
+                </td>
+                <td id="answer_form" style="display:none;">
+                    <form onsubmit="setForm()" >
+                        <label for="answer">Réponse</label>
+                        <br>
+                        <textarea type="text"  id="answer_text" name="answer_text" placeholder="Réponse" required></textarea>
+                        <br>
+                        <input type="hidden" id="id_form_answer" name="id">
+                        <input type="hidden" id="email_form_answer" name="email">
+                        <input class="submit" type="submit" value="Envoyer">
+                    </form>
+                </td>
+            </tr>
+           
+        <?php } ?>
+    </table>
+</main> 
