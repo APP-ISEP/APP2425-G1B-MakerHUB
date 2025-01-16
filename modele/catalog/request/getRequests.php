@@ -8,10 +8,10 @@ function getRequests($search = null): ?array
         $pdo = connectToDB();
 
         if (isset($search)) {
-            $sql = "SELECT * FROM `produit_demande` WHERE `titre` LIKE '%$search%' OR `description` LIKE '%$search%'";
+            $sql = "SELECT * FROM `produit_demande` WHERE `titre` LIKE '%$search%' OR `description` LIKE '%$search%' AND est_actif = 1";
         }
         else {
-            $sql = "SELECT * FROM `produit_demande`";
+            $sql = "SELECT * FROM `produit_demande` WHERE est_actif = 1";
         }
 
         $stmt = $pdo->prepare($sql);
