@@ -47,7 +47,7 @@ function insertDevis(int $idProduit,int $fournisseur_id, int $prixProduit, int $
                 <h1>Devis</h1><br>
                 <p>Vous avez reçu un devis de la part de " . $fournisseur['pseudonyme'] . " d'un montant total de : " . ($prixLivraison + $prixProduit) . " € (livraison incluse).</p>
                 <p>Le fournisseur prévoit de l'envoyer vers le " . $dateLivraison . "</p>
-                <p>Vous pouvez le consulter dès maintenant depuis votre <a href=\"https://makerhub.fr/order-history.php\">historique de commande</a>.</p><br><br>
+                <p>Vous pouvez le consulter dès maintenant depuis votre <a href=\"https://makerhub.fr/devis-history.php\">historique de commande</a>.</p><br><br>
                 <p>Merci de votre confiance.</p><br>
                 <p>L'équipe de MakerHub.</p>
             </body>
