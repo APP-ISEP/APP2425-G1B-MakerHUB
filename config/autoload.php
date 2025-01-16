@@ -1,6 +1,6 @@
 <?php
 
-include_once "constants.php";
+include_once 'config/constants.php';
 
 // PENSER A INCLURE AUTOLOAD.PHP DANS CHAQUE FICHIER QUI UTILISE DES CLASSES (POO)
 

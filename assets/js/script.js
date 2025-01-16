@@ -12,8 +12,8 @@ function updateFileName(input) {
 }
 
 //--------- BEGINNING OF THE CHEVRON IN FAQ PAGE ---------//
-$(document).ready(function() {
-    $(".question").click(function() {
+$(document).ready(function () {
+    $(".question").click(function () {
         $(".answer:visible").not($(this)
             .find(".answer"))
             .toggle();
@@ -42,7 +42,7 @@ const editAttributePassword = (valueName) => {
     passwordContainer.setAttribute('type', valueName);
 }
 
-if(eye) {
+if (eye) {
     eye.onclick = () => {
         editAttributePassword(pwShown === 0 ? 'text' : 'password');
         pwShown = pwShown === 0 ? 1 : 0;
@@ -88,8 +88,7 @@ $(document).ready(() => {
         let maxVal = parseFloat(maxPrice.val());
         if (parseFloat(minPrice.val()) > maxVal) {
             minPrice.val(maxVal);
-        }
-        else if (parseFloat(minPrice.val()) < 0) {
+        } else if (parseFloat(minPrice.val()) < 0) {
             minPrice.val(0);
         }
     });
@@ -98,8 +97,7 @@ $(document).ready(() => {
         let minVal = parseFloat(minPrice.val());
         if (parseFloat(maxPrice.val()) < minVal) {
             maxPrice.val(minVal);
-        }
-        else if (parseFloat(maxPrice.val()) > 99999.99) {
+        } else if (parseFloat(maxPrice.val()) > 99999.99) {
             maxPrice.val(99999.99);
         }
     });
@@ -229,7 +227,7 @@ $(document).ready(() => {
             $.ajax({
                 url: 'php/user/checkCredentials.php',
                 type: 'POST',
-                data: { fonction: 'uniquePseudonymeJSON', pseudonyme: usernameInput.value },
+                data: {fonction: 'uniquePseudonymeJSON', pseudonyme: usernameInput.value},
                 success: function (data) {
                     const jsonData = JSON.parse(data);
 
@@ -263,13 +261,13 @@ $(document).ready(() => {
 
 //---- BEGINNING OF THE "A PROPOS DE MOI" IN SIGN UP ----//
 $(document).ready(() => {
-$("#toggleDescription").change(function () {
-    if ($(this).is(":checked")) {
-        $("#aboutMe").slideDown(); 
-    } else {
-        $("#aboutMe").slideUp(); 
-    }
-}).trigger("change"); //assurer que au rechargement de la page, il n'est pas coché.
+    $("#toggleDescription").change(function () {
+        if ($(this).is(":checked")) {
+            $("#aboutMe").slideDown();
+        } else {
+            $("#aboutMe").slideUp();
+        }
+    }).trigger("change"); //assurer que au rechargement de la page, il n'est pas coché.
 });
 //---- END OF THE "A PROPOS DE MOI" IN SIGN UP ----//
 
@@ -292,114 +290,109 @@ textarea.addEventListener ('input', () => {
 //--------- ADMIN FAQ ---------//
 
 xmlhttp = new XMLHttpRequest();
+
 function setFaq() {
     id = document.getElementById("id_faq").value;
     question = document.getElementById("question_faq").value;
     reponse = document.getElementById("reponse_faq").value;
 
-    try{
+    try {
         if (window.XMLHttpRequest) {
-            xmlhttp= new XMLHttpRequest();
-    
+            xmlhttp = new XMLHttpRequest();
+
         } else {
             if (window.ActiveXObject)
                 try {
-                    xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
                 } catch (e) {
                     try {
-                        xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     } catch (e) {
                         return NULL;
                     }
                 }
         }
 
-        xmlhttp.onreadystatechange = function ()
-        {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-            {
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                 console.log(xmlhttp.responseText);
-            
+
             }
         }
-            xmlhttp.open("POST", "./php/faq/setFaq.php", true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send("id="+id+"&reponse="+reponse+"&question="+question);
-            window.location.reload();
-    }
-    catch(e){
+        xmlhttp.open("POST", "./php/faq/setFaq.php", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("id=" + id + "&reponse=" + reponse + "&question=" + question);
+        window.location.reload();
+    } catch (e) {
         console.log(e.toString());
     }
 }
 
 function deleteFaq(id) {
-try{
-console.log(id);
-if (window.XMLHttpRequest) {
-    xmlhttp= new XMLHttpRequest();
-} else {
-    if (window.ActiveXObject)
-        try {
-            xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try {
-                xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e) {
-                return NULL;
+    try {
+        console.log(id);
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            if (window.ActiveXObject)
+                try {
+                    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        return NULL;
+                    }
+                }
+        }
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                console.log(xmlhttp.responseText);
             }
         }
-}
-
-xmlhttp.onreadystatechange = function ()
-{
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-    {
-        console.log(xmlhttp.responseText);
+        xmlhttp.open("GET", "./php/faq/setFaq.php?id=" + id, true);
+        xmlhttp.send();
+        xmlhttp.open("POST", "./php/faq/setFaq.php", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("id=" + id);
+        window.location.reload();
+    } catch (e) {
+        console.log(e);
     }
-}
-xmlhttp.open("GET", "./php/faq/setFaq.php?id="+id, true);
-xmlhttp.send();
-xmlhttp.open("POST","./php/faq/setFaq.php", true);
-xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xmlhttp.send("id="+id);
-window.location.reload();
-}
-catch(e){
-console.log(e);
-}
 
 }
 
 function showPopUp(id) {
-if (document.getElementById("popup").style.display == "block")
-document.getElementById("popup").style.display = "none";
-else{
-document.getElementById("popup").style.display = "block";
+    if (document.getElementById("popup").style.display == "block")
+        document.getElementById("popup").style.display = "none";
+    else {
+        document.getElementById("popup").style.display = "block";
 
-console.log(id);
+        console.log(id);
 
 
-xmlhttp.open("GET", "./php/faq/getFaq.php?id_faq=" + id, true);
-xmlhttp.onreadystatechange = function () {
-if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    
-    //console.log(xmlhttp.responseText);
-    //document.getElementById("question_faq").value = question;
-    //document.getElementById("reponse_faq").value = reponse;
-}
-};
-xmlhttp.send();
-}
+        xmlhttp.open("GET", "./php/faq/getFaq.php?id_faq=" + id, true);
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                //console.log(xmlhttp.responseText);
+                //document.getElementById("question_faq").value = question;
+                //document.getElementById("reponse_faq").value = reponse;
+            }
+        };
+        xmlhttp.send();
+    }
 }
 
 //---- BEGINNING OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('#add-shopping-cart');
 
     // Permet de détecter le clic d'un des boutons de la liste
     buttons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const productId = parseInt(this.getAttribute('data-product-id'));
 
             fetch('modele/shopping-cart/addProduct.php', {
@@ -411,43 +404,44 @@ document.addEventListener('DOMContentLoaded', function() {
                     'productId': productId
                 })
             })
-            .then(response => response.text())
-            .then(data => {
-                if (data === '1') {
-                    alert("Le produit a bien été ajouté dans le panier.");
-                } else {
-                    alert("Impossible d'ajouter le produit dans le panier.");
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Une erreur est survenue.");
-            });
+                .then(response => response.text())
+                .then(data => {
+                    if (data === '1') {
+                        alert("Le produit a bien été ajouté dans le panier.");
+                    } else {
+                        alert("Impossible d'ajouter le produit dans le panier.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Une erreur est survenue.");
+                });
         });
     });
 });
 
 //---- END OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
 
-
 //--Order-history--//
 document.addEventListener("DOMContentLoaded", function () {
-    const filterDropdown = document.getElementById("filter-status");
-    const orderItems = document.querySelectorAll(".item-card");
+    if (window.location.pathname.includes('order-history.php') || window.location.pathname.includes('devis-history.php')) {
+        const filterDropdown = document.getElementById("filter-status");
+        const orderItems = document.querySelectorAll(".item-card");
 
-    filterDropdown.addEventListener("change", function () {
-        const selectedStatus = filterDropdown.value;
+        filterDropdown.addEventListener("change", function () {
+            const selectedStatus = filterDropdown.value;
 
-        orderItems.forEach(order => {
-            const orderStatus = order.getAttribute("data-status");
+            orderItems.forEach(order => {
+                const orderStatus = order.getAttribute("data-status");
 
-            if (selectedStatus === "all" || orderStatus === selectedStatus) {
-                order.style.display = "block"; 
-            } else {
-                order.style.display = "none"; 
-            }
+                if (selectedStatus === "all" || orderStatus === selectedStatus) {
+                    order.style.display = "block";
+                } else {
+                    order.style.display = "none";
+                }
+            });
         });
-    });
+    }
 });
 
 
@@ -459,10 +453,50 @@ function confirmAction(action) {
         message = 'Êtes-vous sûr de vouloir refuser ce devis ?';
     }
 
-    if (confirm(message)) {
-        return true;  
-    } else {
-        return false; 
-    }
+    return confirm(message);
 }
-console.log("pipi")
+
+//POP UP JS
+document.addEventListener("DOMContentLoaded", () => {
+    if (window.location.pathname.includes('index.php')) {
+        const modal = document.getElementById("myModal");
+        const closeModal = document.getElementById("closeModal");
+        const btnDevis = document.querySelectorAll(".btn-devis");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalForm = document.getElementById("devisForm");
+        const inputIdProduit = document.getElementById("IdProduit");
+
+        // Ouvrir le modal
+        btnDevis.forEach(button => {
+            button.addEventListener("click", () => {
+                const productId = button.dataset.id;
+                const productTitle = button.dataset.title;
+
+                modalTitle.textContent = `Devis produit n. ${productTitle}`; //titre du modal
+                inputIdProduit.value = productId;
+                console.log("ID produit envoyé : " + productId);
+
+
+                // Afficher le modal
+                modal.style.display = "block";
+            })
+        })
+
+        // Fermer le modal
+        closeModal.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Calcul automatique du prix final (optionnel)
+        var produitPrixInput = document.getElementById("ProduitPrix");
+        var livraisonPrixInput = document.getElementById("LivraisonPrix");
+        var prixFinalInput = document.getElementById("prixFinal");
+
+        var updatePrixFinal = () => {
+            var prixFinal = (parseFloat(produitPrixInput.value) + parseFloat(livraisonPrixInput.value));
+            prixFinalInput.value = prixFinal;
+        };
+        produitPrixInput.addEventListener("input", updatePrixFinal);
+        livraisonPrixInput.addEventListener("input", updatePrixFinal);
+    }
+});

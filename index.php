@@ -3,6 +3,8 @@ use Config\Ftp\FTP;
 
 require_once 'config/constants.php';
 include __DIR__ . '/config/autoload.php';
+include __DIR__ . '/modele/user/checkCredentials.php';
+include __DIR__ . '/modele/catalog/request/insertDevis.php';
 
 session_start();
 
@@ -21,6 +23,14 @@ ob_start();
 include_once 'modele/catalog/offer/getOffers.php';
 include_once 'modele/catalog/request/getRequests.php';
 
+
+if (isset($_SESSION['account']) && isset($_SESSION['account']['id_utilisateur'])) {
+    $idFournisseur = $_SESSION['account']['id_utilisateur'];
+    
+} else {
+   $errors['user'] = "Utilisateur non connecté.";
+}
+// $idFournisseur = 1;
 
 $offers = getOffers();
 $requests = getRequests();
@@ -48,7 +58,45 @@ else if (isset($_GET) && isset($_GET['requests-search'])) {
     $requestsSearch = $_GET['requests-search'];
     $requests = getRequests($requestsSearch);
 }
+if (isset($_POST) && count($_POST) > 0) {
+    
+    $prixProduit = intval($_POST["prixProduit"]);
+    $prixLivraison = intval($_POST["prixLivraison"]);
+    $dateLivraison = $_POST["dateLivraison"];
+    $commentaire = test_input($_POST["Commentaire"]);
+    $idProduit = intval($_POST['idProduit']);
+   
+    if(!isset($_POST['prixProduit'])){
+        var_dump($prixProduit);
+        $errors['prixProduit'] = "Le champ est obligatoire";
+    }
+    if(!isset($_POST['prixLivraison'])){
+        var_dump($prixLivraison);
+        $errors['prixLivraison'] = "Le champ est obligatoire";
+    }
+    if(!isset($_POST['dateLivraison'])){
+        var_dump($prixLivraison);
+        $errors['dateLivraison'] = "Le champ est obligatoire";
+    }
+    if(!isset($_POST['idProduit'])){
+        var_dump($idProduit);
+        $errors['Id'] = "Produit pas trouvé";
+    }
+    if ($prixProduit <= $minPrice || $prixProduit >= $maxPrice)  {
+        $errors['prixProduit1'] = "Le prix doit être compris entre $minPrice et $maxPrice";
+    }
+    if ($prixLivraison <= $minPrice || $prixLivraison >= $maxPrice) {
+        $errors['prixProduit2'] = "Le prix doit être compris entre $minPrice et $maxPrice";
+    }
 
+    if (empty($errors)) {
+            $result = insertDevis($idProduit, $idFournisseur, $prixProduit, $prixLivraison, $dateLivraison, $commentaire);
+            header("Location: index.php");
+        
+        }else{
+            var_dump($errors);
+    }
+}
 include_once 'main.html';
 
 $body = ob_get_clean();
