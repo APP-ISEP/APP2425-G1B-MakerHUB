@@ -15,9 +15,9 @@ $logFile = LogFile::getInstance();
 
 ob_start();
 
-// if (isset($_SESSION['account'])) {
-//     header("Location: index.php");
-// }
+if (isset($_SESSION['account'])) {
+     header("Location: index.php");
+}
 
 require_once 'modele/user/insertUser.php';
 require_once 'modele/user/checkCredentials.php';
