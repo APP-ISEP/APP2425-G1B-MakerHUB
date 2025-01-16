@@ -111,7 +111,7 @@ if (isset($_POST) && count($_POST) > 0) {
             $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description, $role,$token);
 
             $to = $email;
-            $validationLink = "http://localhost:8080/APP2425-G1B-Makerhub/validate.php?token=$token";   
+            $validationLink = "https://www.makerhub.fr/validate.php?token=$token";
             $from = "no-reply@makerhub.fr";
             $subject = "[MakerHub] Confirmation d'inscription";
             $message = "
