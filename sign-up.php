@@ -108,7 +108,7 @@ if (isset($_POST) && count($_POST) > 0) {
         if ($validateEmail && $validatePhone && $validatePassword) {
             $hashedPassword = hashPassword($motDePasse);
             $token = bin2hex(random_bytes(16));
-            $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description, $role,$token);
+            $result = insertUser($nom, $prenom, $pseudonyme, $email, $hashedPassword, $telephone, $description, $role, $token);
 
             $to = $email;
             $validationLink = "https://www.makerhub.fr/validate.php?token=$token";
@@ -122,19 +122,19 @@ if (isset($_POST) && count($_POST) > 0) {
         
                     <body>
                         <h1>Confirmez votre inscription</h1><br>
-                        <button><a href=\"".$validationLink."\">Confirmez</a></button><br><br>
-                        <p>Cliquez sur le lien pour confirmer votre mail: <a href=\"".$validationLink."\">ici</a>.</p><br><br>
+                        <button><a href=\"" . $validationLink . "\">Confirmez</a></button><br><br>
+                        <p>Cliquez sur le lien pour confirmer votre mail: <a href=\"" . $validationLink . "\">ici</a>.</p><br><br>
                         <p>Merci de votre confiance.</p><br>
                         <p>L'équipe de MakerHub.</p>
                     </body>
                 </html>
                 ";
-        
-            $headers = "From: " . $from . "\r\n" . 
-                        "Content-Type: text/html; charset=UTF-8\r\n" .
-                        "MIME-Version: 1.0\r\n";
-            
-            if(mail($to, $subject, $message, $headers)) {
+
+            $headers = "From: " . $from . "\r\n" .
+                "Content-Type: text/html; charset=UTF-8\r\n" .
+                "MIME-Version: 1.0\r\n";
+
+            if (mail($to, $subject, $message, $headers)) {
                 echo '<script>alert("Email sent successfully !")</script>';
             } else {
                 echo "Failed to send email.";
@@ -142,7 +142,7 @@ if (isset($_POST) && count($_POST) > 0) {
 
             $account = getUser($email);
 
-             $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $account["id_utilisateur"] . ") a été créé depuis " . $_SERVER['REMOTE_ADDR'] . "."));
+            $logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $account['pseudonyme'] . " (id: " . $account["id_utilisateur"] . ") a été créé depuis " . $_SERVER['REMOTE_ADDR'] . "."));
             header("Location: index.php");
         }
     }
