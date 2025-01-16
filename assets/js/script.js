@@ -404,18 +404,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     'productId': productId
                 })
             })
-                .then(response => response.text())
-                .then(data => {
-                    if (data === '1') {
-                        alert("Le produit a bien été ajouté dans le panier.");
-                    } else {
-                        alert("Impossible d'ajouter le produit dans le panier.");
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert("Une erreur est survenue.");
-                });
+            .then(response => response.text())
+            .then(data => {
+                if (data === '1') {
+                    alert("Le produit a bien été ajouté dans le panier.");
+                } else {
+                    alert("Impossible d'ajouter le produit dans le panier.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                 alert("Une erreur est survenue.");
+            });
         });
     });
 });
