@@ -24,7 +24,6 @@ ob_start();
 include_once 'modele/catalog/offer/getOffers.php';
 include_once 'modele/catalog/request/getRequests.php';
 
-
 if (isset($_SESSION['account']['id_utilisateur'])) {
     $idFournisseur = $_SESSION['account']['id_utilisateur'];
 
@@ -58,7 +57,6 @@ if (isset($_GET['offers-search'])) {
     $requests = getRequests($requestsSearch);
 }
 if (isset($_POST) && count($_POST) > 0) {
-
     $prixProduit = intval($_POST["prixProduit"]);
     $prixLivraison = intval($_POST["prixLivraison"]);
     $dateLivraison = $_POST["dateLivraison"];
