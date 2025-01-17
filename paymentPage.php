@@ -44,17 +44,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     include_once 'modele/connectToDB.php';
     $pdo = connectToDB();
 
-    //stocker les infos de paiement dans la bdd
-    $sql = "INSERT INTO paiements (user_id, card_number, expiry-date, cvv, total-price) VALUES (:user_id, :card-number, :expiry-date, :cvv, :total-price)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(":user_id", $userId);
-    $stmt->bindParam(":card-number", $cardNumber);
-    $stmt->bindParam(":expiry-date", $expiryDate);
-    $stmt->bindParam(":cvv", $cvv);
-    $stmt->bindParam(":total-price", $totalPrice);
-    $stmt->execute();
 
-    //metttre à jour l'étatde la commande
+    //metttre à jour l'état de la commande - le brouillon
     $sql = "UPDATE commande SET statut_commande_id='payée', cree_a=NOW()  WHERE user_id=:user_id AND etat='en attente'";
     $stmt =$pdo->prepare($sql);
     $stmt->bindParam(":user_id", $userId);
