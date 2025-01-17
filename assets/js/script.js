@@ -207,7 +207,7 @@ $(document).ready(() => {
         let emailInput = document.getElementById('email');
         emailInput.addEventListener('change', function () {
             $.ajax({
-                url: 'php/user/checkCredentials.php',
+                url: 'modele/user/checkCredentials.php',
                 type: 'POST',
                 data: {fonction: 'uniqueMailJSON', email: emailInput.value},
                 success: function (data) {
@@ -225,7 +225,7 @@ $(document).ready(() => {
         let usernameInput = document.getElementById('username');
         usernameInput.addEventListener('change', function () {
             $.ajax({
-                url: 'php/user/checkCredentials.php',
+                url: 'modele/user/checkCredentials.php',
                 type: 'POST',
                 data: {fonction: 'uniquePseudonymeJSON', pseudonyme: usernameInput.value},
                 success: function (data) {
@@ -240,23 +240,20 @@ $(document).ready(() => {
                 }
             })
         })
+        
+        var motDePasse = document.getElementById('password');
+        var motDePasseConfirmed = document.getElementById('passwordConfirmation');
+
+        motDePasseConfirmed.addEventListener('change', function () {
+            if (motDePasse.value !== motDePasseConfirmed.value) {
+                alert("Les mots de passe ne correspondent pas");
+            }
+        });
     }
 });
 
 
 //---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
-//---- BEGINNING OF VALIDATION PASSWORD SIGN_UP ----//
-/*
-    var motDePasse = document.getElementById('password');
-    var motDePasseConfirmed = document.getElementById('passwordConfirmation');
-
-    motDePasseConfirmed.addEventListener('change', function () {
-        if (motDePasse.value !== motDePasseConfirmed.value) {
-            alert("Les mots de passe ne correspondent pas");
-        }
-    });
-*/
-//---- END OF VALIDATION PASSWORD SIGN_UP ----//
 
 
 //---- BEGINNING OF THE "A PROPOS DE MOI" IN SIGN UP ----//
@@ -319,7 +316,7 @@ function setFaq() {
 
             }
         }
-        xmlhttp.open("POST", "./php/faq/setFaq.php", true);
+        xmlhttp.open("POST", "./modele/faq/setFaq.php", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send("id=" + id + "&reponse=" + reponse + "&question=" + question);
         window.location.reload();
@@ -351,9 +348,9 @@ function deleteFaq(id) {
                 console.log(xmlhttp.responseText);
             }
         }
-        xmlhttp.open("GET", "./php/faq/setFaq.php?id=" + id, true);
+        xmlhttp.open("GET", "./modele/faq/setFaq.php?id=" + id, true);
         xmlhttp.send();
-        xmlhttp.open("POST", "./php/faq/setFaq.php", true);
+        xmlhttp.open("POST", "./modele/faq/setFaq.php", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send("id=" + id);
         window.location.reload();
@@ -372,7 +369,7 @@ function showPopUp(id) {
         console.log(id);
 
 
-        xmlhttp.open("GET", "./php/faq/getFaq.php?id_faq=" + id, true);
+        xmlhttp.open("GET", "./modele/faq/getFaq.php?id_faq=" + id, true);
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
