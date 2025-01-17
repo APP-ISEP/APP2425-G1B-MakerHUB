@@ -1,5 +1,10 @@
 <?php
-require_once "./modele/connectToDB.php";
+require_once "../connectToDB.php";
+
+if (isset($_POST['id']) && !empty($_POST['id'])) {
+    $id = $_POST['id'];
+    deleteUser($id);
+}
 
 function deleteUser(int $id): ?bool
 {

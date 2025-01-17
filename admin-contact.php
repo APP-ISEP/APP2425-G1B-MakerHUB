@@ -1,16 +1,18 @@
 <?php
 session_start();
 
-$title = "Administration Produits";
+$title = "Administration Contact | Makerhub";
 
 if ($_SESSION['role'] !== 'admin') {
     header("Location: index.php");
 }
 
 ob_start();
-require('modele/catalog/offer/getOffers.php'); 
-$products = getOffers();
-include_once 'views/admin/admin-product.html';
+require('modele/contact/getForm.php');
+
+$forms = getForms();
+
+include_once 'views/admin/admin-contact.html';
 
 $body = ob_get_clean();
 

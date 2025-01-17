@@ -273,17 +273,17 @@ $(document).ready(() => {
 
 
 //--------- BEGINNING OF CONTACT PAGE COUNTER---------//
-/*
-const textarea = document.getElementById("message-contact");
-const wordCounter = document.querySelector(".word-counter");
-const maxLength = textarea.maxLength;
-var restLetter = maxLength - (textarea.value).length;
-
-textarea.addEventListener ('input', () => {
-    restLetter = maxLength - (textarea.value).length;
-    wordCounter.textContent = `${restLetter} restants`;
-})
-*/
+if (window.location.pathname.includes('contact-page.php')) { 
+    const textarea = document.getElementById("message-contact");
+    const wordCounter = document.querySelector(".word-counter");
+    const maxLength = 300;
+    var restLetter = maxLength - (textarea.value).length;
+    
+    textarea.addEventListener ('input', () => {
+        restLetter = maxLength - (textarea.value).length;
+        wordCounter.textContent = `${restLetter} restants`;
+    })
+};
 //--------- END OF CONTACT PAGE COUNTER---------//
 
 
@@ -315,14 +315,12 @@ function setFaq() {
 
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                console.log(xmlhttp.responseText);
-
+                window.location.reload();
             }
         }
-        xmlhttp.open("POST", "./php/faq/setFaq.php", true);
+        xmlhttp.open("POST", "./modele/faq/setFaq.php", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send("id=" + id + "&reponse=" + reponse + "&question=" + question);
-        window.location.reload();
+        xmlhttp.send("id="+id+"&reponse="+reponse+"&question="+question);
     } catch (e) {
         console.log(e.toString());
     }
@@ -330,7 +328,6 @@ function setFaq() {
 
 function deleteFaq(id) {
     try {
-        console.log(id);
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
         } else {
@@ -348,14 +345,12 @@ function deleteFaq(id) {
 
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                console.log(xmlhttp.responseText);
+                window.location.reload();
             }
         }
-        xmlhttp.open("GET", "./php/faq/setFaq.php?id=" + id, true);
-        xmlhttp.send();
-        xmlhttp.open("POST", "./php/faq/setFaq.php", true);
+        xmlhttp.open("POST", "./modele/faq/setFaq.php", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send("id=" + id);
+        xmlhttp.send("id="+id);
         window.location.reload();
     } catch (e) {
         console.log(e);
@@ -364,27 +359,19 @@ function deleteFaq(id) {
 }
 
 function showPopUp(id) {
+    id = id.toString();
+    reponse = document.getElementById("r"+id).innerHTML ;
+    question = document.getElementById("q"+id).innerHTML ;
+
     if (document.getElementById("popup").style.display == "block")
         document.getElementById("popup").style.display = "none";
-    else {
+    else{
+        document.getElementById("id_faq").value = id;
+        document.getElementById("question_faq").value = question;
+        document.getElementById("reponse_faq").value = reponse;
         document.getElementById("popup").style.display = "block";
-
-        console.log(id);
-
-
-        xmlhttp.open("GET", "./php/faq/getFaq.php?id_faq=" + id, true);
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
-                //console.log(xmlhttp.responseText);
-                //document.getElementById("question_faq").value = question;
-                //document.getElementById("reponse_faq").value = reponse;
-            }
-        };
-        xmlhttp.send();
     }
 }
-
 //---- BEGINNING OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -500,3 +487,143 @@ document.addEventListener("DOMContentLoaded", () => {
         livraisonPrixInput.addEventListener("input", updatePrixFinal);
     }
 });
+
+
+//---- BEGINNING OF THE AJAX TO DELETE USER ----//
+function deleteUser(id){
+    confirmation = confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+    if (confirmation){
+        try{
+            console.log(id);
+            if (window.XMLHttpRequest) {
+                xmlhttp= new XMLHttpRequest();
+            } else {
+                if (window.ActiveXObject)
+                    try {
+                        xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            return NULL;
+                        }
+                    }
+            }
+            xmlhttp.onreadystatechange = function ()
+            {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                {
+                    window.location.reload();
+                }
+            }
+            xmlhttp.open("POST","./modele/user/deleteUser.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id="+id);
+          
+            }
+            catch(e){
+            console.log(e);
+            }
+    }
+}
+//---- END OF THE AJAX TO DELETE USER ----//
+
+//---- BEGINNING OF THE AJAX TO DELETE PRODUCT ----//
+function deleteProduct(id){
+    confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce produit ?");
+    if (confirmation){
+        try{
+
+            if (window.XMLHttpRequest) {
+                xmlhttp= new XMLHttpRequest();
+            } else {
+                if (window.ActiveXObject)
+                    try {
+                        xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            return NULL;
+                        }
+                    }
+            }
+            xmlhttp.onreadystatechange = function ()
+            {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                {
+                    window.location.reload();
+                }
+            }
+            xmlhttp.open("POST","./modele/catalog/offer/deleteOffer.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id="+id);
+           
+            }
+            catch(e){
+            console.log(e);
+            }
+    }
+}
+//---- END OF THE AJAX TO DELETE PRODUCT ----//
+
+//---- BEGINNING OF DISPLAY FORM ANSWER ----//
+    function answerForm(id) {
+        var answerForm = document.getElementById('answer_form');
+        var modifButton = document.getElementById('modif_button');
+        var email = document.getElementById('source_email').innerHTML;
+        
+        if (answerForm.style.display === 'none') {
+            answerForm.style.display = 'block';
+            modifButton.style.display = 'none';
+            document.querySelector('input[name="id"]').value = id;
+            document.querySelector('input[name="email"]').value = email;
+        } else {
+            answerForm.style.display = 'none';
+            modifButton.style.display = 'block';
+        }        
+    }
+
+//---- END OF DISPLAY FORM ANSWER ----//
+
+//---- BEGINNING OF THE AJAX TO ANSWER FORM ----//
+function setForm() {
+    xmlhttp = new XMLHttpRequest();
+    id = document.getElementById("id_form_answer").value;
+    answer = document.getElementById("answer_text").value;
+    email = document.getElementById("email_form_answer").value;
+
+    try{
+        if (window.XMLHttpRequest) {
+            xmlhttp= new XMLHttpRequest();
+    
+        } else {
+            if (window.ActiveXObject)
+                try {
+                    xmlhttp= new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        return NULL;
+                    }
+                }
+        }
+
+        xmlhttp.onreadystatechange = function ()
+        {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+            {
+                window.location.reload();
+            }
+        }
+            xmlhttp.open("POST", "./modele/contact/setForm.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id="+id+"&answer="+answer+"&email="+email);
+    }
+    catch(e){
+        console.log(e.toString());
+    }
+}
+
+//---- END OF THE AJAX TO ANSWER FORM ----//
