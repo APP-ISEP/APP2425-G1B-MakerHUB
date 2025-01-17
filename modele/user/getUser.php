@@ -2,6 +2,19 @@
 
 require_once(__DIR__ . '/../connectToDB.php');
 
+if (isset($_POST['show_user'])){
+    $id = $_POST['show_user'];
+    $account = getUserById($id);
+    unset($account['mot_de_passe']);
+    unset($account['est_actif']);
+    unset($account['inactif_depuis']);
+    unset($account['cree_a']);
+    unset($account['token']);
+    unset($account['is_verified']);
+    unset($account['role_id']);
+    header('Location: ./../../admin-user.php?user='.json_encode($account).'#supprimer-utilisateur');
+    die();
+}
 
 function getUser(string $email): ?array
 {
@@ -29,7 +42,7 @@ function getUser(string $email): ?array
     }
 }
 
-function getUserId( string $id): ?array
+function getUserById( string $id): ?array
 {
     try {
         $pdo = connectToDB();
@@ -59,7 +72,7 @@ function getUsers(): ?array
 {
     try {
         $pdo = connectToDB();
-        $sql = "SELECT * FROM `utilisateur` WHERE est_actif = 1;";
+        $sql = "SELECT * FROM `utilisateur` WHERE inactif_depuis IS NULL;";
 
         $stmt = $pdo->prepare($sql);
         $bool = $stmt->execute();
@@ -67,7 +80,7 @@ function getUsers(): ?array
 
         $account = null;
         if (count($results) > 0)
-            $account = $results[0];
+            $account = $results;
         
         $stmt->closeCursor();
         return $account;

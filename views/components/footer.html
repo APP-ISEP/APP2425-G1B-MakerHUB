@@ -1,11 +1,16 @@
-    <footer class="footer">
+   
+   <?php 
+   if ( !isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+   ?>
+
+   <footer class="footer">
         <div class="footer-logo">
             <img src="./assets/images/maker-hub-icon.svg" alt="Icône MakerHUB">
         </div>
 
         <div class="footer-copyrights">
             <p>MakerHUB</p>
-            <p>© 2024, <a href="#" class="underline">GNU v3.0</a></p>
+            <p>© 2025, <a href="#" class="underline">GNU v3.0</a></p>
         </div>
 
         <div class="footer-links">
@@ -19,7 +24,7 @@
             </ul>
         </div>
     </footer>
-
+<?php } ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./assets/js/script.js" defer></script>
     <script src="https://kit.fontawesome.com/c54f418805.js" crossorigin="anonymous"></script>
