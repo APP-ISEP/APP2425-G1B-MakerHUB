@@ -12,7 +12,7 @@ $title = "Mon panier";
 ob_start();
 
 if (isset($_SESSION['account'])) {
-    if($_SESSION['role'] === 'admin') {
+    if ($_SESSION['role'] === 'admin') {
         header("Location: admin.php");
     }
     if ($_SESSION['role'] !== 'acheteur') {
@@ -28,8 +28,10 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
 include_once("./modele/shopping-cart/getProductsByUserId.php");
 $products = getProductsByUserId($_SESSION['account']['id_utilisateur']);
 
-foreach($products as $product) {
-    $ftpInstance->getFile($product['chemin_image']);
+if (!is_null($products)) {
+    foreach ($products as $product) {
+        $ftpInstance->getFile($product['chemin_image']);
+    }
 }
 
 if (isset($_POST) && count($_POST) > 0) {

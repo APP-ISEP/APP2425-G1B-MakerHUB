@@ -1,11 +1,13 @@
 <?php
-require "./modele/connectToDB.php";
+require_once "./modele/connectToDB.php";
 
 if (isset($_GET['id_faq'])) {
     $id = $_GET['id_faq'];
     $faq = getFaqById($id);
 
-    header('Location: /admin-faq.php?id_faq='.$id.'&question='.$faq[0]['question'].'&reponse='.$faq[0]['reponse']);
+
+    // PROBLEM
+    header('Location: ' . __DIR__ . '/admin-faq.php?id_faq='.$id.'&question='.$faq[0]['question'].'&reponse='.$faq[0]['reponse']);
 
 } else {
     $faqs = getFaq();

@@ -10,13 +10,17 @@ require_once(__DIR__ . '/../connectToDB.php');
  * @param string $telephone
  * @param string $description
  * @param string $role
+ * @param string $token
  * @return int|null
  */
-function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone, string $description, string $role): ?int
+function insertUser(string $nom, string $prenom, string $pseudonyme, string $email, string $hashedPassword, string $telephone, string $description, string $role, string $token): ?int
 {
     try {
         $pdo = connectToDB();
-        $sql = "INSERT INTO utilisateur (nom, prenom, pseudonyme, mail, mot_de_passe, description, telephone) VALUES (:nom, :prenom, :pseudonyme, :email, :motDePasse, :description, :telephone)";
+        $sql = "INSERT INTO utilisateur (nom, prenom, pseudonyme, mail, mot_de_passe, description, telephone, token, is_verified, role_id)
+            (select :nom, :prenom, :pseudonyme, :email, :motDePasse, :description, :telephone, :valToken, 0, id_role
+             from role
+             where nom = :role)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':nom' => $nom,
@@ -25,14 +29,9 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
             ':email' => $email,
             ':motDePasse' => $hashedPassword,
             ':description' =>$description,
-            ':telephone' => $telephone
-        ]);
-
-        $sql = "INSERT INTO role_utilisateur (role_id, utilisateur_id) VALUES ((SELECT id_role FROM role WHERE nom = :role), (SELECT id_utilisateur FROM utilisateur WHERE mail = :email))";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
+            ':telephone' => $telephone,
             ':role' => $role,
-            ':email' => $email
+            ':valToken' => $token
         ]);
 
         $stmt->closeCursor();
@@ -44,7 +43,6 @@ function insertUser(string $nom, string $prenom, string $pseudonyme, string $ema
         return null;
     }
 }
-
 
 function verifyUsername(string $pseudonyme): ?bool
 {

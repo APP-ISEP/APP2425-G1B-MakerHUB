@@ -1,10 +1,8 @@
-
-      
-
-   <main class="main">
+<main class="main">
     <div class="mini-menu">
         <a href="./admin-product.php" ><div class="submitButton">Produit</div></a>
         <a href="./admin-user.php" ><div class="submitButton">Utilisateur</div></a>
+        <a href="./admin-contact.php" ><div class="submitButton">Demande contact</div></a>
     </div>
 
         <section id="faq" class="section content-box">
@@ -15,11 +13,11 @@
                     <form action="./admin-faq.php" method="POST">
                         <label for="question">Question</label>  
                         <br>  
-                        <textarea type="text" name="question" placeholder="Question"></textarea>
+                        <textarea type="text" name="question" placeholder="Question" required></textarea>
                         <br>
                         <label for="reponse">Réponse</label>
                         <br>
-                        <textarea type="text" name="reponse" placeholder="Réponse"></textarea>
+                        <textarea type="text" name="reponse" placeholder="Réponse" required></textarea>
                         <br>
                         <input class="submit" type="submit" value="Ajouter">
                     </form>
@@ -35,11 +33,14 @@
                             $question = $faq['question'];
                             $reponse = $faq['reponse'];
                             $id = $faq['id_faq'];
+
+                            $id_td_question = "q" . $id;
+                            $id_td_reponse = "r" . $id;
                         ?>
 
                             <tr>
-                                <td><?php echo($question);?></td>
-                                <td><?php echo($reponse);?></td>
+                                <td id="<?php echo $id_td_question; ?>"><?php echo($question);?></td>
+                                <td id="<?php echo $id_td_reponse; ?>"><?php echo($reponse);?></td>
                                 <td><a onclick="deleteFaq(<?php echo($id);?>)"><button class="submit"><i class="fa-regular fa-trash-can" style="color: #ffffff;"></i></button></a></td>
                                 <td><a onclick="showPopUp(<?php echo($id);?>)"><button class="submit"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
                             </tr>
@@ -52,12 +53,12 @@
                             <form onsubmit="setFaq()">
                                 <label for="question">Question</label>  
                                 <br>  
-                                <textarea type="text" id="question_faq" name="question"><?php echo($question);?></textarea>
+                                <textarea type="text" id="question_faq" name="question" required></textarea>
                                 <br>
                                 <label for="reponse">Réponse</label>
                                 <br>
-                                <textarea type="text" id="reponse_faq" name="reponse"><?php echo($reponse);?></textarea>
-                                <input type="hidden" id="id_faq" name="id" value="<?php echo($id);?>">
+                                <textarea type="text" id="reponse_faq" name="reponse" required></textarea>
+                                <input type="hidden" id="id_faq" name="id" value="">
                                 <input class="submit" type="submit" value="Modifier">
                             </form>
                             </div>

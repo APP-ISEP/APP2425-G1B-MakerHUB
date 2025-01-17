@@ -5,7 +5,6 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     
-    <link href="./assets/css/style_admin.css" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet">
 
     <link href="./assets/images/favico.ico" rel="icon">
@@ -36,10 +35,12 @@
             <?php if ($_SESSION['role'] == 'acheteur') : ?>
             <a href="order-history.php"><div class="drop-content">Mes commandes</div></a>
             <a href="devis-history.php"><div class="drop-content">Mes devis</div></a>
+
             <a href="edit-profile.php"><div class="drop-content">Éditer le profil</div></a>
             <hr id="separation-bar">
             <?php elseif($_SESSION['role'] == 'vendeur'): ?>
             <a href="devis-history.php"><div class="drop-content">Mes devis</div></a>
+
             <a href="edit-profile.php"><div class="drop-content">Éditer le profil</div></a>
             <hr id="separation-bar">
             <?php endif; ?>

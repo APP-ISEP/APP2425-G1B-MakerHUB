@@ -703,10 +703,21 @@ input:focus, textarea:focus {
     text-align: center;
     margin-top: 30px;
 }
+
+.container-payment {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+
+.button-payment {
+    padding: 15px;
+    width: 30%;
+}
 /* END SHOPPING CART PAGE */
 
 
-/*HOME PAGE*/
+/* HOME PAGE */
 .hero-container {
     display: flex;
     justify-content: space-between;
@@ -848,12 +859,12 @@ input:focus, textarea:focus {
 }
 
 .item-card {
-    background-color: #fff; /* Fond blanc pour chaque carte */
-    border: 1px solid #ddd; /* Bordure légère */
-    border-radius: 8px; /* Coins arrondis */
-    overflow: hidden; /* Pour gérer le contenu débordant */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour un effet esthétique */
-    text-align: center; /* Centrer le contenu de la carte */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
     padding: 15px;
 }
 
@@ -918,8 +929,7 @@ input:focus, textarea:focus {
     border-radius: 20%;
 }
 
-/*Inscription*/
-/*FORM */
+/* SIGN UP */
 .sign-up {
     width: 45%;
     margin: 2% auto 3% auto !important;
@@ -945,7 +955,6 @@ input:focus, textarea:focus {
     padding-bottom: 0;
 }
 
-/* END FORM */
 
 /* LABEL AND WRITE PART */
 .required {
@@ -1045,34 +1054,6 @@ input:focus, textarea:focus {
     margin-bottom: 2em;
 }
 
-/*ADMIN PANEL*/
-.admin-menu
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 10%;
-    gap: 50px;
-}
-
-.admin-menu ul {
-    display: flex;
-    list-style-type: none;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.admin-menu ul li {
-    margin:5% 5%;
-}
-.admin-menu ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 20px;
-}
-
 /* Format mobile */
 @media screen and (max-width: 817px) {
     #dropdown {
@@ -1144,9 +1125,83 @@ input:focus, textarea:focus {
 
 /* order-history*/
 
+.order-history-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 3%;
+}
 
-.order-history {
+.filter-status {
+    padding-left: 3%;
+}
+
+/* POP UP DEVIS BEGIN*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: relative;
+    margin: 10% auto;
+    padding: 2%;
+    background-color: white;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.modal-body {
+    padding: 15px;
+}
+
+.close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close:hover {
+    color: red;
+}
+/*END POP UP DEVIS*/
+
+/*ADMIN PANEL*/
+
+.admin-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 10%;
+    gap: 50px;
+}
+
+.admin-menu ul {
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 50px;
@@ -1170,4 +1225,176 @@ input:focus, textarea:focus {
 }
 
 
+}
 
+.admin-menu ul li {
+    margin:5% 5%;
+}
+
+.admin-menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10em;
+    gap : 50px;
+}
+.main section#faq,.main section#supprimer-utilisateur,.main section#supprimer-produit {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid var(--accentuation_color);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10em;
+    gap : 50px;
+}
+
+
+.main section#faq,.main section#supprimer-utilisateur,.main section#supprimer-produit {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid var(--accentuation_color);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+}
+
+.main form{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main form textarea, .main form label, .main form select, .main form input{
+    width: 60%;
+}
+.main form input[type="submit"]{
+    width : 35%;
+}
+
+.main form select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--accentuation_color);
+    outline: none;
+}
+
+.main form button{
+    width: 20%
+    }
+
+.main table{
+    width: 90%;
+    margin-top: 2em;
+    border-collapse: collapse;
+
+}
+
+.main th, td{
+    padding: 15px;
+    text-align: left;
+}
+
+.main th:first-child{
+    border-top-left-radius: 10px;
+}
+.main th:last-child{
+    border-top-right-radius: 10px;
+}
+
+.main tr:last-child td:first-child{
+    border-bottom-left-radius: 10px;
+}
+.main tr:last-child td:last-child{
+    border-bottom-right-radius: 10px;
+}
+
+.main th:last-child{
+    text-align: center;
+}
+
+.main th{
+background-color: var(--accentuation_color);
+color:var(--base_color-2);
+}
+
+.main tr:nth-child(even){
+    background-color: var(--base-color-2);
+}
+
+.main tr:nth-child(even):hover{
+    background-color: var(--accentuation_color);
+}
+
+.main tr:nth-child(odd){
+    background-color: var( --base-color-3);
+}
+
+.main tr:nth-child(odd):hover{
+    background-color: var(--accentuation_color);
+}
+
+.main select{
+    padding: 10px;
+    margin: 10px;
+}
+
+.main table .submit{
+    border: 3px solid var(--important-element-color);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: 700;
+    margin: auto;
+    text-align: center;
+    width:95%;
+
+    cursor: pointer;
+    background-color: var(--important-element-color);
+    color: var(--base-color-3);
+}
+
+.main a .submitButton, a.submitButton{
+    width : 100%;
+    border: 3px solid var(--important-element-color);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: 700;
+    margin: auto;
+    text-align: center;
+
+    cursor: pointer;
+    text-decoration: none;
+    background-color: var(--important-element-color);
+    color: var(--base-color-3);
+}
+
+.main a {
+    text-decoration: none;
+}
+
+.main .mini-menu{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}

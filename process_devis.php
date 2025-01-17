@@ -24,7 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute()) {
             if ($action === 'accepter') {
+
                 header("Location: paiement.php?id_devis=$id_devis");
+
             } else {
                 header("Location: devis-history.php");
             }

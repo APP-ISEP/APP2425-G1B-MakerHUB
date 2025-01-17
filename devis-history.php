@@ -5,7 +5,9 @@
 
 session_start();
 require_once("modele/order/getDevis.php");
-$title = "Devis History";
+
+$title = "Historique de devis";
+
 
 ob_start();
 
@@ -23,7 +25,9 @@ if (!isset($_SESSION) || !isset($_SESSION['account'])) {
 
 include_once 'views/devis-history.html';
 
+
 echo '<div class="order-history">';
+
 $result = getDevis($id_account);
 if($result->rowCount() > 0){
     while($row= $result->fetch(PDO::FETCH_ASSOC)){
