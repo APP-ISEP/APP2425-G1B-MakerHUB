@@ -134,29 +134,42 @@
 <div class="modal" id="myModal">
     <div class="modal-content">
         <div class="modal-header">
-            <h3 class="modal-title" id="modalTitle"> Devis produit n. <?= $item['titre']?></h3>
+            <h3 class="modal-title" id="modalTitle">Devis produit : <?= $item['titre']?></h3>
             <button class="close" id="closeModal">&times;</button>
         </div>
         <div class="modal-body" id="modalBody">
         <form id="devisForm" method="post" action="">
             <input type="hidden"  id="IdProduit" name="idProduit"> <!-- Stock id du produit selectionné-->
-            <br>
-            <label>Prix Produit</label>
-            <input placeholder="prix" type="int" name="prixProduit" id="ProduitPrix" required><span>€</span>
-            <br>
-            <label>Prix de livraison</label>
-            <input placeholder="prix de livraison" type="int" name="prixLivraison"  id="LivraisonPrix" required><span>€</span>
-            <br>
+            <p class="required">*Ces champs sont obligatoires</p>
+            <div class="form-container">
+            <div class="form-control">
+            <label>Prix Produit<span class="required">*</span></label>
+            <input placeholder="Prix" type="int" name="prixProduit" id="ProduitPrix" required>
+            </div>
+
+            <div class="form-control">
+            <label>Prix de livraison<span class="required">*</span></label>
+            <input placeholder="Prix de livraison" type="int" name="prixLivraison"  id="LivraisonPrix" required>
+            </div>
+
+            <div class="form-control">
             <label>Prix final</label>
-            <input placeholder="prix final" type="int" id="prixFinal"><span>€</span>
-            <br>
-            <label>Date d'envoi estimée</label>
+            <input placeholder="Prix final" type="int" id="prixFinal">
+            </div>
+
+            <div class="form-control">
+            <label>Date d'envoi estimée<span class="required">*</span></label>
             <input placeholder="date" type="date" name="dateLivraison" required>
-            <br>
+            </div>
+            </div>
+
+            <div class="form-control">
             <label>Commentaire</label>
             <input placeholder="Commentaire" type="text" name="Commentaire">
-            <br>
+            </div>
+            <div class="save-button">
             <button type="submit" id="envoyerDevis">Envoyer le devis</button>
+            </div>
         </form>
         </div>
     </div>
