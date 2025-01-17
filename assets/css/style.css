@@ -1204,6 +1204,27 @@ input:focus, textarea:focus {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 50px;
+}
+
+.order-history .item-card {
+    flex-basis: calc(20%);
+    box-sizing: border-box;
+    flex: 1 0 20%;
+    max-width: 278px; 
+    
+}
+
+@media screen and (max-width: 817px) {
+    .order-history {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: column;
+        gap: 30px 2000px;
+    }
+}
+
+
 }
 
 .admin-menu ul li {
@@ -1241,6 +1262,7 @@ input:focus, textarea:focus {
     margin-top: 10em;
     gap : 50px;
 }
+
 
 .main section#faq,.main section#supprimer-utilisateur,.main section#supprimer-produit {
     width: 70%;

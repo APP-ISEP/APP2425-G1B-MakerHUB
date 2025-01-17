@@ -255,6 +255,20 @@ $(document).ready(() => {
 
 //---- END OF THE AJAX TO CHECK IF MAIL WAS ALREADY USED ----//
 
+//---- BEGINNING OF VALIDATION PASSWORD SIGN_UP ----//
+/*
+    var motDePasse = document.getElementById('password');
+    var motDePasseConfirmed = document.getElementById('passwordConfirmation');
+
+    motDePasseConfirmed.addEventListener('change', function () {
+        if (motDePasse.value !== motDePasseConfirmed.value) {
+            alert("Les mots de passe ne correspondent pas");
+        }
+    });
+*/
+//---- END OF VALIDATION PASSWORD SIGN_UP ----//
+
+
 
 //---- BEGINNING OF THE "A PROPOS DE MOI" IN SIGN UP ----//
 $(document).ready(() => {
@@ -407,6 +421,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //---- END OF THE AJAX TO ADD A PRODUCT IN SHOPPING-CART ----//
 
+
 //--Order-history--//
 document.addEventListener("DOMContentLoaded", function () {
     if (window.location.pathname.includes('order-history.php') || window.location.pathname.includes('devis-history.php')) {
@@ -427,7 +442,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-});
 
 
 function confirmAction(action) {
@@ -437,6 +451,15 @@ function confirmAction(action) {
     } else if (action === 'refuser') {
         message = 'Êtes-vous sûr de vouloir refuser ce devis ?';
     }
+
+
+    if (confirm(message)) {
+        return true;  
+    } else {
+        return false; 
+    }
+}
+console.log("pipi")
 
     return confirm(message);
 }
@@ -625,3 +648,4 @@ function setForm() {
 }
 
 //---- END OF THE AJAX TO ANSWER FORM ----//
+
