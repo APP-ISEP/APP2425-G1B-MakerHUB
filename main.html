@@ -15,7 +15,11 @@
             <?php if (isset($_SESSION['username'])) : ?>
 
             <div class="hero-button-group">
-                <button class="button button-hero" onclick="location.href = '#catalog-container'">Consulter le catalogue</button>
+                <?php if ($_SESSION['role'] === 'vendeur') : ?>
+                <button class="button button-hero" onclick="location.href = '#catalog-container'">Consulter les demandes</button>
+                <?php elseif ($_SESSION['role'] === 'acheteur') : ?>
+                <button class="button button-hero" onclick="location.href = '#catalog-container'">Consulter les produits</button>
+                <?php endif; ?>
                 
                 <?php if ($_SESSION['role'] === 'vendeur') : ?>
                 <button class="button button-bordered-second button-hero" onclick="location.href = 'offer-creation.php'">Proposer un produit</button>    
