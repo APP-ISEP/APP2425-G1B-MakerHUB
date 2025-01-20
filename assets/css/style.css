@@ -1213,9 +1213,17 @@ input:focus, textarea:focus {
     flex: 1 0 20%;
     max-width: 278px; 
     
+
 }
 
-@media screen and (max-width: 817px) {
+.order-history {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px 20px;
+}
+
+@media screen and (max-width: 900px) {
     .order-history {
         display: flex;
         flex-wrap: wrap;
@@ -1223,7 +1231,6 @@ input:focus, textarea:focus {
         gap: 30px 2000px;
     }
 }
-
 
 
 

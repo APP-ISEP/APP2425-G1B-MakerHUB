@@ -460,9 +460,11 @@ function confirmAction(action) {
     }
 }
     return confirm(message);
+
 }
 );
 
+console.log("pipi")
 //POP UP JS
 document.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname.includes('index.php')) {
