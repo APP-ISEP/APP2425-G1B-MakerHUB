@@ -35,14 +35,14 @@
             <?php if ($_SESSION['role'] == 'acheteur') : ?>
             <a href="order-history.php"><div class="drop-content">Mes commandes</div></a>
             <a href="devis-history.php"><div class="drop-content">Mes devis</div></a>
+
             <a href="edit-profile.php"><div class="drop-content">Éditer le profil</div></a>
             <hr id="separation-bar">
-
             <?php elseif($_SESSION['role'] == 'vendeur'): ?>
             <a href="devis-history.php"><div class="drop-content">Mes devis</div></a>
+
             <a href="edit-profile.php"><div class="drop-content">Éditer le profil</div></a>
             <hr id="separation-bar">
-            
             <?php endif; ?>
             <a href="log-out.php"><div class="drop-content logout">Se déconnecter</div></a>
         </div>
