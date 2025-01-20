@@ -459,10 +459,11 @@ function confirmAction(action) {
         return false; 
     }
 }
-
-
     return confirm(message);
-})
+
+}
+);
+
 console.log("pipi")
 //POP UP JS
 document.addEventListener("DOMContentLoaded", () => {
