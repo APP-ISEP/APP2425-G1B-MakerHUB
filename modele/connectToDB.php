@@ -2,11 +2,11 @@
 
 function connectToDB(): PDO
 {
-    $host = 'localhost'; 
+    $host = 'ba64n0culhsuwcjyb9ss-mysql.services.clever-cloud.com'; 
     $db = 'ba64n0culhsuwcjyb9ss'; 
-    $user = 'root'; 
-    $pass = ''; 
-    $charset = 'utf8mb4'; 
+    $user = 'u0ju2jbxdcdzmdvc'; 
+    $pass = 'C3X9cZMufZY7DyrF6VUZ'; 
+    $charset = 'utf8mb4';
 
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 

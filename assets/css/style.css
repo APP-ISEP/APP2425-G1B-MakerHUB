@@ -1215,7 +1215,14 @@ input:focus, textarea:focus {
     
 }
 
-@media screen and (max-width: 817px) {
+.order-history {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px 20px;
+}
+
+@media screen and (max-width: 900px) {
     .order-history {
         display: flex;
         flex-wrap: wrap;
@@ -1225,7 +1232,6 @@ input:focus, textarea:focus {
 }
 
 
-}
 
 .admin-menu ul li {
     margin:5% 5%;
