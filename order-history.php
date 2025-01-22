@@ -1,7 +1,3 @@
-<script>src="assets/js/scrpit.js"
-    console.log("caca")
-</script>
-
 <?php
 
 session_start();

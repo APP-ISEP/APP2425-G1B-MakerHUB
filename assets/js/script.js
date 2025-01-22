@@ -443,28 +443,27 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    function confirmAction(action) {
+        let message = '';
 
-function confirmAction(action) {
-    let message = '';
-    if (action === 'accepter') {
-        message = 'Êtes-vous sûr de vouloir accepter ce devis ?';
-    } else if (action === 'refuser') {
-        message = 'Êtes-vous sûr de vouloir refuser ce devis ?';
+        if (action === 'accepter') {
+            message = 'Êtes-vous sûr de vouloir accepter ce devis ?';
+        } else if (action === 'refuser') {
+            message = 'Êtes-vous sûr de vouloir refuser ce devis ?';
+        }
+
+        if (confirm(message)) {
+            return true;  
+        } else {
+            return false; 
+        }
     }
 
-
-    if (confirm(message)) {
-        return true;  
-    } else {
-        return false; 
-    }
-}
+    // ERROR : message is not defined    
     return confirm(message);
+});
 
-}
-);
 
-console.log("pipi")
 //POP UP JS
 document.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname.includes('index.php')) {

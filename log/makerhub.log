@@ -18,3 +18,13 @@
 2025-01-22 15:29:42 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis ::1.
 2025-01-22 15:29:54 [INFO] L'utilisateur r000t (id: 1) a modifié son profil depuis::1.
 2025-01-22 16:09:16 [INFO] L'utilisateur r000t s'est déconnecté depuis ::1.
+2025-01-22 16:31:44 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis ::1.
+2025-01-22 17:04:20 [INFO] L'utilisateur r000t s'est déconnecté depuis 127.0.0.1.
+2025-01-22 17:04:27 [INFO] L'utilisateur mgeissel (id: 2) s'est connecté depuis 127.0.0.1.
+2025-01-22 17:04:47 [INFO] L'utilisateur mgeissel s'est déconnecté depuis 127.0.0.1.
+2025-01-22 17:04:49 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis 127.0.0.1.
+2025-01-22 17:04:59 [INFO] L'utilisateur r000t (id: 1) a modifié son profil depuis127.0.0.1.
+2025-01-22 17:05:05 [INFO] L'utilisateur r000t (id: 1) a modifié son profil depuis127.0.0.1.
+2025-01-22 17:05:23 [INFO] L'utilisateur r000t s'est déconnecté depuis 127.0.0.1.
+2025-01-22 17:07:34 [INFO] L'utilisateur r000t (id: 1) s'est connecté depuis 127.0.0.1.
+2025-01-22 17:08:39 [INFO] L'utilisateur r000t (id: 1) a modifié son profil depuis127.0.0.1.
