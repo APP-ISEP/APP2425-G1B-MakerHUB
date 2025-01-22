@@ -416,7 +416,7 @@ label {
     background-color: var(--base-color-3);
 }
 
-.log-in h1, .sign-up h1, .edit-profile h1, #contact-page h1 {
+.log-in h1, .sign-up h1, #contact-page h1 {
     text-align: center;
     margin-top: 2%;
 }
@@ -536,11 +536,6 @@ textarea {
 
 input:focus, textarea:focus {
     border: 1px solid var(--secondary-text-color);
-}
-
-.edit-profile h1 {
-    text-align: center;
-    margin-bottom: 20px;
 }
 
 .subtitle {
@@ -720,7 +715,6 @@ input:focus, textarea:focus {
     color: var(--base-color-2);
     text-decoration: none;
 }
-
 /* END SHOPPING CART PAGE */
 
 
@@ -1061,77 +1055,7 @@ input:focus, textarea:focus {
     margin-bottom: 2em;
 }
 
-/* Format mobile */
-@media screen and (max-width: 817px) {
-    #dropdown {
-        right: 0;
-        width: 98vw;
-        transform: none;
-        left: auto;
-    }
-
-    .footer {
-        height: 20vh;
-    }
-
-    .footer-logo, .footer-copyrights {
-        display: none;
-    }
-
-    .footer-links {
-        width: 100%;
-    }
-
-    .footer-links-list {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10%;
-    }
-
-    /*HOME PAGE*/
-    .hero-container {
-        flex-direction: column-reverse;
-    }
-
-    .hero-container img {
-        display: none;
-    }
-
-    /* EDIT PROFILE PAGE */
-    .edit-profile {
-        width: 95%;
-        margin-left: 2.5%;
-    }
-
-    /* LEGAL PAGES */
-    .legal-page-container {
-        width: 80%;
-        margin-left: 10%;
-    }
-}
-
-/* Format tablette */
-@media screen and (min-width: 818px) and (max-width: 1561px) {
-    body {
-        font-size: 0.8em;
-    }
-
-    .footer-links {
-        width: 60%;
-    }
-
-    /* LEGAL PAGES */
-    .legal-page-container {
-        width: 80%;
-        margin-left: 10%;
-    }
-}
-
-
-/* order-history*/
-
+/* ORDER HISTORY */
 .order-history-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1192,10 +1116,9 @@ input:focus, textarea:focus {
     color: red;
 }
 
-/*END POP UP DEVIS*/
+/* END POP UP DEVI S*/
 
-/*ADMIN PANEL*/
-
+/* ADMIN PANEL */
 .admin-menu {
     display: flex;
     flex-direction: column;
@@ -1461,4 +1384,107 @@ p {
 
 span {
     font-weight: bold;
+}
+
+
+/* Format mobile */
+@media screen and (max-width: 817px) {
+    #dropdown {
+        left: 0;
+        width: 98vw;
+        transform: none;
+        left: auto;
+    }
+
+    .footer {
+        height: 20vh;
+    }
+
+    .footer-logo, .footer-copyrights {
+        display: none;
+    }
+
+    .footer-links {
+        width: 100%;
+    }
+
+    .footer-links-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+    }
+
+    /* HOME PAGE */
+    .hero-container {
+        flex-direction: column-reverse;
+    }
+
+    .hero-text {
+        width: 90%;
+    }
+    
+    .hero-text p {
+        font-size: 1.3em;
+    }
+
+    .title {
+        font-size: 50px;
+    }
+    
+    .hero-container img {
+        display: none;
+    }
+
+    /* LEGAL PAGES */
+    .legal-page-container {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    /* ALL FORMS */
+    .form-section {
+        width: 95%;
+        margin-left: 2.5%;
+        margin-top: 13vh;
+        margin-bottom: 7vh;
+        padding: 10px 10px;
+    }
+
+    .form-container {
+        display: block;
+    }
+
+    /* EDIT PROFILE */
+    .save-button {
+        justify-content:space-between;
+    }
+
+    /* LOG-in & SIGN-UP */
+    .log-in, .sign-up {
+        width: 95%;
+        padding: 10px 10px;
+    }
+
+    .form-row {
+        display: block;
+    }
+}
+
+/* Format tablette */
+@media screen and (min-width: 818px) and (max-width: 1561px) {
+    body {
+        font-size: 0.8em;
+    }
+
+    .footer-links {
+        width: 60%;
+    }
+
+    /* LEGAL PAGES */
+    .legal-page-container {
+        width: 80%;
+        margin-left: 10%;
+    }
 }

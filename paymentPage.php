@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //rediriger vers la page de confirmantion de la commande*/
 }
 
-include_once './views/paymentPage.html';
+include_once './views/payment-page.html';
 
 $body = ob_get_clean();
 
