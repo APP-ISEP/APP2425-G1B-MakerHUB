@@ -1470,6 +1470,19 @@ span {
     .form-row {
         display: block;
     }
+
+    /* SHOPPING CART */
+    .shopping-cart-container {
+        display: block;
+    }
+
+    .product-card {
+        padding: 10px;
+    }
+    
+    .button-payment {
+        width: auto;
+    }
 }
 
 /* Format tablette */
