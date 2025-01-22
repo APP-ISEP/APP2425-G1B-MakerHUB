@@ -20,13 +20,13 @@
     <div class="formulairePaiement">
         <h2>Informations de paiement</h2>
         <form action="#" method="POST">
-            <label for="card-number">Numéro de carte:</label>
+            <label for="card-number">Numéro de carte :</label>
             <input id="card-number" name="card-number" required type="number" max="9999999999999999">
 
-            <label for="expiry-date">Date d'expiration:</label>
+            <label for="expiry-date">Date d'expiration :</label>
             <input id="expiry-date" name="expiry-date" required type="text" maxlength="5">
 
-            <label for="cvv">CVV:</label>
+            <label for="cvv">CVV :</label>
             <input id="cvv" name="cvv" required type="number" max="999">
 
             <input name="total-price" type="hidden" value="<?= $totalPrice ?>">
