@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . './config/constraints.php';
+require_once(__DIR__ . '/../config/constants.php');
 
 function connectToDB(): PDO
 {
