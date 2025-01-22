@@ -21,16 +21,16 @@
         <h2>Informations de paiement</h2>
         <form action="paymentPage.php" method="POST">
             <label for="card-number">Numéro de carte:</label>
-            <input id="card-number" name="card-number" required type="text">
+            <input id="card-number" name="card-number" required type="number" max="9999999999999999">
 
             <label for="expiry-date">Date d'expiration:</label>
-            <input id="expiry-date" name="expiry-date" required type="text">
+            <input id="expiry-date" name="expiry-date" required type="text" maxlength="5">
 
             <label for="cvv">CVV:</label>
-            <input id="cvv" name="cvv" required type="text">
+            <input id="cvv" name="cvv" required type="number" max="999">
 
             <input name="total-price" type="hidden" value="<?= $totalPrice ?>">
-            <input type="submit" value="Payer">
+            <input class="paymentButton" type="submit" value="Payer" onclick="alert('Votre commande a bien été payée !')">
         </form>
     </div>
 </div>

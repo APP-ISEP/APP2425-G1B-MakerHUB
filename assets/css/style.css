@@ -41,7 +41,7 @@ body {
     text-decoration: underline;
 }
 
-button{
+button {
     background-color: var(--important-element-color);
     border: 2px solid var(--important-element-color);
     font-family: 'Kanit', serif;
@@ -511,7 +511,7 @@ label {
 .submit {
     background-color: var(--important-element-color);
     color: var(--base-color-3);
-    padding:16px !important;
+    padding: 16px !important;
 }
 
 label {
@@ -644,7 +644,7 @@ input:focus, textarea:focus {
 .shopping-cart-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px; 
+    gap: 30px;
     justify-items: stretch;
     margin: 25px 150px 50px;
 }
@@ -717,9 +717,10 @@ input:focus, textarea:focus {
 }
 
 .button-payment a {
-  color: var(--base-color-2);
-  text-decoration: none;
+    color: var(--base-color-2);
+    text-decoration: none;
 }
+
 /* END SHOPPING CART PAGE */
 
 
@@ -867,7 +868,7 @@ input:focus, textarea:focus {
 .item-card {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px; 
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -1052,7 +1053,7 @@ input:focus, textarea:focus {
 }
 
 .first-h2-cookie {
-    margin-top: -2%!important;
+    margin-top: -2% !important;
 }
 
 .cookies h2 {
@@ -1190,6 +1191,7 @@ input:focus, textarea:focus {
 .close:hover {
     color: red;
 }
+
 /*END POP UP DEVIS*/
 
 /*ADMIN PANEL*/
@@ -1236,8 +1238,16 @@ input:focus, textarea:focus {
     }
 }
 
+/* page de paiement */
+body {
+    font-family: 'Kanit', serif;
+    background-color: var(--base-color-2);
+    color: var(--base-color);
+    margin-top: var(--navbar-height);
+}
+
 .admin-menu ul li {
-    margin:5% 5%;
+    margin: 5% 5%;
 }
 
 .admin-menu ul li a {
@@ -1245,14 +1255,16 @@ input:focus, textarea:focus {
     color: #fff;
     font-size: 20px;
 }
-.main{
+
+.main {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 10em;
-    gap : 50px;
+    gap: 50px;
 }
-.main section#faq,.main section#supprimer-utilisateur,.main section#supprimer-produit {
+
+.main section#faq, .main section#supprimer-utilisateur, .main section#supprimer-produit {
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -1265,18 +1277,19 @@ input:focus, textarea:focus {
 }
 
 
-.main form{
+.main form {
     display: flex;
     width: 80%;
     flex-direction: column;
     align-items: center;
 }
 
-.main form textarea, .main form label, .main form select, .main form input{
+.main form textarea, .main form label, .main form select, .main form input {
     width: 60%;
 }
-.main form input[type="submit"]{
-    width : 35%;
+
+.main form input[type="submit"] {
+    width: 35%;
 }
 
 .main form select {
@@ -1286,67 +1299,69 @@ input:focus, textarea:focus {
     outline: none;
 }
 
-.main form button{
+.main form button {
     width: 20%
-    }
+}
 
-.main table{
+.main table {
     width: 90%;
     margin-top: 2em;
     border-collapse: collapse;
 
 }
 
-.main th, td{
+.main th, td {
     padding: 15px;
     text-align: left;
 }
 
-.main th:first-child{
+.main th:first-child {
     border-top-left-radius: 10px;
 }
-.main th:last-child{
+
+.main th:last-child {
     border-top-right-radius: 10px;
 }
 
-.main tr:last-child td:first-child{
+.main tr:last-child td:first-child {
     border-bottom-left-radius: 10px;
 }
-.main tr:last-child td:last-child{
+
+.main tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
 }
 
-.main th:last-child{
+.main th:last-child {
     text-align: center;
 }
 
-.main th{
-background-color: var(--accentuation_color);
-color:var(--base_color-2);
+.main th {
+    background-color: var(--accentuation_color);
+    color: var(--base_color-2);
 }
 
-.main tr:nth-child(even){
+.main tr:nth-child(even) {
     background-color: var(--base-color-2);
 }
 
-.main tr:nth-child(even):hover{
+.main tr:nth-child(even):hover {
     background-color: var(--accentuation_color);
 }
 
-.main tr:nth-child(odd){
-    background-color: var( --base-color-3);
+.main tr:nth-child(odd) {
+    background-color: var(--base-color-3);
 }
 
-.main tr:nth-child(odd):hover{
+.main tr:nth-child(odd):hover {
     background-color: var(--accentuation_color);
 }
 
-.main select{
+.main select {
     padding: 10px;
     margin: 10px;
 }
 
-.main table .submit{
+.main table .submit {
     border: 3px solid var(--important-element-color);
     border-radius: 10px;
     padding: 12px;
@@ -1354,15 +1369,15 @@ color:var(--base_color-2);
     font-weight: 700;
     margin: auto;
     text-align: center;
-    width:95%;
+    width: 95%;
 
     cursor: pointer;
     background-color: var(--important-element-color);
     color: var(--base-color-3);
 }
 
-.main a .submitButton, a.submitButton{
-    width : 100%;
+.main a .submitButton, a.submitButton {
+    width: 100%;
     border: 3px solid var(--important-element-color);
     border-radius: 10px;
     padding: 12px;
@@ -1382,17 +1397,17 @@ color:var(--base_color-2);
 }
 
 .main .mini-menu {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  gap: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
 }
 
 
 .payment-container {
     width: 50%;
-    padding: 20px;
     margin: 7% auto 50px;
+    padding: 20px;
     background-color: var(--base-color-3);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -1418,13 +1433,17 @@ label {
     color: var(--secondary-text-color);
 }
 
-input[type="text"], input[type="submit"] {
-    /*width: 100%;*/
+.formulairePaiement input[type="text"], .formulairePaiement input[type="number"], .formulairePaiement input[type="submit"] {
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid var(--accentuation_color);
     border-radius: 10px;
     box-sizing: border-box;
+}
+
+.paymentButton {
+    margin-top: 25px;
 }
 
 input[type="submit"] {
@@ -1434,10 +1453,6 @@ input[type="submit"] {
     cursor: pointer;
     font-size: 16px;
 }
-
-/*input[type="submit"]:hover {
-    background-color: darken(var(--important-element-color), 10%);
-}*/
 
 p {
     font-size: 16px;
