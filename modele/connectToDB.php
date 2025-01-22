@@ -1,5 +1,7 @@
 <?php
 
+include __DIR__ . '/config/constraints.php';
+
 function connectToDB(): PDO
 {
     $host = DB_HOST;
