@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . '/config/constraints.php';
+include __DIR__ . './config/constraints.php';
 
 function connectToDB(): PDO
 {
