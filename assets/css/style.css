@@ -511,6 +511,7 @@ label {
 .submit {
     background-color: var(--important-element-color);
     color: var(--base-color-3);
+    padding:16px !important;
 }
 
 label {
@@ -713,6 +714,11 @@ input:focus, textarea:focus {
 .button-payment {
     padding: 15px;
     width: 30%;
+}
+
+.button-payment a {
+  color: var(--base-color-2);
+  text-decoration: none;
 }
 /* END SHOPPING CART PAGE */
 
@@ -1211,9 +1217,7 @@ input:focus, textarea:focus {
     flex-basis: calc(20%);
     box-sizing: border-box;
     flex: 1 0 20%;
-    max-width: 278px; 
-    
-
+    max-width: 278px;
 }
 
 .order-history {
@@ -1230,14 +1234,6 @@ input:focus, textarea:focus {
         justify-content: column;
         gap: 30px 2000px;
     }
-}
-
-/* page de paiement */
-body {
-    font-family: 'Kanit', serif;
-    background-color: var(--base-color-2);
-    color: var(--base-color);
-    margin-top: var(--navbar-height);
 }
 
 .admin-menu ul li {
@@ -1395,8 +1391,8 @@ color:var(--base_color-2);
 
 .payment-container {
     width: 50%;
-    margin: 50px auto;
     padding: 20px;
+    margin: 7% auto 50px;
     background-color: var(--base-color-3);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -1423,7 +1419,7 @@ label {
 }
 
 input[type="text"], input[type="submit"] {
-    width: 100%;
+    /*width: 100%;*/
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid var(--accentuation_color);
@@ -1439,9 +1435,9 @@ input[type="submit"] {
     font-size: 16px;
 }
 
-input[type="submit"]:hover {
+/*input[type="submit"]:hover {
     background-color: darken(var(--important-element-color), 10%);
-}
+}*/
 
 p {
     font-size: 16px;
