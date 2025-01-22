@@ -94,6 +94,7 @@ if (isset($_POST) && count($_POST) > 0) {
         var_dump($errors);
     }
 }
+
 include_once 'main.html';
 
 $body = ob_get_clean();

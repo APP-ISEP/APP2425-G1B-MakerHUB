@@ -7,19 +7,19 @@
         <!-- initialisation var $totalPrice à 0. Va accumuler le prix total des produits-->
         <?php foreach ($products as $product) : ?>
         <!-- passe par chaque produit dans le tab $products -->
-        <p>Produit: <span id="product-name"><?= $product['titre']?></span></p>
+        <p>Produit : <span id="product-name"><?= $product['titre']?></span></p>
         <!-- affiche le titre du produit. -->
-        <p>Prix: <span id="product-price">€<?= number_format($product['prix'], 2, ',', ' ') ?></span></p>
+        <p>Prix : <span id="product-price">€<?= number_format($product['prix'], 2, ',', ' ') ?></span></p>
         <!-- affiche prix du produit en euros avec deux décimales -->
         <?php $totalPrice += $product['prix']; ?>
         <!-- ajoute prix du produit à $totalPrice -->
         <?php endforeach; ?>
-        <p>Livraison: <span id="delivery-price">€0.00</span></p>
-        <p>Total: <span id="total-price">€<?= number_format($totalPrice, 2, ',', ' ') ?></span></p>
+        <p>Livraison : <span id="delivery-price">€0.00</span></p>
+        <p>Total : <span id="total-price">€<?= number_format($totalPrice, 2, ',', ' ') ?></span></p>
     </div>
     <div class="formulairePaiement">
         <h2>Informations de paiement</h2>
-        <form action="paymentPage.php" method="POST">
+        <form action="#" method="POST">
             <label for="card-number">Numéro de carte:</label>
             <input id="card-number" name="card-number" required type="number" max="9999999999999999">
 

@@ -1162,12 +1162,6 @@ input:focus, textarea:focus {
 }
 
 /* page de paiement */
-body {
-    font-family: 'Kanit', serif;
-    background-color: var(--base-color-2);
-    color: var(--base-color);
-    margin-top: var(--navbar-height);
-}
 
 .admin-menu ul li {
     margin: 5% 5%;
@@ -1198,7 +1192,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 
 .main form {
     display: flex;
@@ -1260,7 +1253,7 @@ body {
 
 .main th {
     background-color: var(--accentuation_color);
-    color: var(--base_color-2);
+    color: var(--base-color-2);
 }
 
 .main tr:nth-child(even) {
@@ -1336,7 +1329,7 @@ body {
     border-radius: 8px;
 }
 
-h1, h2 {
+.payment-container h1, .resumeCommande h2 {
     text-align: center;
     color: var(--base-color);
 }
