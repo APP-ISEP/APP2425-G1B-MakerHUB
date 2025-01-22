@@ -907,7 +907,6 @@ input:focus, textarea:focus {
     cursor: pointer;
 }
 
-/* TODO */
 .pagination {
     display: flex;
     justify-content: right;
