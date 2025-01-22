@@ -9,9 +9,7 @@ use Config\Log\LogLevel;
 session_start();
 
 $logFile = LogFile::getInstance();
-$log = new Log(LogLevel::INFO, "L'utilisateur " . $_SESSION['username'] . " s'est déconnecté depuis " . $_SERVER['REMOTE_ADDR'] . ".");
-
-$logFile->addLog($log);
+$logFile->addLog(new Log(LogLevel::INFO, "L'utilisateur " . $_SESSION['username'] . " s'est déconnecté depuis " . $_SERVER['REMOTE_ADDR'] . "."));
 
 // Supprimer tous les fichiers dans le dossier uploads
 foreach (glob("uploads/*.*") as $filename) {
