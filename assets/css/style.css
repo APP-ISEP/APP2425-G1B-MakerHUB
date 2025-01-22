@@ -1150,6 +1150,7 @@ input:focus, textarea:focus {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px 20px;
+    min-height: 300px; //TODO à check
 }
 
 @media screen and (max-width: 900px) {

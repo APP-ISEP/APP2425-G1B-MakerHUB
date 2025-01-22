@@ -452,15 +452,12 @@ document.addEventListener("DOMContentLoaded", function () {
             message = 'Êtes-vous sûr de vouloir refuser ce devis ?';
         }
 
-        if (confirm(message)) {
+        if (confirm(message)) { //TODO check ça marche
             return true;  
         } else {
             return false; 
         }
     }
-
-    // ERROR : message is not defined    
-    return confirm(message);
 });
 
 
