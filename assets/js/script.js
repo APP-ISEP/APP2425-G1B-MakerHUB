@@ -284,17 +284,17 @@ $(document).ready(() => {
 
 
 //--------- BEGINNING OF CONTACT PAGE COUNTER---------//
-if (window.location.pathname.includes('contact-page.php')) { 
-    const textarea = document.getElementById("message-contact");
-    const wordCounter = document.querySelector(".word-counter");
-    const maxLength = 300;
-    var restLetter = maxLength - (textarea.value).length;
-    
-    textarea.addEventListener ('input', () => {
-        restLetter = maxLength - (textarea.value).length;
-        wordCounter.textContent = `${restLetter} restants`;
-    })
-};
+if (window.location.pathname.includes('contact-page.php')) {
+const textarea = document.getElementById("message-contact");
+const wordCounter = document.querySelector(".word-counter");
+const maxLength = textarea.maxLength;
+var restLetter = maxLength - (textarea.value).length;
+
+textarea.addEventListener ('input', () => {
+    restLetter = maxLength - (textarea.value).length;
+    wordCounter.textContent = `${restLetter} restants`;
+})
+}
 //--------- END OF CONTACT PAGE COUNTER---------//
 
 
