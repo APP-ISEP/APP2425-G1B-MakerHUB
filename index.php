@@ -56,6 +56,7 @@ if (isset($_GET['offers-search'])) {
     $requestsSearch = $_GET['requests-search'];
     $requests = getRequests($requestsSearch);
 }
+
 if (isset($_POST) && count($_POST) > 0) {
     $prixProduit = intval($_POST["prixProduit"]);
     $prixLivraison = intval($_POST["prixLivraison"]);
@@ -89,11 +90,11 @@ if (isset($_POST) && count($_POST) > 0) {
     if (empty($errors)) {
         $result = insertDevis($idProduit, $idFournisseur, $prixProduit, $prixLivraison, $dateLivraison, $commentaire);
         header("Location: index.php");
-
     } else {
         var_dump($errors);
     }
 }
+
 include_once 'main.html';
 
 $body = ob_get_clean();

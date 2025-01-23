@@ -1,6 +1,3 @@
-<script>src="assets/js/scrpit.js"
-    console.log("zizi")
-</script>
 <?php
 
 session_start();
